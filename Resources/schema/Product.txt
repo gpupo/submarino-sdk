@@ -1,0 +1,33 @@
+id: string,
+name: string,
+sku: [
+  {
+    id: string,
+    name: string,
+    description: string,
+    ean: [
+      string
+    ],
+    height: number,
+    width: number,
+    length: number,
+    weight: number,
+    stockQuantity: integer,
+    enable: boolean,
+    price: {
+      sellPrice: number,
+      listPrice: number
+    }
+  }
+],
+manufacturer: {
+  name: string,
+  model: string,
+  warrantyTime: integer
+},
+deliveryType: string,
+nbm: {
+  number: integer,
+  origin: integer
+}
+

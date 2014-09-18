@@ -1,0 +1,28 @@
+{
+    "name": "gpupo/submarino-sdk",
+    "description": "SDK Não Oficial para integração a partir de aplicações PHP com as APIs do Submarino",
+    "keywords": ["submarino", "sdk", "api"],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.5",
+        "ext-curl" : "*",
+        "symfony/finder": "2.6.*@dev",
+        "doctrine/common": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-0": { "Gpupo\\": "src" }
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "Gpupo\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
