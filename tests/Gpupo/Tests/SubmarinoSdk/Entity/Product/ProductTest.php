@@ -3,25 +3,25 @@
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Product;
 
 use Gpupo\Tests\TestCaseAbstract;
-use Gpupo\SubmarinoSdk\Entity\EntityFactory;
+use Gpupo\SubmarinoSdk\Entity\Product\Factory;
 
 class ProductTest extends TestCaseAbstract
 {    
     protected function factory($data)
     {
-        $manufacturer = EntityFactory::factory('Product', 'Manufacturer')
+        $manufacturer = Factory::factoryManufacturer()
             ->setName($data['manufacturer']['name'])
             ->setModel($data['manufacturer']['model'])
             ->setWarrantyTime($data['manufacturer']['warrantyTime']);
         
-        $product = EntityFactory::factory('Product', 'Product')
+        $product = Factory::factoryProduct()
             ->setId($data['id'])->setName($data['name'])
             ->setDeliveryType($data['deliveryType'])
             ->setNbm($data['nbm'])
             ->setManufacturer($manufacturer);
 
         foreach ($data['sku'] as $item) {
-            $sku = EntityFactory::factory('Product', 'Sku')
+            $sku = Factory::factorySku()
                 ->setId($item['id'])->setName($item['name'])
                 ->setDescription($item['description'])
                 ->setEan($item['ean'])->setHeight(1)->setWidth(1)->setLength(1)
@@ -33,6 +33,7 @@ class ProductTest extends TestCaseAbstract
         
         return $product;
     }
+
     /**
      * @dataProvider dataProviderProducts
      */
