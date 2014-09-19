@@ -1,12 +1,11 @@
 {
     "name": "gpupo/submarino-sdk",
-    "description": "SDK Não Oficial para integração a partir de aplicações PHP com as APIs do Submarino",
+    "description": "SDK Não Oficial para integração a partir de aplicações PHP com as APIs do Submarino Marketplace",
     "keywords": ["submarino", "sdk", "api"],
     "license": "MIT",
     "require": {
         "php": ">=5.5",
         "ext-curl" : "*",
-        "symfony/finder": "2.6.*@dev",
         "doctrine/common": "*"
     },
     "require-dev": {

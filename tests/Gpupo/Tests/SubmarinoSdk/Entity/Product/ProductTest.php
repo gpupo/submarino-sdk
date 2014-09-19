@@ -3,66 +3,82 @@
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Product;
 
 use Gpupo\Tests\TestCaseAbstract;
-use Gpupo\SubmarinoSdk\Entity\Product\Product;
-use Gpupo\SubmarinoSdk\Entity\Product\Sku;
-use Gpupo\SubmarinoSdk\Entity\Product\Manufacturer;
+use Gpupo\SubmarinoSdk\Entity\EntityManager;
 
 class ProductTest extends TestCaseAbstract
-{    
-    public function testPossuiPropriedadesEObjetos()
+{        
+    
+    public function dataProviderProducts()
     {
-        $product = new Product;
-        
-        $product->setId(1)->setName('Test Express')->setDeliveryType('Correios')
-            ->setNbm(array('number' => 1, 'origin' => 1));
-        
-        $sku = new Sku;
-        $sku->setId(2)->setName('Normal')->setDescription('Hello World!')
+        return [
+            [[
+                'id'            => 1,
+                'name'          => 'Test Express',
+                'deliveryType'  => 'Correios',
+            ]],
+        ];
+    }
+    
+    protected function factory($data)
+    {
+        $sku = EntityManager::factory('Product', 'Sku')
+            ->setId(2)->setName('Normal')->setDescription('Hello World!')
             ->setEan(array('0102999'))->setHeight(1)->setWidth(1)->setLength(1)
             ->setWeight(1)->setStockQuantity(1)->setEnable(true)
             ->setPrice(array('sellPrice' => 1, 'listPrice' => 2));
+        
+        $manufacturer = EntityManager::factory('Product', 'Manufacturer')
+            ->setName('Foo')->setModel('Bar')->setWarrantyTime(30);
+        
+        $product = EntityManager::factory('Product', 'Product')
+            ->setId($data['id'])->setName($data['name'])
+            ->setDeliveryType($data['deliveryType'])
+            ->setNbm(['number' => 1, 'origin' => 1])
+            ->setManufacturer($manufacturer);
+        
         $product->getSku()->add($sku);
-        
-        $manufacturer = new Manufacturer;
-        $manufacturer->setName('Foo')->setModel('Bar')->setWarrantyTime(30);
-        $product->setManufacturer($manufacturer);
-        
+
+        return $product;
+    }
+    /**
+     * @dataProvider dataProviderProducts
+     */
+    public function testPossuiPropriedadesEObjetos(array $data)
+    {        
+        $product = $this->factory($data);
         $this->assertEquals(1, $product->getId());
         $this->assertEquals('Test Express', $product->getName());
         $this->assertEquals('Correios', $product->getDeliveryType());
-               
-        return $product;
     }
     
     /**
-     * @depends testPossuiPropriedadesEObjetos
+     * @dataProvider dataProviderProducts
      */
-    public function testPossuiNbmFormatado($product)
+    public function testPossuiNbmFormatado($data)
     {
+        $product = $this->factory($data);
         $nbm = $product->getNbm();
         $this->assertEquals(1, $nbm['number']);
         $this->assertEquals(1, $nbm['origin']);
-        
-        return $product;
     }
     
     /**
-     * @depends testPossuiNbmFormatado
+     * @dataProvider dataProviderProducts
      */
-    public function testPossuiPrecoFormatado($product)
+    public function testPossuiPrecoFormatado($data)
     {
+        $product = $this->factory($data);
         $price = $product->getSku()->first()->getPrice();
         $this->assertEquals(1, $price['sellPrice']);
         $this->assertEquals(2, $price['listPrice']);
-           
-        return $product;
     }
     
     /**
-     * @depends testPossuiPrecoFormatado
+     * @dataProvider dataProviderProducts
      */
-    public function testPossuiUmaColecaoDeSkus($product)
+    public function testPossuiUmaColecaoDeSkus($data)
     {
+        $product = $this->factory($data);
         $productSku = $product->getSku()->first();
         $this->assertInstanceOf('Gpupo\SubmarinoSdk\Entity\Product\Sku', $productSku);
         $this->assertEquals('Normal', $productSku->getName());
@@ -74,33 +90,31 @@ class ProductTest extends TestCaseAbstract
         $this->assertEquals(1, $productSku->getWeight(), 'Weight');
         $this->assertEquals(1, $productSku->getStockQuantity(), 'StockQuantity');
         $this->assertEquals(true, $productSku->getEnable(), 'Enable');
-        
-        return $product;
     }
     
     /**
-     * 
-     * @depends testPossuiUmaColecaoDeSkus
+     * @dataProvider dataProviderProducts
      */
-    public function testPossuiObjetoManufacturer($product)
+    public function testPossuiObjetoManufacturer($data)
     {               
+        $product = $this->factory($data);
         $productManufacturer = $product->getManufacturer();
         $this->assertInstanceOf('Gpupo\SubmarinoSdk\Entity\Product\Manufacturer', $productManufacturer);
         $this->assertEquals('Foo', $productManufacturer->getName());
         $this->assertEquals('Bar', $productManufacturer->getModel());
-        $this->assertEquals('30 dias', $productManufacturer->getWarrantyTime());
+        $this->assertEquals('30', $productManufacturer->getWarrantyTime());
 
         return $product;
     }
     
+    
     /**
-     * 
-     * @depends testPossuiObjetoManufacturer
+     * @dataProvider dataProviderProducts
      */
-    public function testEntregaJson(Product $product)
-    {                       
+    public function testEntregaJson($data)
+    {   
+        $product = $this->factory($data);
         $json = $product->toJson();
-        
         $array = json_decode($json, true);
         
         $this->assertArrayHasKey('sku', $array);

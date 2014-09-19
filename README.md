@@ -1,5 +1,8 @@
 SDK Não Oficial para integração a partir de aplicações PHP com as APIs do Submarino Marketplace
 
+## Documentação
+
+* [Documentação oficial](https://api-marketplace.submarino.com.br/docs/)
 
 ## License
 
