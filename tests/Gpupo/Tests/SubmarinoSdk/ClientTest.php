@@ -3,20 +3,14 @@
 namespace Gpupo\Tests\SubmarinoSdk;
 
 use Gpupo\Tests\TestCaseAbstract;
-use Gpupo\SubmarinoSdk\Client;
 use Gpupo\SubmarinoSdk\Entity\Collection;
-use Gpupo\SubmarinoSdk\Entity\EntityManager;
+use Gpupo\SubmarinoSdk\Entity\EntityFactory;
 use Gpupo\SubmarinoSdk\Entity\Product\Product;
 use Gpupo\SubmarinoSdk\Entity\Product\Sku;
 use Gpupo\SubmarinoSdk\Entity\Product\Manufacturer;
 
 class ClientTest extends TestCaseAbstract
-{
-    public function factoryClient()
-    {
-        return new Client(['token' => API_TOKEN, 'verbose' => VERBOSE]);
-    }
-    
+{    
     public function testSimpleCurl()
     {       
         $client = $this->factoryClient();
@@ -146,7 +140,7 @@ class ClientTest extends TestCaseAbstract
             $response = $client->get('/sku/' . $sku['id']);
             
             $info = $response->getData()->getPrice();
-            $price = EntityManager::factory('Product', 'Price', $info);
+            $price = EntityFactory::factory('Product', 'Price', $info);
             
             $this->assertEquals($info['sellPrice'], $price->getSellPrice());
             

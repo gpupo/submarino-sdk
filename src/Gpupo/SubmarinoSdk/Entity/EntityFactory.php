@@ -4,7 +4,7 @@
  */
 namespace Gpupo\SubmarinoSdk\Entity;
 
-class EntityManager
+class EntityFactory
 {
     /**
      * Acesso a um novo objeto da Entidade

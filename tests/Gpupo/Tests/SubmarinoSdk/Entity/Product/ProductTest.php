@@ -3,59 +3,25 @@
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Product;
 
 use Gpupo\Tests\TestCaseAbstract;
-use Gpupo\SubmarinoSdk\Entity\EntityManager;
+use Gpupo\SubmarinoSdk\Entity\EntityFactory;
 
 class ProductTest extends TestCaseAbstract
-{        
-    public function dataProviderProducts()
-    {
-        return [
-            [[
-                'id'            => 1,
-                'name'          => 'Test Express',
-                'deliveryType'  => 'SHIPMENT',
-                'sku'           =>[
-                    [
-                        'id'            => 2,
-                        'name'          => 'Normal',
-                        'description'   => 'Hello World!',
-                        'ean'           => ['0102999984123','0102999984124'],
-                    ],
-                    [
-                        'id'            => 3,
-                        'name'          => 'Plus',
-                        'description'   => 'Hello Moon!',
-                        'ean'           => ['0102999984125','0102999984126'],
-                    ],
-                ],
-                'manufacturer' => [
-                    'name'          => 'Foo',
-                    'model'         => 'Bar',
-                    'warrantyTime'  => 30,
-                ],
-                'nbm'   => [
-                    'number' => 1041011,
-                    'origin' => 2,
-                ],
-            ]],
-        ];
-    }
-    
+{    
     protected function factory($data)
     {
-        $manufacturer = EntityManager::factory('Product', 'Manufacturer')
+        $manufacturer = EntityFactory::factory('Product', 'Manufacturer')
             ->setName($data['manufacturer']['name'])
             ->setModel($data['manufacturer']['model'])
             ->setWarrantyTime($data['manufacturer']['warrantyTime']);
         
-        $product = EntityManager::factory('Product', 'Product')
+        $product = EntityFactory::factory('Product', 'Product')
             ->setId($data['id'])->setName($data['name'])
             ->setDeliveryType($data['deliveryType'])
             ->setNbm($data['nbm'])
             ->setManufacturer($manufacturer);
 
         foreach ($data['sku'] as $item) {
-            $sku = EntityManager::factory('Product', 'Sku')
+            $sku = EntityFactory::factory('Product', 'Sku')
                 ->setId($item['id'])->setName($item['name'])
                 ->setDescription($item['description'])
                 ->setEan($item['ean'])->setHeight(1)->setWidth(1)->setLength(1)
@@ -159,6 +125,24 @@ class ProductTest extends TestCaseAbstract
         $this->assertArrayHasKey('manufacturer', $array);
         foreach(array('name', 'model',  'warrantyTime') as $key) {
             $this->assertArrayHasKey($key, $array['manufacturer']);
+            $this->assertEquals($data['manufacturer'][$key], $array['manufacturer'][$key]);
+        }
+        
+        $this->assertEquals($data['nbm']['number'], $array['nbm']['number']);
+        $this->assertEquals($data['nbm']['origin'], $array['nbm']['origin']);
+        
+        foreach ($data['sku'] as $item) {
+            $sku = current($array['sku']);
+            $this->assertEquals($item['name'], $sku['name']);
+            $this->assertEquals($item['description'], $sku['description']);
+            
+            $skuEan = $sku['ean'];
+            foreach ($item['ean'] as $ean) {
+                $this->assertEquals($ean, current($skuEan));
+                next($skuEan);
+            }
+            
+            next($array['sku']);
         }
         
         return $array;
