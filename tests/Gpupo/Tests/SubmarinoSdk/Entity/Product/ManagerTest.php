@@ -12,8 +12,24 @@ class ManagerTest extends TestCaseAbstract
     {
         $manager = new Manager($this->factoryClient());
      
-        foreach($this->dataProviderProducts() as $data) {
-            $product = Factory::factoryProduct($data);
+        foreach(current($this->dataProviderProducts()) as $data) {
+            $manufacturer = Factory::factoryManufacturer($data['manufacturer']);
+
+            $product = Factory::factoryProduct($data)
+                ->setManufacturer($manufacturer);
+
+            foreach ($data['sku'] as $item) {
+                $sku = Factory::factorySku()
+                    ->setId($item['id'])->setName($item['name'])
+                    ->setDescription($item['description'])
+                    ->setEan($item['ean'])->setHeight(1)->setWidth(1)->setLength(1)
+                    ->setWeight(1)->setStockQuantity(1)->setEnable(true)
+                    ->setPrice(array('sellPrice' => 1, 'listPrice' => 2));
+
+                $product->getSku()->add($sku);
+            }
+
+            
             $this->assertTrue($manager->save($product));
         }
     }

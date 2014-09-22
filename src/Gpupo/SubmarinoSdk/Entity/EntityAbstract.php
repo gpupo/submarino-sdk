@@ -20,10 +20,12 @@ abstract class EntityAbstract extends CollectionAbstract
     protected function initSchema(array $schema, $data)
     {
         foreach($schema as $key => $value) {
-            if (!empty($data) && array_key_exists($key, $data)) {
-                $schema[$key] = $data[$key];
-            } elseif ($value == 'collection') {
+            if ($value == 'collection') {
                 $schema[$key] = $this->factoryCollection();
+            } elseif ($value == 'object') {
+                $schema[$key] = false;
+            } elseif (!empty($data) && array_key_exists($key, $data)) {
+                $schema[$key] = $data[$key];
             } elseif ($value == 'array') {
                 $schema[$key] = [];
             }

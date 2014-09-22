@@ -15,6 +15,6 @@ abstract class ManagerAbstract
     
     public function getClient()
     {
-        
+        return $this->client;
     }
 }
