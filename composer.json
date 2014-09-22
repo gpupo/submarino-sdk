@@ -8,8 +8,12 @@
         "ext-curl" : "*",        
         "gpupo/common-sdk": "dev-master"
     },
+    "suggest": {
+        "monolog/monolog": "Write Log messages"
+    },
     "require-dev": {
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "*",
+        "monolog/monolog": "dev-master"
     },
     "autoload": {
         "psr-0": { "Gpupo\\": "src" }
@@ -23,5 +27,6 @@
         "branch-alias": {
             "dev-master": "1.0.x-dev"
         }
-    }
+    },
+    "minimum-stability" : "dev"
 }

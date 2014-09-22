@@ -3,6 +3,8 @@
 namespace Gpupo\Tests;
 
 use Gpupo\SubmarinoSdk\Client;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
 {
@@ -23,7 +25,13 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
 
     public function factoryClient()
     {
-        return new Client(['token' => API_TOKEN, 'verbose' => VERBOSE]);
+        $log = new Logger('SubmarinoSdk');
+        $log->pushHandler(new StreamHandler(
+            $this->getResourceFilePath('logs/tests.log'), Logger::DEBUG));
+
+        return Client::getInstance()
+            ->setOptions(['token' => API_TOKEN, 'verbose' => VERBOSE])
+            ->setLogger($log);
     }
 
     public function dataProviderProducts()
