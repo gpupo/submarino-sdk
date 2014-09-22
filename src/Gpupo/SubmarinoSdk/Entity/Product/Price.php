@@ -2,8 +2,8 @@
 
 namespace Gpupo\SubmarinoSdk\Entity\Product;
 
-use Gpupo\SubmarinoSdk\Entity\EntityAbstract;
-use Gpupo\SubmarinoSdk\Entity\EntityInterface;
+use Gpupo\CommonSdk\Entity\EntityAbstract;
+use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Price extends EntityAbstract implements EntityInterface
 {

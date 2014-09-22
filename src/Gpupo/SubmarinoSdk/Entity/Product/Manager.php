@@ -2,9 +2,9 @@
 
 namespace Gpupo\SubmarinoSdk\Entity\Product;
 
-use Gpupo\SubmarinoSdk\Entity\ManagerAbstract;
-use Gpupo\SubmarinoSdk\Entity\ManagerInterface;
-use Gpupo\SubmarinoSdk\Entity\EntityInterface;
+use Gpupo\CommonSdk\Entity\ManagerAbstract;
+use Gpupo\CommonSdk\Entity\ManagerInterface;
+use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Manager extends ManagerAbstract implements ManagerInterface
 {

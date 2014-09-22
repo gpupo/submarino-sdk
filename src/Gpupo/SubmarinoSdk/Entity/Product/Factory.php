@@ -2,7 +2,7 @@
 
 namespace Gpupo\SubmarinoSdk\Entity\Product;
 
-use Gpupo\SubmarinoSdk\Entity\FactoryAbstract;
+use Gpupo\CommonSdk\Entity\FactoryAbstract;
 
 class Factory extends FactoryAbstract
 {
