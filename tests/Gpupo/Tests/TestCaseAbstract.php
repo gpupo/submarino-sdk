@@ -10,7 +10,7 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
     {
         return file_get_contents($this->getResourceFilePath($file));
     }
-    
+
     protected function getResourceFilePath($file)
     {
         $path = 'Resources/' . $file;
@@ -20,12 +20,12 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
             throw new \InvalidArgumentException('File Not Exist');
         }
     }
-        
+
     public function factoryClient()
     {
         return new Client(['token' => API_TOKEN, 'verbose' => VERBOSE]);
     }
-    
+
     public function dataProviderProducts()
     {
         return include($this->getResourceFilePath('fixture/Products.php'));

@@ -11,7 +11,7 @@ class Factory extends FactoryAbstract
         if (!is_array($data)) {
             $data = [];
         }
-        
+
         $object = __NAMESPACE__ . '\\' . $objectName;
 
         return new $object($data);
@@ -29,5 +29,5 @@ class Factory extends FactoryAbstract
             throw new \BadMethodCallException("There is no method ".$method);
         }
     }
-    
+
 }
