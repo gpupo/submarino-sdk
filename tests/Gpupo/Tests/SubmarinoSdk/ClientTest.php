@@ -50,6 +50,8 @@ class ClientTest extends TestCaseAbstract
             $client = $this->factoryClient();
             $response = $client->post('/product', $product->toJson());
 
+            print_r($response);
+            
             $this->assertEquals(200, $response->getHttpStatusCode());
         }
     }
@@ -60,8 +62,7 @@ class ClientTest extends TestCaseAbstract
         $data = $client->get('/product');
 
         $this->assertEquals(200, $data['httpStatusCode']);
-
-        print_r($data);
+        $this->assertTrue(is_array($data->getData()->getProducts()));
     }
 
     /**

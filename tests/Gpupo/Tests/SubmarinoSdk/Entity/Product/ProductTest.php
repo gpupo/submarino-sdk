@@ -40,7 +40,7 @@ class ProductTest extends TestCaseAbstract
     public function testPossuiPropriedadesEObjetos(array $data)
     {
         $product = $this->factory($data);
-        $this->assertEquals(1, $product->getId());
+        $this->assertEquals($data['id'], $product->getId());
         $this->assertEquals($data['name'], $product->getName());
         $this->assertEquals($data['deliveryType'], $product->getDeliveryType());
     }
