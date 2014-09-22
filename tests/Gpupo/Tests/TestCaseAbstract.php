@@ -19,7 +19,7 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
         if (file_exists($path)) {
             return $path;
         } else {
-            throw new \InvalidArgumentException('File Not Exist');
+            throw new \InvalidArgumentException('File ' . $path . ' Not Exist');
         }
     }
 
@@ -29,9 +29,12 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
         $log->pushHandler(new StreamHandler(
             $this->getResourceFilePath('logs/tests.log'), Logger::DEBUG));
 
-        return Client::getInstance()
-            ->setOptions(['token' => API_TOKEN, 'verbose' => VERBOSE])
-            ->setLogger($log);
+        $client = Client::getInstance()
+            ->setOptions(['token' => API_TOKEN, 'verbose' => VERBOSE]);
+        
+        $client->setLogger($log);
+        
+        return $client;
     }
 
     public function dataProviderProducts()
