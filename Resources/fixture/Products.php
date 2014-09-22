@@ -17,6 +17,7 @@ $products = [];
 $list = [
     [10, 'Express', 'Normal', 'Plus'],
     [30, 'Superior', 'Extreme', 'Mega'],
+    [40, 'Felicidade', 'Extrema', 'Absurda'],
 ];
 foreach($list as $item)
 { 
