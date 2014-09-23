@@ -11,7 +11,8 @@ class ClientTest extends TestCaseAbstract
     public function testSimpleCurl()
     {
         $client = $this->factoryClient();
-        $curlClient = $client->factoryRequest('/order');
+        $request = $client->factoryRequest('/order');
+        $curlClient = $request->getAgent();
         $response = curl_exec($curlClient);
         $array = json_decode($response, true);
         $this->assertTrue(is_array($array['orders']));
@@ -49,10 +50,8 @@ class ClientTest extends TestCaseAbstract
 
             $client = $this->factoryClient();
             $response = $client->post('/product', $product->toJson());
-
-            print_r($response);
             
-            $this->assertEquals(200, $response->getHttpStatusCode());
+            $this->assertEquals(201, $response->getHttpStatusCode(), $response->toJson());
         }
     }
 
@@ -97,8 +96,6 @@ class ClientTest extends TestCaseAbstract
      */
     public function testAtualizaSituacaoDoSkuInformado(Collection $data)
     {
-        return $this->markTestIncomplete();
-        
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
 
@@ -107,7 +104,7 @@ class ClientTest extends TestCaseAbstract
             $body = json_encode(array($array));
             $response = $client->put('/sku/' . $sku['id'] . '/status', $body);
 
-            $this->assertEquals(200, $response->getHttpStatusCode(), json_encode([$response->toArray(), $sku]));
+            $this->assertEquals(200, $response->getHttpStatusCode(), json_encode($response->toLog()));
         }
     }
 

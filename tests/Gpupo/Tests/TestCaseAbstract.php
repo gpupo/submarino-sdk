@@ -25,7 +25,7 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
 
     public function factoryClient()
     {
-        $log = new Logger('SubmarinoSdk');
+        $log = new Logger('SubmarinoSdk.Test.Client');
         $log->pushHandler(new StreamHandler(
             $this->getResourceFilePath('logs/tests.log'), Logger::DEBUG));
 

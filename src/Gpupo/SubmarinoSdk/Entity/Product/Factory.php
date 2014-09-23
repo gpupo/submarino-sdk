@@ -21,7 +21,6 @@ class Factory extends FactoryAbstract
     {
         $command = substr($method, 0, 7);
         $objectName = substr($method, 7);
-        $objectName[0] = strtolower($objectName[0]);
 
         if ($command == "factory") {
             return self::factory($objectName, current($args), next($args));

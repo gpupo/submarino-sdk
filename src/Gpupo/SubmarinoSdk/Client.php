@@ -13,26 +13,26 @@ class Client extends ClientAbstract implements ClientInterface
             'token'     => false,
             'base_url'  => 'https://api-marketplace.submarino.com.br',
             'version'   => 'sandbox',
-            'verbose'   => false, // Display communication with server
+            'verbose'   => false,
         ];
     }
-    
-    public function factoryRequest($resource, $post = false)
+
+    protected function factoryTransport()
     {
-        $curlClient = parent::factoryRequest($resource, $post);
-        
+        $transport = parent::factoryTransport();
+    
         $token = $this->getOptions()->get('token');
 
         if (empty($token)) {
             throw new \InvalidArgumentException('Token nao informado');
         }
 
-        curl_setopt($curlClient, CURLOPT_HTTPHEADER, array(
+        $transport->setOption(CURLOPT_HTTPHEADER, array(
             'Authorization: Basic ' . base64_encode($token . ':'),
             'Content-Type: application/json',
         ));
         
-        return $curlClient;
+        return $transport;
     }
     
     public function getResourceUri($resource)
