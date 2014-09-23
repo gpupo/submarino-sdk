@@ -23,16 +23,22 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function factoryClient()
+    public function getLogger()
     {
-        $log = new Logger('SubmarinoSdk.Test.Client');
+        $channel = str_replace('\\', '.', get_called_class());
+        $log = new Logger($channel);
         $log->pushHandler(new StreamHandler(
             $this->getResourceFilePath('logs/tests.log'), Logger::DEBUG));
-
+        
+        return $log;
+    }
+    
+    public function factoryClient()
+    {
         $client = Client::getInstance()
             ->setOptions(['token' => API_TOKEN, 'verbose' => VERBOSE]);
         
-        $client->setLogger($log);
+        $client->setLogger($this->getLogger());
         
         return $client;
     }

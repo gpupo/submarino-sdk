@@ -8,18 +8,6 @@ use Gpupo\SubmarinoSdk\Entity\Product\Factory;
 
 class ClientTest extends TestCaseAbstract
 {
-    public function testSimpleCurl()
-    {
-        $client = $this->factoryClient();
-        $request = $client->factoryRequest('/order');
-        $curlClient = $request->getAgent();
-        $response = curl_exec($curlClient);
-        $array = json_decode($response, true);
-        $this->assertTrue(is_array($array['orders']));
-        $this->assertInternalType('int', $array['total']);
-        curl_close($curlClient);
-    }
-
     public function testGetOrder()
     {
         $client = $this->factoryClient();
@@ -72,6 +60,8 @@ class ClientTest extends TestCaseAbstract
         $client = $this->factoryClient();
         $response = $client->get('/sku');
 
+        $this->getLogger()->addDebug('Lista de SKUs', $response->toLog());
+        
         $this->assertEquals(200, $response->getHttpStatusCode(),$response->toJson());
         $this->assertArrayHasKey('skus', $response->getData()->toArray());
 
@@ -86,6 +76,10 @@ class ClientTest extends TestCaseAbstract
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
             $response = $client->get('/sku/' . $sku['id']);
+            
+            $this->getLogger()->addDebug('Informações do SKU #' . $sku['id'],
+                $response->toLog());
+            
             $this->assertEquals(200, $response->getHttpStatusCode());
             $this->assertArrayHasKey('id', $response->getData(), json_encode($data));
         }
@@ -98,10 +92,7 @@ class ClientTest extends TestCaseAbstract
     {
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
-
-            $array = ["enable" => true];
-
-            $body = json_encode(array($array));
+            $body = json_encode([["enable" => true]]);
             $response = $client->put('/sku/' . $sku['id'] . '/status', $body);
 
             $this->assertEquals(200, $response->getHttpStatusCode(), json_encode($response->toLog()));
