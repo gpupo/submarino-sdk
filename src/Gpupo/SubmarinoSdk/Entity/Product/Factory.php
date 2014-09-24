@@ -28,5 +28,9 @@ class Factory extends FactoryAbstract
             throw new \BadMethodCallException("There is no method ".$method);
         }
     }
-
+    
+    public function factorySku($data = null)
+    {
+        return new Sku\Sku($data);
+    }
 }
