@@ -1,6 +1,6 @@
 <?php
 
-namespace Gpupo\SubmarinoSdk\Entity\Product;
+namespace Gpupo\SubmarinoSdk\Entity\Product\Sku;
 
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;

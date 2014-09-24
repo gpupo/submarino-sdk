@@ -29,8 +29,13 @@ class Factory extends FactoryAbstract
         }
     }
     
-    public function factorySku($data = null)
+    public static function factorySku($data = null)
     {
         return new Sku\Sku($data);
+    }
+    
+    public static function factoryPrice($data = null)
+    {
+        return new Sku\Price($data);
     }
 }
