@@ -5,11 +5,11 @@ $generateEAN = function ($number) {
     $weightflag = true;
     $sum = 0;
     for ($i = strlen($code) - 1; $i >= 0; $i--) {
-      $sum += (int)$code[$i] * ($weightflag?3:1);
+      $sum += (int) $code[$i] * ($weightflag?3:1);
       $weightflag = !$weightflag;
     }
     $code .= (10 - ($sum % 10)) % 10;
-    
+
     return [$code];
 };
 
@@ -19,8 +19,7 @@ $list = [
     [30, 'Superior', 'Extreme', 'Mega'],
     [40, 'Felicidade', 'Extrema', 'Absurda'],
 ];
-foreach($list as $item)
-{ 
+foreach ($list as $item) {
     $products[] = [[
         'id'            => $item[0],
         'name'          => 'Test ' . $item[1],
@@ -50,6 +49,5 @@ foreach($list as $item)
         ],
     ]];
 }
-   
-return $products;
 
+return $products;

@@ -7,7 +7,7 @@ use Gpupo\CommonSdk\Entity\ManagerInterface;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Manager extends ManagerAbstract implements ManagerInterface
-{    
+{
     public function save(EntityInterface $entity)
     {
         return $this->execute('POST', '/product', $entity->toJson());
@@ -17,7 +17,7 @@ class Manager extends ManagerAbstract implements ManagerInterface
     {
         $response =  $this->perform('GET', '/product/' . $id);
         $product = new Product($response->getData()->toArray());
-        
+
         return $product;
     }
 

@@ -38,7 +38,7 @@ class ClientTest extends TestCaseAbstract
 
             $client = $this->factoryClient();
             $response = $client->post('/product', $product->toJson());
-            
+
             $this->assertEquals(201, $response->getHttpStatusCode(), $response->toJson());
         }
     }
@@ -61,7 +61,7 @@ class ClientTest extends TestCaseAbstract
         $response = $client->get('/sku');
 
         $this->getLogger()->addDebug('Lista de SKUs', $response->toLog());
-        
+
         $this->assertEquals(200, $response->getHttpStatusCode(),$response->toJson());
         $this->assertArrayHasKey('skus', $response->getData()->toArray());
 
@@ -76,10 +76,10 @@ class ClientTest extends TestCaseAbstract
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
             $response = $client->get('/sku/' . $sku['id']);
-            
+
             $this->getLogger()->addDebug('Informações do SKU #' . $sku['id'],
                 $response->toLog());
-            
+
             $this->assertEquals(200, $response->getHttpStatusCode());
             $this->assertArrayHasKey('id', $response->getData(), json_encode($data));
         }
@@ -91,7 +91,7 @@ class ClientTest extends TestCaseAbstract
     public function testAtualizaSituacaoDoSkuInformado(Collection $data)
     {
         return $this->markTestIncomplete('Aguardando Suporte');
-        
+
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
             $body = json_encode(["enable" => false]);
@@ -107,7 +107,7 @@ class ClientTest extends TestCaseAbstract
     public function testAtualizaEstoqueDoSkuInformado(Collection $data)
     {
         return $this->markTestIncomplete();
-        
+
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
 
@@ -126,7 +126,7 @@ class ClientTest extends TestCaseAbstract
     public function testAtualizaPrecoDoSkuInformado(Collection $data)
     {
         return $this->markTestIncomplete();
-        
+
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
             $response = $client->get('/sku/' . $sku['id']);

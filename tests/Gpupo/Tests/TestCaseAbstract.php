@@ -29,17 +29,17 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
         $log = new Logger($channel);
         $log->pushHandler(new StreamHandler(
             $this->getResourceFilePath('logs/tests.log'), Logger::DEBUG));
-        
+
         return $log;
     }
-    
+
     public function factoryClient()
     {
         $client = Client::getInstance()
             ->setOptions(['token' => API_TOKEN, 'verbose' => VERBOSE]);
-        
+
         $client->setLogger($this->getLogger());
-        
+
         return $client;
     }
 

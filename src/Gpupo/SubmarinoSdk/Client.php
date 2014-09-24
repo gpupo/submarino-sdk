@@ -20,7 +20,7 @@ class Client extends ClientAbstract implements ClientInterface
     protected function factoryTransport()
     {
         $transport = parent::factoryTransport();
-    
+
         $token = $this->getOptions()->get('token');
 
         if (empty($token)) {
@@ -31,10 +31,10 @@ class Client extends ClientAbstract implements ClientInterface
             'Authorization: Basic ' . base64_encode($token . ':'),
             'Content-Type: application/json',
         ));
-        
+
         return $transport;
     }
-    
+
     public function getResourceUri($resource)
     {
         return $this->getOptions()->get('base_url') . '/'
