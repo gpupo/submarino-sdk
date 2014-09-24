@@ -3,9 +3,8 @@
 namespace Gpupo\SubmarinoSdk\Entity\Product;
 
 use Gpupo\SubmarinoSdk\Entity\ManagerAbstract;
-use Gpupo\CommonSdk\Entity\ManagerInterface;
 
-class Manager extends ManagerAbstract implements ManagerInterface
+class Manager extends ManagerAbstract
 {
     protected $maps = [
         'save'      => ['POST', '/product'],
