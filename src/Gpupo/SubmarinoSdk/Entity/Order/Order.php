@@ -10,13 +10,19 @@ class Order extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'id'            => 'string',
-            'siteId'        => 'string',
-            'store'         => 'string',
-            'purchaseDate'  => 'string',
-            'lastUpdate'    => 'string',
-            'status'        => 'string',
-            'invoiced'      => 'object',
+            'id'                    => 'string',
+            'siteId'                => 'string',
+            'store'                 => 'string',
+            'purchaseDate'          => 'string',
+            'lastUpdate'            => 'string',
+            'status'                => 'string',
+            'invoiced'              => 'object',
+            'estimatedDeliveryDate' => 'string',
+            'customer'              => 'object',
+            'totalAmount'           => 'number',
+            'totalFreight'          => 'number',
+            'totalDiscount'         => 'number',
+            'products'              => 'object',            
         ];
     }
 }
