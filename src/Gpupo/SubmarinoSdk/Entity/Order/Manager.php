@@ -9,9 +9,9 @@ class Manager extends ManagerAbstract
     protected $entity = 'Order';
     
     protected $maps = [
-        'save'      => ['POST', '/order'],
-        'findById'  => ['GET', '/order/{itemId}'],
-        'fetch'     => ['GET', '/order?offset={offset}&limit={limit}&purchaseDate={purchaseDate}&store={store}&siteId={siteId}'],
+        'saveStatus'    => ['PUT', '/order/{itemId}/status'],
+        'findById'      => ['GET', '/order/{itemId}'],
+        'fetch'         => ['GET', '/order?offset={offset}&limit={limit}&purchaseDate={purchaseDate}&store={store}&siteId={siteId}'],
     ];
     
     /**

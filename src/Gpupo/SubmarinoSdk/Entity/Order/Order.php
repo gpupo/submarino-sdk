@@ -25,4 +25,9 @@ class Order extends EntityAbstract implements EntityInterface
             'products'              => 'object',            
         ];
     }
+    
+    public function toSaveStatus()
+    {
+        return $this->getStatus();
+    }
 }

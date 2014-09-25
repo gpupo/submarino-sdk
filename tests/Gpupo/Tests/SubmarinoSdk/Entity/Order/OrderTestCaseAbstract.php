@@ -7,10 +7,13 @@ use Gpupo\SubmarinoSdk\Entity\Order\Manager;
 
 abstract class OrderTestCaseAbstract extends TestCaseAbstract
 {
+    protected function factoryManager()
+    {
+        return new Manager($this->factoryClient());
+    }
+    
     protected function getList()
     {
-        $manager = new Manager($this->factoryClient());
-
-        return $manager->fetch();
+        return $this->factoryManager()->fetch();
     }
 }
