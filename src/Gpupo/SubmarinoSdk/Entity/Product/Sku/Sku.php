@@ -12,7 +12,7 @@ class Sku extends EntityAbstract implements EntityInterface
         return [
             'id'            => 'string',
             'name'          => 'string',
-            'description'   => 'object',
+            'description'   => 'string',
             'ean'           => 'array',
             'height'        => 'number',
             'width'         => 'number',
@@ -20,7 +20,7 @@ class Sku extends EntityAbstract implements EntityInterface
             'weight'        => 'number',
             'stockQuantity' => 'integer',
             'enable'        => 'boolean',
-            'price'         => 'array',
+            'price'         => 'object',
         ];
     }
 }

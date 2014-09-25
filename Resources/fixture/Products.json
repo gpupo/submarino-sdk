@@ -1,0 +1,104 @@
+[
+    [
+        {
+            "id":10,
+            "name":"Test Express",
+            "deliveryType":"SHIPMENT",
+            "sku":[
+                {
+                    "id":11,
+                    "name":"Normal",
+                    "description":"Hello World!",
+                    "ean":[
+                        "2001100000004"
+                    ]
+                },
+                {
+                    "id":12,
+                    "name":"Plus",
+                    "description":"Hello Moon!",
+                    "ean":[
+                        "2001200000003"
+                    ]
+                }
+            ],
+            "manufacturer":{
+                "name":"Foo",
+                "model":"Bar",
+                "warrantyTime":30
+            },
+            "nbm":{
+                "number":1041011,
+                "origin":2
+            }
+        }
+    ],
+    [
+        {
+            "id":30,
+            "name":"Test Superior",
+            "deliveryType":"SHIPMENT",
+            "sku":[
+                {
+                    "id":31,
+                    "name":"Extreme",
+                    "description":"Hello World!",
+                    "ean":[
+                        "2003100000008"
+                    ]
+                },
+                {
+                    "id":32,
+                    "name":"Mega",
+                    "description":"Hello Moon!",
+                    "ean":[
+                        "2003200000007"
+                    ]
+                }
+            ],
+            "manufacturer":{
+                "name":"Foo",
+                "model":"Bar",
+                "warrantyTime":30
+            },
+            "nbm":{
+                "number":1041011,
+                "origin":2
+            }
+        }
+    ],
+    [
+        {
+            "id":40,
+            "name":"Test Felicidade",
+            "deliveryType":"SHIPMENT",
+            "sku":[
+                {
+                    "id":41,
+                    "name":"Extrema",
+                    "description":"Hello World!",
+                    "ean":[
+                        "2004100000005"
+                    ]
+                },
+                {
+                    "id":42,
+                    "name":"Absurda",
+                    "description":"Hello Moon!",
+                    "ean":[
+                        "2004200000004"
+                    ]
+                }
+            ],
+            "manufacturer":{
+                "name":"Foo",
+                "model":"Bar",
+                "warrantyTime":30
+            },
+            "nbm":{
+                "number":1041011,
+                "origin":2
+            }
+        }
+    ]
+]

@@ -21,4 +21,11 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
         
         return null;
     }
+    
+    public function findById($itemId)
+    {
+        $data = parent::findById($itemId);
+        
+        return $this->factoryEntity($data->toArray());
+    }
 }
