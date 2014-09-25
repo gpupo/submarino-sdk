@@ -7,9 +7,9 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Product extends EntityAbstract implements EntityInterface
 {
-    /**
-     * Schema: Resources/Schema/Product.txt
-     */
+
+    protected $entity = 'Product';
+        
     public function getSchema()
     {
         return  [

@@ -16,7 +16,7 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
     protected function getResourceJson($file)
     {
         return json_decode($this->getResourceContent($file), true);
-        
+
     }
     protected function getResourceFilePath($file)
     {
@@ -53,7 +53,7 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
         //return include($this->getResourceFilePath('fixture/Products.php'));
         return $this->getResourceJson('fixture/Products.json');
     }
-    
+
     public function dataProviderSkus()
     {
         return $this->getResourceJson('fixture/Skus.json');

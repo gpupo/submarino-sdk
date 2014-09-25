@@ -12,14 +12,14 @@ class ManagerTest extends TestCaseAbstract
         $manager = new Manager($this->factoryClient());
 
         $list = $manager->fetch();
-        
+
         $this->assertInstanceOf('\Gpupo\CommonSdk\Entity\CollectionInterface', $list);
-        
-        foreach($list as $item) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku', $item);    
+
+        foreach ($list as $item) {
+            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku', $item);
         }
     }
-    
+
     /**
      * @dataProvider dataProviderSkus
      */
@@ -27,11 +27,11 @@ class ManagerTest extends TestCaseAbstract
     {
         $manager = new Manager($this->factoryClient());
         $item = $manager->findById($id);
-        $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku', $item);    
-        
+        $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku', $item);
+
         $this->assertEquals($id,$item->getId());
         $this->assertEquals($name,$item->getName());
-        
-        $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Sku\Price', $item->getPrice());    
+
+        $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Sku\Price', $item->getPrice());
     }
 }

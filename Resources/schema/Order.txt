@@ -1,0 +1,64 @@
+id: string,
+siteId: string,
+store: string,
+purchaseDate: string,
+lastUpdate: string,
+status: string,
+invoiced: {
+  key: string,
+  number: integer,
+  line: integer,
+  issueDate: string
+},
+estimatedDeliveryDate: string,
+customer: {
+  pf: {
+    cpf: string,
+    name: string
+  },
+  pj: {
+    cnpj: string,
+    corporateName: string
+  },
+  deliveryAddress: {
+    state: string,
+    number: string,
+    country: string,
+    street: string,
+    additionalInfo: string,
+    neighborhood: string,
+    city: string,
+    zipcode: string,
+    reference: string
+  },
+  telephones: {
+    main: {
+      number: string,
+      ddd: string
+    },
+    secondary: {
+      number: string,
+      ddd: string
+    },
+    business: {
+      number: string,
+      ddd: string
+    }
+  }
+},
+totalAmount: number,
+totalFreight: number,
+totalDiscount: number,
+products: [
+  {
+    link: {
+      id: string,
+      rel: string,
+      href: string
+    },
+    quantity: integer,
+    price: number,
+    freight: number,
+    discount: number
+  }
+]
