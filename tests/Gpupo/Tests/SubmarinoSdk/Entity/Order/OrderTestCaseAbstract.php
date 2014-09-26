@@ -12,19 +12,19 @@ abstract class OrderTestCaseAbstract extends TestCaseAbstract
     {
         return new Manager($this->factoryClient());
     }
-    
+
     protected function getList()
     {
         return $this->factoryManager()->fetch();
     }
-    
+
     public function dataProviderOrderCollection()
     {
         $list = [];
         foreach ($this->dataProviderOrders() as $order) {
             $list[][] = new Order($order);
         }
-        
+
         return $list;
     }
 }

@@ -58,7 +58,7 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
     {
         return $this->getResourceJson('fixture/Skus.json');
     }
-    
+
     public function dataProviderOrders()
     {
         return $this->getResourceJson('fixture/Orders.json');

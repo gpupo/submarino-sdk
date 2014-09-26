@@ -8,11 +8,11 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 class Telephones extends EntityAbstract implements EntityInterface
 {
     public function getSchema()
-    { 
+    {
         return  [
             'main' => 'object',
             'secondary' => 'object',
             'business' => 'object',
-        ];                 
+        ];
     }
 }

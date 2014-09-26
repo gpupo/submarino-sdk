@@ -8,7 +8,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 class DeliveryAddress extends EntityAbstract implements EntityInterface
 {
     public function getSchema()
-    { 
+    {
         return  [
             'state'             => 'string',
             'number'            => 'string',

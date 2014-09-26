@@ -8,7 +8,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 class Product extends EntityAbstract implements EntityInterface
 {
     public function getSchema()
-    { 
+    {
         return  [
             'link'      => 'object',
             'quantity'  => 'integer',

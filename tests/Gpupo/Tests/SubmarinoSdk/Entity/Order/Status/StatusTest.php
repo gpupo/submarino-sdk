@@ -6,7 +6,7 @@ use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 use Gpupo\SubmarinoSdk\Entity\Order\Order;
 
 class StatusTest extends OrderTestCaseAbstract
-{ 
+{
     /**
      * @dataProvider dataProviderOrderCollection
      */
@@ -15,7 +15,7 @@ class StatusTest extends OrderTestCaseAbstract
         $status =  $order->getStatus();
         $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Status\Shipped', $status->getShipped());
     }
-    
+
     /**
      * @dataProvider dataProviderOrderCollection
      */
@@ -24,7 +24,7 @@ class StatusTest extends OrderTestCaseAbstract
         $status =  $order->getStatus();
         $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Status\Delivered', $status->getDelivered());
     }
-    
+
     /**
      * @dataProvider dataProviderOrderCollection
      * @expectedException \Gpupo\CommonSdk\Exception\ExceptionInterface

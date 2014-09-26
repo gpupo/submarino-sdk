@@ -8,7 +8,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 class Customer extends EntityAbstract implements EntityInterface
 {
     public function getSchema()
-    { 
+    {
         return  [
             'pf'                => 'object',
             'pj'                => 'object',

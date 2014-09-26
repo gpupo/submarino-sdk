@@ -22,10 +22,10 @@ class Order extends EntityAbstract implements EntityInterface
             'totalAmount'           => 'number',
             'totalFreight'          => 'number',
             'totalDiscount'         => 'number',
-            'products'              => 'object',            
+            'products'              => 'object',
         ];
     }
-    
+
     public function toSaveStatus()
     {
         return json_encode(['status' => $this->getStatus()]);

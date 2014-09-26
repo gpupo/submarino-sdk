@@ -8,11 +8,11 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 class Pf extends EntityAbstract implements EntityInterface
 {
     public function getSchema()
-    { 
+    {
         return  [
             'cpf'   => 'string',
             'name'  => 'string',
-       
+
         ];
     }
 }

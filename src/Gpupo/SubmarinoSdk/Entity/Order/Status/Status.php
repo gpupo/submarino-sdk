@@ -8,7 +8,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 class Status extends EntityAbstract implements EntityInterface
 {
     public function getSchema()
-    { 
+    {
         return  [
             'status'    => 'string',
             'shipped'   => 'object',

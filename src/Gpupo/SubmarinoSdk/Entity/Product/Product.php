@@ -9,7 +9,7 @@ class Product extends EntityAbstract implements EntityInterface
 {
 
     protected $entity = 'Product';
-        
+
     public function getSchema()
     {
         return  [

@@ -8,7 +8,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 class Link extends EntityAbstract implements EntityInterface
 {
     public function getSchema()
-    { 
+    {
         return  [
             'id'  => 'string',
             'rel' => 'string',
