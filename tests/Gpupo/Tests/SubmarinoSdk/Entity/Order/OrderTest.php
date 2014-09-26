@@ -2,26 +2,40 @@
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
 
+use Gpupo\CommonSdk\Entity\CollectionInterface;
+use Gpupo\SubmarinoSdk\Entity\Order\Order;
+
 class OrderTest extends OrderTestCaseAbstract
 { 
     public function testCadaItemDeUmaListaEUmObjeto()
     {
-        foreach ($this->getList() as $item) {
+        $list = $this->getList();
+        
+        foreach ($list as $item) {
             $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Order', $item);
         }
+        
+        return $list;
     }
     
-    public function testCadaPedidoPossuiObjetoCliente()
+    /**
+     * @depends testCadaItemDeUmaListaEUmObjeto
+     */
+    public function testCadaPedidoPossuiObjetoCliente(CollectionInterface $list)
     {
-        foreach ($this->getList() as $item) {
+        foreach ($list as $item) {
             $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\Customer', $item->getCustomer());
         }
     }
 
-    public function testCadaPedidoPossuiColecaoDeProdutos()
+    /**
+     * @depends testCadaItemDeUmaListaEUmObjeto
+     */
+    public function testCadaPedidoPossuiColecaoDeProdutos(CollectionInterface $list)
     {
-        foreach ($this->getList() as $item) {
+        foreach ($list as $item) {
             $collection = $item->getProducts();
+                        
                         
             $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Products\Products', $collection);
             
@@ -30,4 +44,14 @@ class OrderTest extends OrderTestCaseAbstract
             }
         }
     }
+    
+    /**
+     * @dataProvider dataProviderOrderCollection
+     */
+    public function testCadaPedidoPossuiObjetoStatus(Order $order)
+    {
+        $status =  $order->getStatus();
+        $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Status\Status', $status);
+    }
+    
 }

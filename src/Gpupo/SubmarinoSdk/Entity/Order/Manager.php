@@ -29,4 +29,11 @@ class Manager extends ManagerAbstract
             'siteId'        => null,  
         ],$parameters));
     }
+    
+    public function saveStatus(Order $order)
+    {
+        return $this->execute($this->factoryMap('saveStatus',
+            ['itemId' => $order->getId()]), $order->toSaveStatus());
+    }
+    
 }

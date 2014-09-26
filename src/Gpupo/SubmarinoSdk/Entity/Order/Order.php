@@ -15,7 +15,7 @@ class Order extends EntityAbstract implements EntityInterface
             'store'                 => 'string',
             'purchaseDate'          => 'string',
             'lastUpdate'            => 'string',
-            'status'                => 'string',
+            'status'                => 'object',
             'invoiced'              => 'object',
             'estimatedDeliveryDate' => 'string',
             'customer'              => 'object',
@@ -28,6 +28,6 @@ class Order extends EntityAbstract implements EntityInterface
     
     public function toSaveStatus()
     {
-        return $this->getStatus();
+        return json_encode(['status' => $this->getStatus()]);
     }
 }

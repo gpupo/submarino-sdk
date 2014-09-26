@@ -38,10 +38,43 @@ class ManagerTest extends OrderTestCaseAbstract
      */
     public function testAtualizaStatusDeUmPedido($list)
     {
+        $flux = [
+            'APROVED'       => 'PROCESSING',
+        ];
         foreach ($list as $order) {
             $manager = $this->factoryManager();
-            $order->setStatus('PROCESSING');
-            $manager->saveStatus($order);
+            if (array_key_exists($order->getStatus(), $flux)) {
+                $newStatus = $flux[$order->getStatus()];
+                $order->setStatus($newStatus);
+                $this->assertTrue($manager->saveStatus($order));
+                $orderUpdated = $manager->findById($order->getId());
+
+                $this->assertEquals($newStatus, $orderUpdated->getStatus());
+            }
+        }
+    }
+    
+    /**
+     * 
+     * @depends testObtemListaPedidos
+     */
+    public function testAtualizaDadosDeEnvioDeUmPedido($list)
+    {
+        $flux = [
+            'PROCESSING'    => 'SHIPPED',
+            //'SHIPPED'       => 'DELIVERED',
+        ];
+        $this->markTestIncomplete();
+        foreach ($list as $order) {
+            $manager = $this->factoryManager();
+            if (array_key_exists($order->getStatus(), $flux)) {
+                $newStatus = $flux[$order->getStatus()];
+                $order->setStatus($newStatus);
+                $this->assertTrue($manager->saveStatus($order));
+                $orderUpdated = $manager->findById($order->getId());
+
+                $this->assertEquals($newStatus, $orderUpdated->getStatus());
+            }
         }
     }
 }
