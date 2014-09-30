@@ -9,25 +9,10 @@ class ProductTest extends TestCaseAbstract
 {
     protected function factory($data)
     {
-        $manufacturer = Factory::factoryManufacturer()
-            ->setName($data['manufacturer']['name'])
-            ->setModel($data['manufacturer']['model'])
-            ->setWarrantyTime($data['manufacturer']['warrantyTime']);
-
-        $product = Factory::factoryProduct()
-            ->setId($data['id'])->setName($data['name'])
-            ->setDeliveryType($data['deliveryType'])
-            ->setNbm($data['nbm'])
-            ->setManufacturer($manufacturer);
+        $product = Factory::factoryProduct($data);
 
         foreach ($data['sku'] as $item) {
-            $sku = Factory::factorySku()
-                ->setId($item['id'])->setName($item['name'])
-                ->setDescription($item['description'])
-                ->setEan($item['ean'])->setHeight(1)->setWidth(1)->setLength(1)
-                ->setWeight(1)->setStockQuantity(1)->setEnable(true)
-                ->setPrice(array('sellPrice' => 1, 'listPrice' => 2));
-
+            $sku = Factory::factorySku($item);
             $product->getSku()->add($sku);
         }
 
@@ -63,8 +48,9 @@ class ProductTest extends TestCaseAbstract
     {
         $product = $this->factory($data);
         $price = $product->getSku()->first()->getPrice();
-        $this->assertEquals(1, $price['sellPrice']);
-        $this->assertEquals(2, $price['listPrice']);
+        foreach (['listPrice', 'sellPrice'] as $key ) {
+            $this->assertEquals($data['sku'][0]['price'][$key], $price[$key]);
+        }
     }
 
     /**
@@ -76,7 +62,7 @@ class ProductTest extends TestCaseAbstract
 
         foreach ($data['sku'] as $item) {
             $productSku = $product->getSku()->current();
-            $this->assertInstanceOf('Gpupo\SubmarinoSdk\Entity\Product\Sku', $productSku);
+            $this->assertInstanceOf('Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku', $productSku);
             $this->assertEquals($item['name'], $productSku->getName());
             $this->assertEquals($item['description'], $productSku->getDescription());
 
@@ -86,12 +72,6 @@ class ProductTest extends TestCaseAbstract
                 next($skuEan);
             }
 
-            $this->assertEquals(1, $productSku->getHeight(), 'Height');
-            $this->assertEquals(1, $productSku->getWidth(), 'Width');
-            $this->assertEquals(1, $productSku->getLength(), 'Length');
-            $this->assertEquals(1, $productSku->getWeight(), 'Weight');
-            $this->assertEquals(1, $productSku->getStockQuantity(), 'StockQuantity');
-            $this->assertEquals(true, $productSku->getEnable(), 'Enable');
             $product->getSku()->next();
         }
     }

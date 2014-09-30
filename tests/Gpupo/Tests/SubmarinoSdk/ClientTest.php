@@ -17,32 +17,6 @@ class ClientTest extends TestCaseAbstract
         $this->assertInternalType('int', $response->getData()->getTotal());
     }
 
-    public function testCadastraProduto()
-    {
-        foreach (current($this->dataProviderProducts()) as $data) {
-            $manufacturer = Factory::factoryManufacturer($data['manufacturer']);
-
-            $product = Factory::factoryProduct($data)
-                ->setManufacturer($manufacturer);
-
-            foreach ($data['sku'] as $item) {
-                $sku = Factory::factorySku()
-                    ->setId($item['id'])->setName($item['name'])
-                    ->setDescription($item['description'])
-                    ->setEan($item['ean'])->setHeight(1)->setWidth(1)->setLength(1)
-                    ->setWeight(1)->setStockQuantity(1)->setEnable(true)
-                    ->setPrice(array('sellPrice' => 1, 'listPrice' => 2));
-
-                $product->getSku()->add($sku);
-            }
-
-            $client = $this->factoryClient();
-            $response = $client->post('/product', $product->toJson());
-
-            $this->assertEquals(201, $response->getHttpStatusCode(), $response->toJson());
-        }
-    }
-
     public function testGetProducts()
     {
         $client = $this->factoryClient();
@@ -92,10 +66,7 @@ class ClientTest extends TestCaseAbstract
     {
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
-
-            $array = ["quantity" => 2];
-
-            $body = json_encode(array($array));
+            $body = json_encode(["quantity" => 2]);
             $response = $client->put('/sku/' . $sku['id'] . '/stock', $body);
 
             $this->assertEquals(200, $response->getHttpStatusCode(), json_encode([$response->toArray(), $sku]));
@@ -107,8 +78,6 @@ class ClientTest extends TestCaseAbstract
      */
     public function testAtualizaPrecoDoSkuInformado(Collection $data)
     {
-        return $this->markTestIncomplete();
-
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
             $response = $client->get('/sku/' . $sku['id']);
@@ -118,13 +87,18 @@ class ClientTest extends TestCaseAbstract
 
             $this->assertEquals($info['sellPrice'], $price->getSellPrice());
 
-            $newSellPrice = $info['sellPrice'] * 0.9;
+            $newSellPrice = number_format($info['sellPrice'] * 0.99, 2, '.', '');
             $price->setSellPrice($newSellPrice);
             $this->assertEquals($newSellPrice, $price->getSellPrice());
 
             $changeData = $client->put('/sku/' . $sku['id'] . '/price', $price->toJson());
+            $this->assertEquals(200, $changeData->getHttpStatusCode());
 
-            print_r($changeData);
+
+            $newResponse = $client->get('/sku/' . $sku['id']);
+            $newPrice = Factory::factoryPrice($newResponse->getData()->getPrice());
+
+            $this->assertEquals($newSellPrice, $newPrice->getSellPrice());
 
         }
     }
