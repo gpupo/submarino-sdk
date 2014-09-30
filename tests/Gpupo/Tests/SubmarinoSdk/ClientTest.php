@@ -88,26 +88,8 @@ class ClientTest extends TestCaseAbstract
     /**
      * @depends testRetornaListaDeSkus
      */
-    public function testAtualizaSituacaoDoSkuInformado(Collection $data)
-    {
-        return $this->markTestIncomplete('Aguardando Suporte');
-
-        foreach ($data->getSkus() as $sku) {
-            $client = $this->factoryClient();
-            $body = json_encode(["enable" => false]);
-            $response = $client->put('/sku/' . $sku['id'] . '/status', $body);
-
-            $this->assertEquals(200, $response->getHttpStatusCode(), json_encode($response->toLog()));
-        }
-    }
-
-    /**
-     * @depends testRetornaListaDeSkus
-     */
     public function testAtualizaEstoqueDoSkuInformado(Collection $data)
     {
-        return $this->markTestIncomplete();
-
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
 
