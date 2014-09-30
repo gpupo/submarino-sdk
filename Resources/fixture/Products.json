@@ -11,7 +11,17 @@
                     "description":"Hello World!",
                     "ean":[
                         "2001100000004"
-                    ]
+                     ],
+                    "height":1,
+                    "width":0.003333,
+                    "length":1,
+                    "weight":1,
+                    "stockQuantity":0,
+                    "enable":true,
+                    "price":{
+                      "listPrice":94.41,
+                      "sellPrice":94.41
+                    }
                 },
                 {
                     "id":12,
@@ -19,7 +29,17 @@
                     "description":"Hello Moon!",
                     "ean":[
                         "2001200000003"
-                    ]
+                     ],
+                    "height":1,
+                    "width":0.003333,
+                    "length":1,
+                    "weight":1,
+                    "stockQuantity":0,
+                    "enable":true,
+                    "price":{
+                      "listPrice":94.41,
+                      "sellPrice":94.41
+                    }
                 }
             ],
             "manufacturer":{
@@ -45,7 +65,18 @@
                     "description":"Hello World!",
                     "ean":[
                         "2003100000008"
-                    ]
+
+                     ],
+                    "height":1,
+                    "width":0.003333,
+                    "length":1,
+                    "weight":1,
+                    "stockQuantity":0,
+                    "enable":true,
+                    "price":{
+                      "listPrice":94.41,
+                      "sellPrice":94.41
+                    }
                 },
                 {
                     "id":32,
@@ -53,7 +84,17 @@
                     "description":"Hello Moon!",
                     "ean":[
                         "2003200000007"
-                    ]
+                     ],
+                    "height":1,
+                    "width":0.003333,
+                    "length":1,
+                    "weight":1,
+                    "stockQuantity":0,
+                    "enable":true,
+                    "price":{
+                      "listPrice":94.41,
+                      "sellPrice":94.41
+                    }
                 }
             ],
             "manufacturer":{
@@ -79,7 +120,17 @@
                     "description":"Hello World!",
                     "ean":[
                         "2004100000005"
-                    ]
+                     ],
+                    "height":1,
+                    "width":0.003333,
+                    "length":1,
+                    "weight":1,
+                    "stockQuantity":0,
+                    "enable":true,
+                    "price":{
+                      "listPrice":94.41,
+                      "sellPrice":94.41
+                    }
                 },
                 {
                     "id":42,
@@ -87,7 +138,17 @@
                     "description":"Hello Moon!",
                     "ean":[
                         "2004200000004"
-                    ]
+                     ],
+                    "height":1,
+                    "width":0.003333,
+                    "length":1,
+                    "weight":1,
+                    "stockQuantity":0,
+                    "enable":true,
+                    "price":{
+                      "listPrice":94.41,
+                      "sellPrice":94.41
+                    }
                 }
             ],
             "manufacturer":{
