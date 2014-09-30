@@ -2,6 +2,31 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs do S
 
 ## Documentação
 
+Exemplo de uso, com gravação de produto:
+
+```PHP
+<?php
+///...
+use Gpupo\SubmarinoSdk\Client;
+use Gpupo\SubmarinoSdk\Entity\Product\Factory;
+use Gpupo\SubmarinoSdk\Entity\Product\Manager;
+
+$client = new Client(['token' => '7Ao82svbm#6', 'version' => 'sandbox']);
+
+$manager = new Manager($client);
+
+$data = []; // Veja o formato de $data em Resources/fixture/Products.json
+$product = Factory::factoryProduct($data);
+
+foreach ($data['sku'] as $item) {
+    $sku = Factory::factorySku($item);
+    $product->getSku()->add($sku);
+}
+
+$manager->save($product);
+
+
+```
 * [Documentação oficial](https://api-marketplace.submarino.com.br/docs/)
 
 ## License
