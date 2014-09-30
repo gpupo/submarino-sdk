@@ -15,7 +15,7 @@ class Product extends EntityAbstract implements EntityInterface
         return  [
             'id'            => 'string',
             'name'          => 'string',
-            'sku'           => 'collection',
+            'sku'           => 'object',
             'manufacturer'  => 'object',
             'deliveryType'  => 'string',
             'nbm'           => 'array',
