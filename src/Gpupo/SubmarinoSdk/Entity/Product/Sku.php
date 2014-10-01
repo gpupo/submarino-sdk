@@ -3,6 +3,7 @@
 namespace Gpupo\SubmarinoSdk\Entity\Product;
 
 use Gpupo\CommonSdk\Entity\CollectionAbstract;
+use Gpupo\CommonSdk\Exception\UnexpectedValueException;
 
 class Sku extends CollectionAbstract
 {
@@ -19,8 +20,13 @@ class Sku extends CollectionAbstract
 
     public function add($element)
     {
+        $skuId = $element->getId();
+        
+        if ($this->hasId($skuId)) {
+            throw new UnexpectedValueException('Sku already exists!');
+        }
 
-        $this->index[] = $element->getId();
+        $this->index[] = $skuId;
      
         return parent::add($element);
     }

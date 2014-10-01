@@ -11,11 +11,6 @@ class ProductTest extends TestCaseAbstract
     {
         $product = Factory::factoryProduct($data);
 
-        foreach ($data['sku'] as $item) {
-            $sku = Factory::factorySku($item);
-            $product->getSku()->add($sku);
-        }
-
         return $product;
     }
 

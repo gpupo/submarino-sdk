@@ -44,12 +44,6 @@ class ManagerTest extends TestCaseAbstract
             
             $data = current($array);
             $product = Factory::factoryProduct($data);
-
-            foreach ($data['sku'] as $item) {
-                $sku = Factory::factorySku($item);
-                $product->getSku()->add($sku);
-            }
-
             $this->assertTrue($manager->save($product), $product);
         }
     }
