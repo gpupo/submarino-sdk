@@ -12,8 +12,9 @@ class ManagerTest extends TestCaseAbstract
     {
         $manager = new Manager($this->factoryClient());
 
-        foreach (current($this->dataProviderProducts()) as $data) {
-
+        foreach ($this->dataProviderProducts() as $array) {
+            
+            $data = current($array);
             $product = Factory::factoryProduct($data);
 
             foreach ($data['sku'] as $item) {
@@ -21,7 +22,7 @@ class ManagerTest extends TestCaseAbstract
                 $product->getSku()->add($sku);
             }
 
-            $this->assertTrue($manager->save($product));
+            $this->assertTrue($manager->save($product), $product);
         }
     }
 

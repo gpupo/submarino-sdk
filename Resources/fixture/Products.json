@@ -65,7 +65,6 @@
                     "description":"Hello World!",
                     "ean":[
                         "2003100000008"
-
                      ],
                     "height":1,
                     "width":0.003333,
@@ -110,7 +109,7 @@
     ],
     [
         {
-            "id":40,
+            "id":1,
             "name":"Test Felicidade",
             "deliveryType":"SHIPMENT",
             "sku":[
