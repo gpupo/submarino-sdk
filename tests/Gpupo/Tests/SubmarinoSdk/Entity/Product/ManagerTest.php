@@ -8,6 +8,34 @@ use Gpupo\SubmarinoSdk\Entity\Product\Manager;
 
 class ManagerTest extends TestCaseAbstract
 {
+    public function testObtemListaDeProdutosCadastrados()
+    {
+        $manager = new Manager($this->factoryClient());
+        $list = $manager->fetch();
+        $this->assertInstanceOf('\Gpupo\CommonSdk\Entity\CollectionInterface',
+            $list);
+
+        return $list;
+    }
+
+    /**
+     *
+     * @depends testObtemListaDeProdutosCadastrados
+     */
+    public function testRecuperaInformacoesDeUmPedidoEspecifico($list)
+    {
+        $manager = new Manager($this->factoryClient());
+        
+        foreach ($list as $product) {
+            $info = $manager->findById($product->getId());
+
+            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Product',
+            $info);
+
+            $this->assertEquals($product->getId(), $info->getId());
+        }
+    }
+
     public function testGerenciaUpdate()
     {
         $manager = new Manager($this->factoryClient());

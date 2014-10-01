@@ -33,7 +33,6 @@ foreach ($data['sku'] as $item) {
 
 $manager->save($product);
 
-
 //Adicionando SKU ao produto:
 $skuData = []; // Defina o valor deste array conforme o esquema disponível em Resources/
 $novoSku = Factory::factorySku($skuData);
