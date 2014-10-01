@@ -2,7 +2,7 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs do S
 
 ## Documentação
 
-Exemplo de uso, com gravação de produto:
+Exemplos de manutenção de produtos:
 
 ```PHP
 <?php
@@ -20,6 +20,7 @@ $produtosCadastrados = $manager->fetch(); // Collection de Objetos Product
 
 // Acesso a informações de um produto cadastrado e com identificador conhecido:
 $produto = $manager->findById(9)); // Objeto Produto
+echo $product->getName(); // Acesso ao nome do produto #9
 
 
 // Criação de um produto:
