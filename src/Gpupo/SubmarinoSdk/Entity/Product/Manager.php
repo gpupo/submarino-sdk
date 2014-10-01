@@ -12,17 +12,24 @@ class Manager extends ManagerAbstract
 
     protected $maps = [
         'save'      => ['POST', '/product'],
-        'addSku'    => ['POST', '/product/{itemId}'],
+        'addSku'    => ['POST', '/product/{itemId}/sku'],
         'findById'  => ['GET', '/product/{itemId}'],
         'fetch'     => ['GET', '/product?offset={offset}&limit={limit}'],
     ];
 
     public function update(EntityInterface $entity, EntityInterface $existent)
     {
+        foreach ($entity->getSku() as $sku) {
+            if (!$existent->has($sku)) {
+                $this->addSku($entity, $sku);
+            }
+        }
+
         return true;
     }
 
     public function addSku(Product $product, Sku $sku)
     {
+        return $this->execute($this->factoryMap('addSku', ['itemId' => $product->getId()]), $sku->toJson());
     }
 }

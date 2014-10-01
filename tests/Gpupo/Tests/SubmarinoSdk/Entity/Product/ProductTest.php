@@ -63,6 +63,8 @@ class ProductTest extends TestCaseAbstract
         foreach ($data['sku'] as $item) {
             $productSku = $product->getSku()->current();
             $this->assertInstanceOf('Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku', $productSku);
+            $this->assertTrue($product->getSku()->hasId($item['id']));
+            $this->assertTrue($product->has($productSku));
             $this->assertEquals($item['name'], $productSku->getName());
             $this->assertEquals($item['description'], $productSku->getDescription());
 

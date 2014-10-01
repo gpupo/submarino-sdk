@@ -21,4 +21,9 @@ class Product extends EntityAbstract implements EntityInterface
             'nbm'           => 'array',
         ];
     }
+
+    public function has(Sku\Sku $sku)
+    {
+        return $this->getSku()->hasId($sku->getId());
+    }
 }
