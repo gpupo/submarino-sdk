@@ -15,6 +15,14 @@ $client = new Client(['token' => '7Ao82svbm#6', 'version' => 'sandbox']);
 
 $manager = new Manager($client);
 
+// Acesso a lista de produtos cadastrados:
+$produtosCadastrados = $manager->fetch(); // Collection de Objetos Product
+
+// Acesso a informações de um produto cadastrado e com identificador conhecido:
+$produto = $manager->findById(9)); // Objeto Produto
+
+
+// Criação de um produto:
 $data = []; // Veja o formato de $data em Resources/fixture/Products.json
 $product = Factory::factoryProduct($data);
 
@@ -23,6 +31,13 @@ foreach ($data['sku'] as $item) {
     $product->getSku()->add($sku);
 }
 
+$manager->save($product);
+
+
+//Adicionando SKU ao produto:
+$skuData = []; // Defina o valor deste array conforme o esquema disponível em Resources/
+$novoSku = Factory::factorySku($skuData);
+$product->getSku()->add($novoSku);
 $manager->save($product);
 
 
