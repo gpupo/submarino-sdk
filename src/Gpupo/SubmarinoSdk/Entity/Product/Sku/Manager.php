@@ -34,7 +34,7 @@ class Manager extends ManagerAbstract
     {
         return $this->execute($this->factoryMap('savePrice', ['itemId' => $sku->getId()]), $sku->getPrice()->toJson());
     }
-    
+
     public function saveStock(Sku $sku)
     {
         return $this->execute($this->factoryMap('saveStock', ['itemId' => $sku->getId()]), $sku->toJson('Stock'));

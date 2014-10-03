@@ -9,7 +9,7 @@ use Monolog\Handler\StreamHandler;
 abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
 {
     protected function hasToken()
-    {   
+    {
         $token = $this->getConstant('API_TOKEN');
 
         return empty($token) ? false : true;

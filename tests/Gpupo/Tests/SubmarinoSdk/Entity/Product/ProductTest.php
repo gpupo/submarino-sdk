@@ -43,7 +43,7 @@ class ProductTest extends TestCaseAbstract
     {
         $product = $this->factory($data);
         $price = $product->getSku()->first()->getPrice();
-        foreach (['listPrice', 'sellPrice'] as $key ) {
+        foreach (['listPrice', 'sellPrice'] as $key) {
             $this->assertEquals($data['sku'][0]['price'][$key], $price[$key]);
         }
     }

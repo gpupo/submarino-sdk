@@ -106,7 +106,6 @@ class ClientTest extends TestCaseAbstract
             $changeData = $client->put('/sku/' . $sku['id'] . '/price', $price->toJson());
             $this->assertEquals(200, $changeData->getHttpStatusCode());
 
-
             $newResponse = $client->get('/sku/' . $sku['id']);
             $newPrice = Factory::factoryPrice($newResponse->getData()->getPrice());
 

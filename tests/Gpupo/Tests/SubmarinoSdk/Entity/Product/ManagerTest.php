@@ -33,7 +33,7 @@ class ManagerTest extends TestCaseAbstract
         }
 
         $manager = new Manager($this->factoryClient());
-        
+
         foreach ($list as $product) {
             $info = $manager->findById($product->getId());
 
@@ -53,7 +53,6 @@ class ManagerTest extends TestCaseAbstract
         $manager = new Manager($this->factoryClient());
 
         foreach ($this->dataProviderProducts() as $array) {
-            
             $data = current($array);
             $product = Factory::factoryProduct($data);
             $this->assertTrue($manager->save($product), $product);

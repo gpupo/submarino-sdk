@@ -12,7 +12,7 @@ class Sku extends CollectionAbstract
     public function __construct(array $elements = array())
     {
         parent::__construct();
-        
+
         if (array_key_exists('id', $elements)) {
             $elements = [$elements];
         }
@@ -30,13 +30,13 @@ class Sku extends CollectionAbstract
     public function add($element)
     {
         $skuId = $element->getId();
-        
+
         if ($this->hasId($skuId)) {
             throw new UnexpectedValueException('Sku already exists!');
         }
 
         $this->index[] = $skuId;
-     
+
         return parent::add($element);
     }
 
