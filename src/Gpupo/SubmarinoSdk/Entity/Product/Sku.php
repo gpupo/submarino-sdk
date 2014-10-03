@@ -12,9 +12,18 @@ class Sku extends CollectionAbstract
     public function __construct(array $elements = array())
     {
         parent::__construct();
+        
+        if (array_key_exists('id', $elements)) {
+            $elements = [$elements];
+        }
 
-        foreach ($elements as $product) {
-            $this->add(new Sku\Sku($product));
+        foreach ($elements as $data) {
+
+            if (array_key_exists('ean', $data) && !is_array($data['ean'])) {
+                $data['ean'] = [$data['ean']];
+            }
+
+            $this->add(new Sku\Sku($data));
         }
     }
 

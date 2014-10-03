@@ -34,6 +34,7 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
         return json_decode($this->getResourceContent($file), true);
 
     }
+
     protected function getResourceFilePath($file)
     {
         $path = 'Resources/' . $file;

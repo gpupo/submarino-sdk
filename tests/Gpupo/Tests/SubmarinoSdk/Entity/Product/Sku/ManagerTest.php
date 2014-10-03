@@ -4,10 +4,11 @@ namespace Gpupo\Tests\SubmarinoSdk\Entity\Product\Sku;
 
 use Gpupo\Tests\TestCaseAbstract;
 use Gpupo\SubmarinoSdk\Entity\Product\Sku\Manager;
+use Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku;
 
 class ManagerTest extends TestCaseAbstract
 {
-    public function testListaSkusCadastrados()
+    public function testAcessoAListaDeSkusCadastrados()
     {
         if (!$this->hasToken()) {
             return $this->markTestIncomplete('API Token ausente');
@@ -27,7 +28,7 @@ class ManagerTest extends TestCaseAbstract
     /**
      * @dataProvider dataProviderSkus
      */
-    public function testAcessaInformacoesDeUmSKu($id, $name)
+    public function testAcessaAInformacoesDeUmSku($id, $name)
     {
         if (!$this->hasToken()) {
             return $this->markTestIncomplete('API Token ausente');
@@ -41,5 +42,20 @@ class ManagerTest extends TestCaseAbstract
         $this->assertEquals($name,$item->getName());
 
         $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Sku\Price', $item->getPrice());
+    }
+
+    public function testGerenciaAtualizacoes()
+    {
+        if (!$this->hasToken()) {
+            return $this->markTestIncomplete('API Token ausente');
+        }
+
+        $manager = new Manager($this->factoryClient());
+
+        foreach ($this->dataProviderSkus() as $data) {
+            $sku = new Sku($data);
+           
+            $this->assertTrue($manager->save($sku)); 
+        }
     }
 }
