@@ -9,6 +9,10 @@ class ManagerTest extends TestCaseAbstract
 {
     public function testListaSkusCadastrados()
     {
+        if (!$this->hasToken()) {
+            return $this->markTestIncomplete('API Token ausente');
+        }
+
         $manager = new Manager($this->factoryClient());
 
         $list = $manager->fetch();
@@ -25,6 +29,10 @@ class ManagerTest extends TestCaseAbstract
      */
     public function testAcessaInformacoesDeUmSKu($id, $name)
     {
+        if (!$this->hasToken()) {
+            return $this->markTestIncomplete('API Token ausente');
+        }
+
         $manager = new Manager($this->factoryClient());
         $item = $manager->findById($id);
         $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku', $item);

@@ -10,6 +10,10 @@ class ClientTest extends TestCaseAbstract
 {
     public function testGetOrder()
     {
+        if (!$this->hasToken()) {
+            return $this->markTestIncomplete('API Token ausente');
+        }
+
         $client = $this->factoryClient();
         $response = $client->get('/order');
 
@@ -19,6 +23,10 @@ class ClientTest extends TestCaseAbstract
 
     public function testGetProducts()
     {
+        if (!$this->hasToken()) {
+            return $this->markTestIncomplete('API Token ausente');
+        }
+
         $client = $this->factoryClient();
         $data = $client->get('/product');
 
@@ -31,6 +39,10 @@ class ClientTest extends TestCaseAbstract
      */
     public function testRetornaListaDeSkus()
     {
+        if (!$this->hasToken()) {
+            return $this->markTestIncomplete('API Token ausente');
+        }
+
         $client = $this->factoryClient();
         $response = $client->get('/sku');
 

@@ -8,6 +8,22 @@ use Monolog\Handler\StreamHandler;
 
 abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
 {
+    protected function hasToken()
+    {   
+        $token = $this->getConstant('API_TOKEN');
+
+        return empty($token) ? false : true;
+    }
+
+    protected function getConstant($name, $default = false)
+    {
+        if (defined($name)) {
+            return constant($name);
+        }
+
+        return $default;
+    }
+
     protected function getResourceContent($file)
     {
         return file_get_contents($this->getResourceFilePath($file));
@@ -41,7 +57,10 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
     public function factoryClient()
     {
         $client = Client::getInstance()
-            ->setOptions(['token' => API_TOKEN, 'verbose' => VERBOSE]);
+            ->setOptions([
+                'token'     => $this->getConstant('API_TOKEN'),
+                'verbose'   => $this->getConstant('VERBOSE'),
+            ]);
 
         $client->setLogger($this->getLogger());
 

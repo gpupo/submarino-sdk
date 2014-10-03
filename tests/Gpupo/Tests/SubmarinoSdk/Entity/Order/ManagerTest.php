@@ -19,6 +19,10 @@ class ManagerTest extends OrderTestCaseAbstract
      */
     public function testRecuperaInformacoesDeUmPedidoEspecifico($list)
     {
+        if (!$this->hasToken()) {
+            return $this->markTestIncomplete('API Token ausente');
+        }
+
         foreach ($list as $order) {
             $info = $this->factoryManager()->findById($order->getId());
 
@@ -38,6 +42,10 @@ class ManagerTest extends OrderTestCaseAbstract
      */
     public function testAtualizaStatusDeUmPedido($list)
     {
+        if (!$this->hasToken()) {
+            return $this->markTestIncomplete('API Token ausente');
+        }
+
         $flux = [
             'APROVED'       => 'PROCESSING',
         ];
@@ -60,6 +68,10 @@ class ManagerTest extends OrderTestCaseAbstract
      */
     public function testAtualizaDadosDeEnvioDeUmPedido($list)
     {
+        if (!$this->hasToken()) {
+            return $this->markTestIncomplete('API Token ausente');
+        }
+
         $flux = [
             'PROCESSING'    => 'SHIPPED',
             //'SHIPPED'       => 'DELIVERED',

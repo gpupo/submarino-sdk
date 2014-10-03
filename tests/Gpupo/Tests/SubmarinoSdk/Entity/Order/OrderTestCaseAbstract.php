@@ -5,6 +5,7 @@ namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
 use Gpupo\Tests\TestCaseAbstract;
 use Gpupo\SubmarinoSdk\Entity\Order\Manager;
 use Gpupo\SubmarinoSdk\Entity\Order\Order;
+use Gpupo\CommonSdk\Entity\Collection;
 
 abstract class OrderTestCaseAbstract extends TestCaseAbstract
 {
@@ -15,6 +16,15 @@ abstract class OrderTestCaseAbstract extends TestCaseAbstract
 
     protected function getList()
     {
+        if (!$this->hasToken()) {
+            $list = [];
+            foreach ($this->dataProviderOrderCollection() as $array) {
+                $list[] = current($array);
+            }
+
+            return new Collection($list);
+        }
+
         return $this->factoryManager()->fetch();
     }
 

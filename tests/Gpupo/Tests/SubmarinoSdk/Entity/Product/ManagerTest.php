@@ -10,6 +10,10 @@ class ManagerTest extends TestCaseAbstract
 {
     public function testObtemListaDeProdutosCadastrados()
     {
+        if (!$this->hasToken()) {
+            return $this->markTestIncomplete('API Token ausente');
+        }
+
         $manager = new Manager($this->factoryClient());
         $list = $manager->fetch();
         $this->assertInstanceOf('\Gpupo\CommonSdk\Entity\CollectionInterface',
@@ -24,6 +28,10 @@ class ManagerTest extends TestCaseAbstract
      */
     public function testRecuperaInformacoesDeUmPedidoEspecifico($list)
     {
+        if (!$this->hasToken()) {
+            return $this->markTestIncomplete('API Token ausente');
+        }
+
         $manager = new Manager($this->factoryClient());
         
         foreach ($list as $product) {
@@ -38,6 +46,10 @@ class ManagerTest extends TestCaseAbstract
 
     public function testGerenciaUpdate()
     {
+        if (!$this->hasToken()) {
+            return $this->markTestIncomplete('API Token ausente');
+        }
+
         $manager = new Manager($this->factoryClient());
 
         foreach ($this->dataProviderProducts() as $array) {
