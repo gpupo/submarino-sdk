@@ -54,7 +54,8 @@ class ManagerTest extends TestCaseAbstract
 
         foreach ($this->dataProviderSkus() as $data) {
             $sku = new Sku($data);
-           
+            $sku->getPrice()->setSellPrice($sku->getPrice()->getSellPrice() - 0.01);
+            $sku->setStockQuantity(rand(1,8)); 
             $this->assertTrue($manager->save($sku)); 
         }
     }

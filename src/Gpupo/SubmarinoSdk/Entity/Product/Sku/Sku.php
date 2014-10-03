@@ -23,4 +23,9 @@ class Sku extends EntityAbstract implements EntityInterface
             'price'         => 'object',
         ];
     }
+
+    protected function toStock()
+    {
+        return $this->piece('stockQuantity', 'quantity');
+    }
 }

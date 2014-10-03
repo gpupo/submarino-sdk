@@ -19,8 +19,12 @@ class Manager extends ManagerAbstract
 
     public function update(EntityInterface $entity, EntityInterface $existent)
     {
-        if ($this->atributesDiff($existent->getPrice(), $entity->getPrice(), ['listPrice', 'salePrice'])) {
+        if ($this->atributesDiff($existent->getPrice(), $entity->getPrice(), ['listPrice', 'sellPrice'])) {
             $this->savePrice($entity);
+        }
+
+        if ($this->atributesDiff($existent, $entity, ['stockQuantity'])) {
+            $this->saveStock($entity);
         }
 
         return true;
@@ -29,5 +33,10 @@ class Manager extends ManagerAbstract
     public function savePrice(Sku $sku)
     {
         return $this->execute($this->factoryMap('savePrice', ['itemId' => $sku->getId()]), $sku->getPrice()->toJson());
+    }
+    
+    public function saveStock(Sku $sku)
+    {
+        return $this->execute($this->factoryMap('saveStock', ['itemId' => $sku->getId()]), $sku->toJson('Stock'));
     }
 }
