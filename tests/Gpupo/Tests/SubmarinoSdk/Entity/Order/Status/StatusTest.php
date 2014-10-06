@@ -33,6 +33,19 @@ class StatusTest extends OrderTestCaseAbstract
     {
         $status =  $order->getStatus();
         $status->setStatus('SHIPPED');
-        $status->toJson();
+        $this->assertFalse($status->isValid());
+        echo $status->toJson();
+    }
+
+    /**
+     * @dataProvider dataProviderOrderCollection
+     */
+    public function testSucessoAoMarcarComoRemetidoInformandoObjetoShippedValido(Order $order)
+    {
+        $status =  $order->getStatus();
+        $status->setStatus('SHIPPED');
+        $status->getShipped()->setEstimatedDelivery('2014-12-01 10:00:00')
+            ->setDeliveredCarrierDate('2014-11-01 10:00:00');
+        $this->assertTrue($status->isValid());
     }
 }

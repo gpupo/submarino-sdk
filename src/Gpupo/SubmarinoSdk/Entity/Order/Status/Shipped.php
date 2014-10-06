@@ -4,6 +4,7 @@ namespace Gpupo\SubmarinoSdk\Entity\Order\Status;
 
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\CommonSdk\Entity\EntityTools;
 
 class Shipped extends EntityAbstract implements EntityInterface
 {
@@ -14,5 +15,13 @@ class Shipped extends EntityAbstract implements EntityInterface
             'estimatedDelivery'     => 'string',
             'deliveredCarrierDate'  => 'string'
         ];
+    }
+
+    public function setRequired()
+    {
+        return $this->setRequiredSchema([
+            'estimatedDelivery',
+            'deliveredCarrierDate',
+        ]);
     }
 }

@@ -8,6 +8,9 @@ use Gpupo\SubmarinoSdk\Entity\Product\Factory;
 
 class ClientTest extends TestCaseAbstract
 {
+    /**
+     * @requires extension curl
+     */
     public function testAcessoAListaDePedidos()
     {
         if (!$this->hasToken()) {
@@ -21,6 +24,9 @@ class ClientTest extends TestCaseAbstract
         $this->assertInternalType('int', $response->getData()->getTotal());
     }
 
+    /**
+     * @requires extension curl
+     */
     public function testAcessoAListaDeProdutos()
     {
         if (!$this->hasToken()) {
@@ -36,6 +42,8 @@ class ClientTest extends TestCaseAbstract
 
     /**
      * Retorna uma lista skus e o total de registros encontrados na pesquisa.
+     *
+     * @requires extension curl
      */
     public function testAcessoAListaDeSkus()
     {

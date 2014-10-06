@@ -26,8 +26,8 @@ class Order extends EntityAbstract implements EntityInterface
         ];
     }
 
-    public function toSaveStatus()
+    public function toStatus()
     {
-        return json_encode(['status' => $this->getStatus()]);
+        return $this->piece('status');
     }
 }

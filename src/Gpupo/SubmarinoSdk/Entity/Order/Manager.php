@@ -33,7 +33,7 @@ class Manager extends ManagerAbstract
     public function saveStatus(Order $order)
     {
         return $this->execute($this->factoryMap('saveStatus',
-            ['itemId' => $order->getId()]), $order->toSaveStatus());
+            ['itemId' => $order->getId()]), $order->getStatus()->toJson());
     }
 
 }
