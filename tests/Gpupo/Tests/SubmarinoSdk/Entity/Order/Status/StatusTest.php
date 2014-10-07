@@ -72,4 +72,3 @@ class StatusTest extends OrderTestCaseAbstract
         $this->assertTrue($status->isValid());
     }
 }
-

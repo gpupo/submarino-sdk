@@ -4,7 +4,6 @@ namespace Gpupo\SubmarinoSdk\Entity\Order\Status;
 
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\CommonSdk\Exception\UnexpectedValueException;
 
 class Status extends EntityAbstract implements EntityInterface
 {
@@ -21,8 +20,8 @@ class Status extends EntityAbstract implements EntityInterface
     {
         return $this->getStatus();
     }
-   
-    public function setStatus($status) 
+
+    public function setStatus($status)
     {
         switch ($status) {
             case 'SHIPPED':
@@ -32,7 +31,7 @@ class Status extends EntityAbstract implements EntityInterface
                 $this->getDelivered()->setRequired();
                 break;
         }
-    
+
         $this->set('status', $status);
 
         return $this;

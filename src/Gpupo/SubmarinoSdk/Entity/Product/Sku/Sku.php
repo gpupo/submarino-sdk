@@ -33,5 +33,5 @@ class Sku extends EntityAbstract implements EntityInterface
     {
         $this->setOptionalSchema(['height','width','length']);
     }
-    
+
 }

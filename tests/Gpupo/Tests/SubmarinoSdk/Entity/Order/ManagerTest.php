@@ -83,9 +83,9 @@ class ManagerTest extends OrderTestCaseAbstract
         $flux = [
             'PROCESSING' => 'SHIPPED',
         ];
-            
+
         $manager = $this->factoryManager();
-        
+
         foreach ($list as $order) {
             $currentStatus = $order->getStatus()->__toString();
             if (array_key_exists($currentStatus, $flux)) {
@@ -93,7 +93,7 @@ class ManagerTest extends OrderTestCaseAbstract
                 $order->getStatus()->setStatus($newStatus)->getShipped()
                     ->setEstimatedDelivery('2014-12-01 10:00:00')
                     ->setDeliveredCarrierDate(date('Y-m-d H:i:s'));
-                
+
                 $this->assertTrue($manager->saveStatus($order));
                 $orderUpdated = $manager->findById($order->getId());
 
@@ -114,9 +114,9 @@ class ManagerTest extends OrderTestCaseAbstract
         $flux = [
             'SHIPPED' => 'DELIVERED',
         ];
-            
+
         $manager = $this->factoryManager();
-        
+
         foreach ($list as $order) {
             $currentStatus = $order->getStatus()->__toString();
             if (array_key_exists($currentStatus, $flux)) {
