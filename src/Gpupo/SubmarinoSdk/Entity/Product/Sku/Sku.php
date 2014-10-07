@@ -28,4 +28,10 @@ class Sku extends EntityAbstract implements EntityInterface
     {
         return $this->piece('stockQuantity', 'quantity');
     }
+
+    protected function setUp()
+    {
+        $this->setOptionalSchema(['height','width','length']);
+    }
+    
 }

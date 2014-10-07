@@ -11,7 +11,7 @@ class ManagerTest extends TestCaseAbstract
     public function testAcessoAListaDeSkusCadastrados()
     {
         if (!$this->hasToken()) {
-            return $this->markTestIncomplete('API Token ausente');
+            return $this->markTestSkipped('API Token ausente');
         }
 
         $manager = new Manager($this->factoryClient());
@@ -31,7 +31,7 @@ class ManagerTest extends TestCaseAbstract
     public function testAcessaAInformacoesDeUmSku($id, $name)
     {
         if (!$this->hasToken()) {
-            return $this->markTestIncomplete('API Token ausente');
+            return $this->markTestSkipped('API Token ausente');
         }
 
         $manager = new Manager($this->factoryClient());
@@ -47,7 +47,7 @@ class ManagerTest extends TestCaseAbstract
     public function testGerenciaAtualizacoes()
     {
         if (!$this->hasToken()) {
-            return $this->markTestIncomplete('API Token ausente');
+            return $this->markTestSkipped('API Token ausente');
         }
 
         $manager = new Manager($this->factoryClient());
