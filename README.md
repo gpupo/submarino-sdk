@@ -4,7 +4,7 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs do S
 
 ## Documentação
 
-Exemplos de manutenção de produtos:
+### Exemplos de manutenção de Produtos
 
 ```PHP
 <?php
@@ -44,32 +44,45 @@ $manager->save($product);
 
 
 ```
+
+### Exemplos de manutenção de Pedidos
+
+```PHP
+<?php
+//...
+use Gpupo\SubmarinoSdk\Entity\Order\Factory;
+use Gpupo\SubmarinoSdk\Entity\Order\Manager;
+//...
+$manager = new Manager($client);
+
+```
+
 * [Documentação oficial](https://api-marketplace.submarino.com.br/docs/)
 
-## License
+## Licença
 
-MIT, see LICENSE.
+MIT, veja LICENSE.
 
 
-## Install
+## Instalação
 
-The recommended way to install is [through composer](http://getcomposer.org).
+Adicione o pacote ``submarino-sdk`` ao seu projeto utilizando [composer](http://getcomposer.org):
 
     composer require gpupo/submarino-sdk:dev-master
 
 ---
 
-# Dev
+# Desenvolvimento
 
-Install [through composer](http://getcomposer.org):
+Instalação [via composer](http://getcomposer.org):
 
 	composer install --dev;
 
-Copy ``phpunit`` configuration file:
+Personalize a configuração do ``phpunit``:
 
     cp phpunit.xml.dist phpunit.xml;
 
-Customize parameters in ``phpunit.xml``:
+Insira sua Token de Sandbox em ``phpunit.xml``:
 
 ```XML
     <!-- Customize your parameters ! -->
@@ -79,11 +92,89 @@ Customize parameters in ``phpunit.xml``:
     </php>
 ```
 
-To run localy the test suite:
+Rode os testes localmente:
 
     $ phpunit
   
 
 ## Links
 
-* [Composer Package](https://packagist.org/packages/gpupo/submarino-sdk) on packagist.org
+* [Submarino-sdk Composer Package](https://packagist.org/packages/gpupo/submarino-sdk) no packagist.org
+
+---
+
+## Propriedades (Testdox)
+
+<!--
+phpunit --tesdox | grep -vi php |  sed "s/.*\[/-&/" | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/.*Gpupo.*/&\'$'\n/g' 
+-->
+
+Gpupo\Tests\SubmarinoSdk\Client
+
+- [x] Acesso a lista de pedidos
+- [x] Acesso a lista de produtos
+- [x] Acesso a lista de skus
+- [x] Retorna informacoes do sku informado
+- [x] Atualiza estoque do sku informado
+- [x] Atualiza preco do sku informado
+
+Gpupo\Tests\SubmarinoSdk\Entity\Order\Customer\Customer
+
+- [x] Cada cliente possui endereco de entrega como objeto
+- [x] Cada cliente possui colecao de telefones
+- [x] Cada cliente possui objeto pessoa fisica
+- [x] Cada cliente possui objeto pessoa juridica
+
+Gpupo\Tests\SubmarinoSdk\Entity\Order\Customer\Telephones\Telephones
+
+- [x] Cada cliente possui colecao de telefones
+
+Gpupo\Tests\SubmarinoSdk\Entity\Order\Manager
+
+- [x] Obtem lista pedidos
+- [x] Recupera informacoes de um pedido especifico
+- [x] Atualiza status de um pedido
+- [x] Atualiza dados de envio de um pedido
+- [x] Atualiza dados de entrega de um pedido
+
+Gpupo\Tests\SubmarinoSdk\Entity\Order\Order
+
+- [x] Cada item de uma lista é um objeto
+- [x] Cada pedido possui objeto cliente
+- [x] Cada pedido possui colecao de produtos
+- [x] Cada pedido possui objeto status
+
+Gpupo\Tests\SubmarinoSdk\Entity\Order\Products\Products
+
+- [x] Cada produto é um objeto
+
+Gpupo\Tests\SubmarinoSdk\Entity\Order\Status\Status
+
+- [x] Cada status possui objeto shipped
+- [x] Cada status possui objeto delivered
+- [x] Falha ao marcar como remetido sem possuir objeto shipped valido
+- [x] Sucesso ao marcar como remetido informando objeto shipped valido
+- [x] Falha ao marcar como entregue sem possuir objeto delivered valido
+- [x] Sucesso ao marcar como entregue informando objeto delivered valido
+
+Gpupo\Tests\SubmarinoSdk\Entity\Product\Manager
+
+- [x] Obtem lista de produtos cadastrados
+- [x] Recupera informacoes de um pedido especifico
+- [x] Gerencia update
+
+Gpupo\Tests\SubmarinoSdk\Entity\Product\Product
+
+- [x] Possui propriedades é objetos
+- [x] Possui nbm formatado
+- [x] Possui preco formatado
+- [x] Possui uma colecao de skus
+- [x] Possui objeto manufacturer
+- [x] Entrega json
+
+Gpupo\Tests\SubmarinoSdk\Entity\Product\Sku\Manager
+
+- [x] Acesso a lista de skus cadastrados
+- [x] Acessa a informacoes de um sku
+- [x] Gerencia atualizacoes
+
