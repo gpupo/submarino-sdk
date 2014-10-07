@@ -13,4 +13,11 @@ class Delivered extends EntityAbstract implements EntityInterface
             'deliveredCustomerDate' => 'string',
         ];
     }
+
+    public function setRequired()
+    {
+        return $this->setRequiredSchema([
+            'deliveredCustomerDate',
+        ]);
+    }
 }

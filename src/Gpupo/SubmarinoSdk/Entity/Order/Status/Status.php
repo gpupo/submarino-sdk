@@ -28,8 +28,13 @@ class Status extends EntityAbstract implements EntityInterface
             case 'SHIPPED':
                 $this->getShipped()->setRequired();
                 break;
+            case 'DELIVERED':
+                $this->getDelivered()->setRequired();
+                break;
         }
     
-        return $this->set('status', $status);
+        $this->set('status', $status);
+
+        return $this;
     }
 }

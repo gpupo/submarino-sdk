@@ -81,8 +81,7 @@ class ManagerTest extends OrderTestCaseAbstract
         }
 
         $flux = [
-            'PROCESSING'    => 'SHIPPED',
-            //'SHIPPED'       => 'DELIVERED',
+            'PROCESSING' => 'SHIPPED',
         ];
             
         $manager = $this->factoryManager();
@@ -91,15 +90,42 @@ class ManagerTest extends OrderTestCaseAbstract
             $currentStatus = $order->getStatus()->__toString();
             if (array_key_exists($currentStatus, $flux)) {
                 $newStatus = $flux[$currentStatus];
-                $order->getStatus()->setStatus($newStatus);
+                $order->getStatus()->setStatus($newStatus)->getShipped()
+                    ->setEstimatedDelivery('2014-12-01 10:00:00')
+                    ->setDeliveredCarrierDate(date('Y-m-d H:i:s'));
                 
-                echo "\n" . $order->getStatus()->toJson() . "\n";
-
-                continue;
                 $this->assertTrue($manager->saveStatus($order));
                 $orderUpdated = $manager->findById($order->getId());
 
-                $this->assertEquals($newStatus, $orderUpdated->getStatus());
+                $this->assertEquals($newStatus, $orderUpdated->getStatus()->__toString());
+            }
+        }
+    }
+    /**
+     *
+     * @depends testObtemListaPedidos
+     */
+    public function testAtualizaDadosDeEntregaDeUmPedido($list)
+    {
+        if (!$this->hasToken()) {
+            return $this->markTestSkipped('API Token ausente');
+        }
+
+        $flux = [
+            'SHIPPED' => 'DELIVERED',
+        ];
+            
+        $manager = $this->factoryManager();
+        
+        foreach ($list as $order) {
+            $currentStatus = $order->getStatus()->__toString();
+            if (array_key_exists($currentStatus, $flux)) {
+                $newStatus = $flux[$currentStatus];
+                $order->getStatus()->setStatus($newStatus)
+                    ->getDelivered()->setDeliveredCustomerDate(date('Y-m-d H:i:s'));
+                $this->assertTrue($manager->saveStatus($order));
+                $orderUpdated = $manager->findById($order->getId());
+                $this->assertEquals($newStatus, $orderUpdated->getStatus()->__toString());
             }
         }
     }

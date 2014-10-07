@@ -45,7 +45,31 @@ class StatusTest extends OrderTestCaseAbstract
         $status =  $order->getStatus();
         $status->setStatus('SHIPPED');
         $status->getShipped()->setEstimatedDelivery('2014-12-01 10:00:00')
-            ->setDeliveredCarrierDate('2014-11-01 10:00:00');
+            ->setDeliveredCarrierDate(date('Y-m-d H:i:s'));
+        $this->assertTrue($status->isValid());
+    }
+
+    /**
+     * @dataProvider dataProviderOrderCollection
+     * @expectedException \Gpupo\CommonSdk\Exception\ExceptionInterface
+     */
+    public function testFalhaAoMarcarComoEntregueSemPossuirObjetoDeliveredValido(Order $order)
+    {
+        $status =  $order->getStatus();
+        $status->setStatus('DELIVERED');
+        $this->assertFalse($status->isValid());
+        echo $status->toJson();
+    }
+
+    /**
+     * @dataProvider dataProviderOrderCollection
+     */
+    public function testSucessoAoMarcarComoEntregueInformandoObjetoDeliveredValido(Order $order)
+    {
+        $status =  $order->getStatus();
+        $status->setStatus('DELIVERED');
+        $status->getDelivered()->setDeliveredCustomerDate(date('Y-m-d H:i:s'));
         $this->assertTrue($status->isValid());
     }
 }
+
