@@ -24,10 +24,11 @@ class Manager extends ManagerAbstract
     public function fetch($offset = 1, $limit = 50, array $parameters = [])
     {
         return parent::fetch($offset, $limit, array_merge([
+            'status'        => null,
             'purchaseDate'  => null,
             'store'         => null,
             'siteId'        => null,
-        ],$parameters));
+        ], $parameters));
     }
 
     public function saveStatus(Order $order)
