@@ -10,10 +10,11 @@ class Client extends ClientAbstract implements ClientInterface
     public function getDefaultOptions()
     {
         return [
-            'token'     => false,
-            'base_url'  => 'https://api-marketplace.submarino.com.br',
-            'version'   => 'sandbox',
-            'verbose'   => false,
+            'token'         => false,
+            'base_url'      => 'https://api-marketplace.submarino.com.br',
+            'version'       => 'sandbox',
+            'verbose'       => false,
+            'sslVersion'    => 2,
         ];
     }
 
