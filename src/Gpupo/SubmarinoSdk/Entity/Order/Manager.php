@@ -11,9 +11,7 @@ class Manager extends ManagerAbstract
     protected $maps = [
         'saveStatus'    => ['PUT', '/order/{itemId}/status'],
         'findById'      => ['GET', '/order/{itemId}'],
-        'fetch'         => ['GET', '/order?offset={offset}&limit={limit}'
-            . '&purchaseDate={purchaseDate}&store={store}&siteId={siteId}'
-            . '&status={status}'],
+        'fetch'         => ['GET', '/order?offset={offset}&limit={limit}&purchaseDate={purchaseDate}&store={store}&siteId={siteId}&status={status}'],
     ];
 
     /**
