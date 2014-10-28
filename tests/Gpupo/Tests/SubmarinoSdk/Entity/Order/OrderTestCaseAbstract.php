@@ -5,7 +5,7 @@ namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
 use Gpupo\Tests\TestCaseAbstract;
 use Gpupo\SubmarinoSdk\Entity\Order\Manager;
 use Gpupo\SubmarinoSdk\Entity\Order\Order;
-use Gpupo\CommonSdk\Entity\Collection;
+use Gpupo\Common\Entity\Collection;
 
 abstract class OrderTestCaseAbstract extends TestCaseAbstract
 {
