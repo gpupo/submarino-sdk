@@ -2,7 +2,7 @@
 
 namespace Gpupo\SubmarinoSdk\Entity\Order\Products;
 
-use Gpupo\CommonSdk\Entity\CollectionAbstract;
+use Gpupo\Common\Entity\CollectionAbstract;
 
 class Products extends CollectionAbstract
 {
