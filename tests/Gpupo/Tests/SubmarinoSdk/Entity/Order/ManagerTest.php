@@ -7,7 +7,7 @@ class ManagerTest extends OrderTestCaseAbstract
     public function testObtemListaPedidos()
     {
         $list = $this->getList();
-        $this->assertInstanceOf('\Gpupo\CommonSdk\Entity\CollectionInterface',
+        $this->assertInstanceOf('\Gpupo\Common\Entity\CollectionInterface',
             $list);
 
         return $list;
