@@ -22,10 +22,19 @@ class Manager extends ManagerAbstract
         foreach ($entity->getSku() as $sku) {
             if (!$existent->has($sku)) {
                 $this->addSku($entity, $sku);
+            } else {
+                $this->updateSku($sku);
             }
         }
 
         return true;
+    }
+
+    public function updateSku(Sku $sku)
+    {
+        $manager = new Sku\Manager;
+        
+        return $manager->save($sku); 
     }
 
     public function addSku(Product $product, Sku $sku)

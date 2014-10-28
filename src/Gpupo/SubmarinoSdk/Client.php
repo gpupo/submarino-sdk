@@ -15,7 +15,7 @@ class Client extends ClientAbstract implements ClientInterface
             'version'       => 'sandbox',
             'verbose'       => false,
             'sslVersion'    => 2,
-            'cacheTTL'      => (60 * 4),
+            'cacheTTL'      => 3600,
         ];
     }
 

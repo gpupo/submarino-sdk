@@ -70,7 +70,6 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
 
     public function dataProviderProducts()
     {
-        //return include($this->getResourceFilePath('fixture/Products.php'));
         return $this->getResourceJson('fixture/Products.json');
     }
 
