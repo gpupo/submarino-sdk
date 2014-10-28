@@ -2,7 +2,7 @@
 
 namespace Gpupo\SubmarinoSdk\Entity\Product;
 
-use Gpupo\CommonSdk\Entity\CollectionAbstract;
+use Gpupo\Common\Entity\CollectionAbstract;
 use Gpupo\CommonSdk\Exception\UnexpectedValueException;
 
 class Sku extends CollectionAbstract
