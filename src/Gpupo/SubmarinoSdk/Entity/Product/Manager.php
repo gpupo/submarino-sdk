@@ -32,7 +32,7 @@ class Manager extends ManagerAbstract
 
     public function updateSku(Sku $sku)
     {
-        $manager = new Sku\Manager;
+        $manager = new Sku\Manager($this->getClient());
         
         return $manager->save($sku); 
     }
