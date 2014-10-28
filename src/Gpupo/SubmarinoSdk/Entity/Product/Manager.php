@@ -5,6 +5,7 @@ namespace Gpupo\SubmarinoSdk\Entity\Product;
 use Gpupo\SubmarinoSdk\Entity\ManagerAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku;
+use Gpupo\SubmarinoSdk\Entity\Product\Sku\Manager as SkuManager;
 
 class Manager extends ManagerAbstract
 {
@@ -32,7 +33,7 @@ class Manager extends ManagerAbstract
 
     public function updateSku(Sku $sku)
     {
-        $manager = new Sku\Manager($this->getClient());
+        $manager = new SkuManager($this->getClient());
         
         return $manager->save($sku); 
     }
