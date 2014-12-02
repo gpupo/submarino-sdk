@@ -21,6 +21,7 @@ class Sku extends EntityAbstract implements EntityInterface
             'stockQuantity' => 'integer',
             'enable'        => 'boolean',
             'price'         => 'object',
+            'updatedAt'     => 'string',
         ];
     }
 
