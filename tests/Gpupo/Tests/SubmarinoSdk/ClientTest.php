@@ -3,7 +3,7 @@
 namespace Gpupo\Tests\SubmarinoSdk;
 
 use Gpupo\Tests\TestCaseAbstract;
-use Gpupo\CommonSdk\Entity\Collection;
+use Gpupo\Common\Entity\Collection;
 use Gpupo\SubmarinoSdk\Entity\Product\Factory;
 
 class ClientTest extends TestCaseAbstract
@@ -18,6 +18,7 @@ class ClientTest extends TestCaseAbstract
         }
 
         $client = $this->factoryClient();
+
         $response = $client->get('/order');
 
         $this->assertTrue(is_array($response->getData()->getOrders()));

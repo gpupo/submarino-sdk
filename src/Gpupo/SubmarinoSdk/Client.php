@@ -14,7 +14,7 @@ class Client extends ClientAbstract implements ClientInterface
             'base_url'      => 'https://api-marketplace.submarino.com.br',
             'version'       => 'sandbox',
             'verbose'       => false,
-            'sslVersion'    => 2,
+            'sslVersion'    => 'SecureTransport',
             'cacheTTL'      => 3600,
         ];
     }
