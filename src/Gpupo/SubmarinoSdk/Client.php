@@ -31,7 +31,7 @@ class Client extends ClientAbstract implements ClientInterface
 
         $transport->setOption(CURLOPT_HTTPHEADER, array(
             'Authorization: Basic ' . base64_encode($token . ':'),
-            'Content-Type: application/json',
+            'Content-Type: application/json;charset=UTF-8',
         ));
 
         return $transport;
