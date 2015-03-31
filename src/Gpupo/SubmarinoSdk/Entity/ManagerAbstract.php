@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of submarino-sdk
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Gpupo\SubmarinoSdk\Entity;
 
 use Gpupo\CommonSdk\Entity\ManagerAbstract as CommonAbstract;
@@ -14,12 +23,12 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
         $data = parent::fetch($offset, $limit, $parameters);
 
         if ($data->getTotal() > 0) {
-            $method = 'get' . $this->getEntityName() . 's';
+            $method = 'get'.$this->getEntityName().'s';
 
             return $this->factoryEntityCollection($data->$method());
         }
 
-        return null;
+        return;
     }
 
     public function findById($itemId)

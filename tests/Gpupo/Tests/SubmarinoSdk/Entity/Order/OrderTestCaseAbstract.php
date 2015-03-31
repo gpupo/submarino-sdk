@@ -1,11 +1,20 @@
 <?php
 
+/*
+ * This file is part of submarino-sdk
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
 
-use Gpupo\Tests\TestCaseAbstract;
+use Gpupo\Common\Entity\Collection;
 use Gpupo\SubmarinoSdk\Entity\Order\Manager;
 use Gpupo\SubmarinoSdk\Entity\Order\Order;
-use Gpupo\Common\Entity\Collection;
+use Gpupo\Tests\TestCaseAbstract;
 
 abstract class OrderTestCaseAbstract extends TestCaseAbstract
 {

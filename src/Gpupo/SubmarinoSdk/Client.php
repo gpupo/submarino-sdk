@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of submarino-sdk
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Gpupo\SubmarinoSdk;
 
 use Gpupo\CommonSdk\ClientAbstract;
@@ -30,7 +39,7 @@ class Client extends ClientAbstract implements ClientInterface
         }
 
         $transport->setOption(CURLOPT_HTTPHEADER, array(
-            'Authorization: Basic ' . base64_encode($token . ':'),
+            'Authorization: Basic '.base64_encode($token.':'),
             'Content-Type: application/json;charset=UTF-8',
         ));
 
@@ -39,7 +48,7 @@ class Client extends ClientAbstract implements ClientInterface
 
     public function getResourceUri($resource)
     {
-        return $this->getOptions()->get('base_url') . '/'
-            . $this->getOptions()->get('version') . $resource;
+        return $this->getOptions()->get('base_url').'/'
+            .$this->getOptions()->get('version').$resource;
     }
 }

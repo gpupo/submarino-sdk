@@ -1,10 +1,19 @@
 <?php
 
+/*
+ * This file is part of submarino-sdk
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Gpupo\Tests;
 
 use Gpupo\SubmarinoSdk\Client;
-use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
 {
@@ -32,16 +41,15 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
     protected function getResourceJson($file)
     {
         return json_decode($this->getResourceContent($file), true);
-
     }
 
     protected function getResourceFilePath($file)
     {
-        $path = 'Resources/' . $file;
+        $path = 'Resources/'.$file;
         if (file_exists($path)) {
             return $path;
         } else {
-            throw new \InvalidArgumentException('File ' . $path . ' Not Exist');
+            throw new \InvalidArgumentException('File '.$path.' Not Exist');
         }
     }
 

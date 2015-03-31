@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of submarino-sdk
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Gpupo\SubmarinoSdk\Entity\Order;
 
 use Gpupo\SubmarinoSdk\Entity\ManagerAbstract;
@@ -15,10 +24,10 @@ class Manager extends ManagerAbstract
     ];
 
     /**
+     * @param int   $offset
+     * @param int   $limit
+     * @param array $parameters
      *
-     * @param  int                                         $offset
-     * @param  int                                         $limit
-     * @param  array                                       $parameters
      * @return \Gpupo\CommonSdk\Entity\CollectionInterface
      */
     public function fetch($offset = 1, $limit = 50, array $parameters = [])
@@ -36,5 +45,4 @@ class Manager extends ManagerAbstract
         return $this->execute($this->factoryMap('saveStatus',
             ['itemId' => $order->getId()]), $order->getStatus()->toJson());
     }
-
 }

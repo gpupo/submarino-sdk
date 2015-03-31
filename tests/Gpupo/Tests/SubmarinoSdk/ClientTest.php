@@ -1,10 +1,19 @@
 <?php
 
+/*
+ * This file is part of submarino-sdk
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Gpupo\Tests\SubmarinoSdk;
 
-use Gpupo\Tests\TestCaseAbstract;
 use Gpupo\Common\Entity\Collection;
 use Gpupo\SubmarinoSdk\Entity\Product\Factory;
+use Gpupo\Tests\TestCaseAbstract;
 
 class ClientTest extends TestCaseAbstract
 {
@@ -57,7 +66,7 @@ class ClientTest extends TestCaseAbstract
 
         $this->getLogger()->addDebug('Lista de SKUs', $response->toLog());
 
-        $this->assertEquals(200, $response->getHttpStatusCode(),$response->toJson());
+        $this->assertEquals(200, $response->getHttpStatusCode(), $response->toJson());
         $this->assertArrayHasKey('skus', $response->getData()->toArray());
 
         return $response->getData();
@@ -70,9 +79,9 @@ class ClientTest extends TestCaseAbstract
     {
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
-            $response = $client->get('/sku/' . $sku['id']);
+            $response = $client->get('/sku/'.$sku['id']);
 
-            $this->getLogger()->addDebug('Informações do SKU #' . $sku['id'],
+            $this->getLogger()->addDebug('Informações do SKU #'.$sku['id'],
                 $response->toLog());
 
             $this->assertEquals(200, $response->getHttpStatusCode());
@@ -87,8 +96,8 @@ class ClientTest extends TestCaseAbstract
     {
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
-            $body = json_encode(["quantity" => 2]);
-            $response = $client->put('/sku/' . $sku['id'] . '/stock', $body);
+            $body = json_encode(['quantity' => 2]);
+            $response = $client->put('/sku/'.$sku['id'].'/stock', $body);
 
             $this->assertEquals(200, $response->getHttpStatusCode(), json_encode([$response->toArray(), $sku]));
         }
@@ -101,7 +110,7 @@ class ClientTest extends TestCaseAbstract
     {
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
-            $response = $client->get('/sku/' . $sku['id']);
+            $response = $client->get('/sku/'.$sku['id']);
 
             $info = $response->getData()->getPrice();
             $price = Factory::factoryPrice($info);
@@ -112,15 +121,13 @@ class ClientTest extends TestCaseAbstract
             $price->setSellPrice($newSellPrice);
             $this->assertEquals($newSellPrice, $price->getSellPrice());
 
-            $changeData = $client->put('/sku/' . $sku['id'] . '/price', $price->toJson());
+            $changeData = $client->put('/sku/'.$sku['id'].'/price', $price->toJson());
             $this->assertEquals(200, $changeData->getHttpStatusCode());
 
-            $newResponse = $client->get('/sku/' . $sku['id']);
+            $newResponse = $client->get('/sku/'.$sku['id']);
             $newPrice = Factory::factoryPrice($newResponse->getData()->getPrice());
 
             $this->assertEquals($newSellPrice, $newPrice->getSellPrice());
-
         }
     }
-
 }

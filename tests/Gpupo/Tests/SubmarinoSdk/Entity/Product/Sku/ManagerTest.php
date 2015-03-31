@@ -1,10 +1,19 @@
 <?php
 
+/*
+ * This file is part of submarino-sdk
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Product\Sku;
 
-use Gpupo\Tests\TestCaseAbstract;
 use Gpupo\SubmarinoSdk\Entity\Product\Sku\Manager;
 use Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku;
+use Gpupo\Tests\TestCaseAbstract;
 
 class ManagerTest extends TestCaseAbstract
 {
@@ -38,8 +47,8 @@ class ManagerTest extends TestCaseAbstract
         $item = $manager->findById($id);
         $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku', $item);
 
-        $this->assertEquals($id,$item->getId());
-        $this->assertEquals($name,$item->getName());
+        $this->assertEquals($id, $item->getId());
+        $this->assertEquals($name, $item->getName());
 
         $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Sku\Price', $item->getPrice());
     }
@@ -55,7 +64,7 @@ class ManagerTest extends TestCaseAbstract
         foreach ($this->dataProviderSkus() as $data) {
             $sku = new Sku($data);
             $sku->getPrice()->setSellPrice($sku->getPrice()->getSellPrice() - 0.01);
-            $sku->setStockQuantity(rand(1,8));
+            $sku->setStockQuantity(rand(1, 8));
             $this->assertTrue($manager->save($sku));
         }
     }

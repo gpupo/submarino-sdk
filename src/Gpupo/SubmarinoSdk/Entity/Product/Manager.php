@@ -1,11 +1,20 @@
 <?php
 
+/*
+ * This file is part of submarino-sdk
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Gpupo\SubmarinoSdk\Entity\Product;
 
-use Gpupo\SubmarinoSdk\Entity\ManagerAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku;
+use Gpupo\SubmarinoSdk\Entity\ManagerAbstract;
 use Gpupo\SubmarinoSdk\Entity\Product\Sku\Manager as SkuManager;
+use Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku;
 
 class Manager extends ManagerAbstract
 {
@@ -34,8 +43,8 @@ class Manager extends ManagerAbstract
     public function updateSku(Sku $sku)
     {
         $manager = new SkuManager($this->getClient());
-        
-        return $manager->save($sku); 
+
+        return $manager->save($sku);
     }
 
     public function addSku(Product $product, Sku $sku)

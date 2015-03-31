@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of submarino-sdk
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
 
 class ManagerTest extends OrderTestCaseAbstract
@@ -14,7 +23,6 @@ class ManagerTest extends OrderTestCaseAbstract
     }
 
     /**
-     *
      * @depends testObtemListaPedidos
      */
     public function testRecuperaInformacoesDeUmPedidoEspecifico($list)
@@ -37,7 +45,6 @@ class ManagerTest extends OrderTestCaseAbstract
     }
 
     /**
-     *
      * @depends testObtemListaPedidos
      */
     public function testAtualizaStatusDeUmPedido($list)
@@ -66,12 +73,11 @@ class ManagerTest extends OrderTestCaseAbstract
         }
 
         if ($i < 1) {
-           $this->markTestSkipped('Sem Pedidos para atualizar');
+            $this->markTestSkipped('Sem Pedidos para atualizar');
         }
     }
 
     /**
-     *
      * @depends testObtemListaPedidos
      */
     public function testAtualizaDadosDeEnvioDeUmPedido($list)
@@ -102,7 +108,6 @@ class ManagerTest extends OrderTestCaseAbstract
         }
     }
     /**
-     *
      * @depends testObtemListaPedidos
      */
     public function testAtualizaDadosDeEntregaDeUmPedido($list)
