@@ -68,7 +68,7 @@ MIT, veja LICENSE.
 
 Adicione o pacote ``submarino-sdk`` ao seu projeto utilizando [composer](http://getcomposer.org):
 
-    composer require gpupo/submarino-sdk:dev-master
+    composer require gpupo/submarino-sdk
 
 ---
 
