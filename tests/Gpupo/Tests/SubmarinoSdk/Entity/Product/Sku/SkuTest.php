@@ -36,4 +36,20 @@ class SkuTest extends TestCaseAbstract
             $this->assertEquals(1, $sku->get($opcional));
         }
     }
+
+    public function testPossuiPropriedadeContendoUrlDaImagem()
+    {
+
+        $url = 'http://foo/bar';
+
+        $sku = new Sku([
+            'id' => 2,
+            'name'=> 'bar',
+            'urlImage' => $url,
+
+        ]);
+
+        $this->assertEquals($url, $sku->get('urlImage'));
+
+    }
 }

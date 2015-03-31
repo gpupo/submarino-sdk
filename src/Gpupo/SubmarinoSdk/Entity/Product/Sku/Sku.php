@@ -31,6 +31,7 @@ class Sku extends EntityAbstract implements EntityInterface
             'enable'        => 'boolean',
             'price'         => 'object',
             'updatedAt'     => 'string',
+            'urlImage'      => 'string',
         ];
     }
 
