@@ -27,7 +27,7 @@ class ManagerTest extends TestCaseAbstract
 
         $list = $manager->fetch();
 
-        $this->assertInstanceOf('\Gpupo\CommonSdk\Entity\CollectionInterface', $list);
+        $this->assertInstanceOf('\Gpupo\Common\Entity\CollectionInterface', $list);
 
         foreach ($list as $item) {
             $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku', $item);
