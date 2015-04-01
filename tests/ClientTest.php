@@ -18,17 +18,16 @@ class ClientTest extends TestCaseAbstract
 {
     public function assertHttpStatusCodeSuccess($code, $context = null)
     {
-        $this->assertContains($code, array(200, 204), $context);    
+        $this->assertContains($code, array(200, 204), $context);
     }
-    
+
     public function testGerenciaUriDeRecurso()
     {
         $client = $this->factoryClient();
         $this->assertEquals('https://api-sandbox.bonmarketplace.com.br/sku',
             $client->getResourceUri('/sku'));
-
     }
-    
+
     /**
      * @requires extension curl
      */
@@ -80,7 +79,7 @@ class ClientTest extends TestCaseAbstract
         $this->getLogger()->addDebug('Lista de SKUs', $response->toLog());
 
         $this->assertHttpStatusCodeSuccess($response->getHttpStatusCode());
-        
+
         $this->assertArrayHasKey('skus', $response->getData()->toArray());
 
         return $response->getData();

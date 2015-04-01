@@ -45,8 +45,8 @@ abstract class TestCaseAbstract extends \PHPUnit_Framework_TestCase
 
     protected function getResourceFilePath($file)
     {
-        $path =  getcwd() . '/Resources/'.$file;
-        
+        $path =  getcwd().'/Resources/'.$file;
+
         if (file_exists($path)) {
             return $path;
         } else {

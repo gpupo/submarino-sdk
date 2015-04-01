@@ -42,8 +42,8 @@ class SkuTest extends TestCaseAbstract
         $url = ['http://foo/bar'];
 
         $sku = new Sku([
-            'id' => 2,
-            'name'=> 'bar',
+            'id'       => 2,
+            'name'     => 'bar',
             'urlImage' => $url,
 
         ]);

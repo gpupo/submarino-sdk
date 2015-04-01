@@ -86,7 +86,7 @@ $manager = new Manager($client);
 
 ```
 
-* [Documentação oficial](https://api-marketplace.submarino.com.br/docs/)
+* [Documentação oficial](https://api-sandbox.bonmarketplace.com.br/docs/)
 
 ## Licença
 
