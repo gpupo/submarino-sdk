@@ -29,6 +29,9 @@
         "branch-alias": {
             "dev-master": "2.0-dev"
         }
-    },    
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
     "minimum-stability" : "stable"
 }

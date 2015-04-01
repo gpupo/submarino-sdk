@@ -1,5 +1,4 @@
 *.swp
 vendor
-composer.lock
 phpunit.xml
 Resources/logs/*
