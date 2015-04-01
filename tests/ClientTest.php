@@ -16,6 +16,11 @@ use Gpupo\SubmarinoSdk\Entity\Product\Factory;
 
 class ClientTest extends TestCaseAbstract
 {
+    public function assertHttpStatusCodeSuccess($code, $context = null)
+    {
+        $this->assertContains($code, array(200, 204), $context);    
+    }
+    
     public function testGerenciaUriDeRecurso()
     {
         $client = $this->factoryClient();
@@ -53,7 +58,8 @@ class ClientTest extends TestCaseAbstract
         $client = $this->factoryClient();
         $data = $client->get('/product');
 
-        $this->assertEquals(200, $data['httpStatusCode']);
+        $this->assertHttpStatusCodeSuccess($data['httpStatusCode']);
+
         $this->assertTrue(is_array($data->getData()->getProducts()));
     }
 
@@ -73,7 +79,8 @@ class ClientTest extends TestCaseAbstract
 
         $this->getLogger()->addDebug('Lista de SKUs', $response->toLog());
 
-        $this->assertEquals(200, $response->getHttpStatusCode(), $response->toJson());
+        $this->assertHttpStatusCodeSuccess($response->getHttpStatusCode());
+        
         $this->assertArrayHasKey('skus', $response->getData()->toArray());
 
         return $response->getData();
@@ -91,7 +98,7 @@ class ClientTest extends TestCaseAbstract
             $this->getLogger()->addDebug('Informações do SKU #'.$sku['id'],
                 $response->toLog());
 
-            $this->assertEquals(200, $response->getHttpStatusCode());
+            $this->assertHttpStatusCodeSuccess($response->getHttpStatusCode());
             $this->assertArrayHasKey('id', $response->getData(), json_encode($data));
         }
     }
@@ -106,7 +113,8 @@ class ClientTest extends TestCaseAbstract
             $body = json_encode(['quantity' => 2]);
             $response = $client->put('/sku/'.$sku['id'].'/stock', $body);
 
-            $this->assertEquals(200, $response->getHttpStatusCode(), json_encode([$response->toArray(), $sku]));
+            $this->assertHttpStatusCodeSuccess($response->getHttpStatusCode(),
+                json_encode([$response->toArray(), $sku]));
         }
     }
 
@@ -129,7 +137,7 @@ class ClientTest extends TestCaseAbstract
             $this->assertEquals($newSellPrice, $price->getSellPrice());
 
             $changeData = $client->put('/sku/'.$sku['id'].'/price', $price->toJson());
-            $this->assertEquals(200, $changeData->getHttpStatusCode());
+            $this->assertHttpStatusCodeSuccess($changeData->getHttpStatusCode());
 
             $newResponse = $client->get('/sku/'.$sku['id']);
             $newPrice = Factory::factoryPrice($newResponse->getData()->getPrice());

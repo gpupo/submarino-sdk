@@ -25,7 +25,7 @@ class ManagerTest extends TestCaseAbstract
 
         $manager = new Manager($this->factoryClient());
         $list = $manager->fetch();
-        $this->assertInstanceOf('\Gpupo\CommonSdk\Entity\CollectionInterface',
+        $this->assertInstanceOf('\Gpupo\Common\Entity\CollectionInterface',
             $list);
 
         return $list;
