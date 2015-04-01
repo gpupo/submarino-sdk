@@ -12,7 +12,7 @@
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Product\Sku;
 
 use Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku;
-use Gpupo\Tests\TestCaseAbstract;
+use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
 
 class SkuTest extends TestCaseAbstract
 {

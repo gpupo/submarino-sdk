@@ -13,7 +13,7 @@ namespace Gpupo\Tests\SubmarinoSdk\Entity\Product;
 
 use Gpupo\SubmarinoSdk\Entity\Product\Factory;
 use Gpupo\SubmarinoSdk\Entity\Product\Manager;
-use Gpupo\Tests\TestCaseAbstract;
+use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
 
 class ManagerTest extends TestCaseAbstract
 {
