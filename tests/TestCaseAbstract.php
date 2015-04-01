@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Gpupo\Tests;
+namespace Gpupo\Tests\SubmarinoSdk;
 
 use Gpupo\SubmarinoSdk\Client;
 use Monolog\Handler\StreamHandler;

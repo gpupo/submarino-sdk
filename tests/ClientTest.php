@@ -13,7 +13,6 @@ namespace Gpupo\Tests\SubmarinoSdk;
 
 use Gpupo\Common\Entity\Collection;
 use Gpupo\SubmarinoSdk\Entity\Product\Factory;
-use Gpupo\Tests\TestCaseAbstract;
 
 class ClientTest extends TestCaseAbstract
 {

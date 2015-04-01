@@ -6,26 +6,27 @@
     "require": {
         "php": ">=5.4",
         "ext-curl" : "*",
-        "gpupo/common-sdk": "~1.0"
+        "gpupo/common-sdk": "~1.1"
     },
     "suggest": {
         "monolog/monolog": "Write Log messages"
     },
     "require-dev": {
-        "phpunit/phpunit": "*",
-        "monolog/monolog": "dev-master"
+        "phpunit/phpunit": "~4.0",
+        "monolog/monolog": "~1.12"
     },
     "autoload": {
-        "psr-0": { "Gpupo\\": "src" }
+        "psr-4": { "Gpupo\\SubmarinoSdk\\": "src" }
     },
     "autoload-dev": {
-        "psr-0": {
-            "Gpupo\\": "tests"
+        "psr-4": {
+            "Gpupo\\Tests\\SubmarinoSkd\\": "tests"
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.2-dev"
+            "dev-master": "2.0-dev"
         }
-    }
+    },    
+    "minimum-stability" : "stable"
 }
