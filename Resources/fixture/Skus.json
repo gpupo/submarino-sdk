@@ -36,8 +36,8 @@
     "stockQuantity":1,
     "enable":true,
     "price":{
-      "listPrice":2,
-      "sellPrice":1
+      "listPrice":100,
+      "sellPrice":99
     },
     "link":{
       "id":"10",
@@ -59,8 +59,8 @@
     "stockQuantity":1,
     "enable":true,
     "price":{
-      "listPrice":2,
-      "sellPrice":1
+      "listPrice":100,
+      "sellPrice":100
     },
     "link":{
       "id":"10",

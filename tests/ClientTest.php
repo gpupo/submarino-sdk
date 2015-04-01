@@ -20,7 +20,7 @@ class ClientTest extends TestCaseAbstract
     {
         $client = $this->factoryClient();
         $this->assertEquals('https://api-sandbox.bonmarketplace.com.br/sku',
-            $client->getResourceUri('sku'));
+            $client->getResourceUri('/sku'));
 
     }
     

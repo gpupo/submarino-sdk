@@ -52,6 +52,10 @@ class Client extends ClientAbstract implements ClientInterface
         $version = $this->getOptions()->get('version');
         $endpoint = str_replace('{VERSION}', $version, $url);
         
-        return $endpoint .'/' .$resource;
+        if ($resource[0] !== '/') {
+            $endpoint .= '/';
+        }
+        
+        return $endpoint .$resource;
     }
 }
