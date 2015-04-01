@@ -20,7 +20,7 @@ class Client extends ClientAbstract implements ClientInterface
     {
         return [
             'token'         => false,
-            'base_url'      => 'https://api-marketplace.submarino.com.br',
+            'base_url'      => 'https://api-{VERSION}.bonmarketplace.com.br',
             'version'       => 'sandbox',
             'verbose'       => false,
             'sslVersion'    => 'SecureTransport',
@@ -48,7 +48,10 @@ class Client extends ClientAbstract implements ClientInterface
 
     public function getResourceUri($resource)
     {
-        return $this->getOptions()->get('base_url').'/'
-            .$this->getOptions()->get('version').$resource;
+        $url = $this->getOptions()->get('base_url');
+        $version = $this->getOptions()->get('version');
+        $endpoint = str_replace('{VERSION}', $version, $url);
+        
+        return $endpoint .'/' .$resource;
     }
 }

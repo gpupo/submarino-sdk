@@ -16,11 +16,13 @@
         "monolog/monolog": "~1.12"
     },
     "autoload": {
-        "psr-4": { "Gpupo\\SubmarinoSdk\\": "src" }
+        "psr-4": {
+            "Gpupo\\SubmarinoSdk\\": "src"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "Gpupo\\Tests\\SubmarinoSkd\\": "tests"
+            "Gpupo\\Tests\\SubmarinoSdk\\": "tests"
         }
     },
     "extra": {

@@ -16,6 +16,14 @@ use Gpupo\SubmarinoSdk\Entity\Product\Factory;
 
 class ClientTest extends TestCaseAbstract
 {
+    public function testGerenciaUriDeRecurso()
+    {
+        $client = $this->factoryClient();
+        $this->assertEquals('https://api-sandbox.bonmarketplace.com.br/sku',
+            $client->getResourceUri('sku'));
+
+    }
+    
     /**
      * @requires extension curl
      */
