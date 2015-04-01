@@ -39,8 +39,7 @@ class SkuTest extends TestCaseAbstract
 
     public function testPossuiPropriedadeContendoUrlDaImagem()
     {
-
-        $url = 'http://foo/bar';
+        $url = ['http://foo/bar'];
 
         $sku = new Sku([
             'id' => 2,
@@ -50,6 +49,6 @@ class SkuTest extends TestCaseAbstract
         ]);
 
         $this->assertEquals($url, $sku->get('urlImage'));
-
+        $this->assertEquals($url, $sku->getUrlImage());
     }
 }
