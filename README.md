@@ -45,6 +45,35 @@ $manager->save($product);
 
 ```
 
+#### Uso de cache para otimização de updates
+
+```php
+
+use Gpupo\Cache\CacheItem;
+use Gpupo\Cache\CacheItemPool;
+
+$data = []; //Your SKU array!
+
+$sku = Factory::factorySku($data);
+
+$pool = new CacheItemPool('Memcached');
+$key = 'sku-foo';
+$item = new CacheItem($key);
+$item->set($sku, 60);
+$pool->save($item);
+
+// mude o mundo... e pense que está em uma nova execução, alguns minutos depois ...
+
+$sku = Factory::factorySku($data);
+$previousSku = $pool->getItem($key)->get();
+$sku->setPrevious($previousSku);
+$sku->save();
+
+```
+
+
+
+
 ### Exemplos de manutenção de Pedidos
 
 ```PHP
