@@ -4,8 +4,8 @@
     "keywords": ["submarino", "sdk", "api"],
     "license": "MIT",
     "require": {
-        "php": ">=5.5",
-        "ext-curl" : "*",        
+        "php": ">=5.4",
+        "ext-curl" : "*",
         "gpupo/common-sdk": "~1.0"
     },
     "suggest": {
