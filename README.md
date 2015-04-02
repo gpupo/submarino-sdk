@@ -1,6 +1,7 @@
-SDK Não Oficial para integração a partir de aplicações PHP com as APIs do Submarino Marketplace
-
 [![Build Status](https://secure.travis-ci.org/gpupo/submarino-sdk.png?branch=master)](http://travis-ci.org/gpupo/submarino-sdk)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gpupo/submarino-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gpupo/submarino-sdk/?branch=master)
+
+SDK Não Oficial para integração a partir de aplicações PHP com as APIs do Submarino Marketplace
 
 ## Documentação
 

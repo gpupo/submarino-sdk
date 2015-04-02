@@ -14,6 +14,14 @@ namespace Gpupo\SubmarinoSdk\Entity\Product;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
+/**
+ * @method string getId()
+ * @method string getName()
+ * @method Gpupo\SubmarinoSdk\Entity\Product\Sku getSku()
+ * @method Gpupo\SubmarinoSdk\Entity\Product\Manufacturer getManufacturer()
+ * @method string getDeliveryType()
+ * @method array getNbm()
+ */
 class Product extends EntityAbstract implements EntityInterface
 {
     protected $entity = 'Product';
