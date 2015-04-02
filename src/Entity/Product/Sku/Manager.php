@@ -36,6 +36,10 @@ class Manager extends ManagerAbstract
             $this->saveStock($entity);
         }
 
+        if ($this->atributesDiff($existent, $entity, ['enable'])) {
+            $this->saveStatus($entity);
+        }
+
         return true;
     }
 
@@ -47,5 +51,10 @@ class Manager extends ManagerAbstract
     public function saveStock(Sku $sku)
     {
         return $this->execute($this->factoryMap('saveStock', ['itemId' => $sku->getId()]), $sku->toJson('Stock'));
+    }
+
+    public function saveStatus(Sku $sku)
+    {
+        return $this->execute($this->factoryMap('saveStatus', ['itemId' => $sku->getId()]), $sku->toJson('Status'));
     }
 }
