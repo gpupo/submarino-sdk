@@ -52,6 +52,7 @@ $manager->save($product);
 
 use Gpupo\Cache\CacheItem;
 use Gpupo\Cache\CacheItemPool;
+use Gpupo\SubmarinoSdk\Entity\Product\Factory;
 
 $data = []; //Your SKU array!
 
@@ -86,11 +87,31 @@ $manager = new Manager($client);
 $orderList = $manager->fetch(); //Recebe uma coleção de itens \Gpupo\SubmarinoSdk\Entity\Order\Order
 
 foreach ($orderList as $order) {
-	$order->getStatus()->setStatus('PROCESSING');
-   	$manager->saveStatus($order);
+	//Atualizando dados de ENVIO do pedido:
+   	$order->getStatus()->setStatus('DELIVERED')
+   		->getDelivered()->setDeliveredCustomerDate(date('Y-m-d H:i:s'))
+   		->setTrackingProtocol('RE983737722BR')
+        ->setEstimatedDelivery('2015-12-25 01:00:00');        
+	$manager->saveStatus($order);                
 }
-                
+
+//Acessando informações de um pedido específico
+
+$order = $manager->findById(339938882);
+echo $order->getId(); //339938882
+echo $order->getSiteId(); // 03-589-01
+echo $order->getStore(); // SUBMARINO
+echo $order->getStatus(); // PROCESSING
+
+//Movendo pedido de situação na B2W:
+$order->getStatus()->setStatus('PROCESSING');
+$manager->saveStatus($order);
+   	
 ```
+
+
+---- 
+
 
 * [Documentação oficial](https://api-sandbox.bonmarketplace.com.br/docs/)
 
