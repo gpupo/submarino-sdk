@@ -80,11 +80,16 @@ $sku->save();
 ```PHP
 <?php
 //...
-use Gpupo\SubmarinoSdk\Entity\Order\Factory;
 use Gpupo\SubmarinoSdk\Entity\Order\Manager;
 //...
 $manager = new Manager($client);
+$orderList = $manager->fetch(); //Recebe uma coleção de itens \Gpupo\SubmarinoSdk\Entity\Order\Order
 
+foreach ($orderList as $order) {
+	$order->getStatus()->setStatus('PROCESSING');
+   	$manager->saveStatus($order);
+}
+                
 ```
 
 * [Documentação oficial](https://api-sandbox.bonmarketplace.com.br/docs/)
