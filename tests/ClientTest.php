@@ -16,11 +16,6 @@ use Gpupo\SubmarinoSdk\Entity\Product\Factory;
 
 class ClientTest extends TestCaseAbstract
 {
-    public function assertHttpStatusCodeSuccess($code, $context = null)
-    {
-        $this->assertContains($code, array(200, 204), $context);
-    }
-
     public function testGerenciaUriDeRecurso()
     {
         $client = $this->factoryClient();
