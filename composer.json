@@ -6,7 +6,7 @@
     "require": {
         "php": ">=5.4",
         "ext-curl" : "*",
-        "gpupo/common-sdk": "~1.1.2"
+        "gpupo/common-sdk": "dev-master"
     },
     "suggest": {
         "monolog/monolog": "Write Log messages"
@@ -33,5 +33,5 @@
     "config": {
         "preferred-install": "dist"
     },
-    "minimum-stability" : "stable"
+    "minimum-stability" : "dev"
 }
