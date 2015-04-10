@@ -12,7 +12,7 @@
         "monolog/monolog": "Write Log messages"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0",
+        "phpunit/phpunit": "4.0 - 4.5.1",
         "monolog/monolog": "~1.12"
     },
     "autoload": {
