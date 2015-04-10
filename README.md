@@ -5,6 +5,43 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs do S
 
 ## Documentação
 
+
+### Uso de Factoy (novo)
+
+Este exemplo demonstra o uso simplificado a partir de um único objeto Factory:
+
+
+```PHP
+<?php
+///...
+use Gpupo\SubmarinoSdk\Factory;
+
+$factory = Factory::getInstance()->setup(['token' => '7Ao82svbm#6', 'version' => 'sandbox']);
+
+$manager = $factory->factoryManager('product'));
+
+// Acesso a lista de produtos cadastrados:
+$produtosCadastrados = $manager->fetch(); // Collection de Objetos Product
+
+// Acesso a informações de um produto cadastrado e com identificador conhecido:
+$produto = $manager->findById(9)); // Objeto Produto
+echo $product->getName(); // Acesso ao nome do produto #9
+
+
+// Criação de um produto:
+$data = []; // Veja o formato de $data em Resources/fixture/Products.json
+$product = $factory->createProduct($data);
+
+foreach ($data['sku'] as $item) {
+    $sku = $factory->createSku($item);
+    $product->getSku()->add($sku);
+}
+
+$manager->save($product);
+
+```
+
+
 ### Exemplos de manutenção de Produtos
 
 ```PHP
@@ -72,8 +109,6 @@ $sku->setPrevious($previousSku);
 $sku->save();
 
 ```
-
-
 
 
 ### Exemplos de manutenção de Pedidos
