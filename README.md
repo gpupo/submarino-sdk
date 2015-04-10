@@ -165,9 +165,14 @@ Adicione o pacote ``submarino-sdk`` ao seu projeto utilizando [composer](http://
 
 # Desenvolvimento
 
-Instalação [via composer](http://getcomposer.org):
+    git clone -b develop --depth=1  git@github.com:gpupo/submarino-sdk.git
 
-	composer install --dev;
+    cd submarino-sdk;
+    
+    composer install;
+
+    phpunit;
+
 
 Personalize a configuração do ``phpunit``:
 
