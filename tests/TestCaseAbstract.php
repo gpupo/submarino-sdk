@@ -11,8 +11,8 @@
 
 namespace Gpupo\Tests\SubmarinoSdk;
 
-use Gpupo\Tests\CommonSdk\TestCaseAbstract as CommonSdkTestCaseAbstract;
 use Gpupo\SubmarinoSdk\Client;
+use Gpupo\Tests\CommonSdk\TestCaseAbstract as CommonSdkTestCaseAbstract;
 
 abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
 {

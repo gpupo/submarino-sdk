@@ -11,8 +11,8 @@
 
 namespace Gpupo\Tests\SubmarinoSdk;
 
-use Gpupo\Tests\CommonSdk\FactoryTestAbstract;
 use Gpupo\SubmarinoSdk\Factory;
+use Gpupo\Tests\CommonSdk\FactoryTestAbstract;
 
 class FactoryTest extends FactoryTestAbstract
 {
@@ -27,8 +27,7 @@ class FactoryTest extends FactoryTestAbstract
     public function testCentralizaAcessoAManagers($objectExpected, $target)
     {
         return $this->assertInstanceOf($objectExpected,
-            $this->createObject($this->getFactory(),  'factoryManager', $target));
-        
+            $this->createObject($this->getFactory(), 'factoryManager', $target));
     }
 
     public function dataProviderObjetos()
@@ -39,7 +38,7 @@ class FactoryTest extends FactoryTestAbstract
             ['\Gpupo\SubmarinoSdk\Entity\Order\Order', 'order', null],
         ];
     }
-    
+
     public function dataProviderManager()
     {
         return [

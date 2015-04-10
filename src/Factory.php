@@ -19,10 +19,9 @@ class Factory extends FactoryAbstract
     {
         return '\Gpupo\SubmarinoSdk\Entity\\';
     }
-    
+
     public function setClient(array $clientOptions = [])
     {
         $this->client =  new Client($clientOptions, $this->logger);
     }
-    
 }
