@@ -165,7 +165,7 @@ Adicione o pacote ``submarino-sdk`` ao seu projeto utilizando [composer](http://
 
 # Desenvolvimento
 
-    git clone -b develop --depth=1  git@github.com:gpupo/submarino-sdk.git
+    git clone --depth=1  git@github.com:gpupo/submarino-sdk.git
 
     cd submarino-sdk;
     
