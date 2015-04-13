@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of submarino-sdk
+ * This file is part of gpupo/submarino-sdk
  *
  * (c) Gilmar Pupo <g@g1mr.com>
  *

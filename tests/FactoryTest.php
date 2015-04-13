@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of submarino-sdk
+ * This file is part of gpupo/submarino-sdk
  *
  * (c) Gilmar Pupo <g@g1mr.com>
  *
@@ -16,6 +16,8 @@ use Gpupo\Tests\CommonSdk\FactoryTestAbstract;
 
 class FactoryTest extends FactoryTestAbstract
 {
+    public $namespace =  '\Gpupo\SubmarinoSdk\\';
+
     public function getFactory()
     {
         return Factory::getInstance();
@@ -33,18 +35,18 @@ class FactoryTest extends FactoryTestAbstract
     public function dataProviderObjetos()
     {
         return [
-            ['\Gpupo\SubmarinoSdk\Entity\Product\Product', 'product', null],
-            ['\Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku', 'sku', null],
-            ['\Gpupo\SubmarinoSdk\Entity\Order\Order', 'order', null],
+            [$this->namespace.'Entity\Product\Product', 'product', null],
+            [$this->namespace.'Entity\Product\Sku\Sku', 'sku', null],
+            [$this->namespace.'Entity\Order\Order', 'order', null],
         ];
     }
 
     public function dataProviderManager()
     {
         return [
-            ['\Gpupo\SubmarinoSdk\Entity\Product\Manager', 'product'],
-            ['\Gpupo\SubmarinoSdk\Entity\Product\Sku\Manager', 'sku'],
-            ['\Gpupo\SubmarinoSdk\Entity\Order\Manager', 'order'],
+            [$this->namespace.'Entity\Product\Manager', 'product'],
+            [$this->namespace.'Entity\Product\Sku\Manager', 'sku'],
+            [$this->namespace.'Entity\Order\Manager', 'order'],
         ];
     }
 }
