@@ -11,8 +11,8 @@
 
 namespace Gpupo\SubmarinoSdk;
 
-use Gpupo\CommonSdk\ClientAbstract;
-use Gpupo\CommonSdk\ClientInterface;
+use Gpupo\CommonSdk\Client\ClientAbstract;
+use Gpupo\CommonSdk\Client\ClientInterface;
 
 class Client extends ClientAbstract implements ClientInterface
 {
