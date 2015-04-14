@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "93622ff2ab0b15affee76f119f5b9a47",
+    "hash": "13a8416e0c8afd13709b45bf14d00055",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -500,16 +500,16 @@
         },
         {
             "name": "gpupo/common-sdk",
-            "version": "1.3",
+            "version": "1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gpupo/common-sdk.git",
-                "reference": "96c53a239262e54145706bdae790c0643958ce3a"
+                "reference": "77366d6038a762b7a726d6a9c51cd44b8996010a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gpupo/common-sdk/zipball/96c53a239262e54145706bdae790c0643958ce3a",
-                "reference": "96c53a239262e54145706bdae790c0643958ce3a",
+                "url": "https://api.github.com/repos/gpupo/common-sdk/zipball/77366d6038a762b7a726d6a9c51cd44b8996010a",
+                "reference": "77366d6038a762b7a726d6a9c51cd44b8996010a",
                 "shasum": ""
             },
             "require": {
@@ -541,7 +541,7 @@
             "keywords": [
                 "sdk"
             ],
-            "time": "2015-04-10 20:05:13"
+            "time": "2015-04-14 14:38:50"
         },
         {
             "name": "psr/log",
