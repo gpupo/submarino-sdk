@@ -27,22 +27,15 @@ class Client extends ClientAbstract implements ClientInterface
             'cacheTTL'      => 3600,
         ];
     }
-
-    protected function factoryTransport()
+    
+    protected function renderAuthorization()
     {
-        $transport = parent::factoryTransport();
-
         $token = $this->getOptions()->get('token');
 
         if (empty($token)) {
             throw new \InvalidArgumentException('Token nao informado');
         }
-
-        $transport->setOption(CURLOPT_HTTPHEADER, array(
-            'Authorization: Basic '.base64_encode($token.':'),
-            'Content-Type: application/json;charset=UTF-8',
-        ));
-
-        return $transport;
+        
+        return 'Authorization: Basic '.base64_encode($token.':');
     }
 }
