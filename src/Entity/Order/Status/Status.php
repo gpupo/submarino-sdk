@@ -19,9 +19,12 @@ class Status extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'status'    => 'string',
-            'shipped'   => 'object',
-            'delivered' => 'object',
+            'invoiced'           => 'object',
+            'shipped'            => 'object',
+            'shipmentException'  => 'object',
+            'delivered'          => 'object',
+            'unavailable'        => 'object',
+            'status'             => 'string',
         ];
     }
 
@@ -33,11 +36,17 @@ class Status extends EntityAbstract implements EntityInterface
     public function setStatus($status)
     {
         switch ($status) {
+            case 'INVOICED':
+                $this->getInvoiced()->setRequired();
+                break;
             case 'SHIPPED':
                 $this->getShipped()->setRequired();
                 break;
             case 'DELIVERED':
                 $this->getDelivered()->setRequired();
+                break;
+            case 'UNAVAILABLE':
+                $this->getUnavailable()->setRequired();
                 break;
         }
 
