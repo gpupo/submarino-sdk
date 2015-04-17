@@ -208,14 +208,16 @@ Rode os testes localmente:
 
 ---
 
-## Propriedades (Testdox)
+# Propriedades dos objetos (Testdox)
 
 <!--
 A lista abaixo é gerada a partir da saída da execução dos testes, com o seguinte comando:
 
-phpunit --testdox | grep -vi php |  sed "s/.*\[/-&/" | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/.*Gpupo.*/&\'$'\n/g' > Resources/logs/testdox.txt
+phpunit --testdox | grep -vi php |  sed "s/.*\[/-&/" | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/Gpupo\\Tests\\SubmarinoSdk\\/### /g' > Resources/logs/testdox.txt
 -->
-Gpupo\Tests\SubmarinoSdk\Client
+
+
+### Client
 
 
 - [x] Gerencia uri de recurso
@@ -226,7 +228,7 @@ Gpupo\Tests\SubmarinoSdk\Client
 - [x] Atualiza estoque do sku informado
 - [x] Atualiza preco do sku informado
 
-Gpupo\Tests\SubmarinoSdk\Entity\Order\Customer\Customer
+### Entity\Order\Customer\Customer
 
 
 - [x] Cada cliente possui endereco de entrega como objeto
@@ -234,12 +236,12 @@ Gpupo\Tests\SubmarinoSdk\Entity\Order\Customer\Customer
 - [x] Cada cliente possui objeto pessoa fisica
 - [x] Cada cliente possui objeto pessoa juridica
 
-Gpupo\Tests\SubmarinoSdk\Entity\Order\Customer\Telephones\Telephones
+### Entity\Order\Customer\Telephones\Telephones
 
 
 - [x] Cada cliente possui colecao de telefones
 
-Gpupo\Tests\SubmarinoSdk\Entity\Order\Manager
+### Entity\Order\Manager
 
 
 - [x] Obtem lista pedidos
@@ -248,7 +250,7 @@ Gpupo\Tests\SubmarinoSdk\Entity\Order\Manager
 - [x] Atualiza dados de envio de um pedido
 - [x] Atualiza dados de entrega de um pedido
 
-Gpupo\Tests\SubmarinoSdk\Entity\Order\Order
+### Entity\Order\Order
 
 
 - [x] Cada item de uma lista e um objeto
@@ -256,12 +258,12 @@ Gpupo\Tests\SubmarinoSdk\Entity\Order\Order
 - [x] Cada pedido possui colecao de produtos
 - [x] Cada pedido possui objeto status
 
-Gpupo\Tests\SubmarinoSdk\Entity\Order\Products\Products
+### Entity\Order\Products\Products
 
 
 - [x] Cada produto e um objeto
 
-Gpupo\Tests\SubmarinoSdk\Entity\Order\Status\Status
+### Entity\Order\Status\Status
 
 
 - [x] Cada status pode ser impresso como string
@@ -281,14 +283,14 @@ Gpupo\Tests\SubmarinoSdk\Entity\Order\Status\Status
 - [x] Falha ao marcar como indisponivel sem possuir objeto unavailable valido
 - [x] Sucesso ao marcar como indisponivel informando objeto unavailable valido
 
-Gpupo\Tests\SubmarinoSdk\Entity\Product\Manager
+### Entity\Product\Manager
 
 
 - [x] Obtem lista de produtos cadastrados
 - [x] Recupera informacoes de um pedido especifico
 - [x] Gerencia update
 
-Gpupo\Tests\SubmarinoSdk\Entity\Product\Product
+### Entity\Product\Product
 
 
 - [x] Possui propriedades e objetos
@@ -298,14 +300,14 @@ Gpupo\Tests\SubmarinoSdk\Entity\Product\Product
 - [x] Possui objeto manufacturer
 - [x] Entrega json
 
-Gpupo\Tests\SubmarinoSdk\Entity\Product\Sku\Manager
+### Entity\Product\Sku\Manager
 
 
 - [x] Acesso a lista de skus cadastrados
 - [x] Acessa a informacoes de um sku
 - [x] Gerencia atualizacoes
 
-Gpupo\Tests\SubmarinoSdk\Entity\Product\Sku\Sku
+### Entity\Product\Sku\Sku
 
 
 - [x] Envia dados opcionais apenas se preenchidos
@@ -313,7 +315,7 @@ Gpupo\Tests\SubmarinoSdk\Entity\Product\Sku\Sku
 - [x] Sku possui objeto status
 - [x] Sku possui objeto stock
 
-Gpupo\Tests\SubmarinoSdk\Factory
+### Factory
 
 
 - [x] Centraliza acesso a managers
