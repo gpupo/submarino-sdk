@@ -27,7 +27,7 @@ class Client extends ClientAbstract implements ClientInterface
             'cacheTTL'      => 3600,
         ];
     }
-    
+
     protected function renderAuthorization()
     {
         $token = $this->getOptions()->get('token');
@@ -35,7 +35,7 @@ class Client extends ClientAbstract implements ClientInterface
         if (empty($token)) {
             throw new \InvalidArgumentException('Token nao informado');
         }
-        
+
         return 'Authorization: Basic '.base64_encode($token.':');
     }
 }
