@@ -19,4 +19,25 @@ class Factory extends FactoryAbstract
     {
         return '\Gpupo\SubmarinoSdk\Entity\\';
     }
+
+    protected function getSchema($namespace)
+    {
+        return [
+            'product' => [
+                'class'     => $namespace.'Product\Factory',
+                'method'    => 'factoryProduct',
+                'manager'   => $namespace.'Product\Manager',
+            ],
+            'sku' => [
+                'class'     => $namespace.'Product\Factory',
+                'method'    => 'factorySku',
+                'manager'   => $namespace.'Product\Sku\Manager',
+            ],
+            'order' => [
+                'class'     => $namespace.'Order\Factory',
+                'method'    => 'factoryOrder',
+                'manager'   => $namespace.'Order\Manager',
+            ],
+        ];
+    }
 }
