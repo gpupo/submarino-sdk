@@ -6,7 +6,7 @@
     "require": {
         "php": ">=5.4",
         "ext-curl" : "*",
-        "gpupo/common-sdk": "~1.4"
+        "gpupo/common-sdk": "~1.5.1"
     },
     "suggest": {
         "monolog/monolog": "Write Log messages"
@@ -23,11 +23,6 @@
     "autoload-dev": {
         "psr-4": {
             "Gpupo\\Tests\\SubmarinoSdk\\": "tests"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-develop": "2.1-dev"
         }
     },
     "config": {

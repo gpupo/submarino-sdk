@@ -1,7 +1,7 @@
 [![Build Status](https://secure.travis-ci.org/gpupo/submarino-sdk.png?branch=master)](http://travis-ci.org/gpupo/submarino-sdk)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gpupo/submarino-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gpupo/submarino-sdk/?branch=master)
 
-SDK Não Oficial para integração a partir de aplicações PHP com as APIs do Submarino Marketplace
+SDK Não Oficial para integração a partir de aplicações PHP com as APIs da B2W Marketplace (Submarino, Shoptime, Americanas.com)
 
 ## Documentação
 
@@ -126,8 +126,8 @@ foreach ($orderList as $order) {
    	$order->getStatus()->setStatus('DELIVERED')
    		->getDelivered()->setDeliveredCustomerDate(date('Y-m-d H:i:s'))
    		->setTrackingProtocol('RE983737722BR')
-        ->setEstimatedDelivery('2015-12-25 01:00:00');        
-	$manager->saveStatus($order);                
+        ->setEstimatedDelivery('2015-12-25 01:00:00');
+	$manager->saveStatus($order);
 }
 
 //Acessando informações de um pedido específico
@@ -141,11 +141,11 @@ echo $order->getStatus(); // PROCESSING
 //Movendo pedido de situação na B2W:
 $order->getStatus()->setStatus('PROCESSING');
 $manager->saveStatus($order);
-   	
+
 ```
 
 
----- 
+----
 
 
 * [Documentação oficial](https://api-sandbox.bonmarketplace.com.br/docs/)
@@ -163,12 +163,21 @@ Adicione o pacote ``submarino-sdk`` ao seu projeto utilizando [composer](http://
 
 ---
 
+## Contributors
+
+- [@gpupo](https://github.com/gpupo)
+- [@danielcosta](https://github.com/danielcosta)
+- [All Contributors](https://github.com/gpupo/submarino-sdk/contributors)
+
+---
+
+
 # Desenvolvimento
 
     git clone --depth=1  git@github.com:gpupo/submarino-sdk.git
 
     cd submarino-sdk;
-    
+
     composer install;
 
     phpunit;
@@ -191,7 +200,7 @@ Insira sua Token de Sandbox em ``phpunit.xml``:
 Rode os testes localmente:
 
     $ phpunit
-  
+
 
 ## Links
 
@@ -202,11 +211,14 @@ Rode os testes localmente:
 ## Propriedades (Testdox)
 
 <!--
-phpunit --tesdox | grep -vi php |  sed "s/.*\[/-&/" | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/.*Gpupo.*/&\'$'\n/g' 
--->
+A lista abaixo é gerada a partir da saída da execução dos testes, com o seguinte comando:
 
+phpunit --testdox | grep -vi php |  sed "s/.*\[/-&/" | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/.*Gpupo.*/&\'$'\n/g' > Resources/logs/testdox.txt
+-->
 Gpupo\Tests\SubmarinoSdk\Client
 
+
+- [x] Gerencia uri de recurso
 - [x] Acesso a lista de pedidos
 - [x] Acesso a lista de produtos
 - [x] Acesso a lista de skus
@@ -216,6 +228,7 @@ Gpupo\Tests\SubmarinoSdk\Client
 
 Gpupo\Tests\SubmarinoSdk\Entity\Order\Customer\Customer
 
+
 - [x] Cada cliente possui endereco de entrega como objeto
 - [x] Cada cliente possui colecao de telefones
 - [x] Cada cliente possui objeto pessoa fisica
@@ -223,9 +236,11 @@ Gpupo\Tests\SubmarinoSdk\Entity\Order\Customer\Customer
 
 Gpupo\Tests\SubmarinoSdk\Entity\Order\Customer\Telephones\Telephones
 
+
 - [x] Cada cliente possui colecao de telefones
 
 Gpupo\Tests\SubmarinoSdk\Entity\Order\Manager
+
 
 - [x] Obtem lista pedidos
 - [x] Recupera informacoes de um pedido especifico
@@ -235,25 +250,39 @@ Gpupo\Tests\SubmarinoSdk\Entity\Order\Manager
 
 Gpupo\Tests\SubmarinoSdk\Entity\Order\Order
 
-- [x] Cada item de uma lista é um objeto
+
+- [x] Cada item de uma lista e um objeto
 - [x] Cada pedido possui objeto cliente
 - [x] Cada pedido possui colecao de produtos
 - [x] Cada pedido possui objeto status
 
 Gpupo\Tests\SubmarinoSdk\Entity\Order\Products\Products
 
-- [x] Cada produto é um objeto
+
+- [x] Cada produto e um objeto
 
 Gpupo\Tests\SubmarinoSdk\Entity\Order\Status\Status
 
+
+- [x] Cada status pode ser impresso como string
+- [x] Cada status possui objeto invoiced
 - [x] Cada status possui objeto shipped
+- [x] Cada status possui objeto shipment exception
 - [x] Cada status possui objeto delivered
+- [x] Cada status possui objeto unavailable
+- [x] Falha ao marcar como faturado sem possuir objeto invoiced valido
+- [x] Sucesso ao marcar como faturado informando objeto invoiced valido
 - [x] Falha ao marcar como remetido sem possuir objeto shipped valido
 - [x] Sucesso ao marcar como remetido informando objeto shipped valido
+- [x] Falha ao marcar como falha na entrega sem possuir objeto shipment exception valido
+- [x] Sucesso ao marcar como falha na entrega informando objeto shipment exception valido
 - [x] Falha ao marcar como entregue sem possuir objeto delivered valido
 - [x] Sucesso ao marcar como entregue informando objeto delivered valido
+- [x] Falha ao marcar como indisponivel sem possuir objeto unavailable valido
+- [x] Sucesso ao marcar como indisponivel informando objeto unavailable valido
 
 Gpupo\Tests\SubmarinoSdk\Entity\Product\Manager
+
 
 - [x] Obtem lista de produtos cadastrados
 - [x] Recupera informacoes de um pedido especifico
@@ -261,7 +290,8 @@ Gpupo\Tests\SubmarinoSdk\Entity\Product\Manager
 
 Gpupo\Tests\SubmarinoSdk\Entity\Product\Product
 
-- [x] Possui propriedades é objetos
+
+- [x] Possui propriedades e objetos
 - [x] Possui nbm formatado
 - [x] Possui preco formatado
 - [x] Possui uma colecao de skus
@@ -270,7 +300,21 @@ Gpupo\Tests\SubmarinoSdk\Entity\Product\Product
 
 Gpupo\Tests\SubmarinoSdk\Entity\Product\Sku\Manager
 
+
 - [x] Acesso a lista de skus cadastrados
 - [x] Acessa a informacoes de um sku
 - [x] Gerencia atualizacoes
 
+Gpupo\Tests\SubmarinoSdk\Entity\Product\Sku\Sku
+
+
+- [x] Envia dados opcionais apenas se preenchidos
+- [x] Possui propriedade contendo url da imagem
+- [x] Sku possui objeto status
+- [x] Sku possui objeto stock
+
+Gpupo\Tests\SubmarinoSdk\Factory
+
+
+- [x] Centraliza acesso a managers
+- [x] Centraliza criacao de objetos
