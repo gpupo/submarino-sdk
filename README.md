@@ -211,11 +211,11 @@ Rode os testes localmente:
 # Propriedades dos objetos (Testdox)
 
 <!--
-A lista abaixo é gerada a partir da saída da execução dos testes, com o seguinte comando:
+Comando para geração da lista:
 
 phpunit --testdox | grep -vi php |  sed "s/.*\[/-&/" | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/Gpupo\\Tests\\SubmarinoSdk\\/### /g' > Resources/logs/testdox.txt
 -->
-
+A lista abaixo é gerada a partir da saída da execução dos testes:
 
 ### Client
 
