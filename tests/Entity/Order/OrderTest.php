@@ -64,5 +64,6 @@ class OrderTest extends OrderTestCaseAbstract
     {
         $status =  $order->getStatus();
         $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Status\Status', $status);
+        $this->assertArrayHasKey('status', $order->toStatus());
     }
 }

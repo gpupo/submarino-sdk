@@ -51,4 +51,22 @@ class SkuTest extends TestCaseAbstract
         $this->assertEquals($url, $sku->get('urlImage'));
         $this->assertEquals($url, $sku->getUrlImage());
     }
+
+    public function testSkuPossuiObjetoStatus()
+    {
+        $sku = new Sku();
+        $sku->setEnable(true);
+
+        $this->assertJson($sku->toJson('status'));
+        $this->assertJsonStringEqualsJsonString('{"enable":true}', $sku->toJson('status'));
+    }
+
+    public function testSkuPossuiObjetoStock()
+    {
+        $sku = new Sku();
+        $sku->setStockQuantity(500);
+
+        $this->assertJson($sku->toJson('stock'));
+        $this->assertJsonStringEqualsJsonString('{"quantity":500}', $sku->toJson('stock'));
+    }
 }
