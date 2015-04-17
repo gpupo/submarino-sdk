@@ -205,6 +205,8 @@ Rode os testes localmente:
 ## Links
 
 * [Submarino-sdk Composer Package](https://packagist.org/packages/gpupo/submarino-sdk) no packagist.org
+* [marketplace-bundle Composer Package](https://packagist.org/packages/gpupo/marketplace-bundle) - Integração deste pacote com Symfony2
+* [Outras SDKs para o Ecommerce do Brasil](https://github.com/gpupo/common-sdk)
 
 ---
 
