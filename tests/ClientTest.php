@@ -29,7 +29,7 @@ class ClientTest extends TestCaseAbstract
     public function testAcessoAListaDePedidos()
     {
         if (!$this->hasToken()) {
-            return $this->markTestIncomplete('API Token ausente');
+            return $this->markTestSkipped('API Token ausente');
         }
 
         $client = $this->factoryClient();
@@ -46,7 +46,7 @@ class ClientTest extends TestCaseAbstract
     public function testAcessoAListaDeProdutos()
     {
         if (!$this->hasToken()) {
-            return $this->markTestIncomplete('API Token ausente');
+            return $this->markTestSkipped('API Token ausente');
         }
 
         $client = $this->factoryClient();
@@ -65,7 +65,7 @@ class ClientTest extends TestCaseAbstract
     public function testAcessoAListaDeSkus()
     {
         if (!$this->hasToken()) {
-            return $this->markTestIncomplete('API Token ausente');
+            return $this->markTestSkipped('API Token ausente');
         }
 
         $client = $this->factoryClient();

@@ -19,7 +19,7 @@ class OrderTest extends OrderTestCaseAbstract
     public function testCadaItemDeUmaListaEUmObjeto()
     {
         if (!$this->hasToken()) {
-            return $this->markTestIncomplete('API Token ausente');
+            return $this->markTestSkipped('API Token ausente');
         }
 
         $list = $this->getList();

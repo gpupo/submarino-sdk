@@ -20,7 +20,7 @@ class ManagerTest extends TestCaseAbstract
     public function testObtemListaDeProdutosCadastrados()
     {
         if (!$this->hasToken()) {
-            return $this->markTestIncomplete('API Token ausente');
+            return $this->markTestSkipped('API Token ausente');
         }
 
         $manager = new Manager($this->factoryClient());
@@ -37,7 +37,7 @@ class ManagerTest extends TestCaseAbstract
     public function testRecuperaInformacoesDeUmPedidoEspecifico($list)
     {
         if (!$this->hasToken()) {
-            return $this->markTestIncomplete('API Token ausente');
+            return $this->markTestSkipped('API Token ausente');
         }
 
         $manager = new Manager($this->factoryClient());
@@ -55,7 +55,7 @@ class ManagerTest extends TestCaseAbstract
     public function testGerenciaUpdate()
     {
         if (!$this->hasToken()) {
-            return $this->markTestIncomplete('API Token ausente');
+            return $this->markTestSkipped('API Token ausente');
         }
 
         $manager = new Manager($this->factoryClient());

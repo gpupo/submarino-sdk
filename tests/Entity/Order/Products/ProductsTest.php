@@ -18,7 +18,7 @@ class ProductsTest extends OrderTestCaseAbstract
     public function testCadaProdutoEUmObjeto()
     {
         if (!$this->hasToken()) {
-            return $this->markTestIncomplete('API Token ausente');
+            return $this->markTestSkipped('API Token ausente');
         }
 
         foreach ($this->getList() as $order) {
