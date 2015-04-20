@@ -25,12 +25,11 @@ class Factory extends FactoryAbstract
         $this->client =  new Client($clientOptions, $this->logger);
     }
 
-    protected function getSchema($namespace)
+    protected function getSchema($namespace = null)
     {
         return [
             'product' => [
-                'class'     => $namespace.'Product\Factory',
-                'method'    => 'factoryProduct',
+                'class'     => $namespace.'Product\Product',
                 'manager'   => $namespace.'Product\Manager',
             ],
             'sku' => [
@@ -39,8 +38,7 @@ class Factory extends FactoryAbstract
                 'manager'   => $namespace.'Product\Sku\Manager',
             ],
             'order' => [
-                'class'     => $namespace.'Order\Factory',
-                'method'    => 'factoryOrder',
+                'class'     => $namespace.'Order\Order',
                 'manager'   => $namespace.'Order\Manager',
             ],
         ];
