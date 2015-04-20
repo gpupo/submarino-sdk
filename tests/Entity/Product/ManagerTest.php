@@ -34,7 +34,7 @@ class ManagerTest extends TestCaseAbstract
     /**
      * @depends testObtemListaDeProdutosCadastrados
      */
-    public function testRecuperaInformacoesDeUmPedidoEspecifico($list)
+    public function testRecuperaInformacoesDeUmProdutoEspecifico($list)
     {
         if (!$this->hasToken()) {
             return $this->markTestSkipped('API Token ausente');
