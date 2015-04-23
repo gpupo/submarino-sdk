@@ -18,7 +18,7 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
 {
     protected $entity;
 
-    public function fetch($offset = 1, $limit = 50, array $parameters = [])
+    public function fetch($offset = 0, $limit = 50, array $parameters = [])
     {
         $data = parent::fetch($offset, $limit, $parameters);
 
