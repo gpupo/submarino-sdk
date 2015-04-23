@@ -498,16 +498,16 @@
         },
         {
             "name": "gpupo/common-sdk",
-            "version": "1.6",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gpupo/common-sdk.git",
-                "reference": "93cd6c3f11b6b2db8a56b16199d0a79b450deab2"
+                "reference": "6bb70618d20b5d479ecbab022ed117dd27f0442e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gpupo/common-sdk/zipball/93cd6c3f11b6b2db8a56b16199d0a79b450deab2",
-                "reference": "93cd6c3f11b6b2db8a56b16199d0a79b450deab2",
+                "url": "https://api.github.com/repos/gpupo/common-sdk/zipball/6bb70618d20b5d479ecbab022ed117dd27f0442e",
+                "reference": "6bb70618d20b5d479ecbab022ed117dd27f0442e",
                 "shasum": ""
             },
             "require": {
@@ -520,11 +520,6 @@
                 "phpunit/phpunit": "~4.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Gpupo\\CommonSdk\\": "src",
@@ -539,7 +534,7 @@
             "keywords": [
                 "sdk"
             ],
-            "time": "2015-04-23 13:19:08"
+            "time": "2015-04-23 19:04:30"
         },
         {
             "name": "psr/log",
