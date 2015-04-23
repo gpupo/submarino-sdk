@@ -28,15 +28,15 @@ class Manager extends ManagerAbstract
 
     public function update(EntityInterface $entity, EntityInterface $existent)
     {
-        if ($this->atributesDiff($existent->getPrice(), $entity->getPrice(), ['listPrice', 'sellPrice'])) {
+        if ($this->attributesDiff($existent->getPrice(), $entity->getPrice(), ['listPrice', 'sellPrice'])) {
             $this->savePrice($entity);
         }
 
-        if ($this->atributesDiff($existent, $entity, ['stockQuantity'])) {
+        if ($this->attributesDiff($existent, $entity, ['stockQuantity'])) {
             $this->saveStock($entity);
         }
 
-        if ($this->atributesDiff($existent, $entity, ['enable'])) {
+        if ($this->attributesDiff($existent, $entity, ['enable'])) {
             $this->saveStatus($entity);
         }
 
