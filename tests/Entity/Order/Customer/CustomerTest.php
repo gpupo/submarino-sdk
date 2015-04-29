@@ -16,7 +16,7 @@ use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 class CustomerTest extends OrderTestCaseAbstract
 {
     public function testCadaClientePossuiEnderecoDeEntregaComoObjeto()
-    {
+    {        
         foreach ($this->getList() as $order) {
             $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\DeliveryAddress',
             $order->getCustomer()->getDeliveryAddress());

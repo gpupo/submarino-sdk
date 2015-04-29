@@ -25,16 +25,18 @@ abstract class OrderTestCaseAbstract extends TestCaseAbstract
 
     protected function getList()
     {
-        if (!$this->hasToken()) {
-            $list = [];
-            foreach ($this->dataProviderOrderCollection() as $array) {
-                $list[] = current($array);
-            }
+        /**
+          return $this->factoryManager()
 
-            return new Collection($list);
+            ->setDryRun($this->factoryResponseFromFixture('fixture/Orders.json'))
+            ->fetch();
+        */
+
+        foreach ($this->dataProviderOrderCollection() as $array) {
+            $list[] = current($array);
         }
 
-        return $this->factoryManager()->fetch();
+        return new Collection($list);
     }
 
     public function dataProviderOrderCollection()
