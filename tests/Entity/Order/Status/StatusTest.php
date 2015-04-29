@@ -22,7 +22,7 @@ class StatusTest extends OrderTestCaseAbstract
     public function testCadaStatusPodeSerImpressoComoString(Order $order)
     {
         $status =  $order->getStatus();
-        $this->assertEquals('PROCESSING', (string) $status);
+        $this->assertContains((string) $status, ['PROCESSING', 'DELIVERED']);
     }
 
     /**
