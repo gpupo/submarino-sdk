@@ -11,12 +11,24 @@
 
 namespace Gpupo\SubmarinoSdk\Entity;
 
+use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Entity\ManagerAbstract as CommonAbstract;
 use Gpupo\CommonSdk\Entity\ManagerInterface;
 
 abstract class ManagerAbstract extends CommonAbstract implements ManagerInterface
 {
-    protected $entity;
+    /**
+     * {@inheritDoc}
+     */
+    public function update(EntityInterface $entity, EntityInterface $existent)
+    {
+        $text = 'Chamada a Atualização de entity '.$this->entity;
+
+        return $this->log('debug', $text, [
+            'entity'    => $entity,
+            'existent'  => $existent,
+        ]);
+    }
 
     public function fetch($offset = 0, $limit = 50, array $parameters = [])
     {
