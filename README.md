@@ -3,6 +3,7 @@
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/baf451b6-4c13-4e84-ae29-c7db67c38b49/small.png)](https://insight.sensiolabs.com/projects/baf451b6-4c13-4e84-ae29-c7db67c38b49)
 [![Code Climate](https://codeclimate.com/repos/554bba72e30ba07c8a0050f3/badges/2930bbf5a5295c3e415c/gpa.svg)](https://codeclimate.com/repos/554bba72e30ba07c8a0050f3/feed)
 [![Test Coverage](https://codeclimate.com/repos/554bba72e30ba07c8a0050f3/badges/2930bbf5a5295c3e415c/coverage.svg)](https://codeclimate.com/repos/554bba72e30ba07c8a0050f3/coverage)
+[![Codacy Badge](https://www.codacy.com/project/badge/42d610984533411e9ee267c00106c38d)](https://www.codacy.com/app/g/submarino-sdk)
 
 SDK Não Oficial para integração a partir de aplicações PHP com as APIs da B2W Marketplace (Submarino, Shoptime, Americanas.com)
 
