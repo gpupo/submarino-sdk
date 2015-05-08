@@ -1,6 +1,8 @@
 [![Build Status](https://secure.travis-ci.org/gpupo/submarino-sdk.png?branch=master)](http://travis-ci.org/gpupo/submarino-sdk)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gpupo/submarino-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gpupo/submarino-sdk/?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/baf451b6-4c13-4e84-ae29-c7db67c38b49/small.png)](https://insight.sensiolabs.com/projects/baf451b6-4c13-4e84-ae29-c7db67c38b49)
+[![Code Climate](https://codeclimate.com/repos/554bba72e30ba07c8a0050f3/badges/2930bbf5a5295c3e415c/gpa.svg)](https://codeclimate.com/repos/554bba72e30ba07c8a0050f3/feed)
+[![Test Coverage](https://codeclimate.com/repos/554bba72e30ba07c8a0050f3/badges/2930bbf5a5295c3e415c/coverage.svg)](https://codeclimate.com/repos/554bba72e30ba07c8a0050f3/coverage)
 
 SDK Não Oficial para integração a partir de aplicações PHP com as APIs da B2W Marketplace (Submarino, Shoptime, Americanas.com)
 
@@ -258,8 +260,22 @@ A lista abaixo é gerada a partir da saída da execução dos testes:
 
 - [x] Cada item de uma lista e um objeto
 - [x] Cada pedido possui objeto cliente
+- [x] Cada pedido possui objeto com dados de cobrança
 - [x] Cada pedido possui colecao de produtos
 - [x] Cada pedido possui objeto status
+- [x] Possui loja de origem
+- [x] Possui valor total do pedido
+- [x] Possui valor total do frete
+- [x] Possui valor total de desconto
+- [x] Possui valor total de juros
+
+### Entity\Order\Payer\Payer
+
+
+- [x] Cada pagador possui endereco de cobrança como objeto
+- [x] Cada pagador possui colecao de telefones
+- [x] Cada pagador possui objeto pessoa fisica
+- [x] Cada pagador possui objeto pessoa juridica
 
 ### Entity\Order\Products\Products
 
