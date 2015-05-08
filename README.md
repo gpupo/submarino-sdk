@@ -9,6 +9,19 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs da B
 
 ## Documentação
 
+---
+
+### Comandos
+
+Lista de comandos disponíveis:
+
+    ./bin/main
+
+Você pode verificar suas credenciais Cnova na linha de comando:
+
+    ./bin/main credential
+
+---
 
 ### Uso de Factoy (novo)
 
