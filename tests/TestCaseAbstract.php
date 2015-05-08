@@ -41,6 +41,6 @@ abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
 
     public function dataProviderOrders()
     {
-        return $this->getResourceJson('fixture/Orders.json');
+        return $this->getResourceJson('fixture/Order/list.json');
     }
 }

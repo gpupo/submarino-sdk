@@ -11,7 +11,6 @@
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
 
-use Gpupo\Common\Entity\Collection;
 use Gpupo\SubmarinoSdk\Entity\Order\Manager;
 use Gpupo\SubmarinoSdk\Entity\Order\Order;
 use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
@@ -25,7 +24,7 @@ abstract class OrderTestCaseAbstract extends TestCaseAbstract
 
     protected function getList()
     {
-        $response = $this->factoryResponseFromFixture('fixture/Orders.json');
+        $response = $this->factoryResponseFromFixture('fixture/Order/list.json');
 
         return $this->factoryManager()->setDryRun($response)->fetch();
     }
@@ -33,7 +32,7 @@ abstract class OrderTestCaseAbstract extends TestCaseAbstract
     public function dataProviderOrderCollection()
     {
         $data = [];
-        foreach($this->getList() as $order) {
+        foreach ($this->getList() as $order) {
             $data[] = [$order];
         }
 

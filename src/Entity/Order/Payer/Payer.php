@@ -9,12 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Gpupo\SubmarinoSdk\Entity\Order\Customer;
+namespace Gpupo\SubmarinoSdk\Entity\Order\Payer;
 
-class Customer extends CustomerAbstract
+use Gpupo\SubmarinoSdk\Entity\Order\Customer\CustomerAbstract;
+
+class Payer extends CustomerAbstract
 {
     public function getSchema()
     {
-        return $this->factorySchema(['deliveryAddress']);
+        return $this->factorySchema(['billingAddress']);
     }
 }

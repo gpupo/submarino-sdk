@@ -9,41 +9,41 @@
  * file that was distributed with this source code.
  */
 
-namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\Customer;
+namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\Payer;
 
 use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 
-class CustomerTest extends OrderTestCaseAbstract
+class PayerTest extends OrderTestCaseAbstract
 {
-    public function testCadaClientePossuiEnderecoDeEntregaComoObjeto()
+    public function testCadaPagadorPossuiEnderecoDeCobrançaComoObjeto()
     {
         foreach ($this->getList() as $order) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\DeliveryAddress',
-            $order->getCustomer()->getDeliveryAddress());
+            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\BillingAddress',
+            $order->getPayer()->getBillingAddress());
         }
     }
 
-    public function testCadaClientePossuiColecaoDeTelefones()
+    public function testCadaPagadorPossuiColecaoDeTelefones()
     {
         foreach ($this->getList() as $order) {
             $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\Telephones\Telephones',
-            $order->getCustomer()->getTelephones());
+            $order->getPayer()->getTelephones());
         }
     }
 
-    public function testCadaClientePossuiObjetoPessoaFisica()
+    public function testCadaPagadorPossuiObjetoPessoaFisica()
     {
         foreach ($this->getList() as $order) {
             $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\Pf',
-            $order->getCustomer()->getPf());
+            $order->getPayer()->getPf());
         }
     }
 
-    public function testCadaClientePossuiObjetoPessoaJuridica()
+    public function testCadaPagadorPossuiObjetoPessoaJuridica()
     {
         foreach ($this->getList() as $order) {
             $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\Pj',
-            $order->getCustomer()->getPj());
+            $order->getPayer()->getPj());
         }
     }
 }

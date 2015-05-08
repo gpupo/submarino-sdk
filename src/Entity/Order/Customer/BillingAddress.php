@@ -11,10 +11,6 @@
 
 namespace Gpupo\SubmarinoSdk\Entity\Order\Customer;
 
-class Customer extends CustomerAbstract
+class BillingAddress extends DeliveryAddress
 {
-    public function getSchema()
-    {
-        return $this->factorySchema(['deliveryAddress']);
-    }
 }

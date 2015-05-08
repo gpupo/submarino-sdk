@@ -41,9 +41,40 @@
                     }
                 }
             },
+            "payer": {
+                "pf": {
+                    "cpf": "11111111111",
+                    "name": "Cliente de Teste SandBox11111111111"
+                },
+                "billingAddress": {
+                    "street": "Rua de teste sandbox",
+                    "number": "123",
+                    "additionalInfo": "Complemento de teste sandbox",
+                    "reference": "Referencia de teste sandbox",
+                    "neighborhood": "Bairro de Teste sandbox",
+                    "city": "RIO DE JANEIRO",
+                    "state": "RJ",
+                    "zipcode": "20081902"
+                },
+                "telephones": {
+                    "main": {
+                        "ddd": "21",
+                        "number": "23456789"
+                    },
+                    "secondary": {
+                        "ddd": "21",
+                        "number": "23456788"
+                    },
+                    "business": {
+                        "ddd": "21",
+                        "number": "23456787"
+                    }
+                }
+            },
             "totalAmount": 135.41,
             "totalFreight": 40,
             "totalDiscount": 0,
+            "totalInterest": 0,
             "products": [
                 {
                     "link": {
@@ -110,9 +141,40 @@
                     }
                 }
             },
+            "payer": {
+                "pf": {
+                    "cpf": "11111111111",
+                    "name": "Cliente de Teste SandBox11111111111"
+                },
+                "billingAddress": {
+                    "street": "Rua de teste sandbox",
+                    "number": "123",
+                    "additionalInfo": "Complemento de teste sandbox",
+                    "reference": "Referencia de teste sandbox",
+                    "neighborhood": "Bairro de Teste sandbox",
+                    "city": "RIO DE JANEIRO",
+                    "state": "RJ",
+                    "zipcode": "20081902"
+                },
+                "telephones": {
+                    "main": {
+                        "ddd": "21",
+                        "number": "23456789"
+                    },
+                    "secondary": {
+                        "ddd": "21",
+                        "number": "23456788"
+                    },
+                    "business": {
+                        "ddd": "21",
+                        "number": "23456787"
+                    }
+                }
+            },
             "totalAmount": 21,
             "totalFreight": 20,
             "totalDiscount": 0,
+            "totalInterest": 0,
             "products": [
                 {
                     "link": {

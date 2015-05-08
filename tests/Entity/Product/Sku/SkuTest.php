@@ -16,6 +16,11 @@ use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
 
 class SkuTest extends TestCaseAbstract
 {
+    public static function setUpBeforeClass()
+    {
+        self::displayClassDocumentation(new Sku());
+    }
+
     public function testEnviaDadosOpcionaisApenasSePreenchidos()
     {
         $sku = new Sku([

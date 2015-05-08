@@ -11,11 +11,17 @@
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Product;
 
+use Gpupo\SubmarinoSdk\Entity\Product\Product;
 use Gpupo\SubmarinoSdk\Factory;
 use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
 
 class ProductTest extends TestCaseAbstract
 {
+    public static function setUpBeforeClass()
+    {
+        self::displayClassDocumentation(new Product());
+    }
+
     protected function factory($data)
     {
         return Factory::getInstance()->createProduct($data);

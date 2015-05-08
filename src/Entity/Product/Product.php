@@ -16,11 +16,17 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 
 /**
  * @method string getId()
+ * @method setId(string $id)
  * @method string getName()
+ * @method setName(string $name)
  * @method Gpupo\SubmarinoSdk\Entity\Product\Sku getSku()
+ * @method setSku(Gpupo\SubmarinoSdk\Entity\Product\Sku $sku)
  * @method Gpupo\SubmarinoSdk\Entity\Product\Manufacturer getManufacturer()
+ * @method setManufacturer(Gpupo\SubmarinoSdk\Entity\Product\Manufacturer $manufacturer)
  * @method string getDeliveryType()
+ * @method setDeliveryType(string $deliveryType)
  * @method array getNbm()
+ * @method setNbm(array $nbm)
  */
 class Product extends EntityAbstract implements EntityInterface
 {

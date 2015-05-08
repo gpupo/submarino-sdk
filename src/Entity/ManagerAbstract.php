@@ -43,22 +43,6 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
         return;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @todo Tratar erros de execução que representem falha de rede e remoto
-     * mas que poderiam ser contornados com mais de uma tentativa de execução
-     */
-    protected function retry(\Exception $exception, $i)
-    {
-        if ($i <= 3 && $exception->getCode() >= 500) {
-            // faça alguma coisa ...
-        }
-
-        return false;
-    }
-
-
     public function findById($itemId)
     {
         $data = parent::findById($itemId);
