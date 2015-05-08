@@ -3,3 +3,4 @@ vendor
 phpunit.xml
 Resources/logs/*
 Resources/doc/*
+/build/
