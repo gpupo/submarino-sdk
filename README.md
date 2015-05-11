@@ -282,6 +282,9 @@ A lista abaixo é gerada a partir da saída da execução dos testes:
 - [x] Possui valor total do frete
 - [x] Possui valor total de desconto
 - [x] Possui valor total de juros
+- [x] Possui valor total do pedido descontado juros
+- [x] O total real contém produtos somado a frete menos o desconto
+- [x] O total real contém total menos juros
 
 ### Entity\Order\Payer\Payer
 
@@ -347,6 +350,13 @@ A lista abaixo é gerada a partir da saída da execução dos testes:
 - [x] Possui propriedade contendo url da imagem
 - [x] Sku possui objeto status
 - [x] Sku possui objeto stock
+
+
+### Entity\Product\Sku\Price
+
+
+- [x] Possui preço normal
+- [x] Possui preço com desconto
 
 ### Factory
 

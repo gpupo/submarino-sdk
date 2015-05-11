@@ -143,7 +143,7 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @depends testPossuiValorTotalDeJuros
      */
-    public function testOTotalRealÉProdutosSomadoAFreteMenosODesconto(Order $order)
+    public function testOTotalRealContémProdutosSomadoAFreteMenosODesconto(Order $order)
     {
         $this->assertEquals(bcadd(24.9,7.94,2), $order->getTotalReal(), 'Produto mais frete');
     }
@@ -151,7 +151,7 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @depends testPossuiValorTotalDeJuros
      */
-    public function testOTotalRealÉTotalMenosJuros(Order $order)
+    public function testOTotalRealContémTotalMenosJuros(Order $order)
     {
         $this->assertEquals(bcsub(33.58,0.74, 2), $order->getTotalReal(), 'Valor total menos o juros');
     }
