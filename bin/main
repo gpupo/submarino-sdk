@@ -11,11 +11,14 @@
  */
 require __DIR__.'/../vendor/autoload.php';
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Gpupo\SubmarinoSdk\Factory;
+
 
 $app = new Application();
 
@@ -37,14 +40,14 @@ $app->register('credential')
         }
     };
 
-    $token = $getParameter('token');    
+    $token = $getParameter('token');
     $sslVersion = $getParameter('sslVersion',  '(default SecureTransport)');
 
     if ($input->getOption('apiVersion')) {
         $version = $input->getOption('apiVersion');
     } else {
-        $versions = ['sandbox', 'api'];
-        $version = $dialog->askAndValidate($output, 'Version ([api, sandbox (default)]): ', function ($version) use ($versions) {
+        $versions = ['sandbox', 'marketplace'];
+        $version = $dialog->askAndValidate($output, 'Version ([marketplace, sandbox (default)]): ', function ($version) use ($versions) {
            if (!in_array($version, array_values($versions))) {
                throw new \InvalidArgumentException(sprintf('Version "%s" is invalid.', $version));
            }
@@ -60,8 +63,11 @@ $app->register('credential')
         'sslVersion'    => $sslVersion,
     ];
 
+    $log = new Logger('credential');
+    $log->pushHandler(new StreamHandler('php://stdout', Logger::INFO));
+
     $factory = Factory::getInstance();
-    $factory->setup($options);
+    $factory->setup($options, $log);
 
     $productManager = $factory->factoryManager('product');
 

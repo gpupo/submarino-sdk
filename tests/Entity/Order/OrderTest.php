@@ -113,11 +113,46 @@ class OrderTest extends OrderTestCaseAbstract
         $this->assertEquals(4, $order->getTotalDiscount());
     }
 
-    /**
-     * @depends testPossuiLojaDeOrigem
-     */
-    public function testPossuiValorTotalDeJuros(Order $order)
+
+    protected function factoryInterestOrder()
     {
-        $this->assertEquals(2, $order->getTotalInterest());
+        $response = $this->factoryResponseFromFixture('fixture/Order/interest.json');
+
+        return $this->factoryManager()->setDryRun($response)->findById(381264028);
+    }
+
+    public function testPossuiValorTotalDeJuros()
+    {
+        $order = $this->factoryInterestOrder();
+        $this->assertEquals(33.58, $order->getTotalAmount());
+        $this->assertEquals(7.94, $order->getTotalFreight());
+        $this->assertEquals(0, $order->getTotalDiscount());
+        $this->assertEquals(0.74, $order->getTotalInterest());
+
+        return $order;
+    }
+
+    /**
+     * @depends testPossuiValorTotalDeJuros
+     */
+    public function testPossuiValorTotalDoPedidoDescontadoJuros(Order $order)
+    {
+        $this->assertEquals('32.84', $order->getTotalReal(), 'Valor total esperado');
+    }
+
+    /**
+     * @depends testPossuiValorTotalDeJuros
+     */
+    public function testOTotalRealÉProdutosSomadoAFreteMenosODesconto(Order $order)
+    {
+        $this->assertEquals(bcadd(24.9,7.94,2), $order->getTotalReal(), 'Produto mais frete');
+    }
+
+    /**
+     * @depends testPossuiValorTotalDeJuros
+     */
+    public function testOTotalRealÉTotalMenosJuros(Order $order)
+    {
+        $this->assertEquals(bcsub(33.58,0.74, 2), $order->getTotalReal(), 'Valor total menos o juros');
     }
 }

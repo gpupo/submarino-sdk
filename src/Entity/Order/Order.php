@@ -73,4 +73,9 @@ class Order extends EntityAbstract implements EntityInterface
     {
         return $this->piece('status');
     }
+
+    public function getTotalReal()
+    {
+        return bcsub($this->getTotalAmount(),$this->getTotalInterest(), 2);
+    }
 }
