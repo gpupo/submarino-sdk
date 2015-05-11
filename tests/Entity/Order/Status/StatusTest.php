@@ -12,10 +12,16 @@
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\Status;
 
 use Gpupo\SubmarinoSdk\Entity\Order\Order;
+use Gpupo\SubmarinoSdk\Entity\Order\Status\Status;
 use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 
 class StatusTest extends OrderTestCaseAbstract
 {
+    public static function setUpBeforeClass()
+    {
+        self::displayClassDocumentation(new Status());
+    }
+
     /**
      * @dataProvider dataProviderOrderCollection
      */
