@@ -113,7 +113,6 @@ class OrderTest extends OrderTestCaseAbstract
         $this->assertEquals(4, $order->getTotalDiscount());
     }
 
-
     protected function factoryInterestOrder()
     {
         $response = $this->factoryResponseFromFixture('fixture/Order/interest.json');
@@ -145,7 +144,7 @@ class OrderTest extends OrderTestCaseAbstract
      */
     public function testOTotalRealContémProdutosSomadoAFreteMenosODesconto(Order $order)
     {
-        $this->assertEquals(bcadd(24.9,7.94,2), $order->getTotalReal(), 'Produto mais frete');
+        $this->assertEquals(bcadd(24.9, 7.94, 2), $order->getTotalReal(), 'Produto mais frete');
     }
 
     /**
@@ -153,6 +152,6 @@ class OrderTest extends OrderTestCaseAbstract
      */
     public function testOTotalRealContémTotalMenosJuros(Order $order)
     {
-        $this->assertEquals(bcsub(33.58,0.74, 2), $order->getTotalReal(), 'Valor total menos o juros');
+        $this->assertEquals(bcsub(33.58, 0.74, 2), $order->getTotalReal(), 'Valor total menos o juros');
     }
 }

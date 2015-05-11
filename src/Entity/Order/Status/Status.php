@@ -15,18 +15,18 @@ use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
 /**
-* @method Gpupo\SubmarinoSdk\Entity\Order\Status\Invoiced getInvoiced()
-* @method setInvoiced(Gpupo\SubmarinoSdk\Entity\Order\Status\Invoiced $invoiced)
-* @method Gpupo\SubmarinoSdk\Entity\Order\Status\Shipped getShipped()
-* @method setShipped(Gpupo\SubmarinoSdk\Entity\Order\Status\Shipped $shipped)
-* @method Gpupo\SubmarinoSdk\Entity\Order\Status\ShipmentException getShipmentException()
-* @method setShipmentException(Gpupo\SubmarinoSdk\Entity\Order\Status\ShipmentException $shipmentException)
-* @method Gpupo\SubmarinoSdk\Entity\Order\Status\Delivered getDelivered()
-* @method setDelivered(Gpupo\SubmarinoSdk\Entity\Order\Status\Delivered $delivered)
-* @method Gpupo\SubmarinoSdk\Entity\Order\Status\Unavailable getUnavailable()
-* @method setUnavailable(Gpupo\SubmarinoSdk\Entity\Order\Status\Unavailable $unavailable)
-* @method string getStatus()
-* @method setStatus(string $status)
+ * @method Gpupo\SubmarinoSdk\Entity\Order\Status\Invoiced getInvoiced()
+ * @method setInvoiced(Gpupo\SubmarinoSdk\Entity\Order\Status\Invoiced $invoiced)
+ * @method Gpupo\SubmarinoSdk\Entity\Order\Status\Shipped getShipped()
+ * @method setShipped(Gpupo\SubmarinoSdk\Entity\Order\Status\Shipped $shipped)
+ * @method Gpupo\SubmarinoSdk\Entity\Order\Status\ShipmentException getShipmentException()
+ * @method setShipmentException(Gpupo\SubmarinoSdk\Entity\Order\Status\ShipmentException $shipmentException)
+ * @method Gpupo\SubmarinoSdk\Entity\Order\Status\Delivered getDelivered()
+ * @method setDelivered(Gpupo\SubmarinoSdk\Entity\Order\Status\Delivered $delivered)
+ * @method Gpupo\SubmarinoSdk\Entity\Order\Status\Unavailable getUnavailable()
+ * @method setUnavailable(Gpupo\SubmarinoSdk\Entity\Order\Status\Unavailable $unavailable)
+ * @method string getStatus()
+ * @method setStatus(string $status)
  */
 class Status extends EntityAbstract implements EntityInterface
 {
