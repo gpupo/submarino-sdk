@@ -11,22 +11,39 @@
 
 namespace Gpupo\Tests\SubmarinoSdk;
 
-use Gpupo\SubmarinoSdk\Client;
+use Gpupo\SubmarinoSdk\Factory;
 use Gpupo\Tests\CommonSdk\TestCaseAbstract as CommonSdkTestCaseAbstract;
 
 abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
 {
+    private $factory;
+
+    protected function getResourcesPath()
+    {
+        return dirname(dirname(__FILE__)).'/Resources/';
+    }
+
+    protected function getOptions()
+    {
+        return [
+            'token'             => $this->getConstant('API_TOKEN'),
+            'verbose'           => $this->getConstant('VERBOSE'),
+            'registerPath'      => $this->getConstant('REGISTER_PATH'),
+        ];
+    }
+
+    protected function getFactory()
+    {
+        if (!$this->factory) {
+            $this->factory = new Factory($this->getOptions(), $this->getLogger());
+        }
+
+        return $this->factory;
+    }
+
     public function factoryClient()
     {
-        $client = Client::getInstance()
-            ->setOptions([
-                'token'     => $this->getConstant('API_TOKEN'),
-                'verbose'   => $this->getConstant('VERBOSE'),
-            ]);
-
-        $client->setLogger($this->getLogger());
-
-        return $client;
+        return $this->getFactory()->getClient();
     }
 
     public function dataProviderProducts()

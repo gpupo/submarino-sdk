@@ -113,13 +113,6 @@ class OrderTest extends OrderTestCaseAbstract
         $this->assertEquals(4, $order->getTotalDiscount());
     }
 
-    protected function factoryInterestOrder()
-    {
-        $response = $this->factoryResponseFromFixture('fixture/Order/interest.json');
-
-        return $this->factoryManager()->setDryRun($response)->findById(381264028);
-    }
-
     public function testPossuiValorTotalDeJuros()
     {
         $order = $this->factoryInterestOrder();

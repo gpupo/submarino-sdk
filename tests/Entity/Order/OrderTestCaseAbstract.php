@@ -22,7 +22,7 @@ abstract class OrderTestCaseAbstract extends TestCaseAbstract
         return new Manager($this->factoryClient());
     }
 
-    protected function getList()
+    public function getList()
     {
         $response = $this->factoryResponseFromFixture('fixture/Order/list.json');
 
@@ -37,5 +37,12 @@ abstract class OrderTestCaseAbstract extends TestCaseAbstract
         }
 
         return $data;
+    }
+
+    protected function factoryInterestOrder()
+    {
+        $response = $this->factoryResponseFromFixture('fixture/Order/interest.json');
+
+        return $this->factoryManager()->setDryRun($response)->findById(381264028);
     }
 }

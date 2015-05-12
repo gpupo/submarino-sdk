@@ -11,6 +11,8 @@
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
 
+use Gpupo\SubmarinoSdk\Entity\Order\Order;
+
 class ManagerTest extends OrderTestCaseAbstract
 {
     public function testObtemListaPedidos()
@@ -22,116 +24,72 @@ class ManagerTest extends OrderTestCaseAbstract
         return $list;
     }
 
-    /**
-     * @depends testObtemListaPedidos
-     */
-    public function testRecuperaInformacoesDeUmPedidoEspecifico($list)
+    public function testRecuperaInformacoesDeUmPedidoEspecifico()
     {
-        if (!$this->hasToken()) {
-            return $this->markTestSkipped('API Token ausente');
-        }
+        $response = $this->factoryResponseFromFixture('fixture/Order/detail.json');
+        $order = $this->factoryManager()->setDryRun($response)->findById(589);
+        $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Order', $order);
+        $this->assertEquals(589, $order->getId());
+        $this->assertEquals('03-589-01', $order->getSiteId());
+        $this->assertEquals('SUBMARINO', $order->getStore());
+        $this->assertEquals('APROVED', $order->getStatus());
 
-        foreach ($list as $order) {
-            $info = $this->factoryManager()->findById($order->getId());
-
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Order',
-            $info);
-
-            $this->assertEquals($order->getId(), $info->getId());
-            $this->assertEquals($order->getSiteId(), $info->getSiteId());
-            $this->assertEquals($order->getStore(), $info->getStore());
-            $this->assertEquals($order->getStatus(), $info->getStatus());
-        }
+        return $order;
     }
 
     /**
-     * @depends testObtemListaPedidos
+     * @depends testRecuperaInformacoesDeUmPedidoEspecifico
      */
-    public function testAtualizaStatusDeUmPedido($list)
+    public function testAtualizaStatusDeUmPedido(Order $order)
     {
-        if (!$this->hasToken()) {
-            return $this->markTestSkipped('API Token ausente');
-        }
-
         $flux = [
             'APROVED'       => 'PROCESSING',
         ];
 
-        $i = 0;
-        foreach ($list as $order) {
-            $i++;
-            $manager = $this->factoryManager();
-            $currentStatus = $order->getStatus()->__toString();
-            if (array_key_exists($currentStatus, $flux)) {
-                $newStatus = $flux[$currentStatus];
-                $order->getStatus()->setStatus($newStatus);
-                $this->assertTrue($manager->saveStatus($order));
-                $orderUpdated = $manager->findById($order->getId());
+        $manager = $this->factoryManager()->setDryRun();
+        $currentStatus = $order->getStatus()->__toString();
+        $newStatus = $flux[$currentStatus];
+        $order->getStatus()->setStatus($newStatus);
+        $this->assertTrue($manager->saveStatus($order));
 
-                $this->assertEquals($newStatus, $orderUpdated->getStatus()->__toString());
-            }
-        }
-
-        if ($i < 1) {
-            $this->markTestSkipped('Sem Pedidos para atualizar');
-        }
+        return $order;
     }
 
     /**
-     * @depends testObtemListaPedidos
+     * @depends testAtualizaStatusDeUmPedido
      */
-    public function testAtualizaDadosDeEnvioDeUmPedido($list)
+    public function testAtualizaDadosDeEnvioDeUmPedido(Order $order)
     {
-        if (!$this->hasToken()) {
-            return $this->markTestSkipped('API Token ausente');
-        }
-
         $flux = [
             'PROCESSING' => 'SHIPPED',
         ];
 
-        $manager = $this->factoryManager();
+        $manager = $this->factoryManager()->setDryRun();
+        $currentStatus = $order->getStatus()->__toString();
+        $newStatus = $flux[$currentStatus];
+        $order->getStatus()->setStatus($newStatus)->getShipped()
+            ->setEstimatedDelivery('2014-12-01 10:00:00')
+            ->setDeliveredCarrierDate(date('Y-m-d H:i:s'));
 
-        foreach ($list as $order) {
-            $currentStatus = $order->getStatus()->__toString();
-            if (array_key_exists($currentStatus, $flux)) {
-                $newStatus = $flux[$currentStatus];
-                $order->getStatus()->setStatus($newStatus)->getShipped()
-                    ->setEstimatedDelivery('2014-12-01 10:00:00')
-                    ->setDeliveredCarrierDate(date('Y-m-d H:i:s'));
+        $this->assertTrue($manager->saveStatus($order));
 
-                $this->assertTrue($manager->saveStatus($order));
-                $orderUpdated = $manager->findById($order->getId());
-
-                $this->assertEquals($newStatus, $orderUpdated->getStatus()->__toString());
-            }
-        }
+        return $order;
     }
-    /**
-     * @depends testObtemListaPedidos
-     */
-    public function testAtualizaDadosDeEntregaDeUmPedido($list)
-    {
-        if (!$this->hasToken()) {
-            return $this->markTestSkipped('API Token ausente');
-        }
 
+    /**
+     * @depends testAtualizaDadosDeEnvioDeUmPedido
+     */
+    public function testAtualizaDadosDeEntregaDeUmPedido(Order $order)
+    {
         $flux = [
             'SHIPPED' => 'DELIVERED',
         ];
 
-        $manager = $this->factoryManager();
-
-        foreach ($list as $order) {
-            $currentStatus = $order->getStatus()->__toString();
-            if (array_key_exists($currentStatus, $flux)) {
-                $newStatus = $flux[$currentStatus];
-                $order->getStatus()->setStatus($newStatus)
-                    ->getDelivered()->setDeliveredCustomerDate(date('Y-m-d H:i:s'));
-                $this->assertTrue($manager->saveStatus($order));
-                $orderUpdated = $manager->findById($order->getId());
-                $this->assertEquals($newStatus, $orderUpdated->getStatus()->__toString());
-            }
-        }
+        $manager = $this->factoryManager()->setDryRun();
+        $currentStatus = $order->getStatus()->__toString();
+        $newStatus = $flux[$currentStatus];
+        $order->getStatus()->setStatus($newStatus)
+            ->getDelivered()->setDeliveredCustomerDate(date('Y-m-d H:i:s'));
+        $this->assertTrue($manager->saveStatus($order));
     }
 }

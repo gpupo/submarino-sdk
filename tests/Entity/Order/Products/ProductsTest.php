@@ -11,16 +11,18 @@
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\Products;
 
+use Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Product;
 use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 
 class ProductsTest extends OrderTestCaseAbstract
 {
-    public function testCadaProdutoEUmObjeto()
+    public static function setUpBeforeClass()
     {
-        if (!$this->hasToken()) {
-            return $this->markTestSkipped('API Token ausente');
-        }
+        self::displayClassDocumentation(new Product());
+    }
 
+    public function testCadaPedidoPossuiUmaColeçãoDeObjetosProduto()
+    {
         foreach ($this->getList() as $order) {
             foreach ($order->getProducts() as $product) {
                 $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Product',

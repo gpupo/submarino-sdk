@@ -14,6 +14,18 @@ namespace Gpupo\SubmarinoSdk\Entity\Order\Products\Product;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
+/**
+ * @method Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Link getLink()
+ * @method setLink(Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Link $link)
+ * @method integer getQuantity()
+ * @method setQuantity(integer $quantity)
+ * @method float getPrice()
+ * @method setPrice(float $price)
+ * @method float getFreight()
+ * @method setFreight(float $freight)
+ * @method float getDiscount()
+ * @method setDiscount(float $discount)
+ */
 class Product extends EntityAbstract implements EntityInterface
 {
     public function getSchema()
