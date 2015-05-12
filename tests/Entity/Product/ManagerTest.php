@@ -17,53 +17,41 @@ use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
 
 class ManagerTest extends TestCaseAbstract
 {
-    public function testObtemListaDeProdutosCadastrados()
+    protected function getManager($response = null)
     {
-        if (!$this->hasToken()) {
-            return $this->markTestSkipped('API Token ausente');
-        }
-
-        $manager = new Manager($this->factoryClient());
-        $list = $manager->fetch();
-        $this->assertInstanceOf('\Gpupo\Common\Entity\CollectionInterface',
-            $list);
-
-        return $list;
+        return $this->getFactory()->factoryManager('product')->setDryRun($response);
     }
 
-    /**
-     * @depends testObtemListaDeProdutosCadastrados
-     */
-    public function testRecuperaInformacoesDeUmProdutoEspecifico($list)
+    public function testObtemListaDeProdutosCadastrados()
     {
-        if (!$this->hasToken()) {
-            return $this->markTestSkipped('API Token ausente');
+        $response = $this->factoryResponseFromFixture('fixture/Product/list.json');
+        $list = $this->getManager($response)->fetch();
+        $this->assertInstanceOf('\Gpupo\Common\Entity\CollectionInterface', $list);
+
+        foreach($list as $product) {
+            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Product', $product);
         }
+    }
 
-        $manager = new Manager($this->factoryClient());
+    protected function factoryDetail()
+    {
+        $response = $this->factoryResponseFromFixture('fixture/Product/detail.json');
 
-        foreach ($list as $product) {
-            $info = $manager->findById($product->getId());
+        return $this->getManager($response)->findById(9474);
+    }
 
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Product',
-            $info);
-
-            $this->assertEquals($product->getId(), $info->getId());
-        }
+    public function testRecuperaInformacoesDeUmProdutoEspecifico()
+    {
+        $product = $this->factoryDetail();
+        $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Product', $product);
+        $this->assertEquals($product->getId(), 9474);
     }
 
     public function testGerenciaUpdate()
     {
-        if (!$this->hasToken()) {
-            return $this->markTestSkipped('API Token ausente');
-        }
+        $product = $this->factoryDetail();
+        $manager = $this->getManager();
 
-        $manager = new Manager($this->factoryClient());
-
-        foreach ($this->dataProviderProducts() as $array) {
-            $data = current($array);
-            $product = Factory::factoryProduct($data);
-            $this->assertTrue($manager->save($product), $product);
-        }
+        $this->assertTrue($manager->save($product));
     }
 }

@@ -48,12 +48,12 @@ abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
 
     public function dataProviderProducts()
     {
-        return $this->getResourceJson('fixture/Products.json');
+        return $this->getResourceJson('fixture/Product/Products.json');
     }
 
     public function dataProviderSkus()
     {
-        return $this->getResourceJson('fixture/Skus.json');
+        return $this->getResourceJson('fixture/Product/Skus.json');
     }
 
     public function dataProviderOrders()
