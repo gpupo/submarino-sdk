@@ -140,7 +140,17 @@ class OrderTest extends OrderTestCaseAbstract
      */
     public function testOTotalRealContémProdutosSomadoAFreteMenosODesconto(Order $order)
     {
-        $this->assertEquals(bcadd(24.9, 7.94, 2), $order->getTotalReal(), 'Produto mais frete');
+        $total = bcadd(24.9, 7.94, 2);
+        $this->assertNotEquals($order->getTotalAmount(), $order->getTotalReal());
+        $this->assertEquals($total, $order->getTotalReal(), 'Produto mais frete');
+    }
+
+    public function testOTotalRealPossuiMesmoValorDeTotalAmountSeNãoHouverJuros()
+    {
+        $order = $this->factoryInterestOrder();
+        $this->assertNotEquals($order->getTotalAmount(), $order->getTotalReal());
+        $order->setTotalInterest(0);
+        $this->assertEquals($order->getTotalAmount(), $order->getTotalReal());
     }
 
     /**
