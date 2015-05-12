@@ -1,0 +1,150 @@
+{
+    "skus": [
+        {
+            "id": "2",
+            "name": "90 ml",
+            "description": "Sutil e refinada, esta fragrância oriental possui uma combinação",
+            "ean": [
+                "3331430066043"
+            ],
+            "height": 1,
+            "width": 0.003333,
+            "length": 1,
+            "weight": 1,
+            "stockQuantity": 5,
+            "price": {
+                "listPrice": 94.41,
+                "sellPrice": 94.4
+            },
+            "marketStructure": {
+                "categoryId": 9999,
+                "subCategoryId": 9999,
+                "familyId": 9999,
+                "subFamilyId": 9999
+            },
+            "crossDocking": 0,
+            "link": {
+                "id": "1",
+                "rel": "product",
+                "href": "https://api-sandbox.bonmarketplace.com.br/product/1"
+            }
+        },
+        {
+            "id": "19978",
+            "name": "Hidratante Corporal Cocoa Butter Formula Lotion  Unissex 250ml Palmers",
+            "description": "Feito com manteiga de cacau pura, enriquecido com vitamina E, em uma base emoliente e calmante, que cura e suaviza a pele &aacute;spera e seca, suaviza marcas e tons de pele. Um excelente hidratante para o corpo todo e tamb&eacute;m ap&oacute;s o bronzeado.",
+            "ean": [
+                "10181041808"
+            ],
+            "height": 1,
+            "length": 1,
+            "weight": 0.75,
+            "stockQuantity": 8,
+            "enable": true,
+            "price": {
+                "listPrice": 57,
+                "sellPrice": 49.9
+            },
+            "marketStructure": {
+                "categoryId": 9999,
+                "subCategoryId": 9999,
+                "familyId": 9999,
+                "subFamilyId": 9999
+            },
+            "crossDocking": 0,
+            "link": {
+                "id": "19978",
+                "rel": "product",
+                "href": "https://api-sandbox.bonmarketplace.com.br/product/19978"
+            }
+        },
+        {
+            "id": "20490",
+            "name": "Difusor de aroma Para Carro Ch&aacute; Verde 10ml Antik",
+            "description": "Transforme o interior de seu carro em um universo prazeroso.A cole&ccedil;&atilde;o de Difusores de Aromas para Carros foi desenvolvida com ess&ecirc;ncias francesas, design sofisticado e discreto agradando a homens e mulheres.Todas as fragr&acirc;ncias s&atilde;o frescas. A qualidade dos perfumes aliada &agrave; efici&ecirc;ncia dos difusores Antik transformar&atilde;o o interior de seu carro em um universo prazeroso.Diferente de todos os perfumes de carro encontrados no mercado, os Difusores de Aromas para Carro da Antik foram desenvolvid",
+            "ean": [
+                "7899668902459"
+            ],
+            "height": 1,
+            "length": 1,
+            "weight": 0.1,
+            "stockQuantity": 3,
+            "enable": true,
+            "price": {
+                "listPrice": 57.33,
+                "sellPrice": 47.9
+            },
+            "marketStructure": {
+                "categoryId": 9999,
+                "subCategoryId": 9999,
+                "familyId": 9999,
+                "subFamilyId": 9999
+            },
+            "crossDocking": 0,
+            "link": {
+                "id": "20490",
+                "rel": "product",
+                "href": "https://api-sandbox.bonmarketplace.com.br/product/20490"
+            }
+        },
+        {
+            "id": "21258",
+            "name": "Espuma e Creme de Barbear Dove Men+Care Expert Shave Total Comfort Shave Cream Masculino 200ml Dove ",
+            "description": "O novo Dove Men+Care Expert Shave Total Comfort Shave Cream &eacute; ideal para um barbear com o cuidado e hidrata&ccedil;&atilde;o que a pele precisa. Promove um barbear f&aacute;cil.Clinicamente comprovado, Dove Men+Care Expert Shave &eacute; superior em hidrata&ccedil;&atilde;o da pele para um m&aacute;ximo cuidado ao barbear. &Eacute; a mais rica f&oacute;rmula de barbear de Dove Men+Care e com mais prote&ccedil;&atilde;o. Desenhado especialmente para a pele mais seca com a tecnologia patenteada DEFI amacia o pelo no contato e proporciona suave deslizamento do barbeado",
+            "ean": [
+                "11111342316"
+            ],
+            "height": 1,
+            "length": 1,
+            "weight": 0.5,
+            "stockQuantity": 7,
+            "enable": true,
+            "price": {
+                "listPrice": 124.14,
+                "sellPrice": 73
+            },
+            "marketStructure": {
+                "categoryId": 9999,
+                "subCategoryId": 9999,
+                "familyId": 9999,
+                "subFamilyId": 9999
+            },
+            "crossDocking": 0,
+            "link": {
+                "id": "21258",
+                "rel": "product",
+                "href": "https://api-sandbox.bonmarketplace.com.br/product/21258"
+            }
+        },
+        {
+            "id": "22026",
+            "name": "Perfume Black Xs L'Exc&egrave;s For Him Body Spray Masculino 250ml Paco Rabanne",
+            "description": "Black XS L'Exc&egrave;s encarna rock e excesso. Uma intensa, glamourosa, sensual e vibrante fragr&acirc;ncia... em excesso. A explos&atilde;o de um sofisticado, criativo e excessivo mundo do rock. Para um homem roqueiro e sensual, e com uma atitude irreverente e rebelde.Notas de sa&iacute;da: Lim&atilde;o da Cal&aacute;bria e lavanda.Notas de cora&ccedil;&atilde;o: Acordes de oz&ocirc;nio e chipre. Notas de fundo: &Acirc;mbar e patchouli.",
+            "ean": [
+                "3349668526406"
+            ],
+            "height": 1,
+            "length": 1,
+            "weight": 0.75,
+            "stockQuantity": 7,
+            "enable": true,
+            "price": {
+                "listPrice": 99,
+                "sellPrice": 99
+            },
+            "marketStructure": {
+                "categoryId": 9999,
+                "subCategoryId": 9999,
+                "familyId": 9999,
+                "subFamilyId": 9999
+            },
+            "crossDocking": 0,
+            "link": {
+                "id": "22026",
+                "rel": "product",
+                "href": "https://api-sandbox.bonmarketplace.com.br/product/22026"
+            }
+        }
+    ],
+    "total": 12036
+}
