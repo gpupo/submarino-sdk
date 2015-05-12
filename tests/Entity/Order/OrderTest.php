@@ -113,6 +113,9 @@ class OrderTest extends OrderTestCaseAbstract
         $this->assertEquals(4, $order->getTotalDiscount());
     }
 
+    /**
+     * @requires extension bcmath
+     */
     public function testPossuiValorTotalDeJuros()
     {
         $order = $this->factoryInterestOrder();
