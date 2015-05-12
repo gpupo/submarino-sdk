@@ -11,7 +11,6 @@
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Product\Sku;
 
-use Gpupo\SubmarinoSdk\Entity\Product\Sku\Manager;
 use Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku;
 use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
 

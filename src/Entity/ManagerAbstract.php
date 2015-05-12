@@ -17,9 +17,6 @@ use Gpupo\CommonSdk\Entity\ManagerInterface;
 
 abstract class ManagerAbstract extends CommonAbstract implements ManagerInterface
 {
-    /**
-     * {@inheritDoc}
-     */
     public function update(EntityInterface $entity, EntityInterface $existent)
     {
         $text = 'Chamada a Atualização de entity '.$this->entity;

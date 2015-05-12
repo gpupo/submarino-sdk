@@ -11,8 +11,6 @@
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Product;
 
-use Gpupo\SubmarinoSdk\Entity\Product\Factory;
-use Gpupo\SubmarinoSdk\Entity\Product\Manager;
 use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
 
 class ManagerTest extends TestCaseAbstract
@@ -28,7 +26,7 @@ class ManagerTest extends TestCaseAbstract
         $list = $this->getManager($response)->fetch();
         $this->assertInstanceOf('\Gpupo\Common\Entity\CollectionInterface', $list);
 
-        foreach($list as $product) {
+        foreach ($list as $product) {
             $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Product', $product);
         }
     }
