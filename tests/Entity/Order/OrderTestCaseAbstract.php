@@ -33,6 +33,7 @@ abstract class OrderTestCaseAbstract extends TestCaseAbstract
     {
         $data = [];
         foreach ($this->getList() as $order) {
+            $order->setLogger($this->getLogger());
             $data[] = [$order];
         }
 
