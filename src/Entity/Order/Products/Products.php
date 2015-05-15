@@ -11,18 +11,12 @@
 
 namespace Gpupo\SubmarinoSdk\Entity\Order\Products;
 
-use Gpupo\Common\Entity\CollectionAbstract;
+use Gpupo\CommonSdk\Entity\CollectionAbstract;
 
 class Products extends CollectionAbstract
 {
-    public function __construct(array $elements = array())
+    public function factoryElement($data)
     {
-        $list = [];
-
-        foreach ($elements as $product) {
-            $list[] = new Product\Product($product);
-        }
-
-        parent::__construct($list);
+        return new Product\Product($data);
     }
 }
