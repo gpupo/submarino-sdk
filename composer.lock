@@ -498,16 +498,16 @@
         },
         {
             "name": "gpupo/common-sdk",
-            "version": "1.8.16",
+            "version": "1.8.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gpupo/common-sdk.git",
-                "reference": "155efdbc6a511a77d7445f4bc632e4bb6f4da7ca"
+                "reference": "86e91ede1d3ad25fb283a1f467fb13a702d4eb6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gpupo/common-sdk/zipball/155efdbc6a511a77d7445f4bc632e4bb6f4da7ca",
-                "reference": "155efdbc6a511a77d7445f4bc632e4bb6f4da7ca",
+                "url": "https://api.github.com/repos/gpupo/common-sdk/zipball/86e91ede1d3ad25fb283a1f467fb13a702d4eb6f",
+                "reference": "86e91ede1d3ad25fb283a1f467fb13a702d4eb6f",
                 "shasum": ""
             },
             "require": {
@@ -535,7 +535,7 @@
             "keywords": [
                 "sdk"
             ],
-            "time": "2015-05-14 20:54:33"
+            "time": "2015-05-15 20:44:03"
         },
         {
             "name": "psr/log",
