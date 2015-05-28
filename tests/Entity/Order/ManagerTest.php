@@ -24,6 +24,14 @@ class ManagerTest extends OrderTestCaseAbstract
         return $list;
     }
 
+    public function testObtémAListaDePedidosRecémAprovadosEQueEsperamProcessamento()
+    {
+        $response = $this->factoryResponseFromFixture('fixture/Order/list.json');
+        $manager = $this->factoryManager()->setDryRun($response);
+        $list = $manager->fetchQuee();
+        $this->assertInstanceOf('\Gpupo\Common\Entity\CollectionInterface', $list);
+    }
+
     public function testRecuperaInformacoesDeUmPedidoEspecifico()
     {
         $response = $this->factoryResponseFromFixture('fixture/Order/detail.json');
