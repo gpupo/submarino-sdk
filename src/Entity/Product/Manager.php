@@ -43,7 +43,7 @@ class Manager extends ManagerAbstract
     {
         $manager = new SkuManager($this->getClient());
 
-        return $manager->save($sku);
+        return $manager->update($sku, $sku->getPrevious());
     }
 
     public function addSku(Product $product, Sku\Sku $sku)

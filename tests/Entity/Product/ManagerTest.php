@@ -51,5 +51,11 @@ class ManagerTest extends TestCaseAbstract
         $manager = $this->getManager();
 
         $this->assertTrue($manager->save($product));
+
+        $sku = $product->getSku()->current();
+        $previous = clone $sku;
+        $sku->setPrevious($previous);
+        
+        $this->assertTrue($manager->updateSku($sku));
     }
 }
