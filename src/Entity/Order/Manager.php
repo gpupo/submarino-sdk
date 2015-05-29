@@ -45,7 +45,7 @@ class Manager extends ManagerAbstract
      */
     public function fetchQueue($offset = 0, $limit = 50, array $parameters = [])
     {
-        return $this->fetch($offset, $limit, array_merge(['status' => 'APROVED'], $parameters));
+        return $this->fetch($offset, $limit, array_merge(['status' => 'APPROVED'], $parameters));
     }
 
     public function saveStatus(Order $order)
