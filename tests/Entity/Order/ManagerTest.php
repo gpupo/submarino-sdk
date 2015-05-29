@@ -28,7 +28,7 @@ class ManagerTest extends OrderTestCaseAbstract
     {
         $response = $this->factoryResponseFromFixture('fixture/Order/list.json');
         $manager = $this->factoryManager()->setDryRun($response);
-        $list = $manager->fetchQuee();
+        $list = $manager->fetchQueue();
         $this->assertInstanceOf('\Gpupo\Common\Entity\CollectionInterface', $list);
     }
 

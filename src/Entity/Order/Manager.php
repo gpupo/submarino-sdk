@@ -43,7 +43,7 @@ class Manager extends ManagerAbstract
     /**
      * Obtém a lista de pedidos recém aprovados e que esperam processamento
      */
-    public function fetchQuee($offset = 0, $limit = 50, array $parameters = [])
+    public function fetchQueue($offset = 0, $limit = 50, array $parameters = [])
     {
         return $this->fetch($offset, $limit, array_merge(['status' => 'APROVED'], $parameters));
     }
