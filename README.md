@@ -1,4 +1,4 @@
-[![Author](http://img.shields.io/badge/author-@gpupo-blue.svg?style=flat-square)](https://twitter.com/gpupo)
+[![Author](http://img.shields.io/badge/author-@gpupo-blue.svg)](https://twitter.com/gpupo)
 [![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/gpupo/submarino-sdk/blob/master/LICENSE)
 [![Build Status](https://secure.travis-ci.org/gpupo/submarino-sdk.png?branch=master)](http://travis-ci.org/gpupo/submarino-sdk)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gpupo/submarino-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gpupo/submarino-sdk/?branch=master)
