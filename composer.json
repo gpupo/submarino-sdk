@@ -1,6 +1,13 @@
 {
     "name": "gpupo/submarino-sdk",
     "description": "SDK Não Oficial para integração a partir de aplicações PHP com as APIs do Submarino Marketplace",
+    "homepage": "http://www.g1mr.com/submarino-sdk/",
+    "authors": [
+        {
+            "name": "Gilmar Pupo",
+            "email": "g@g1mr.com"
+        }
+    ],
     "keywords": ["submarino","americanas", "B2W", "shoptime", "sdk", "api"],
     "license": "MIT",
     "require": {
@@ -27,6 +34,12 @@
         "psr-4": {
             "Gpupo\\Tests\\SubmarinoSdk\\": "tests"
         }
+    },
+    "scripts": {
+        "pre-install-cmd": [
+            "mkdir -p Resources/logs",
+            "touch Resources/logs/tests.log"
+        ]
     },
     "config": {
         "preferred-install": "dist"
