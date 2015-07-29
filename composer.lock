@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a040d5b8373a25ebe1e3d00bf539924a",
+    "hash": "0b729f4856de3982bf45f3f89995692a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -495,16 +495,16 @@
         },
         {
             "name": "gpupo/common-sdk",
-            "version": "1.8.18",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gpupo/common-sdk.git",
-                "reference": "6486d50cbd7c3be4783d162be3162b207bd9c9c9"
+                "reference": "5c7385d5294d502d2a0cc08bba0ae1ced988bd81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gpupo/common-sdk/zipball/6486d50cbd7c3be4783d162be3162b207bd9c9c9",
-                "reference": "6486d50cbd7c3be4783d162be3162b207bd9c9c9",
+                "url": "https://api.github.com/repos/gpupo/common-sdk/zipball/5c7385d5294d502d2a0cc08bba0ae1ced988bd81",
+                "reference": "5c7385d5294d502d2a0cc08bba0ae1ced988bd81",
                 "shasum": ""
             },
             "require": {
@@ -528,11 +528,18 @@
             "license": [
                 "MIT"
             ],
+            "authors": [
+                {
+                    "name": "Gilmar Pupo",
+                    "email": "g@g1mr.com"
+                }
+            ],
             "description": "Componente de uso comum entre SDKs para integração a partir de aplicações PHP com as APIs de Marketplaces",
+            "homepage": "http://www.g1mr.com/common-sdk/",
             "keywords": [
                 "sdk"
             ],
-            "time": "2015-05-28 17:38:22"
+            "time": "2015-07-29 20:36:57"
         },
         {
             "name": "psr/log",
