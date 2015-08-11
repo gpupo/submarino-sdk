@@ -232,6 +232,15 @@ phpunit --testdox | grep -vi php |  sed "s/.*\[*]/-/" | sed 's/.*Gpupo.*/&\'$'\n
 - Cada cliente possui colecao de telefones
 - Cada cliente possui objeto pessoa fisica
 - Cada cliente possui objeto pessoa juridica
+- Possui método ``getPf()`` para acessar Pf
+- Possui método ``setPf()`` que define Pf
+- Possui método ``getPj()`` para acessar Pj
+- Possui método ``setPj()`` que define Pj
+- Possui método ``getTelephones()`` para acessar Telephones
+- Possui método ``setTelephones()`` que define Telephones
+- Possui método ``getDeliveryAddress()`` para acessar DeliveryAddress
+- Possui método ``setDeliveryAddress()`` que define DeliveryAddress
+- Entidade é uma Coleção
 
 ### Entity\Order\Customer\Telephones\Telephones
 
@@ -262,6 +271,36 @@ phpunit --testdox | grep -vi php |  sed "s/.*\[*]/-/" | sed 's/.*Gpupo.*/&\'$'\n
 - O total real contém produtos somado a frete menos o desconto
 - O total real possui mesmo valor de total amount se não houver juros
 - O total real contém total menos juros
+- Possui método ``setId()`` que define Id
+- Possui método ``getSiteId()`` para acessar SiteId
+- Possui método ``setSiteId()`` que define SiteId
+- Possui método ``getStore()`` para acessar Store
+- Possui método ``setStore()`` que define Store
+- Possui método ``getPurchaseDate()`` para acessar PurchaseDate
+- Possui método ``setPurchaseDate()`` que define PurchaseDate
+- Possui método ``getLastUpdate()`` para acessar LastUpdate
+- Possui método ``setLastUpdate()`` que define LastUpdate
+- Possui método ``getStatus()`` para acessar Status
+- Possui método ``setStatus()`` que define Status
+- Possui método ``getInvoiced()`` para acessar Invoiced
+- Possui método ``setInvoiced()`` que define Invoiced
+- Possui método ``getEstimatedDeliveryDate()`` para acessar EstimatedDeliveryDate
+- Possui método ``setEstimatedDeliveryDate()`` que define EstimatedDeliveryDate
+- Possui método ``getCustomer()`` para acessar Customer
+- Possui método ``setCustomer()`` que define Customer
+- Possui método ``getPayer()`` para acessar Payer
+- Possui método ``setPayer()`` que define Payer
+- Possui método ``getTotalAmount()`` para acessar TotalAmount
+- Possui método ``setTotalAmount()`` que define TotalAmount
+- Possui método ``getTotalFreight()`` para acessar TotalFreight
+- Possui método ``setTotalFreight()`` que define TotalFreight
+- Possui método ``getTotalDiscount()`` para acessar TotalDiscount
+- Possui método ``setTotalDiscount()`` que define TotalDiscount
+- Possui método ``getTotalInterest()`` para acessar TotalInterest
+- Possui método ``setTotalInterest()`` que define TotalInterest
+- Possui método ``getProducts()`` para acessar Products
+- Possui método ``setProducts()`` que define Products
+- Entidade é uma Coleção
 
 ### Entity\Order\Payer\Payer
 
@@ -270,9 +309,20 @@ phpunit --testdox | grep -vi php |  sed "s/.*\[*]/-/" | sed 's/.*Gpupo.*/&\'$'\n
 - Cada pagador possui objeto pessoa fisica
 - Cada pagador possui objeto pessoa juridica
 
-### Entity\Order\Products\Products
+### Entity\Order\Products\Product
 
 - Cada pedido possui uma coleção de objetos produto
+- Possui método ``getLink()`` para acessar Link
+- Possui método ``setLink()`` que define Link
+- Possui método ``getQuantity()`` para acessar Quantity
+- Possui método ``setQuantity()`` que define Quantity
+- Possui método ``getPrice()`` para acessar Price
+- Possui método ``setPrice()`` que define Price
+- Possui método ``getFreight()`` para acessar Freight
+- Possui método ``setFreight()`` que define Freight
+- Possui método ``getDiscount()`` para acessar Discount
+- Possui método ``setDiscount()`` que define Discount
+- Entidade é uma Coleção
 
 ### Entity\Order\Status\Status
 

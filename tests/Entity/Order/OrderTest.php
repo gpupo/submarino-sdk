@@ -13,12 +13,44 @@ namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
 
 use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\SubmarinoSdk\Entity\Order\Order;
+use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 
 class OrderTest extends OrderTestCaseAbstract
 {
+    use EntityTrait;
+
+    const QUALIFIED = 'Gpupo\SubmarinoSdk\Entity\Order\Order';
+
     public static function setUpBeforeClass()
     {
-        self::displayClassDocumentation(new Order());
+        static::setFullyQualifiedObject(self::QUALIFIED);
+        parent::setUpBeforeClass();
+    }
+
+    public function dataProviderObject()
+    {
+
+    $expected = [
+            'id' => 'string',
+            'siteId' => 'string',
+            'store' => 'string',
+            'purchaseDate' => 'string',
+            'lastUpdate' => 'string',
+            'status' => [],
+            'invoiced' => [],
+            'estimatedDeliveryDate' => 'string',
+            'customer' => [],
+            'payer' => [],
+            'totalAmount' => 1.1,
+            'totalFreight' => 2.2,
+            'totalDiscount' => 0.1,
+            'totalInterest' => 1.2,
+            'products' => [],
+        ];
+
+
+        return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
     }
 
     public function testCadaItemDeUmaListaEUmObjeto()
@@ -160,4 +192,296 @@ class OrderTest extends OrderTestCaseAbstract
     {
         $this->assertEquals(bcsub(33.58, 0.74, 2), $order->getTotalReal(), 'Valor total menos o juros');
     }
+
+    /**
+     * @testdox Possui método ``setId()`` que define Id
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterId(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('id', 'string', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getSiteId()`` para acessar SiteId
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterSiteId(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('siteId', 'string', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setSiteId()`` que define SiteId
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterSiteId(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('siteId', 'string', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getStore()`` para acessar Store
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterStore(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('store', 'string', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setStore()`` que define Store
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterStore(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('store', 'string', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getPurchaseDate()`` para acessar PurchaseDate
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterPurchaseDate(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('purchaseDate', 'string', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setPurchaseDate()`` que define PurchaseDate
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterPurchaseDate(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('purchaseDate', 'string', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getLastUpdate()`` para acessar LastUpdate
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterLastUpdate(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('lastUpdate', 'string', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setLastUpdate()`` que define LastUpdate
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterLastUpdate(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('lastUpdate', 'string', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getStatus()`` para acessar Status
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterStatus(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('status', 'object', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setStatus()`` que define Status
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterStatus(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('status', 'object', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getInvoiced()`` para acessar Invoiced
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterInvoiced(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('invoiced', 'object', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setInvoiced()`` que define Invoiced
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterInvoiced(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('invoiced', 'object', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getEstimatedDeliveryDate()`` para acessar EstimatedDeliveryDate
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterEstimatedDeliveryDate(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('estimatedDeliveryDate', 'string', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setEstimatedDeliveryDate()`` que define EstimatedDeliveryDate
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterEstimatedDeliveryDate(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('estimatedDeliveryDate', 'string', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getCustomer()`` para acessar Customer
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterCustomer(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('customer', 'object', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setCustomer()`` que define Customer
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterCustomer(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('customer', 'object', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getPayer()`` para acessar Payer
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterPayer(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('payer', 'object', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setPayer()`` que define Payer
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterPayer(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('payer', 'object', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getTotalAmount()`` para acessar TotalAmount
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterTotalAmount(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('totalAmount', 'number', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setTotalAmount()`` que define TotalAmount
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterTotalAmount(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('totalAmount', 'number', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getTotalFreight()`` para acessar TotalFreight
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterTotalFreight(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('totalFreight', 'number', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setTotalFreight()`` que define TotalFreight
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterTotalFreight(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('totalFreight', 'number', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getTotalDiscount()`` para acessar TotalDiscount
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterTotalDiscount(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('totalDiscount', 'number', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setTotalDiscount()`` que define TotalDiscount
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterTotalDiscount(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('totalDiscount', 'number', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getTotalInterest()`` para acessar TotalInterest
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterTotalInterest(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('totalInterest', 'number', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setTotalInterest()`` que define TotalInterest
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterTotalInterest(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('totalInterest', 'number', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getProducts()`` para acessar Products
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterProducts(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('products', 'object', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setProducts()`` que define Products
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterProducts(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('products', 'object', $object);
+    }
+
+
 }
