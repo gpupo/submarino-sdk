@@ -41,7 +41,7 @@ class Manager extends ManagerAbstract
     }
 
     /**
-     * Obtém a lista de pedidos recém aprovados e que esperam processamento
+     * Obtém a lista de pedidos recém aprovados e que esperam processamento.
      */
     public function fetchQueue($offset = 0, $limit = 50, array $parameters = [])
     {

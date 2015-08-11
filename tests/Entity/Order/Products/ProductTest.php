@@ -11,10 +11,9 @@
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\Products;
 
-use Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Product;
-use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
+use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 
 class ProductTest extends OrderTestCaseAbstract
 {
@@ -30,15 +29,13 @@ class ProductTest extends OrderTestCaseAbstract
 
     public function dataProviderObject()
     {
-
         $expected = [
-            'link' => [],
+            'link'     => [],
             'quantity' => 1,
-            'price' => 2.1,
-            'freight' => 0.2,
+            'price'    => 2.1,
+            'freight'  => 0.2,
             'discount' => 0.1,
         ];
-
 
         return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
     }
@@ -155,5 +152,4 @@ class ProductTest extends OrderTestCaseAbstract
     {
         $this->assertSchemaSetter('discount', 'number', $object);
     }
-
 }

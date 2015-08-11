@@ -55,7 +55,7 @@ class ManagerTest extends TestCaseAbstract
         $sku = $product->getSku()->current();
         $previous = clone $sku;
         $sku->setPrevious($previous);
-        
+
         $this->assertTrue($manager->updateSku($sku));
     }
 }

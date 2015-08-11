@@ -11,9 +11,9 @@
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\Customer;
 
-use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
+use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 
 class CustomerTest extends OrderTestCaseAbstract
 {
@@ -30,9 +30,9 @@ class CustomerTest extends OrderTestCaseAbstract
     public function dataProviderObject()
     {
         $expected = [
-            'pf' => [],
-            'pj' => [],
-            'telephones' => [],
+            'pf'              => [],
+            'pj'              => [],
+            'telephones'      => [],
             'deliveryAddress' => [],
         ];
 

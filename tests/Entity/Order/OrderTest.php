@@ -12,8 +12,8 @@
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
 
 use Gpupo\Common\Entity\CollectionInterface;
-use Gpupo\SubmarinoSdk\Entity\Order\Order;
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\SubmarinoSdk\Entity\Order\Order;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 
 class OrderTest extends OrderTestCaseAbstract
@@ -30,25 +30,23 @@ class OrderTest extends OrderTestCaseAbstract
 
     public function dataProviderObject()
     {
-
-    $expected = [
-            'id' => 'string',
-            'siteId' => 'string',
-            'store' => 'string',
-            'purchaseDate' => 'string',
-            'lastUpdate' => 'string',
-            'status' => [],
-            'invoiced' => [],
+        $expected = [
+            'id'                    => 'string',
+            'siteId'                => 'string',
+            'store'                 => 'string',
+            'purchaseDate'          => 'string',
+            'lastUpdate'            => 'string',
+            'status'                => [],
+            'invoiced'              => [],
             'estimatedDeliveryDate' => 'string',
-            'customer' => [],
-            'payer' => [],
-            'totalAmount' => 1.1,
-            'totalFreight' => 2.2,
-            'totalDiscount' => 0.1,
-            'totalInterest' => 1.2,
-            'products' => [],
+            'customer'              => [],
+            'payer'                 => [],
+            'totalAmount'           => 1.1,
+            'totalFreight'          => 2.2,
+            'totalDiscount'         => 0.1,
+            'totalInterest'         => 1.2,
+            'products'              => [],
         ];
-
 
         return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
     }
@@ -482,6 +480,4 @@ class OrderTest extends OrderTestCaseAbstract
     {
         $this->assertSchemaSetter('products', 'object', $object);
     }
-
-
 }
