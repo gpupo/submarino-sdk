@@ -5,7 +5,17 @@
 [![Test Coverage](https://codeclimate.com/github/gpupo/submarino-sdk/badges/coverage.svg)](https://codeclimate.com/github/gpupo/submarino-sdk/coverage)
 [![Codacy Badge](https://www.codacy.com/project/badge/42d610984533411e9ee267c00106c38d)](https://www.codacy.com/app/g/submarino-sdk)
 
+# submarino-sdk
+
 SDK Não Oficial para integração a partir de aplicações PHP com as APIs da B2W Marketplace (Submarino, Shoptime, Americanas.com)
+
+---
+
+## Requisitos
+
+* PHP >= *5.4*
+* [curl extension](http://php.net/manual/en/intro.curl.php)
+* [Composer Dependency Manager](http://getcomposer.org)
 
 ---
 
