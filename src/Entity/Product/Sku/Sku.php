@@ -41,6 +41,8 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method setUpdatedAt(string $updatedAt)
  * @method array getUrlImage()
  * @method setUrlImage(array $urlImage)
+ * @method integer getCrossDocking()
+ * @method setCrossDocking(integer $crossDocking)
  */
 class Sku extends EntityAbstract implements EntityInterface
 {
@@ -60,6 +62,7 @@ class Sku extends EntityAbstract implements EntityInterface
             'price'         => 'object',
             'updatedAt'     => 'string',
             'urlImage'      => 'array',
+            'crossDocking'  => 'integer',
         ];
     }
 
