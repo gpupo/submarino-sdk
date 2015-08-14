@@ -14,7 +14,7 @@
         "php": ">=5.4",
         "ext-curl" : "*",
         "ext-bcmath" : "*",
-        "gpupo/common-sdk": "~1.9",
+        "gpupo/common-sdk": "~1.9.10",
         "symfony/console": "~2.6"
     },
     "suggest": {
