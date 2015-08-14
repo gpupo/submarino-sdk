@@ -47,7 +47,10 @@ Este exemplo demonstra o uso simplificado a partir do ``Factory``:
 
 use Gpupo\SubmarinoSdk\Factory;
 
-$submarinoSdk = Factory::getInstance()->setup(['token' => '7Ao82svbm#6', 'version' => 'sandbox']);
+$submarinoSdk = Factory::getInstance()->setup([
+    'token'     => '7Ao82svbm#6',
+    'version'   => 'sandbox',
+]);
 
 ```
 
@@ -188,7 +191,6 @@ MIT, see [LICENSE](https://github.com/gpupo/submarino-sdk/blob/master/LICENSE).
 ## Contributors
 
 - [@gpupo](https://github.com/gpupo)
-- [@danielcosta](https://github.com/danielcosta)
 - [All Contributors](https://github.com/gpupo/submarino-sdk/contributors)
 
 ---
@@ -207,11 +209,15 @@ Personalize a configuração do ``phpunit``:
 
 Insira sua Token de Sandbox em ``phpunit.xml``:
 
+``` XML
+
     <!-- Customize your parameters ! -->
     <php>
         <const name="API_TOKEN" value=""/>
         <const name="VERBOSE" value="false"/>
     </php>
+
+```
 
 Rode os testes localmente:
 
