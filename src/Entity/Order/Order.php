@@ -25,6 +25,10 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method setPurchaseDate(string $purchaseDate)
  * @method string getLastUpdate()
  * @method setLastUpdate(string $lastUpdate)
+ * @method string getPurchaseTimestamp()
+ * @method setPurchaseTimestamp(string $purchaseTimestamp)
+ * @method string getLastUpdateTimestamp()
+ * @method setLastUpdateTimestamp(string $lastUpdateTimestamp)
  * @method Gpupo\SubmarinoSdk\Entity\Order\Status\Status getStatus()
  * @method setStatus(Gpupo\SubmarinoSdk\Entity\Order\Status\Status $status)
  * @method Gpupo\SubmarinoSdk\Entity\Order\Invoiced getInvoiced()
@@ -45,6 +49,10 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method setTotalInterest(float $totalInterest)
  * @method Gpupo\SubmarinoSdk\Entity\Order\Products\Products getProducts()
  * @method setProducts(Gpupo\SubmarinoSdk\Entity\Order\Products\Products $products)
+ * @method Gpupo\SubmarinoSdk\Entity\Order\Shipping getShipping()
+ * @method setShipping(Gpupo\SubmarinoSdk\Entity\Order\Shipping $shipping)
+ * @method Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethods getPaymentMethods()
+ * @method setPaymentMethods(Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethods $paymentMethods)
  */
 class Order extends EntityAbstract implements EntityInterface
 {
@@ -56,6 +64,8 @@ class Order extends EntityAbstract implements EntityInterface
             'store'                 => 'string',
             'purchaseDate'          => 'string',
             'lastUpdate'            => 'string',
+            'purchaseTimestamp'     => 'string',
+            'lastUpdateTimestamp'   => 'string',
             'status'                => 'object',
             'invoiced'              => 'object',
             'estimatedDeliveryDate' => 'string',
@@ -66,6 +76,8 @@ class Order extends EntityAbstract implements EntityInterface
             'totalDiscount'         => 'number',
             'totalInterest'         => 'number',
             'products'              => 'object',
+            'shipping'              => 'object',
+            'paymentMethods'        => 'object',
         ];
     }
 

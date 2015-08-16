@@ -4,6 +4,8 @@
     "store": "SUBMARINO",
     "purchaseDate": "2014-09-24",
     "lastUpdate": "2014-10-07",
+    "purchaseTimestamp": "2014-10-07 12:00:00",
+    "lastUpdateTimestamp": "2014-10-07 15:00:00",
     "status": "APROVED",
     "invoiced": {
         "issueDate": "2014-09-25"
@@ -95,6 +97,20 @@
             "price": 1,
             "freight": 20,
             "discount": 0
+        }
+    ],
+    "shipping": {
+        "shippingEstimateId": "123456789",
+        "shippingMethodId": "8-Correios",
+        "shippingMethodName": "Sedex",
+        "calculationType": "spreadsheet",
+        "shippingMethodDisplayName": "Sedex"
+    },
+    "paymentMethods": [
+        {
+            "sequential": 1,
+            "id": "CREDIT_CARD",
+            "value": 175.41
         }
     ]
 }
