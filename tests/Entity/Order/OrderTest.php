@@ -36,6 +36,8 @@ class OrderTest extends OrderTestCaseAbstract
             'store'                 => 'string',
             'purchaseDate'          => 'string',
             'lastUpdate'            => 'string',
+            'purchaseTimestamp'     => 'string',
+            'lastUpdateTimestamp'   => 'string',
             'status'                => [],
             'invoiced'              => [],
             'estimatedDeliveryDate' => 'string',
@@ -95,6 +97,32 @@ class OrderTest extends OrderTestCaseAbstract
             foreach ($collection as $product) {
                 $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Product', $product);
             }
+        }
+    }
+
+    /**
+     * @depends testCadaItemDeUmaListaEUmObjeto
+     */
+    public function testCadaPedidoPossuiColecaoDeMetodosDePagamento(CollectionInterface $list)
+    {
+        foreach ($list as $item) {
+            $collection = $item->getPaymentMethods();
+
+            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethods', $collection);
+
+            foreach ($collection as $product) {
+                $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethod\PaymentMethod', $product);
+            }
+        }
+    }
+
+    /**
+     * @depends testCadaItemDeUmaListaEUmObjeto
+     */
+    public function testCadaPedidoPossuiObjetoComDadosDeEntrega(CollectionInterface $list)
+    {
+        foreach ($list as $item) {
+            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Shipping', $item->getShipping());
         }
     }
 
@@ -279,6 +307,46 @@ class OrderTest extends OrderTestCaseAbstract
     public function setterLastUpdate(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('lastUpdate', 'string', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getPurchaseTimestamp()`` para acessar PurchaseTimestamp
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterPurchaseTimestamp(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('purchaseTimestamp', 'string', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setPurchaseTimestamp()`` que define PurchaseTimestamp
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterPurchaseTimestamp(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('purchaseTimestamp', 'string', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getLastUpdateTimestamp()`` para acessar LastUpdateTimestamp
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterLastUpdateTimestamp(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('lastUpdateTimestamp', 'string', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setLastUpdateTimestamp()`` que define LastUpdateTimestamp
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterLastUpdateTimestamp(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('lastUpdateTimestamp', 'string', $object);
     }
 
     /**
@@ -479,5 +547,45 @@ class OrderTest extends OrderTestCaseAbstract
     public function setterProducts(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('products', 'object', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getShipping()`` para acessar Shipping
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterShipping(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('shipping', 'object', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setShipping()`` que define Shipping
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterShipping(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('shipping', 'object', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getPaymentMethods()`` para acessar PaymentMethods
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterPaymentMethods(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('paymentMethods', 'object', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setPaymentMethods()`` que define PaymentMethods
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterPaymentMethods(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('paymentMethods', 'object', $object);
     }
 }
