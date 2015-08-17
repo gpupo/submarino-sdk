@@ -239,6 +239,7 @@ A lista abaixo é gerada a partir da saída da execução dos testes unitários:
 <!--
 phpunit --testdox | grep -vi php |  sed "s/.*\[*]/-/" | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/Gpupo\\Tests\\SubmarinoSdk\\/### /g' | sed '/./,/^$/!d' >> README.md
 -->
+
 ### Client
 
 - Gerencia uri de recurso
@@ -281,6 +282,8 @@ phpunit --testdox | grep -vi php |  sed "s/.*\[*]/-/" | sed 's/.*Gpupo.*/&\'$'\n
 - Cada pedido possui objeto cliente
 - Cada pedido possui objeto com dados de cobrança
 - Cada pedido possui colecao de produtos
+- Cada pedido possui colecao de metodos de pagamento
+- Cada pedido possui objeto com dados de entrega
 - Cada pedido possui objeto status
 - Possui loja de origem
 - Possui valor total do pedido
@@ -300,6 +303,10 @@ phpunit --testdox | grep -vi php |  sed "s/.*\[*]/-/" | sed 's/.*Gpupo.*/&\'$'\n
 - Possui método ``setPurchaseDate()`` que define PurchaseDate
 - Possui método ``getLastUpdate()`` para acessar LastUpdate
 - Possui método ``setLastUpdate()`` que define LastUpdate
+- Possui método ``getPurchaseTimestamp()`` para acessar PurchaseTimestamp
+- Possui método ``setPurchaseTimestamp()`` que define PurchaseTimestamp
+- Possui método ``getLastUpdateTimestamp()`` para acessar LastUpdateTimestamp
+- Possui método ``setLastUpdateTimestamp()`` que define LastUpdateTimestamp
 - Possui método ``getStatus()`` para acessar Status
 - Possui método ``setStatus()`` que define Status
 - Possui método ``getInvoiced()`` para acessar Invoiced
@@ -320,6 +327,10 @@ phpunit --testdox | grep -vi php |  sed "s/.*\[*]/-/" | sed 's/.*Gpupo.*/&\'$'\n
 - Possui método ``setTotalInterest()`` que define TotalInterest
 - Possui método ``getProducts()`` para acessar Products
 - Possui método ``setProducts()`` que define Products
+- Possui método ``getShipping()`` para acessar Shipping
+- Possui método ``setShipping()`` que define Shipping
+- Possui método ``getPaymentMethods()`` para acessar PaymentMethods
+- Possui método ``setPaymentMethods()`` que define PaymentMethods
 - Entidade é uma Coleção
 
 ### Entity\Order\Payer\Payer
@@ -328,6 +339,17 @@ phpunit --testdox | grep -vi php |  sed "s/.*\[*]/-/" | sed 's/.*Gpupo.*/&\'$'\n
 - Cada pagador possui colecao de telefones
 - Cada pagador possui objeto pessoa fisica
 - Cada pagador possui objeto pessoa juridica
+
+### Entity\Order\PaymentMethods\PaymentMethod
+
+- Cada pedido possui uma coleção de objetos payment method
+- Possui método ``getSequential()`` para acessar Sequential
+- Possui método ``setSequential()`` que define Sequential
+- Possui método ``getId()`` para acessar Id
+- Possui método ``setId()`` que define Id
+- Possui método ``getValue()`` para acessar Value
+- Possui método ``setValue()`` que define Value
+- Entidade é uma Coleção
 
 ### Entity\Order\Products\Product
 
@@ -342,6 +364,20 @@ phpunit --testdox | grep -vi php |  sed "s/.*\[*]/-/" | sed 's/.*Gpupo.*/&\'$'\n
 - Possui método ``setFreight()`` que define Freight
 - Possui método ``getDiscount()`` para acessar Discount
 - Possui método ``setDiscount()`` que define Discount
+- Entidade é uma Coleção
+
+### Entity\Order\Shipping
+
+- Possui método ``getShippingEstimateId()`` para acessar ShippingEstimateId
+- Possui método ``setShippingEstimateId()`` que define ShippingEstimateId
+- Possui método ``getShippingMethodId()`` para acessar ShippingMethodId
+- Possui método ``setShippingMethodId()`` que define ShippingMethodId
+- Possui método ``getShippingMethodName()`` para acessar ShippingMethodName
+- Possui método ``setShippingMethodName()`` que define ShippingMethodName
+- Possui método ``getCalculationType()`` para acessar CalculationType
+- Possui método ``setCalculationType()`` que define CalculationType
+- Possui método ``getShippingMethodDisplayName()`` para acessar ShippingMethodDisplayName
+- Possui método ``setShippingMethodDisplayName()`` que define ShippingMethodDisplayName
 - Entidade é uma Coleção
 
 ### Entity\Order\Status\Status
