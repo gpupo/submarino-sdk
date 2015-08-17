@@ -11,9 +11,7 @@
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
 
-use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\SubmarinoSdk\Entity\Order\Shipping;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 
 class ShippingTest extends OrderTestCaseAbstract

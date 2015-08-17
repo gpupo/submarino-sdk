@@ -19,7 +19,7 @@ class PaymentMethodTest extends OrderTestCaseAbstract
 {
     use EntityTrait;
 
-    const QUALIFIED = 'Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethod\PaymentMethod';
+    const QUALIFIED = 'Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethod';
 
     public static function setUpBeforeClass()
     {
@@ -42,7 +42,7 @@ class PaymentMethodTest extends OrderTestCaseAbstract
     {
         foreach ($this->getList() as $order) {
             foreach ($order->getPaymentMethods() as $paymentMethod) {
-                $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethod\PaymentMethod',
+                $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethod',
                 $paymentMethod);
             }
         }

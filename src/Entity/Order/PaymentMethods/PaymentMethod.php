@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethod;
+namespace Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods;
 
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;

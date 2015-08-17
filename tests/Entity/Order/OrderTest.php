@@ -111,7 +111,7 @@ class OrderTest extends OrderTestCaseAbstract
             $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethods', $collection);
 
             foreach ($collection as $product) {
-                $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethod\PaymentMethod', $product);
+                $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethod', $product);
             }
         }
     }

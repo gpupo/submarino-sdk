@@ -17,6 +17,6 @@ class PaymentMethods extends CollectionAbstract
 {
     public function factoryElement($data)
     {
-        return new PaymentMethod\PaymentMethod($data);
+        return new PaymentMethod($data);
     }
 }
