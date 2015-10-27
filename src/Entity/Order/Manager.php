@@ -53,4 +53,35 @@ class Manager extends ManagerAbstract
         return $this->execute($this->factoryMap('saveStatus',
             ['itemId' => $order->getId()]), $order->getStatus()->toJson());
     }
+
+    /** 
+     * Confirmação de recebimento de pedido.
+     * Chama o endpoint POST /order/{itemId}/confirm
+     *
+     * Possíveis respostas para a chamada:
+     *  {"code": "0", "message": "Success"}
+     *  {"code": "1", "message": "Failure"}
+     *
+     * @param Order $order
+     *
+     * @return boolean
+     */
+    public function confirm(Order $order)
+    {
+        try {
+            $map = $this->factoryMap('confirm', ['itemId' => $order->getId()]);
+            $response = $this->processResponse(
+                $this->perform(
+                    $map,
+                    $order->toJson()
+                )
+            );
+
+            $responseAsArray = $response->toArray();
+        } catch (\Exception $exception) {
+            $responseAsArray = [];
+        }
+
+        return isset($responseAsArray['code']) && '0' === $responseAsArray['code'];
+    }
 }
