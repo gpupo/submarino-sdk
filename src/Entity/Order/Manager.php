@@ -71,11 +71,11 @@ class Manager extends ManagerAbstract
      *
      * @link https://api-sandbox.bonmarketplace.com.br/docs/confirmacaoPedido.shtml
      *
-     * @param integer $itemId
-     * @param boolean $sucessfully
-     * @param string  $message
+     * @param int    $itemId
+     * @param bool   $sucessfully
+     * @param string $message
      *
-     * @return boolean
+     * @return bool
      */
     public function confirm($itemId, $successfully, $message)
     {
