@@ -72,7 +72,7 @@ class Manager extends ManagerAbstract
      * @link https://api-sandbox.bonmarketplace.com.br/docs/confirmacaoPedido.shtml
      *
      * @param int    $itemId
-     * @param bool   $sucessfully
+     * @param bool   $successfully
      * @param string $message
      *
      * @return bool
