@@ -178,6 +178,29 @@ $sku->setPrevious($previousSku);
 $sku->save();
 
 ```
+
+#### Uso de confirmação ou rejeição de um pedido
+
+``` PHP
+/**
+ * https://api-sandbox.bonmarketplace.com.br/docs/confirmacaoPedido.shtml
+ * 
+ * @var \Gpupo\SubmarinoSdk\Entity\Order\Manager $sdkOrderManager
+ * @var \Gpupo\SubmarinoSdk\Entity\Order\Order   $order
+ * @var \My\Awesome\Order\Creator                $yourOrderCreator
+ */
+foreach ($sdkOrderManager->fetch() as $order) {
+    // Sua implementação de criação de pedido
+    $successfully = $yourOrderCreator->createOrder($order);
+    // POST para: http://api-marketplace.bonmarketplace.com.br/order/{ORDER_ID}/confirm
+    $sdkOrderManager->confirm(
+        $order->getId(),
+        $successfully,
+        $successfully ? 'Success' : 'Failure'
+    );
+}
+
+```
 ----
 
 * [Documentação oficial](https://api-sandbox.bonmarketplace.com.br/docs/)
@@ -273,6 +296,7 @@ phpunit --testdox | grep -vi php |  sed "s/.*\[*]/-/" | sed 's/.*Gpupo.*/&\'$'\n
 - Obtém a lista de pedidos recém aprovados e que esperam processamento
 - Recupera informacoes de um pedido especifico
 - Atualiza status de um pedido
+- Confirma se um pedido foi aprovado ou rejeitado
 - Atualiza dados de envio de um pedido
 - Atualiza dados de entrega de um pedido
 
