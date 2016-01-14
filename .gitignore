@@ -4,3 +4,4 @@ phpunit.xml
 Resources/logs/*
 Resources/doc/*
 /build/
+composer.lock
