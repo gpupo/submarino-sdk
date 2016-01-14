@@ -35,12 +35,12 @@ class Product extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'id'            => 'string',
-            'name'          => 'string',
-            'sku'           => 'object',
-            'manufacturer'  => 'object',
-            'deliveryType'  => 'string',
-            'nbm'           => 'array',
+            'id'           => 'string',
+            'name'         => 'string',
+            'sku'          => 'object',
+            'manufacturer' => 'object',
+            'deliveryType' => 'string',
+            'nbm'          => 'array',
         ];
     }
 

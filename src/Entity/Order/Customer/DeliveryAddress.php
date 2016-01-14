@@ -19,15 +19,15 @@ class DeliveryAddress extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'state'             => 'string',
-            'number'            => 'string',
-            'country'           => 'string',
-            'street'            => 'string',
-            'additionalInfo'    => 'string',
-            'neighborhood'      => 'string',
-            'city'              => 'string',
-            'zipcode'           => 'string',
-            'reference'         => 'string',
+            'state'          => 'string',
+            'number'         => 'string',
+            'country'        => 'string',
+            'street'         => 'string',
+            'additionalInfo' => 'string',
+            'neighborhood'   => 'string',
+            'city'           => 'string',
+            'zipcode'        => 'string',
+            'reference'      => 'string',
         ];
     }
 }

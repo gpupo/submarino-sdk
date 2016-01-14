@@ -15,7 +15,6 @@ use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
 /**
-
  * @method string getShippingEstimateId()
  * @method setShippingEstimateId(string $shippingEstimateId)
  * @method string getShippingMethodId()

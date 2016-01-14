@@ -18,7 +18,7 @@ class Invoiced extends \Gpupo\SubmarinoSdk\Entity\Order\Invoiced
         return array_merge(
             parent::getSchema(),
             [
-                'danfeXml'  => 'string',
+                'danfeXml' => 'string',
             ]
         );
     }

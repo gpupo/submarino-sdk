@@ -20,10 +20,10 @@ class Manager extends ManagerAbstract
     protected $entity = 'Product';
 
     protected $maps = [
-        'save'      => ['POST', '/product'],
-        'addSku'    => ['POST', '/product/{itemId}/sku'],
-        'findById'  => ['GET', '/product/{itemId}'],
-        'fetch'     => ['GET', '/product?offset={offset}&limit={limit}'],
+        'save'     => ['POST', '/product'],
+        'addSku'   => ['POST', '/product/{itemId}/sku'],
+        'findById' => ['GET', '/product/{itemId}'],
+        'fetch'    => ['GET', '/product?offset={offset}&limit={limit}'],
     ];
 
     public function update(EntityInterface $entity, EntityInterface $existent)

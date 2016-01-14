@@ -19,9 +19,9 @@ class Manufacturer extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return [
-            'name'          => 'string',
-            'model'         => 'string',
-            'warrantyTime'  => 'integer',
+            'name'         => 'string',
+            'model'        => 'string',
+            'warrantyTime' => 'integer',
         ];
     }
 }

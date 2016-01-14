@@ -15,7 +15,7 @@ use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
 /**
- * @method integer getSequential()
+ * @method int getSequential()
  * @method setSequential(integer $sequential)
  * @method string getId()
  * @method setId(integer $quantity)

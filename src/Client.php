@@ -22,12 +22,12 @@ class Client extends ClientAbstract implements ClientInterface
     public function getDefaultOptions()
     {
         return [
-            'token'         => false,
-            'base_url'      => 'https://api-{VERSION}.bonmarketplace.com.br',
-            'version'       => 'sandbox',
-            'verbose'       => false,
-            'sslVersion'    => 'SecureTransport',
-            'cacheTTL'      => 3600,
+            'token'      => false,
+            'base_url'   => 'https://api-{VERSION}.bonmarketplace.com.br',
+            'version'    => 'sandbox',
+            'verbose'    => false,
+            'sslVersion' => 'SecureTransport',
+            'cacheTTL'   => 3600,
         ];
     }
 

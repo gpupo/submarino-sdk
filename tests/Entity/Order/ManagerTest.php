@@ -51,7 +51,7 @@ class ManagerTest extends OrderTestCaseAbstract
     public function testAtualizaStatusDeUmPedido(Order $order)
     {
         $flux = [
-            'APROVED'       => 'PROCESSING',
+            'APROVED' => 'PROCESSING',
         ];
 
         $manager = $this->factoryManager()->setDryRun();

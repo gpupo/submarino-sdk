@@ -26,9 +26,9 @@ abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
     protected function getOptions()
     {
         return [
-            'token'             => $this->getConstant('API_TOKEN'),
-            'verbose'           => $this->getConstant('VERBOSE'),
-            'registerPath'      => $this->getConstant('REGISTER_PATH'),
+            'token'        => $this->getConstant('API_TOKEN'),
+            'verbose'      => $this->getConstant('VERBOSE'),
+            'registerPath' => $this->getConstant('REGISTER_PATH'),
         ];
     }
 

@@ -24,8 +24,8 @@ class SkuTest extends TestCaseAbstract
     public function testEnviaDadosOpcionaisApenasSePreenchidos()
     {
         $sku = new Sku([
-            'id'    => 1,
-            'name'  => 'foo',
+            'id'   => 1,
+            'name' => 'foo',
         ]);
 
         $opcionais = [

@@ -22,24 +22,24 @@ class Factory extends FactoryAbstract
 
     public function setClient(array $clientOptions = [])
     {
-        $this->client =  new Client($clientOptions, $this->logger);
+        $this->client = new Client($clientOptions, $this->logger);
     }
 
     protected function getSchema($namespace = null)
     {
         return [
             'product' => [
-                'class'     => $namespace.'Product\Product',
-                'manager'   => $namespace.'Product\Manager',
+                'class'   => $namespace.'Product\Product',
+                'manager' => $namespace.'Product\Manager',
             ],
             'sku' => [
-                'class'     => $namespace.'Product\Factory',
-                'method'    => 'factorySku',
-                'manager'   => $namespace.'Product\Sku\Manager',
+                'class'   => $namespace.'Product\Factory',
+                'method'  => 'factorySku',
+                'manager' => $namespace.'Product\Sku\Manager',
             ],
             'order' => [
-                'class'     => $namespace.'Order\Order',
-                'manager'   => $namespace.'Order\Manager',
+                'class'   => $namespace.'Order\Order',
+                'manager' => $namespace.'Order\Manager',
             ],
         ];
     }

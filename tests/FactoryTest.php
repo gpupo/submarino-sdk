@@ -16,7 +16,7 @@ use Gpupo\Tests\CommonSdk\FactoryTestAbstract;
 
 class FactoryTest extends FactoryTestAbstract
 {
-    public $namespace =  '\Gpupo\SubmarinoSdk\\';
+    public $namespace = '\Gpupo\SubmarinoSdk\\';
 
     public function getFactory()
     {

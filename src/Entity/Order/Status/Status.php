@@ -33,12 +33,12 @@ class Status extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'invoiced'           => 'object',
-            'shipped'            => 'object',
-            'shipmentException'  => 'object',
-            'delivered'          => 'object',
-            'unavailable'        => 'object',
-            'status'             => 'string',
+            'invoiced'          => 'object',
+            'shipped'           => 'object',
+            'shipmentException' => 'object',
+            'delivered'         => 'object',
+            'unavailable'       => 'object',
+            'status'            => 'string',
         ];
     }
 

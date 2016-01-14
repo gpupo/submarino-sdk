@@ -31,9 +31,9 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method setLength(float $length)
  * @method float getWeight()
  * @method setWeight(float $weight)
- * @method integer getStockQuantity()
+ * @method int getStockQuantity()
  * @method setStockQuantity(integer $stockQuantity)
- * @method boolean getEnable()
+ * @method bool getEnable()
  * @method setEnable(boolean $enable)
  * @method Gpupo\SubmarinoSdk\Entity\Product\Sku\Price getPrice()
  * @method setPrice(Gpupo\SubmarinoSdk\Entity\Product\Sku\Price $price)
@@ -41,7 +41,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method setUpdatedAt(string $updatedAt)
  * @method array getUrlImage()
  * @method setUrlImage(array $urlImage)
- * @method integer getCrossDocking()
+ * @method int getCrossDocking()
  * @method setCrossDocking(integer $crossDocking)
  */
 class Sku extends EntityAbstract implements EntityInterface

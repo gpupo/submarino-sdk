@@ -18,10 +18,10 @@ class Manager extends ManagerAbstract
     protected $entity = 'Order';
 
     protected $maps = [
-        'confirm'       => ['POST', '/order/{itemId}/confirm'],
-        'saveStatus'    => ['PUT', '/order/{itemId}/status'],
-        'findById'      => ['GET', '/order/{itemId}'],
-        'fetch'         => ['GET', '/order?offset={offset}&limit={limit}&purchaseDate={purchaseDate}&store={store}&siteId={siteId}&status={status}'],
+        'confirm'    => ['POST', '/order/{itemId}/confirm'],
+        'saveStatus' => ['PUT', '/order/{itemId}/status'],
+        'findById'   => ['GET', '/order/{itemId}'],
+        'fetch'      => ['GET', '/order?offset={offset}&limit={limit}&purchaseDate={purchaseDate}&store={store}&siteId={siteId}&status={status}'],
     ];
 
     /**
@@ -34,10 +34,10 @@ class Manager extends ManagerAbstract
     public function fetch($offset = 1, $limit = 50, array $parameters = [])
     {
         return parent::fetch($offset, $limit, array_merge([
-            'status'        => null,
-            'purchaseDate'  => null,
-            'store'         => null,
-            'siteId'        => null,
+            'status'       => null,
+            'purchaseDate' => null,
+            'store'        => null,
+            'siteId'       => null,
         ], $parameters));
     }
 

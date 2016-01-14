@@ -19,8 +19,8 @@ class ShipmentException extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'observation'     => 'string',
-            'occurrenceDate'  => 'string',
+            'observation'    => 'string',
+            'occurrenceDate' => 'string',
         ];
     }
 

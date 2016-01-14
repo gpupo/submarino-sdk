@@ -19,11 +19,11 @@ class Shipped extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'trackingUrl'           => 'string',
-            'trackingProtocol'      => 'string',
-            'estimatedDelivery'     => 'string',
-            'deliveredCarrierDate'  => 'string',
-            'carrierName'           => 'string',
+            'trackingUrl'          => 'string',
+            'trackingProtocol'     => 'string',
+            'estimatedDelivery'    => 'string',
+            'deliveredCarrierDate' => 'string',
+            'carrierName'          => 'string',
         ];
     }
 

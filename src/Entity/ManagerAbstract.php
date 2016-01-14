@@ -22,8 +22,8 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
         $text = 'Chamada a Atualização de entity '.$this->entity;
 
         return $this->log('debug', $text, [
-            'entity'    => $entity,
-            'existent'  => $existent,
+            'entity'   => $entity,
+            'existent' => $existent,
         ]);
     }
 

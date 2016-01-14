@@ -19,8 +19,8 @@ class Unavailable extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'unavailableDate'  => 'string',
-            'observation'      => 'string',
+            'unavailableDate' => 'string',
+            'observation'     => 'string',
         ];
     }
 

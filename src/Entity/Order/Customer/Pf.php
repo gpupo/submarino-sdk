@@ -19,8 +19,8 @@ class Pf extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'cpf'   => 'string',
-            'name'  => 'string',
+            'cpf'  => 'string',
+            'name' => 'string',
 
         ];
     }

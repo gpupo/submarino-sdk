@@ -16,8 +16,8 @@ class Main extends Telephones
     public function getSchema()
     {
         return  [
-            'number'    => 'string',
-            'ddd'       => 'string',
+            'number' => 'string',
+            'ddd'    => 'string',
         ];
     }
 }
