@@ -37,7 +37,7 @@ class SkuTest extends TestCaseAbstract
             $this->assertArrayNotHasKey($opcional, $sku->toArray(), $sku);
             $sku->set($opcional, 1);
             $this->assertArrayHasKey($opcional, $sku->toArray(), $sku);
-            $this->assertEquals(1, $sku->get($opcional));
+            $this->assertSame(1, $sku->get($opcional));
         }
     }
 
@@ -52,8 +52,8 @@ class SkuTest extends TestCaseAbstract
 
         ]);
 
-        $this->assertEquals($url, $sku->get('urlImage'));
-        $this->assertEquals($url, $sku->getUrlImage());
+        $this->assertSame($url, $sku->get('urlImage'));
+        $this->assertSame($url, $sku->getUrlImage());
     }
 
     public function testSkuPossuiObjetoStatus()

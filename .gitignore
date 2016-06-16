@@ -5,3 +5,4 @@ Resources/logs/*
 Resources/doc/*
 /build/
 composer.lock
+*.phar

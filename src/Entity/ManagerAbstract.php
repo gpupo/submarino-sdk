@@ -18,7 +18,7 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
 {
     public function update(EntityInterface $entity, EntityInterface $existent)
     {
-        $text = 'Chamada a Atualização de entity '.$this->entity;
+        $text = 'Chamada a Atualização de entity ' . $this->entity;
 
         return $this->log('debug', $text, [
             'entity'   => $entity,
@@ -31,7 +31,7 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
         $data = parent::fetch($offset, $limit, $parameters);
 
         if ($data->getTotal() > 0) {
-            $method = 'get'.$this->getEntityName().'s';
+            $method = 'get' . $this->getEntityName() . 's';
 
             return $this->factoryEntityCollection($data->$method());
         }

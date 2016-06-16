@@ -32,9 +32,9 @@ class ProductTest extends TestCaseAbstract
     public function testPossuiPropriedadesEObjetos(array $data)
     {
         $product = $this->factory($data);
-        $this->assertEquals($data['id'], $product->getId());
-        $this->assertEquals($data['name'], $product->getName());
-        $this->assertEquals($data['deliveryType'], $product->getDeliveryType());
+        $this->assertSame($data['id'], $product->getId());
+        $this->assertSame($data['name'], $product->getName());
+        $this->assertSame($data['deliveryType'], $product->getDeliveryType());
     }
 
     /**
@@ -44,8 +44,8 @@ class ProductTest extends TestCaseAbstract
     {
         $product = $this->factory($data);
         $nbm = $product->getNbm();
-        $this->assertEquals($data['nbm']['number'], $nbm['number']);
-        $this->assertEquals($data['nbm']['origin'], $nbm['origin']);
+        $this->assertSame($data['nbm']['number'], $nbm['number']);
+        $this->assertSame($data['nbm']['origin'], $nbm['origin']);
     }
 
     /**
@@ -56,7 +56,7 @@ class ProductTest extends TestCaseAbstract
         $product = $this->factory($data);
         $price = $product->getSku()->first()->getPrice();
         foreach (['listPrice', 'sellPrice'] as $key) {
-            $this->assertEquals($data['sku'][0]['price'][$key], $price[$key]);
+            $this->assertSame($data['sku'][0]['price'][$key], $price[$key]);
         }
     }
 
@@ -72,12 +72,12 @@ class ProductTest extends TestCaseAbstract
             $this->assertInstanceOf('Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku', $productSku);
             $this->assertTrue($product->getSku()->hasId($item['id']));
             $this->assertTrue($product->has($productSku));
-            $this->assertEquals($item['name'], $productSku->getName());
-            $this->assertEquals($item['description'], $productSku->getDescription());
+            $this->assertSame($item['name'], $productSku->getName());
+            $this->assertSame($item['description'], $productSku->getDescription());
 
             $skuEan = $productSku->getEan();
             foreach ($item['ean'] as $ean) {
-                $this->assertEquals($ean, current($skuEan));
+                $this->assertSame($ean, current($skuEan));
                 next($skuEan);
             }
 
@@ -93,9 +93,9 @@ class ProductTest extends TestCaseAbstract
         $product = $this->factory($data);
         $productManufacturer = $product->getManufacturer();
         $this->assertInstanceOf('Gpupo\SubmarinoSdk\Entity\Product\Manufacturer', $productManufacturer);
-        $this->assertEquals($data['manufacturer']['name'], $productManufacturer->getName());
-        $this->assertEquals($data['manufacturer']['model'], $productManufacturer->getModel());
-        $this->assertEquals($data['manufacturer']['warrantyTime'], $productManufacturer->getWarrantyTime());
+        $this->assertSame($data['manufacturer']['name'], $productManufacturer->getName());
+        $this->assertSame($data['manufacturer']['model'], $productManufacturer->getModel());
+        $this->assertSame($data['manufacturer']['warrantyTime'], $productManufacturer->getWarrantyTime());
 
         return $product;
     }
@@ -113,22 +113,22 @@ class ProductTest extends TestCaseAbstract
         $this->assertArrayHasKey('description', current($array['sku']));
 
         $this->assertArrayHasKey('manufacturer', $array);
-        foreach (array('name', 'model',  'warrantyTime') as $key) {
+        foreach (['name', 'model',  'warrantyTime'] as $key) {
             $this->assertArrayHasKey($key, $array['manufacturer']);
-            $this->assertEquals($data['manufacturer'][$key], $array['manufacturer'][$key]);
+            $this->assertSame($data['manufacturer'][$key], $array['manufacturer'][$key]);
         }
 
-        $this->assertEquals($data['nbm']['number'], $array['nbm']['number']);
-        $this->assertEquals($data['nbm']['origin'], $array['nbm']['origin']);
+        $this->assertSame($data['nbm']['number'], $array['nbm']['number']);
+        $this->assertSame($data['nbm']['origin'], $array['nbm']['origin']);
 
         foreach ($data['sku'] as $item) {
             $sku = current($array['sku']);
-            $this->assertEquals($item['name'], $sku['name']);
-            $this->assertEquals($item['description'], $sku['description']);
+            $this->assertSame($item['name'], $sku['name']);
+            $this->assertSame($item['description'], $sku['description']);
 
             $skuEan = $sku['ean'];
             foreach ($item['ean'] as $ean) {
-                $this->assertEquals($ean, current($skuEan));
+                $this->assertSame($ean, current($skuEan));
                 next($skuEan);
             }
 

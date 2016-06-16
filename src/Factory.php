@@ -28,17 +28,17 @@ class Factory extends FactoryAbstract
     {
         return [
             'product' => [
-                'class'   => $namespace.'Product\Product',
-                'manager' => $namespace.'Product\Manager',
+                'class'   => $namespace . 'Product\Product',
+                'manager' => $namespace . 'Product\Manager',
             ],
             'sku' => [
-                'class'   => $namespace.'Product\Factory',
+                'class'   => $namespace . 'Product\Factory',
                 'method'  => 'factorySku',
-                'manager' => $namespace.'Product\Sku\Manager',
+                'manager' => $namespace . 'Product\Sku\Manager',
             ],
             'order' => [
-                'class'   => $namespace.'Order\Order',
-                'manager' => $namespace.'Order\Manager',
+                'class'   => $namespace . 'Order\Order',
+                'manager' => $namespace . 'Order\Manager',
             ],
         ];
     }

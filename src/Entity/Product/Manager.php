@@ -28,7 +28,7 @@ class Manager extends ManagerAbstract
     public function update(EntityInterface $entity, EntityInterface $existent)
     {
         foreach ($entity->getSku() as $sku) {
-            if (!$existent->has($sku)) {
+            if ( ! $existent->has($sku)) {
                 $this->addSku($entity, $sku);
             } else {
                 $this->updateSku($sku);

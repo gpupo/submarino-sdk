@@ -17,7 +17,7 @@ class Sku extends CollectionAbstract
 {
     protected $index = [];
 
-    public function __construct(array $elements = array())
+    public function __construct(array $elements = [])
     {
         parent::__construct();
 
@@ -26,11 +26,11 @@ class Sku extends CollectionAbstract
         }
 
         foreach ($elements as $data) {
-            if (array_key_exists('ean', $data) && !is_array($data['ean'])) {
+            if (array_key_exists('ean', $data) && ! is_array($data['ean'])) {
                 $data['ean'] = [$data['ean']];
             }
 
-            if (array_key_exists('urlImage', $data) && !is_array($data['urlImage'])) {
+            if (array_key_exists('urlImage', $data) && ! is_array($data['urlImage'])) {
                 $data['urlImage'] = [$data['urlImage']];
             }
 

@@ -38,6 +38,6 @@ class Client extends ClientAbstract implements ClientInterface
             throw new \InvalidArgumentException('Token nao informado');
         }
 
-        return 'Authorization: Basic '.base64_encode($token.':');
+        return 'Authorization: Basic ' . base64_encode($token . ':');
     }
 }

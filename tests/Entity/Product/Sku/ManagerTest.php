@@ -37,6 +37,6 @@ class ManagerTest extends TestCaseAbstract
         $response = $this->factoryResponseFromFixture('fixture/Product/Sku/detail.json');
         $sku = $this->getManager($response)->findById(9474);
         $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku', $sku);
-        $this->assertEquals(9474, $sku->getId());
+        $this->assertSame(9474, (int) $sku->getId());
     }
 }

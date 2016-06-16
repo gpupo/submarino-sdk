@@ -141,7 +141,7 @@ class OrderTest extends OrderTestCaseAbstract
 
         $order = $this->factoryManager()->setDryRun($response)->findById(589);
 
-        $this->assertEquals('SUBMARINO', $order->getStore());
+        $this->assertSame('SUBMARINO', $order->getStore());
 
         return $order;
     }
@@ -151,7 +151,7 @@ class OrderTest extends OrderTestCaseAbstract
      */
     public function testPossuiValorTotalDoPedido(Order $order)
     {
-        $this->assertEquals(133.41, $order->getTotalAmount());
+        $this->assertSame(133.41, $order->getTotalAmount());
     }
 
     /**
@@ -159,7 +159,7 @@ class OrderTest extends OrderTestCaseAbstract
      */
     public function testPossuiValorTotalDoFrete(Order $order)
     {
-        $this->assertEquals(40, $order->getTotalFreight());
+        $this->assertSame(40.0, $order->getTotalFreight());
     }
 
     /**
@@ -167,7 +167,7 @@ class OrderTest extends OrderTestCaseAbstract
      */
     public function testPossuiValorTotalDeDesconto(Order $order)
     {
-        $this->assertEquals(4, $order->getTotalDiscount());
+        $this->assertSame(4.0, $order->getTotalDiscount());
     }
 
     /**
@@ -176,10 +176,10 @@ class OrderTest extends OrderTestCaseAbstract
     public function testPossuiValorTotalDeJuros()
     {
         $order = $this->factoryInterestOrder();
-        $this->assertEquals(33.58, $order->getTotalAmount());
-        $this->assertEquals(7.94, $order->getTotalFreight());
-        $this->assertEquals(0, $order->getTotalDiscount());
-        $this->assertEquals(0.74, $order->getTotalInterest());
+        $this->assertSame(33.58, $order->getTotalAmount());
+        $this->assertSame(7.94, $order->getTotalFreight());
+        $this->assertSame(0.0, $order->getTotalDiscount());
+        $this->assertSame(0.74, $order->getTotalInterest());
 
         return $order;
     }
@@ -189,7 +189,7 @@ class OrderTest extends OrderTestCaseAbstract
      */
     public function testPossuiValorTotalDoPedidoDescontadoJuros(Order $order)
     {
-        $this->assertEquals('32.84', $order->getTotalReal(), 'Valor total esperado');
+        $this->assertSame('32.84', $order->getTotalReal(), 'Valor total esperado');
     }
 
     /**
@@ -198,16 +198,16 @@ class OrderTest extends OrderTestCaseAbstract
     public function testOTotalRealContémProdutosSomadoAFreteMenosODesconto(Order $order)
     {
         $total = bcadd(24.9, 7.94, 2);
-        $this->assertNotEquals($order->getTotalAmount(), $order->getTotalReal());
-        $this->assertEquals($total, $order->getTotalReal(), 'Produto mais frete');
+        $this->assertNotSame($order->getTotalAmount(), $order->getTotalReal());
+        $this->assertSame($total, $order->getTotalReal(), 'Produto mais frete');
     }
 
     public function testOTotalRealPossuiMesmoValorDeTotalAmountSeNãoHouverJuros()
     {
         $order = $this->factoryInterestOrder();
-        $this->assertNotEquals($order->getTotalAmount(), $order->getTotalReal());
+        $this->assertNotSame($order->getTotalAmount(), $order->getTotalReal());
         $order->setTotalInterest(0);
-        $this->assertEquals($order->getTotalAmount(), $order->getTotalReal());
+        $this->assertSame((float) $order->getTotalAmount(), (float) $order->getTotalReal());
     }
 
     /**
@@ -215,7 +215,7 @@ class OrderTest extends OrderTestCaseAbstract
      */
     public function testOTotalRealContémTotalMenosJuros(Order $order)
     {
-        $this->assertEquals(bcsub(33.58, 0.74, 2), $order->getTotalReal(), 'Valor total menos o juros');
+        $this->assertSame(bcsub(33.58, 0.74, 2), $order->getTotalReal(), 'Valor total menos o juros');
     }
 
     /**

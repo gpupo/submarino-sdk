@@ -36,10 +36,10 @@ class ManagerTest extends OrderTestCaseAbstract
         $response = $this->factoryResponseFromFixture('fixture/Order/detail.json');
         $order = $this->factoryManager()->setDryRun($response)->findById(589);
         $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Order', $order);
-        $this->assertEquals(589, $order->getId());
-        $this->assertEquals('03-589-01', $order->getSiteId());
-        $this->assertEquals('SUBMARINO', $order->getStore());
-        $this->assertEquals('APROVED', $order->getStatus());
+        $this->assertSame(589, $order->getId());
+        $this->assertSame('03-589-01', $order->getSiteId());
+        $this->assertSame('SUBMARINO', $order->getStore());
+        $this->assertSame('APROVED', $order->getStatus()->getStatus());
 
         return $order;
     }

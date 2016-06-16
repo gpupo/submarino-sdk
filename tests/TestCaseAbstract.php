@@ -19,7 +19,7 @@ abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
 
     public static function getResourcesPath()
     {
-        return dirname(dirname(__FILE__)).'/Resources/';
+        return dirname(dirname(__FILE__)) . '/Resources/';
     }
 
     protected function getOptions()
@@ -33,7 +33,7 @@ abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
 
     protected function getFactory()
     {
-        if (!$this->factory) {
+        if ( ! $this->factory) {
             $this->factory = Factory::getInstance()->setup($this->getOptions(), $this->getLogger());
         }
 

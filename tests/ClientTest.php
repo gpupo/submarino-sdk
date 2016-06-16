@@ -18,7 +18,7 @@ class ClientTest extends TestCaseAbstract
     public function testGerenciaUriDeRecurso()
     {
         $client = $this->factoryClient();
-        $this->assertEquals('https://api-sandbox.bonmarketplace.com.br/sku',
+        $this->assertSame('https://api-sandbox.bonmarketplace.com.br/sku',
             $client->getResourceUri('/sku'));
     }
 
@@ -27,7 +27,7 @@ class ClientTest extends TestCaseAbstract
      */
     public function testAcessoAListaDePedidos()
     {
-        if (!$this->hasToken()) {
+        if ( ! $this->hasToken()) {
             return $this->markTestSkipped('API Token ausente');
         }
 
@@ -44,7 +44,7 @@ class ClientTest extends TestCaseAbstract
      */
     public function testAcessoAListaDeProdutos()
     {
-        if (!$this->hasToken()) {
+        if ( ! $this->hasToken()) {
             return $this->markTestSkipped('API Token ausente');
         }
 
@@ -63,7 +63,7 @@ class ClientTest extends TestCaseAbstract
      */
     public function testAcessoAListaDeSkus()
     {
-        if (!$this->hasToken()) {
+        if ( ! $this->hasToken()) {
             return $this->markTestSkipped('API Token ausente');
         }
 
@@ -86,9 +86,9 @@ class ClientTest extends TestCaseAbstract
     {
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
-            $response = $client->get('/sku/'.$sku['id']);
+            $response = $client->get('/sku/' . $sku['id']);
 
-            $this->getLogger()->addDebug('Informações do SKU #'.$sku['id'],
+            $this->getLogger()->addDebug('Informações do SKU #' . $sku['id'],
                 $response->toLog());
 
             $this->assertHttpStatusCodeSuccess($response->getHttpStatusCode());
@@ -104,7 +104,7 @@ class ClientTest extends TestCaseAbstract
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
             $body = json_encode(['quantity' => 2]);
-            $response = $client->put('/sku/'.$sku['id'].'/stock', $body);
+            $response = $client->put('/sku/' . $sku['id'] . '/stock', $body);
 
             $this->assertHttpStatusCodeSuccess($response->getHttpStatusCode(),
                 json_encode([$response->toArray(), $sku]));
@@ -118,24 +118,24 @@ class ClientTest extends TestCaseAbstract
     {
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
-            $response = $client->get('/sku/'.$sku['id']);
+            $response = $client->get('/sku/' . $sku['id']);
 
             $info = $response->getData()->getPrice();
             $price = Factory::factoryPrice($info);
 
-            $this->assertEquals($info['sellPrice'], $price->getSellPrice());
+            $this->assertSame($info['sellPrice'], $price->getSellPrice());
 
             $newSellPrice = number_format($info['sellPrice'] * 0.99, 2, '.', '');
             $price->setSellPrice($newSellPrice);
-            $this->assertEquals($newSellPrice, $price->getSellPrice());
+            $this->assertSame($newSellPrice, $price->getSellPrice());
 
-            $changeData = $client->put('/sku/'.$sku['id'].'/price', $price->toJson());
+            $changeData = $client->put('/sku/' . $sku['id'] . '/price', $price->toJson());
             $this->assertHttpStatusCodeSuccess($changeData->getHttpStatusCode());
 
-            $newResponse = $client->get('/sku/'.$sku['id']);
+            $newResponse = $client->get('/sku/' . $sku['id']);
             $newPrice = Factory::factoryPrice($newResponse->getData()->getPrice());
 
-            $this->assertEquals($newSellPrice, $newPrice->getSellPrice());
+            $this->assertSame($newSellPrice, $newPrice->getSellPrice());
         }
     }
 }

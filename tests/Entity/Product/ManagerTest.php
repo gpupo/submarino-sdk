@@ -41,7 +41,7 @@ class ManagerTest extends TestCaseAbstract
     {
         $product = $this->factoryDetail();
         $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Product', $product);
-        $this->assertEquals($product->getId(), 9474);
+        $this->assertSame((int) $product->getId(), 9474);
     }
 
     public function testGerenciaUpdate()

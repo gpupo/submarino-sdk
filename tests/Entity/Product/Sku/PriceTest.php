@@ -23,13 +23,13 @@ class PriceTest extends TestCaseAbstract
     public function testPossuiPreçoNormal()
     {
         $price = new Price(['listPrice' => '1']);
-        $this->assertEquals(1, $price->getListPrice());
+        $this->assertSame(1.0, $price->getListPrice());
     }
 
     public function testPossuiPreçoComDesconto()
     {
         $price = new Price(['listPrice' => '10', 'sellPrice' => 9]);
-        $this->assertEquals(10, $price->getListPrice());
-        $this->assertEquals(9, $price->getSellPrice());
+        $this->assertSame(10.0, $price->getListPrice());
+        $this->assertSame(9.0, $price->getSellPrice());
     }
 }
