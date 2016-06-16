@@ -11,19 +11,10 @@
     "keywords": ["submarino","americanas", "B2W", "shoptime", "sdk", "api"],
     "license": "MIT",
     "require": {
-        "php": ">=5.4",
-        "ext-curl" : "*",
+        "php": "^5.6 || ^7.0",
         "ext-bcmath" : "*",
-        "gpupo/common-sdk": "~1.9",
-        "symfony/console": "~2.6"
-    },
-    "suggest": {
-        "monolog/monolog": "Write Log messages"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~4.0",
-        "monolog/monolog": "~1.12",
-        "codeclimate/php-test-reporter": "dev-master"
+        "ext-curl" : "*",
+        "gpupo/common-sdk": "~2"
     },
     "autoload": {
         "psr-4": {
@@ -44,5 +35,6 @@
     "config": {
         "preferred-install": "dist"
     },
-    "minimum-stability" : "stable"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

@@ -18,6 +18,11 @@
   <get src="https://getcomposer.org/composer.phar" dest="${basedir}/composer.phar" skipexisting="true"/>
   <exec executable="php">
    <arg value="composer.phar"/>
+   <arg value="run-script"/>
+   <arg value="pre-install-cmd"/>
+  </exec>
+  <exec executable="php">
+   <arg value="composer.phar"/>
    <arg value="install"/>
   </exec>
  </target>
