@@ -11,8 +11,9 @@ matrix:
   allow_failures:
     - php: nightly
     - php: hhvm
-before_script:
-  - ant
-script: ant test
+branches:
+  except:
+    - /^psr.*$/
+script: ant travis
 notifications:
   email: false
