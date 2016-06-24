@@ -26,7 +26,7 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
         ]);
     }
 
-    public function fetch($offset = 0, $limit = 50, array $parameters = [])
+    public function fetch($offset = 0, $limit = 50, array $parameters = [], $route = 'fetch')
     {
         $data = parent::fetch($offset, $limit, $parameters);
 

@@ -30,7 +30,7 @@ class Manager extends ManagerAbstract
      *
      * @return \Gpupo\CommonSdk\Entity\CollectionInterface
      */
-    public function fetch($offset = 1, $limit = 50, array $parameters = [])
+    public function fetch($offset = 1, $limit = 50, array $parameters = [], $route = 'fetch')
     {
         return parent::fetch($offset, $limit, array_merge([
             'status'       => null,

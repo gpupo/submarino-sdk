@@ -5,6 +5,7 @@
  <target name="clean" description="Cleanup build artifacts">
   <delete dir="${basedir}/vendor"/>
   <delete file="${basedir}/composer.lock"/>
+  <delete file="${basedir}/var/logs/*"/>
  </target>
  <target name="composer" depends="clean" description="Install dependencies with Composer">
   <tstamp>
@@ -22,7 +23,7 @@
    <arg value="install"/>
   </exec>
  </target>
- <target name="travis" description="Run tests" depends="libraries, phpunit,codeclimate"/>
+ <target name="travis" description="Run tests" depends="composer-rebuild, phpunit,codeclimate"/>
  <target name="test" description="Run tests" depends="phpunit"/>
  <target name="phpunit" description="Generate Reports">
   <mkdir dir="${basedir}/var/logs"/>
@@ -40,8 +41,9 @@
   </exec>
   <delete dir="${basedir}/build"/>
  </target>
- <target name="libraries" depends="composer" description="List dependencies">
-   <echo output="Resources/doc/libraries-list.md" append="false">#List of dependencies:
+ <target name="libraries" description="List dependencies">
+   <echo output="Resources/doc/libraries-list.md" append="false">## Lista de dependências (libraries)
+
 ```
 </echo>
    <exec executable="php">
@@ -49,14 +51,22 @@
      <arg value="composer.phar"/>
      <arg value="show"/>
    </exec>
-   <echo output="Resources/doc/libraries-tree.md" append="false">#Tree of dependencies:
+   <echo output="Resources/doc/libraries-list.md" append="true">
+```
+---
+</echo>
+   <echo output="Resources/doc/libraries-tree.md" append="false">## Árvore de dependências (libraries)
 ```
 </echo>
    <exec executable="php">
-    <redirector output="Resources/doc/libraries-tree.md" alwayslog="true" append="true"/>
+    <redirector output="Resources/doc/libraries-tree.md" alwayslog="false" append="true"/>
      <arg value="composer.phar"/>
      <arg value="show"/>
      <arg value="-t"/>
    </exec>
+   <echo output="Resources/doc/libraries-tree.md" append="true">
+```
+---
+</echo>
  </target>
 </project>
