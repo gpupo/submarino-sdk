@@ -1,6 +1,6 @@
-#Tree of dependencies:
+## Árvore de dependências (libraries)
 ```
-gpupo/common-sdk 2.0.5 Componente de uso comum entre SDKs para integração a partir de aplicações PHP com Restful webservices
+gpupo/common-sdk 2.0.11 Componente de uso comum entre SDKs para integração a partir de aplicações PHP com Restful webservices
 |--codeclimate/php-test-reporter @dev
 |  |--ext-curl *
 |  |--php >=5.3
@@ -171,3 +171,6 @@ gpupo/common-sdk 2.0.5 Componente de uso comum entre SDKs para integração a pa
 |     `--php >=5.3.3
 `--twig/twig *
    `--php >=5.2.7
+
+```
+---

@@ -41,19 +41,29 @@
   </exec>
   <delete dir="${basedir}/build"/>
  </target>
+ <target name="daily" depends="composer-rebuild" description="Rebuild for new day!">
+  <exec executable="php-cs-fixer">
+    <arg value="fix"/>
+    <arg value="."/>
+  </exec>
+  <exec executable="${basedir}/bin/build-documentation.sh">
+  </exec>
+ </target>
  <target name="libraries" description="List dependencies">
-   <echo output="Resources/doc/libraries-list.md" append="false">## Lista de dependências (libraries)
+   <echo output="Resources/doc/libraries-list.md" append="false"><!--libraries-list-->
+## Lista de dependências (libraries)
 
-```
+Name | Version | Description
+-----|---------|------------------------------------------------------
 </echo>
    <exec executable="php">
     <redirector output="Resources/doc/libraries-list.md" alwayslog="true" append="true"/>
      <arg value="composer.phar"/>
      <arg value="show"/>
+     <arg value="--no-ansi"/>
    </exec>
    <echo output="Resources/doc/libraries-list.md" append="true">
-```
----
+<!--libraries-list-->
 </echo>
    <echo output="Resources/doc/libraries-tree.md" append="false">## Árvore de dependências (libraries)
 ```
@@ -68,5 +78,19 @@
 ```
 ---
 </echo>
+ </target>
+ <target name="box.phar" depends="box.check" unless="box.file.exists">
+   <get src="https://github.com/box-project/box2/releases/download/2.5.2/box-2.5.2.phar" dest="${basedir}/box.phar" skipexisting="false"/>
+ </target>
+ <target name="box.check">
+   <condition property="box.file.exists">
+     <available file="${basedir}/box.phar" type="file" />
+   </condition>
+ </target>
+ <target name="box.build" depends="box.phar" description="Build Phar">
+     <exec executable="php">
+         <arg value="${basedir}/box.phar"/>
+         <arg value="build"/>
+     </exec>
  </target>
 </project>

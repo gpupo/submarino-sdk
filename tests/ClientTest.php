@@ -2,12 +2,16 @@
 
 /*
  * This file is part of gpupo/submarino-sdk
- *
- * (c) Gilmar Pupo <g@g1mr.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * Created by Gilmar Pupo <g@g1mr.com>
+ * For the information of copyright and license you should read the file
+ * LICENSE which is distributed with this source code.
+ * Para a informação dos direitos autorais e de licença você deve ler o arquivo
+ * LICENSE que é distribuído com este código-fonte.
+ * Para obtener la información de los derechos de autor y la licencia debe leer
+ * el archivo LICENSE que se distribuye con el código fuente.
+ * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\Tests\SubmarinoSdk;
 
 use Gpupo\Common\Entity\Collection;
@@ -27,7 +31,7 @@ class ClientTest extends TestCaseAbstract
      */
     public function testAcessoAListaDePedidos()
     {
-        if ( ! $this->hasToken()) {
+        if (!$this->hasToken()) {
             return $this->markTestSkipped('API Token ausente');
         }
 
@@ -44,7 +48,7 @@ class ClientTest extends TestCaseAbstract
      */
     public function testAcessoAListaDeProdutos()
     {
-        if ( ! $this->hasToken()) {
+        if (!$this->hasToken()) {
             return $this->markTestSkipped('API Token ausente');
         }
 
@@ -63,7 +67,7 @@ class ClientTest extends TestCaseAbstract
      */
     public function testAcessoAListaDeSkus()
     {
-        if ( ! $this->hasToken()) {
+        if (!$this->hasToken()) {
             return $this->markTestSkipped('API Token ausente');
         }
 
@@ -86,9 +90,9 @@ class ClientTest extends TestCaseAbstract
     {
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
-            $response = $client->get('/sku/' . $sku['id']);
+            $response = $client->get('/sku/'.$sku['id']);
 
-            $this->getLogger()->addDebug('Informações do SKU #' . $sku['id'],
+            $this->getLogger()->addDebug('Informações do SKU #'.$sku['id'],
                 $response->toLog());
 
             $this->assertHttpStatusCodeSuccess($response->getHttpStatusCode());
@@ -104,7 +108,7 @@ class ClientTest extends TestCaseAbstract
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
             $body = json_encode(['quantity' => 2]);
-            $response = $client->put('/sku/' . $sku['id'] . '/stock', $body);
+            $response = $client->put('/sku/'.$sku['id'].'/stock', $body);
 
             $this->assertHttpStatusCodeSuccess($response->getHttpStatusCode(),
                 json_encode([$response->toArray(), $sku]));
@@ -118,7 +122,7 @@ class ClientTest extends TestCaseAbstract
     {
         foreach ($data->getSkus() as $sku) {
             $client = $this->factoryClient();
-            $response = $client->get('/sku/' . $sku['id']);
+            $response = $client->get('/sku/'.$sku['id']);
 
             $info = $response->getData()->getPrice();
             $price = Factory::factoryPrice($info);
@@ -129,10 +133,10 @@ class ClientTest extends TestCaseAbstract
             $price->setSellPrice($newSellPrice);
             $this->assertSame($newSellPrice, $price->getSellPrice());
 
-            $changeData = $client->put('/sku/' . $sku['id'] . '/price', $price->toJson());
+            $changeData = $client->put('/sku/'.$sku['id'].'/price', $price->toJson());
             $this->assertHttpStatusCodeSuccess($changeData->getHttpStatusCode());
 
-            $newResponse = $client->get('/sku/' . $sku['id']);
+            $newResponse = $client->get('/sku/'.$sku['id']);
             $newPrice = Factory::factoryPrice($newResponse->getData()->getPrice());
 
             $this->assertSame($newSellPrice, $newPrice->getSellPrice());

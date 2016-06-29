@@ -1,9 +1,16 @@
 build:
     environment:
         php: 7.0.6
+    tests:
+        override:
+            -
+                command: 'ant test'
+                coverage:
+                    file: 'build/logs/clover.xml'
+                    format: 'clover'
 filter:
     paths: [src/*]
-    excluded_paths: [tests/*, vendor/*, build/*, Resorces/*]
+    excluded_paths: [README.md, tests/*, vendor/*, build/*, Resources/*]
 checks:
   php:
     code_rating: true
