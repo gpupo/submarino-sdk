@@ -1,14 +1,21 @@
+
+<!-- main -->
+
 # submarino-sdk
 
 SDK Não Oficial para integração a partir de aplicações PHP com as APIs da B2W Marketplace (Submarino, Shoptime, Americanas.com)
 
 [![Paypal Donations](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EK6F2WRKG7GNN&item_name=submarino-sdk)
+
+<!-- require -->
+
 <!-- require -->
 
 ## Requisitos para uso
 
 * PHP >= *5.6*
 * [curl extension](http://php.net/manual/en/intro.curl.php)
+* [Composer Dependency Manager](http://getcomposer.org)
 
 Este componente **não é uma aplicação Stand Alone** e seu objetivo é ser utilizado como biblioteca.
 Sua implantação deve ser feita por desenvolvedores experientes.
@@ -22,6 +29,9 @@ A documentação mais importante está nos testes unitários. Se você não cons
 
 
 <!-- //require -->
+
+<!-- license -->
+
 
 <!-- licence -->
 
@@ -51,6 +61,9 @@ Proibido:
 - Responsabilidade Assegurada
 
 <!-- //licence -->
+
+<!-- QA -->
+
 <!-- qa -->
 
 ---
@@ -61,6 +74,15 @@ Proibido:
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gpupo/submarino-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gpupo/submarino-sdk/?branch=master)
 [![Code Climate](https://codeclimate.com/github/gpupo/submarino-sdk/badges/gpa.svg)](https://codeclimate.com/github/gpupo/submarino-sdk)
 [![Test Coverage](https://codeclimate.com/github/gpupo/submarino-sdk/badges/coverage.svg)](https://codeclimate.com/github/gpupo/submarino-sdk/coverage)
+
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/baf451b6-4c13-4e84-ae29-c7db67c38b49/big.png)](https://insight.sensiolabs.com/projects/baf451b6-4c13-4e84-ae29-c7db67c38b49)
+
+<!-- thanks -->
+
+
+<!-- install -->
+
 <!-- install -->
 
 ---
@@ -90,7 +112,8 @@ $submarinoSdk = Factory::getInstance()->setup([
 ### Acesso a lista de produtos cadastrados
 
 ```php
-
+<?php
+//...
 $manager = $submarinoSdk->factoryManager('product'));
 $produtosCadastrados = $manager->fetch(); // Collection de Objetos Product
 
@@ -98,7 +121,9 @@ $produtosCadastrados = $manager->fetch(); // Collection de Objetos Product
 
 ### Acesso a informações de um produto específico
 
-``` PHP
+```php
+<?php
+//...
 $produto = $manager->findById(9));
 echo $product->getName();
 
@@ -241,6 +266,9 @@ foreach ($sdkOrderManager->fetch() as $order) {
 
 ```
 ----
+
+<!-- console -->
+
 <!-- console -->
 
 ---
@@ -254,6 +282,9 @@ Lista de comandos disponíveis:
 Você pode verificar suas credenciais Cnova na linha de comando:
 
     ./bin/main credential
+
+<!-- links -->
+
 <!-- links -->
 
 ---
@@ -265,6 +296,12 @@ Você pode verificar suas credenciais Cnova na linha de comando:
 * [Submarino-sdk Composer Package](https://packagist.org/packages/gpupo/submarino-sdk) no packagist.org
 * [Marketplace-bundle Composer Package](http://www.g1mr.com/MarkethubBundle/) - Integração deste pacote com Symfony
 * [Outras SDKs para o Ecommerce do Brasil](http://www.g1mr.com/common-sdk/)
+
+<!-- links-common -->
+
+
+<!-- dev -->
+
 <!-- dev -->
 
 ---
@@ -291,6 +328,19 @@ Personalize os parâmetros!
 ---
 
 ## Propriedades dos objetos
+
+<!-- todo -->
+
+
+<!-- dev-common -->
+
+
+---
+
+## Propriedades dos objetos
+
+<!-- testdox -->
+
 
 ### SubmarinoSdk\Client
 
@@ -505,6 +555,9 @@ Personalize os parâmetros!
 - [x] Centraliza criacao de objetos 
 
 
+<!-- libraries-table -->
+
+
 ## Lista de dependências (libraries)
 
 Name | Version | Description
@@ -557,5 +610,9 @@ symfony/stopwatch | v3.1.1 | Symfony Stopwatch Component
 symfony/yaml | v3.1.1 | Symfony Yaml Component
 twig/twig | v1.24.1 | Twig, the flexible, fast, and secure template language for PHP
 webmozart/assert | 1.0.2 | Assertions to validate method input/output with nice error messages.
+
+
+
+<!-- footer-common -->
 
 

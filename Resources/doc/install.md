@@ -27,7 +27,8 @@ $submarinoSdk = Factory::getInstance()->setup([
 ### Acesso a lista de produtos cadastrados
 
 ```php
-
+<?php
+//...
 $manager = $submarinoSdk->factoryManager('product'));
 $produtosCadastrados = $manager->fetch(); // Collection de Objetos Product
 
@@ -35,7 +36,9 @@ $produtosCadastrados = $manager->fetch(); // Collection de Objetos Product
 
 ### Acesso a informações de um produto específico
 
-``` PHP
+```php
+<?php
+//...
 $produto = $manager->findById(9));
 echo $product->getName();
 
