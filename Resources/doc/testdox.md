@@ -6,6 +6,9 @@
 - [ ] Acesso a lista de pedidos
 - [ ] Acesso a lista de produtos
 - [ ] Acesso a lista de skus
+- [ ] Retorna informacoes do sku informado
+- [ ] Atualiza estoque do sku informado
+- [ ] Atualiza preco do sku informado
 
 ### SubmarinoSdk\Entity\Order\Customer\Customer
 
@@ -22,7 +25,6 @@
 - [x] Possui método ``setTelephones()`` que define Telephones 
 - [x] Possui método ``getDeliveryAddress()`` para acessar DeliveryAddress 
 - [x] Possui método ``setDeliveryAddress()`` que define DeliveryAddress 
-- [x] Entidade é uma Coleção 
 
 ### SubmarinoSdk\Entity\Order\Customer\Telephones\Telephones
 
@@ -95,7 +97,6 @@
 - [x] Possui método ``setShipping()`` que define Shipping 
 - [x] Possui método ``getPaymentMethods()`` para acessar PaymentMethods 
 - [x] Possui método ``setPaymentMethods()`` que define PaymentMethods 
-- [x] Entidade é uma Coleção 
 
 ### SubmarinoSdk\Entity\Order\Payer\Payer
 
@@ -115,7 +116,6 @@
 - [x] Possui método ``setId()`` que define Id 
 - [x] Possui método ``getValue()`` para acessar Value 
 - [x] Possui método ``setValue()`` que define Value 
-- [x] Entidade é uma Coleção 
 
 ### SubmarinoSdk\Entity\Order\Products\Product
 
@@ -131,7 +131,6 @@
 - [x] Possui método ``setFreight()`` que define Freight 
 - [x] Possui método ``getDiscount()`` para acessar Discount 
 - [x] Possui método ``setDiscount()`` que define Discount 
-- [x] Entidade é uma Coleção 
 
 ### SubmarinoSdk\Entity\Order\Shipping
 
@@ -146,7 +145,6 @@
 - [x] Possui método ``setCalculationType()`` que define CalculationType 
 - [x] Possui método ``getShippingMethodDisplayName()`` para acessar ShippingMethodDisplayName 
 - [x] Possui método ``setShippingMethodDisplayName()`` que define ShippingMethodDisplayName 
-- [x] Entidade é uma Coleção 
 
 ### SubmarinoSdk\Entity\Order\Status\Status
 
