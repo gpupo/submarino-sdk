@@ -3,17 +3,14 @@ language: php
 os:
   - linux
 php:
-  - 5.6
-  - 7.0
+  - 7.3.1
   - nightly
-  - hhvm
 matrix:
   allow_failures:
     - php: nightly
-    - php: hhvm
-branches:
-  except:
-    - /^psr.*$/
-script: ant travis
+before_script:
+  - composer self-update
+  - composer install --prefer-dist
+script: vendor/bin/phpunit
 notifications:
   email: false
