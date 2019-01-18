@@ -15,6 +15,7 @@
 namespace Gpupo\SubmarinoSdk\Entity\Order;
 
 use Gpupo\SubmarinoSdk\Entity\ManagerAbstract;
+use Gpupo\Common\Entity\CollectionInterface;
 
 class Manager extends ManagerAbstract
 {
@@ -34,7 +35,7 @@ class Manager extends ManagerAbstract
      *
      * @return \Gpupo\CommonSdk\Entity\CollectionInterface
      */
-    public function fetch($offset = 1, $limit = 50, array $parameters = [], $route = 'fetch')
+    public function fetch($offset = 1, $limit = 50, array $parameters = [], $route = 'fetch'): ?CollectionInterface
     {
         return parent::fetch($offset, $limit, array_merge([
             'status'       => null,

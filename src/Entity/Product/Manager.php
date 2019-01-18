@@ -17,6 +17,7 @@ namespace Gpupo\SubmarinoSdk\Entity\Product;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\SubmarinoSdk\Entity\ManagerAbstract;
 use Gpupo\SubmarinoSdk\Entity\Product\Sku\Manager as SkuManager;
+use Gpupo\Common\Entity\CollectionInterface;
 
 class Manager extends ManagerAbstract
 {

@@ -17,6 +17,7 @@ namespace Gpupo\SubmarinoSdk\Entity;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Entity\ManagerAbstract as CommonAbstract;
 use Gpupo\CommonSdk\Entity\ManagerInterface;
+use Gpupo\Common\Entity\CollectionInterface;
 
 abstract class ManagerAbstract extends CommonAbstract implements ManagerInterface
 {
@@ -30,7 +31,7 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
         ]);
     }
 
-    public function fetch($offset = 0, $limit = 50, array $parameters = [], $route = 'fetch')
+    public function fetch($offset = 0, $limit = 50, array $parameters = [], $route = 'fetch'): ?CollectionInterface
     {
         $data = parent::fetch($offset, $limit, $parameters);
 
@@ -39,8 +40,6 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
 
             return $this->factoryEntityCollection($data->$method());
         }
-
-        return;
     }
 
     public function findById($itemId)
