@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\Status;
@@ -18,6 +21,9 @@ use Gpupo\SubmarinoSdk\Entity\Order\Order;
 use Gpupo\SubmarinoSdk\Entity\Order\Status\Status;
 use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 
+/**
+ * @coversNothing
+ */
 class StatusTest extends OrderTestCaseAbstract
 {
     public static function setUpBeforeClass()
@@ -81,10 +87,11 @@ class StatusTest extends OrderTestCaseAbstract
 
     /**
      * @dataProvider dataProviderOrderCollection
-     * @expectedException \Gpupo\CommonSdk\Exception\ExceptionInterface
      */
     public function testFalhaAoMarcarComoFaturadoSemPossuirObjetoInvoicedValido(Order $order)
     {
+        $this->expectException(\Gpupo\CommonSdk\Exception\ExceptionInterface::class);
+
         $status = $order->getStatus();
         $status->setStatus('INVOICED');
         $this->assertFalse($status->isValid());
@@ -109,10 +116,11 @@ class StatusTest extends OrderTestCaseAbstract
 
     /**
      * @dataProvider dataProviderOrderCollection
-     * @expectedException \Gpupo\CommonSdk\Exception\ExceptionInterface
      */
     public function testFalhaAoMarcarComoRemetidoSemPossuirObjetoShippedValido(Order $order)
     {
+        $this->expectException(\Gpupo\CommonSdk\Exception\ExceptionInterface::class);
+
         $status = $order->getStatus();
         $status->setStatus('SHIPPED');
         $this->assertFalse($status->isValid());
@@ -133,10 +141,11 @@ class StatusTest extends OrderTestCaseAbstract
 
     /**
      * @dataProvider dataProviderOrderCollection
-     * @expectedException \Gpupo\CommonSdk\Exception\ExceptionInterface
      */
     public function testFalhaAoMarcarComoFalhaNaEntregaSemPossuirObjetoShipmentExceptionValido(Order $order)
     {
+        $this->expectException(\Gpupo\CommonSdk\Exception\ExceptionInterface::class);
+
         $status = $order->getStatus();
         $status->setStatus('SHIPPED');
         $status->getShipmentException()->setRequired();
@@ -160,10 +169,11 @@ class StatusTest extends OrderTestCaseAbstract
 
     /**
      * @dataProvider dataProviderOrderCollection
-     * @expectedException \Gpupo\CommonSdk\Exception\ExceptionInterface
      */
     public function testFalhaAoMarcarComoEntregueSemPossuirObjetoDeliveredValido(Order $order)
     {
+        $this->expectException(\Gpupo\CommonSdk\Exception\ExceptionInterface::class);
+
         $status = $order->getStatus();
         $status->setStatus('DELIVERED');
         $this->assertFalse($status->isValid());
@@ -183,10 +193,11 @@ class StatusTest extends OrderTestCaseAbstract
 
     /**
      * @dataProvider dataProviderOrderCollection
-     * @expectedException \Gpupo\CommonSdk\Exception\ExceptionInterface
      */
     public function testFalhaAoMarcarComoIndisponivelSemPossuirObjetoUnavailableValido(Order $order)
     {
+        $this->expectException(\Gpupo\CommonSdk\Exception\ExceptionInterface::class);
+
         $status = $order->getStatus();
         $status->setStatus('UNAVAILABLE');
         $this->assertFalse($status->isValid());

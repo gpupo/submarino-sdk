@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,15 +11,19 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\PaymentMethods;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
+use Gpupo\CommonSdk\Tests\Traits\EntityTrait;
 use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 
+/**
+ * @coversNothing
+ */
 class PaymentMethodTest extends OrderTestCaseAbstract
 {
     use EntityTrait;
@@ -34,8 +40,8 @@ class PaymentMethodTest extends OrderTestCaseAbstract
     {
         $expected = [
             'sequential' => 2,
-            'id'         => 'string',
-            'value'      => 12.99,
+            'id' => 'string',
+            'value' => 12.99,
         ];
 
         return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
@@ -45,8 +51,10 @@ class PaymentMethodTest extends OrderTestCaseAbstract
     {
         foreach ($this->getList() as $order) {
             foreach ($order->getPaymentMethods() as $paymentMethod) {
-                $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethod',
-                $paymentMethod);
+                $this->assertInstanceOf(
+                    '\Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethod',
+                $paymentMethod
+                );
             }
         }
     }
@@ -54,9 +62,10 @@ class PaymentMethodTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getSequential()`` para acessar Sequential
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterSequential(EntityInterface $object, $expected = null)
+    public function testGetterSequential(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('sequential', 'integer', $object, $expected);
     }
@@ -64,9 +73,10 @@ class PaymentMethodTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setSequential()`` que define Sequential
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterSequential(EntityInterface $object, $expected = null)
+    public function testSetterSequential(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('sequential', 'integer', $object);
     }
@@ -74,9 +84,10 @@ class PaymentMethodTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getId()`` para acessar Id
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterId(EntityInterface $object, $expected = null)
+    public function testGetterId(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('id', 'string', $object, $expected);
     }
@@ -84,9 +95,10 @@ class PaymentMethodTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setId()`` que define Id
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterId(EntityInterface $object, $expected = null)
+    public function testSetterId(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('id', 'string', $object);
     }
@@ -94,9 +106,10 @@ class PaymentMethodTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getValue()`` para acessar Value
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterValue(EntityInterface $object, $expected = null)
+    public function testGetterValue(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('value', 'number', $object, $expected);
     }
@@ -104,9 +117,10 @@ class PaymentMethodTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setValue()`` que define Value
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterValue(EntityInterface $object, $expected = null)
+    public function testSetterValue(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('value', 'number', $object);
     }

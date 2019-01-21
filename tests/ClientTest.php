@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk;
@@ -17,13 +20,18 @@ namespace Gpupo\Tests\SubmarinoSdk;
 use Gpupo\Common\Entity\Collection;
 use Gpupo\SubmarinoSdk\Entity\Product\Factory;
 
+/**
+ * @coversNothing
+ */
 class ClientTest extends TestCaseAbstract
 {
     public function testGerenciaUriDeRecurso()
     {
         $client = $this->factoryClient();
-        $this->assertSame('https://api-sandbox.bonmarketplace.com.br/sku',
-            $client->getResourceUri('/sku'));
+        $this->assertSame(
+            'https://api-sandbox.bonmarketplace.com.br/sku',
+            $client->getResourceUri('/sku')
+        );
     }
 
     /**
@@ -39,7 +47,7 @@ class ClientTest extends TestCaseAbstract
 
         $response = $client->get('/order');
 
-        $this->assertTrue(is_array($response->getData()->getOrders()));
+        $this->assertInternalType('array', $response->getData()->getOrders());
         $this->assertInternalType('int', $response->getData()->getTotal());
     }
 
@@ -57,7 +65,7 @@ class ClientTest extends TestCaseAbstract
 
         $this->assertHttpStatusCodeSuccess($data['httpStatusCode']);
 
-        $this->assertTrue(is_array($data->getData()->getProducts()));
+        $this->assertInternalType('array', $data->getData()->getProducts());
     }
 
     /**
@@ -92,8 +100,10 @@ class ClientTest extends TestCaseAbstract
             $client = $this->factoryClient();
             $response = $client->get('/sku/'.$sku['id']);
 
-            $this->getLogger()->addDebug('Informações do SKU #'.$sku['id'],
-                $response->toLog());
+            $this->getLogger()->addDebug(
+                'Informações do SKU #'.$sku['id'],
+                $response->toLog()
+            );
 
             $this->assertHttpStatusCodeSuccess($response->getHttpStatusCode());
             $this->assertArrayHasKey('id', $response->getData(), json_encode($data));
@@ -110,8 +120,10 @@ class ClientTest extends TestCaseAbstract
             $body = json_encode(['quantity' => 2]);
             $response = $client->put('/sku/'.$sku['id'].'/stock', $body);
 
-            $this->assertHttpStatusCodeSuccess($response->getHttpStatusCode(),
-                json_encode([$response->toArray(), $sku]));
+            $this->assertHttpStatusCodeSuccess(
+                $response->getHttpStatusCode(),
+                json_encode([$response->toArray(), $sku])
+            );
         }
     }
 

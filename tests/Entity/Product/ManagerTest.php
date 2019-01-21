@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,20 +11,19 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Product;
 
 use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
 
+/**
+ * @coversNothing
+ */
 class ManagerTest extends TestCaseAbstract
 {
-    protected function getManager($response = null)
-    {
-        return $this->getFactory()->factoryManager('product')->setDryRun($response);
-    }
-
     public function testObtemListaDeProdutosCadastrados()
     {
         $response = $this->factoryResponseFromFixture('fixture/Product/list.json');
@@ -32,13 +33,6 @@ class ManagerTest extends TestCaseAbstract
         foreach ($list as $product) {
             $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Product', $product);
         }
-    }
-
-    protected function factoryDetail()
-    {
-        $response = $this->factoryResponseFromFixture('fixture/Product/detail.json');
-
-        return $this->getManager($response)->findById(9474);
     }
 
     public function testRecuperaInformacoesDeUmProdutoEspecifico()
@@ -60,5 +54,17 @@ class ManagerTest extends TestCaseAbstract
         $sku->setPrevious($previous);
 
         $this->assertTrue($manager->updateSku($sku));
+    }
+
+    protected function getManager($response = null)
+    {
+        return $this->getFactory()->factoryManager('product')->setDryRun($response);
+    }
+
+    protected function factoryDetail()
+    {
+        $response = $this->factoryResponseFromFixture('fixture/Product/detail.json');
+
+        return $this->getManager($response)->findById(9474);
     }
 }

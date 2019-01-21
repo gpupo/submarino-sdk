@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,22 +11,17 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
 
 use Gpupo\SubmarinoSdk\Entity\Order\Manager;
-use Gpupo\SubmarinoSdk\Entity\Order\Order;
 use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
 
 abstract class OrderTestCaseAbstract extends TestCaseAbstract
 {
-    protected function factoryManager()
-    {
-        return new Manager($this->factoryClient());
-    }
-
     public function getList()
     {
         $response = $this->factoryResponseFromFixture('fixture/Order/list.json');
@@ -41,6 +38,11 @@ abstract class OrderTestCaseAbstract extends TestCaseAbstract
         }
 
         return $data;
+    }
+
+    protected function factoryManager()
+    {
+        return new Manager($this->factoryClient());
     }
 
     protected function factoryInterestOrder()

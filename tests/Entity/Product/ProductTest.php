@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Product;
@@ -18,16 +21,14 @@ use Gpupo\SubmarinoSdk\Entity\Product\Product;
 use Gpupo\SubmarinoSdk\Factory;
 use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
 
+/**
+ * @coversNothing
+ */
 class ProductTest extends TestCaseAbstract
 {
     public static function setUpBeforeClass()
     {
         self::displayClassDocumentation(new Product());
-    }
-
-    protected function factory($data)
-    {
-        return Factory::getInstance()->createProduct($data);
     }
 
     /**
@@ -43,6 +44,8 @@ class ProductTest extends TestCaseAbstract
 
     /**
      * @dataProvider dataProviderProducts
+     *
+     * @param mixed $data
      */
     public function testPossuiNbmFormatado($data)
     {
@@ -54,6 +57,8 @@ class ProductTest extends TestCaseAbstract
 
     /**
      * @dataProvider dataProviderProducts
+     *
+     * @param mixed $data
      */
     public function testPossuiPrecoFormatado($data)
     {
@@ -66,6 +71,8 @@ class ProductTest extends TestCaseAbstract
 
     /**
      * @dataProvider dataProviderProducts
+     *
+     * @param mixed $data
      */
     public function testPossuiUmaColecaoDeSkus($data)
     {
@@ -91,6 +98,8 @@ class ProductTest extends TestCaseAbstract
 
     /**
      * @dataProvider dataProviderProducts
+     *
+     * @param mixed $data
      */
     public function testPossuiObjetoManufacturer($data)
     {
@@ -106,6 +115,8 @@ class ProductTest extends TestCaseAbstract
 
     /**
      * @dataProvider dataProviderProducts
+     *
+     * @param mixed $data
      */
     public function testEntregaJson($data)
     {
@@ -140,5 +151,10 @@ class ProductTest extends TestCaseAbstract
         }
 
         return $array;
+    }
+
+    protected function factory($data)
+    {
+        return Factory::getInstance()->createProduct($data);
     }
 }

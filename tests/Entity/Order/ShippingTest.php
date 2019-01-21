@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,14 +11,18 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
+use Gpupo\CommonSdk\Tests\Traits\EntityTrait;
 
+/**
+ * @coversNothing
+ */
 class ShippingTest extends OrderTestCaseAbstract
 {
     use EntityTrait;
@@ -32,10 +38,10 @@ class ShippingTest extends OrderTestCaseAbstract
     public function dataProviderObject()
     {
         $expected = [
-            'shippingEstimateId'        => 'string',
-            'shippingMethodId'          => 'string',
-            'shippingMethodName'        => 'string',
-            'calculationType'           => 'string',
+            'shippingEstimateId' => 'string',
+            'shippingMethodId' => 'string',
+            'shippingMethodName' => 'string',
+            'calculationType' => 'string',
             'shippingMethodDisplayName' => 'string',
         ];
 
@@ -45,9 +51,10 @@ class ShippingTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getShippingEstimateId()`` para acessar ShippingEstimateId
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterSiteId(EntityInterface $object, $expected = null)
+    public function testGetterSiteId(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('shippingEstimateId', 'string', $object, $expected);
     }
@@ -55,9 +62,10 @@ class ShippingTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setShippingEstimateId()`` que define ShippingEstimateId
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterSiteId(EntityInterface $object, $expected = null)
+    public function testSetterSiteId(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('shippingEstimateId', 'string', $object);
     }
@@ -65,9 +73,10 @@ class ShippingTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getShippingMethodId()`` para acessar ShippingMethodId
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterShippingMethodId(EntityInterface $object, $expected = null)
+    public function testGetterShippingMethodId(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('shippingMethodId', 'string', $object, $expected);
     }
@@ -75,9 +84,10 @@ class ShippingTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setShippingMethodId()`` que define ShippingMethodId
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterShippingMethodId(EntityInterface $object, $expected = null)
+    public function testSetterShippingMethodId(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('shippingMethodId', 'string', $object);
     }
@@ -85,9 +95,10 @@ class ShippingTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getShippingMethodName()`` para acessar ShippingMethodName
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterShippingMethodName(EntityInterface $object, $expected = null)
+    public function testGetterShippingMethodName(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('shippingMethodName', 'string', $object, $expected);
     }
@@ -95,9 +106,10 @@ class ShippingTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setShippingMethodName()`` que define ShippingMethodName
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterShippingMethodName(EntityInterface $object, $expected = null)
+    public function testSetterShippingMethodName(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('shippingMethodName', 'string', $object);
     }
@@ -105,9 +117,10 @@ class ShippingTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getCalculationType()`` para acessar CalculationType
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterCalculationType(EntityInterface $object, $expected = null)
+    public function testGetterCalculationType(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('calculationType', 'string', $object, $expected);
     }
@@ -115,9 +128,10 @@ class ShippingTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setCalculationType()`` que define CalculationType
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterCalculationType(EntityInterface $object, $expected = null)
+    public function testSetterCalculationType(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('calculationType', 'string', $object);
     }
@@ -125,9 +139,10 @@ class ShippingTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getShippingMethodDisplayName()`` para acessar ShippingMethodDisplayName
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterShippingMethodDisplayName(EntityInterface $object, $expected = null)
+    public function testGetterShippingMethodDisplayName(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('shippingMethodDisplayName', 'string', $object, $expected);
     }
@@ -135,9 +150,10 @@ class ShippingTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setShippingMethodDisplayName()`` que define ShippingMethodDisplayName
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterShippingMethodDisplayName(EntityInterface $object, $expected = null)
+    public function testSetterShippingMethodDisplayName(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('shippingMethodDisplayName', 'string', $object);
     }

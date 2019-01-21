@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,44 +11,56 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\Payer;
 
 use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 
+/**
+ * @coversNothing
+ */
 class PayerTest extends OrderTestCaseAbstract
 {
     public function testCadaPagadorPossuiEnderecoDeCobrançaComoObjeto()
     {
         foreach ($this->getList() as $order) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\BillingAddress',
-            $order->getPayer()->getBillingAddress());
+            $this->assertInstanceOf(
+                '\Gpupo\SubmarinoSdk\Entity\Order\Customer\BillingAddress',
+            $order->getPayer()->getBillingAddress()
+            );
         }
     }
 
     public function testCadaPagadorPossuiColecaoDeTelefones()
     {
         foreach ($this->getList() as $order) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\Telephones\Telephones',
-            $order->getPayer()->getTelephones());
+            $this->assertInstanceOf(
+                '\Gpupo\SubmarinoSdk\Entity\Order\Customer\Telephones\Telephones',
+            $order->getPayer()->getTelephones()
+            );
         }
     }
 
     public function testCadaPagadorPossuiObjetoPessoaFisica()
     {
         foreach ($this->getList() as $order) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\Pf',
-            $order->getPayer()->getPf());
+            $this->assertInstanceOf(
+                '\Gpupo\SubmarinoSdk\Entity\Order\Customer\Pf',
+            $order->getPayer()->getPf()
+            );
         }
     }
 
     public function testCadaPagadorPossuiObjetoPessoaJuridica()
     {
         foreach ($this->getList() as $order) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\Pj',
-            $order->getPayer()->getPj());
+            $this->assertInstanceOf(
+                '\Gpupo\SubmarinoSdk\Entity\Order\Customer\Pj',
+            $order->getPayer()->getPj()
+            );
         }
     }
 }

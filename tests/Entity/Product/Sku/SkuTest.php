@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Product\Sku;
@@ -17,6 +20,9 @@ namespace Gpupo\Tests\SubmarinoSdk\Entity\Product\Sku;
 use Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku;
 use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
 
+/**
+ * @coversNothing
+ */
 class SkuTest extends TestCaseAbstract
 {
     public static function setUpBeforeClass()
@@ -27,7 +33,7 @@ class SkuTest extends TestCaseAbstract
     public function testEnviaDadosOpcionaisApenasSePreenchidos()
     {
         $sku = new Sku([
-            'id'   => 1,
+            'id' => 1,
             'name' => 'foo',
         ]);
 
@@ -50,10 +56,9 @@ class SkuTest extends TestCaseAbstract
         $url = ['http://foo/bar'];
 
         $sku = new Sku([
-            'id'       => 2,
-            'name'     => 'bar',
+            'id' => 2,
+            'name' => 'bar',
             'urlImage' => $url,
-
         ]);
 
         $this->assertSame($url, $sku->get('urlImage'));

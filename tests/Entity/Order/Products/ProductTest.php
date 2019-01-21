@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,15 +11,19 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\Products;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
+use Gpupo\CommonSdk\Tests\Traits\EntityTrait;
 use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 
+/**
+ * @coversNothing
+ */
 class ProductTest extends OrderTestCaseAbstract
 {
     use EntityTrait;
@@ -33,10 +39,10 @@ class ProductTest extends OrderTestCaseAbstract
     public function dataProviderObject()
     {
         $expected = [
-            'link'     => [],
+            'link' => [],
             'quantity' => 1,
-            'price'    => 2.1,
-            'freight'  => 0.2,
+            'price' => 2.1,
+            'freight' => 0.2,
             'discount' => 0.1,
         ];
 
@@ -47,11 +53,15 @@ class ProductTest extends OrderTestCaseAbstract
     {
         foreach ($this->getList() as $order) {
             foreach ($order->getProducts() as $product) {
-                $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Product',
-                $product);
+                $this->assertInstanceOf(
+                    '\Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Product',
+                $product
+                );
 
-                $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Link',
-                $product->getLink());
+                $this->assertInstanceOf(
+                    '\Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Link',
+                $product->getLink()
+                );
             }
         }
     }
@@ -59,9 +69,10 @@ class ProductTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getLink()`` para acessar Link
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterLink(EntityInterface $object, $expected = null)
+    public function testGetterLink(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('link', 'object', $object, $expected);
     }
@@ -69,9 +80,10 @@ class ProductTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setLink()`` que define Link
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterLink(EntityInterface $object, $expected = null)
+    public function testSetterLink(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('link', 'object', $object);
     }
@@ -79,9 +91,10 @@ class ProductTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getQuantity()`` para acessar Quantity
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterQuantity(EntityInterface $object, $expected = null)
+    public function testGetterQuantity(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('quantity', 'integer', $object, $expected);
     }
@@ -89,9 +102,10 @@ class ProductTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setQuantity()`` que define Quantity
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterQuantity(EntityInterface $object, $expected = null)
+    public function testSetterQuantity(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('quantity', 'integer', $object);
     }
@@ -99,9 +113,10 @@ class ProductTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getPrice()`` para acessar Price
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterPrice(EntityInterface $object, $expected = null)
+    public function testGetterPrice(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('price', 'number', $object, $expected);
     }
@@ -109,9 +124,10 @@ class ProductTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setPrice()`` que define Price
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterPrice(EntityInterface $object, $expected = null)
+    public function testSetterPrice(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('price', 'number', $object);
     }
@@ -119,9 +135,10 @@ class ProductTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getFreight()`` para acessar Freight
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterFreight(EntityInterface $object, $expected = null)
+    public function testGetterFreight(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('freight', 'number', $object, $expected);
     }
@@ -129,9 +146,10 @@ class ProductTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setFreight()`` que define Freight
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterFreight(EntityInterface $object, $expected = null)
+    public function testSetterFreight(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('freight', 'number', $object);
     }
@@ -139,9 +157,10 @@ class ProductTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getDiscount()`` para acessar Discount
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterDiscount(EntityInterface $object, $expected = null)
+    public function testGetterDiscount(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('discount', 'number', $object, $expected);
     }
@@ -149,9 +168,10 @@ class ProductTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setDiscount()`` que define Discount
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterDiscount(EntityInterface $object, $expected = null)
+    public function testSetterDiscount(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('discount', 'number', $object);
     }

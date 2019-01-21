@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,15 +11,19 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\Customer;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
+use Gpupo\CommonSdk\Tests\Traits\EntityTrait;
 use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
 
+/**
+ * @coversNothing
+ */
 class CustomerTest extends OrderTestCaseAbstract
 {
     use EntityTrait;
@@ -33,9 +39,9 @@ class CustomerTest extends OrderTestCaseAbstract
     public function dataProviderObject()
     {
         $expected = [
-            'pf'              => [],
-            'pj'              => [],
-            'telephones'      => [],
+            'pf' => [],
+            'pj' => [],
+            'telephones' => [],
             'deliveryAddress' => [],
         ];
 
@@ -45,40 +51,50 @@ class CustomerTest extends OrderTestCaseAbstract
     public function testCadaClientePossuiEnderecoDeEntregaComoObjeto()
     {
         foreach ($this->getList() as $order) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\DeliveryAddress',
-            $order->getCustomer()->getDeliveryAddress());
+            $this->assertInstanceOf(
+                '\Gpupo\SubmarinoSdk\Entity\Order\Customer\DeliveryAddress',
+            $order->getCustomer()->getDeliveryAddress()
+            );
         }
     }
 
     public function testCadaClientePossuiColecaoDeTelefones()
     {
         foreach ($this->getList() as $order) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\Telephones\Telephones',
-            $order->getCustomer()->getTelephones());
+            $this->assertInstanceOf(
+                '\Gpupo\SubmarinoSdk\Entity\Order\Customer\Telephones\Telephones',
+            $order->getCustomer()->getTelephones()
+            );
         }
     }
 
     public function testCadaClientePossuiObjetoPessoaFisica()
     {
         foreach ($this->getList() as $order) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\Pf',
-            $order->getCustomer()->getPf());
+            $this->assertInstanceOf(
+                '\Gpupo\SubmarinoSdk\Entity\Order\Customer\Pf',
+            $order->getCustomer()->getPf()
+            );
         }
     }
 
     public function testCadaClientePossuiObjetoPessoaJuridica()
     {
         foreach ($this->getList() as $order) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\Pj',
-            $order->getCustomer()->getPj());
+            $this->assertInstanceOf(
+                '\Gpupo\SubmarinoSdk\Entity\Order\Customer\Pj',
+            $order->getCustomer()->getPj()
+            );
         }
     }
+
     /**
      * @testdox Possui método ``getPf()`` para acessar Pf
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterPf(EntityInterface $object, $expected = null)
+    public function testGetterPf(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('pf', 'object', $object, $expected);
     }
@@ -86,9 +102,10 @@ class CustomerTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setPf()`` que define Pf
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterPf(EntityInterface $object, $expected = null)
+    public function testSetterPf(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('pf', 'object', $object);
     }
@@ -96,9 +113,10 @@ class CustomerTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getPj()`` para acessar Pj
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterPj(EntityInterface $object, $expected = null)
+    public function testGetterPj(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('pj', 'object', $object, $expected);
     }
@@ -106,9 +124,10 @@ class CustomerTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setPj()`` que define Pj
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterPj(EntityInterface $object, $expected = null)
+    public function testSetterPj(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('pj', 'object', $object);
     }
@@ -116,9 +135,10 @@ class CustomerTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getTelephones()`` para acessar Telephones
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterTelephones(EntityInterface $object, $expected = null)
+    public function testGetterTelephones(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('telephones', 'object', $object, $expected);
     }
@@ -126,9 +146,10 @@ class CustomerTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setTelephones()`` que define Telephones
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterTelephones(EntityInterface $object, $expected = null)
+    public function testSetterTelephones(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('telephones', 'object', $object);
     }
@@ -136,9 +157,10 @@ class CustomerTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getDeliveryAddress()`` para acessar DeliveryAddress
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterDeliveryAddress(EntityInterface $object, $expected = null)
+    public function testGetterDeliveryAddress(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('deliveryAddress', 'object', $object, $expected);
     }
@@ -146,9 +168,10 @@ class CustomerTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setDeliveryAddress()`` que define DeliveryAddress
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterDeliveryAddress(EntityInterface $object, $expected = null)
+    public function testSetterDeliveryAddress(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('deliveryAddress', 'object', $object);
     }

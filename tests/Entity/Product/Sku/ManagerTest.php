@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,21 +11,19 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Product\Sku;
 
-use Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku;
 use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
 
+/**
+ * @coversNothing
+ */
 class ManagerTest extends TestCaseAbstract
 {
-    protected function getManager($response = null)
-    {
-        return $this->getFactory()->factoryManager('sku')->setDryRun($response);
-    }
-
     public function testAcessoAListaDeSkusCadastrados()
     {
         $response = $this->factoryResponseFromFixture('fixture/Product/Sku/list.json');
@@ -42,5 +42,10 @@ class ManagerTest extends TestCaseAbstract
         $sku = $this->getManager($response)->findById(9474);
         $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Sku\Sku', $sku);
         $this->assertSame(9474, (int) $sku->getId());
+    }
+
+    protected function getManager($response = null)
+    {
+        return $this->getFactory()->factoryManager('sku')->setDryRun($response);
     }
 }

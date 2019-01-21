@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,16 +11,20 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
 
 use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\CommonSdk\Tests\Traits\EntityTrait;
 use Gpupo\SubmarinoSdk\Entity\Order\Order;
-use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 
+/**
+ * @coversNothing
+ */
 class OrderTest extends OrderTestCaseAbstract
 {
     use EntityTrait;
@@ -34,23 +40,23 @@ class OrderTest extends OrderTestCaseAbstract
     public function dataProviderObject()
     {
         $expected = [
-            'id'                    => 'string',
-            'siteId'                => 'string',
-            'store'                 => 'string',
-            'purchaseDate'          => 'string',
-            'lastUpdate'            => 'string',
-            'purchaseTimestamp'     => 'string',
-            'lastUpdateTimestamp'   => 'string',
-            'status'                => [],
-            'invoiced'              => [],
+            'id' => 'string',
+            'siteId' => 'string',
+            'store' => 'string',
+            'purchaseDate' => 'string',
+            'lastUpdate' => 'string',
+            'purchaseTimestamp' => 'string',
+            'lastUpdateTimestamp' => 'string',
+            'status' => [],
+            'invoiced' => [],
             'estimatedDeliveryDate' => 'string',
-            'customer'              => [],
-            'payer'                 => [],
-            'totalAmount'           => 1.1,
-            'totalFreight'          => 2.2,
-            'totalDiscount'         => 0.1,
-            'totalInterest'         => 1.2,
-            'products'              => [],
+            'customer' => [],
+            'payer' => [],
+            'totalAmount' => 1.1,
+            'totalFreight' => 2.2,
+            'totalDiscount' => 0.1,
+            'totalInterest' => 1.2,
+            'products' => [],
         ];
 
         return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
@@ -225,9 +231,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setId()`` que define Id
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterId(EntityInterface $object, $expected = null)
+    public function testSetterId(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('id', 'string', $object);
     }
@@ -235,9 +242,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getSiteId()`` para acessar SiteId
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterSiteId(EntityInterface $object, $expected = null)
+    public function testGetterSiteId(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('siteId', 'string', $object, $expected);
     }
@@ -245,9 +253,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setSiteId()`` que define SiteId
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterSiteId(EntityInterface $object, $expected = null)
+    public function testSetterSiteId(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('siteId', 'string', $object);
     }
@@ -255,9 +264,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getStore()`` para acessar Store
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterStore(EntityInterface $object, $expected = null)
+    public function testGetterStore(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('store', 'string', $object, $expected);
     }
@@ -265,9 +275,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setStore()`` que define Store
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterStore(EntityInterface $object, $expected = null)
+    public function testSetterStore(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('store', 'string', $object);
     }
@@ -275,9 +286,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getPurchaseDate()`` para acessar PurchaseDate
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterPurchaseDate(EntityInterface $object, $expected = null)
+    public function testGetterPurchaseDate(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('purchaseDate', 'string', $object, $expected);
     }
@@ -285,9 +297,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setPurchaseDate()`` que define PurchaseDate
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterPurchaseDate(EntityInterface $object, $expected = null)
+    public function testSetterPurchaseDate(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('purchaseDate', 'string', $object);
     }
@@ -295,9 +308,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getLastUpdate()`` para acessar LastUpdate
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterLastUpdate(EntityInterface $object, $expected = null)
+    public function testGetterLastUpdate(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('lastUpdate', 'string', $object, $expected);
     }
@@ -305,9 +319,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setLastUpdate()`` que define LastUpdate
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterLastUpdate(EntityInterface $object, $expected = null)
+    public function testSetterLastUpdate(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('lastUpdate', 'string', $object);
     }
@@ -315,9 +330,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getPurchaseTimestamp()`` para acessar PurchaseTimestamp
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterPurchaseTimestamp(EntityInterface $object, $expected = null)
+    public function testGetterPurchaseTimestamp(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('purchaseTimestamp', 'string', $object, $expected);
     }
@@ -325,9 +341,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setPurchaseTimestamp()`` que define PurchaseTimestamp
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterPurchaseTimestamp(EntityInterface $object, $expected = null)
+    public function testSetterPurchaseTimestamp(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('purchaseTimestamp', 'string', $object);
     }
@@ -335,9 +352,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getLastUpdateTimestamp()`` para acessar LastUpdateTimestamp
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterLastUpdateTimestamp(EntityInterface $object, $expected = null)
+    public function testGetterLastUpdateTimestamp(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('lastUpdateTimestamp', 'string', $object, $expected);
     }
@@ -345,9 +363,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setLastUpdateTimestamp()`` que define LastUpdateTimestamp
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterLastUpdateTimestamp(EntityInterface $object, $expected = null)
+    public function testSetterLastUpdateTimestamp(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('lastUpdateTimestamp', 'string', $object);
     }
@@ -355,9 +374,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getStatus()`` para acessar Status
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterStatus(EntityInterface $object, $expected = null)
+    public function testGetterStatus(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('status', 'object', $object, $expected);
     }
@@ -365,9 +385,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setStatus()`` que define Status
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterStatus(EntityInterface $object, $expected = null)
+    public function testSetterStatus(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('status', 'object', $object);
     }
@@ -375,9 +396,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getInvoiced()`` para acessar Invoiced
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterInvoiced(EntityInterface $object, $expected = null)
+    public function testGetterInvoiced(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('invoiced', 'object', $object, $expected);
     }
@@ -385,9 +407,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setInvoiced()`` que define Invoiced
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterInvoiced(EntityInterface $object, $expected = null)
+    public function testSetterInvoiced(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('invoiced', 'object', $object);
     }
@@ -395,9 +418,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getEstimatedDeliveryDate()`` para acessar EstimatedDeliveryDate
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterEstimatedDeliveryDate(EntityInterface $object, $expected = null)
+    public function testGetterEstimatedDeliveryDate(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('estimatedDeliveryDate', 'string', $object, $expected);
     }
@@ -405,9 +429,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setEstimatedDeliveryDate()`` que define EstimatedDeliveryDate
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterEstimatedDeliveryDate(EntityInterface $object, $expected = null)
+    public function testSetterEstimatedDeliveryDate(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('estimatedDeliveryDate', 'string', $object);
     }
@@ -415,9 +440,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getCustomer()`` para acessar Customer
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterCustomer(EntityInterface $object, $expected = null)
+    public function testGetterCustomer(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('customer', 'object', $object, $expected);
     }
@@ -425,9 +451,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setCustomer()`` que define Customer
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterCustomer(EntityInterface $object, $expected = null)
+    public function testSetterCustomer(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('customer', 'object', $object);
     }
@@ -435,9 +462,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getPayer()`` para acessar Payer
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterPayer(EntityInterface $object, $expected = null)
+    public function testGetterPayer(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('payer', 'object', $object, $expected);
     }
@@ -445,9 +473,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setPayer()`` que define Payer
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterPayer(EntityInterface $object, $expected = null)
+    public function testSetterPayer(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('payer', 'object', $object);
     }
@@ -455,9 +484,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getTotalAmount()`` para acessar TotalAmount
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterTotalAmount(EntityInterface $object, $expected = null)
+    public function testGetterTotalAmount(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('totalAmount', 'number', $object, $expected);
     }
@@ -465,9 +495,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setTotalAmount()`` que define TotalAmount
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterTotalAmount(EntityInterface $object, $expected = null)
+    public function testSetterTotalAmount(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('totalAmount', 'number', $object);
     }
@@ -475,9 +506,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getTotalFreight()`` para acessar TotalFreight
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterTotalFreight(EntityInterface $object, $expected = null)
+    public function testGetterTotalFreight(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('totalFreight', 'number', $object, $expected);
     }
@@ -485,9 +517,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setTotalFreight()`` que define TotalFreight
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterTotalFreight(EntityInterface $object, $expected = null)
+    public function testSetterTotalFreight(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('totalFreight', 'number', $object);
     }
@@ -495,9 +528,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getTotalDiscount()`` para acessar TotalDiscount
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterTotalDiscount(EntityInterface $object, $expected = null)
+    public function testGetterTotalDiscount(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('totalDiscount', 'number', $object, $expected);
     }
@@ -505,9 +539,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setTotalDiscount()`` que define TotalDiscount
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterTotalDiscount(EntityInterface $object, $expected = null)
+    public function testSetterTotalDiscount(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('totalDiscount', 'number', $object);
     }
@@ -515,9 +550,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getTotalInterest()`` para acessar TotalInterest
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterTotalInterest(EntityInterface $object, $expected = null)
+    public function testGetterTotalInterest(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('totalInterest', 'number', $object, $expected);
     }
@@ -525,9 +561,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setTotalInterest()`` que define TotalInterest
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterTotalInterest(EntityInterface $object, $expected = null)
+    public function testSetterTotalInterest(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('totalInterest', 'number', $object);
     }
@@ -535,9 +572,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getProducts()`` para acessar Products
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterProducts(EntityInterface $object, $expected = null)
+    public function testGetterProducts(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('products', 'object', $object, $expected);
     }
@@ -545,9 +583,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setProducts()`` que define Products
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterProducts(EntityInterface $object, $expected = null)
+    public function testSetterProducts(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('products', 'object', $object);
     }
@@ -555,9 +594,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getShipping()`` para acessar Shipping
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterShipping(EntityInterface $object, $expected = null)
+    public function testGetterShipping(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('shipping', 'object', $object, $expected);
     }
@@ -565,9 +605,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setShipping()`` que define Shipping
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterShipping(EntityInterface $object, $expected = null)
+    public function testSetterShipping(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('shipping', 'object', $object);
     }
@@ -575,9 +616,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``getPaymentMethods()`` para acessar PaymentMethods
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function getterPaymentMethods(EntityInterface $object, $expected = null)
+    public function testGetterPaymentMethods(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaGetter('paymentMethods', 'object', $object, $expected);
     }
@@ -585,9 +627,10 @@ class OrderTest extends OrderTestCaseAbstract
     /**
      * @testdox Possui método ``setPaymentMethods()`` que define PaymentMethods
      * @dataProvider dataProviderObject
-     * @test
+     *
+     * @param null|mixed $expected
      */
-    public function setterPaymentMethods(EntityInterface $object, $expected = null)
+    public function testSetterPaymentMethods(EntityInterface $object, $expected = null)
     {
         $this->assertSchemaSetter('paymentMethods', 'object', $object);
     }

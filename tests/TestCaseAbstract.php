@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,13 +11,14 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\SubmarinoSdk;
 
+use Gpupo\CommonSdk\Tests\TestCaseAbstract as CommonSdkTestCaseAbstract;
 use Gpupo\SubmarinoSdk\Factory;
-use Gpupo\Tests\CommonSdk\TestCaseAbstract as CommonSdkTestCaseAbstract;
 
 abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
 {
@@ -23,25 +26,7 @@ abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
 
     public static function getResourcesPath()
     {
-        return dirname(dirname(__FILE__)).'/Resources/';
-    }
-
-    protected function getOptions()
-    {
-        return [
-            'token'        => $this->getConstant('API_TOKEN'),
-            'verbose'      => $this->getConstant('VERBOSE'),
-            'registerPath' => $this->getConstant('REGISTER_PATH'),
-        ];
-    }
-
-    protected function getFactory()
-    {
-        if (!$this->factory) {
-            $this->factory = Factory::getInstance()->setup($this->getOptions(), $this->getLogger());
-        }
-
-        return $this->factory;
+        return \dirname(__DIR__).'/Resources/';
     }
 
     public function factoryClient()
@@ -62,5 +47,23 @@ abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
     public function dataProviderOrders()
     {
         return $this->getResourceJson('fixture/Order/list.json');
+    }
+
+    protected function getOptions()
+    {
+        return [
+            'token' => $this->getConstant('API_TOKEN'),
+            'verbose' => $this->getConstant('VERBOSE'),
+            'registerPath' => $this->getConstant('REGISTER_PATH'),
+        ];
+    }
+
+    protected function getFactory()
+    {
+        if (!$this->factory) {
+            $this->factory = Factory::getInstance()->setup($this->getOptions(), $this->getLogger());
+        }
+
+        return $this->factory;
     }
 }
