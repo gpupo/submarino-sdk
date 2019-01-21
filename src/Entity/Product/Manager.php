@@ -52,7 +52,7 @@ class Manager extends ManagerAbstract
         return $manager->update($sku, $sku->getPrevious());
     }
 
-    public function addSku(Product $product, Sku\Sku $sku)
+    public function addSku(EntityInterface $product, Sku\Sku $sku)
     {
         return $this->execute($this->factoryMap('addSku', ['itemId' => $product->getId()]), $sku->toJson());
     }

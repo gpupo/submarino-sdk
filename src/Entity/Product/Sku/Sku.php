@@ -20,36 +20,6 @@ namespace Gpupo\SubmarinoSdk\Entity\Product\Sku;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
-/**
- * @method string                                      getId()
- * @method                                             setId(string $id)
- * @method string                                      getName()
- * @method                                             setName(string $name)
- * @method string                                      getDescription()
- * @method                                             setDescription(string $description)
- * @method array                                       getEan()
- * @method                                             setEan(array $ean)
- * @method float                                       getHeight()
- * @method                                             setHeight(float $height)
- * @method float                                       getWidth()
- * @method                                             setWidth(float $width)
- * @method float                                       getLength()
- * @method                                             setLength(float $length)
- * @method float                                       getWeight()
- * @method                                             setWeight(float $weight)
- * @method int                                         getStockQuantity()
- * @method                                             setStockQuantity(integer $stockQuantity)
- * @method bool                                        getEnable()
- * @method                                             setEnable(boolean $enable)
- * @method Gpupo\SubmarinoSdk\Entity\Product\Sku\Price getPrice()
- * @method                                             setPrice(Gpupo\SubmarinoSdk\Entity\Product\Sku\Price $price)
- * @method string                                      getUpdatedAt()
- * @method                                             setUpdatedAt(string $updatedAt)
- * @method array                                       getUrlImage()
- * @method                                             setUrlImage(array $urlImage)
- * @method int                                         getCrossDocking()
- * @method                                             setCrossDocking(integer $crossDocking)
- */
 class Sku extends EntityAbstract implements EntityInterface
 {
     protected function setUp()

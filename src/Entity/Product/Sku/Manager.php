@@ -49,17 +49,17 @@ class Manager extends ManagerAbstract
         return true;
     }
 
-    public function savePrice(Sku $sku)
+    public function savePrice(EntityInterface $sku)
     {
         return $this->execute($this->factoryMap('savePrice', ['itemId' => $sku->getId()]), $sku->getPrice()->toJson());
     }
 
-    public function saveStock(Sku $sku)
+    public function saveStock(EntityInterface $sku)
     {
         return $this->execute($this->factoryMap('saveStock', ['itemId' => $sku->getId()]), $sku->toJson('Stock'));
     }
 
-    public function saveStatus(Sku $sku)
+    public function saveStatus(EntityInterface $sku)
     {
         return $this->execute($this->factoryMap('saveStatus', ['itemId' => $sku->getId()]), $sku->toJson('Status'));
     }

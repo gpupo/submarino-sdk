@@ -43,6 +43,8 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
 
             return $this->factoryEntityCollection($data->{$method}());
         }
+
+        return;
     }
 
     public function findById($itemId)

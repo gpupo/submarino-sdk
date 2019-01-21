@@ -20,12 +20,6 @@ namespace Gpupo\SubmarinoSdk\Entity\Product\Sku;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
-/**
- * @method mixed getSellPrice()
- * @method       setSellPrice(mixed $sellPrice)
- * @method mixed getListPrice()
- * @method       setListPrice(mixed $listPrice)
- */
 class Price extends EntityAbstract implements EntityInterface
 {
     public function getSchema()
