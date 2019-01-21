@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,44 +11,49 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\SubmarinoSdk\Entity\Order;
 
-use Gpupo\SubmarinoSdk\Entity\ManagerAbstract;
 use Gpupo\Common\Entity\CollectionInterface;
+use Gpupo\SubmarinoSdk\Entity\ManagerAbstract;
 
 class Manager extends ManagerAbstract
 {
     protected $entity = 'Order';
 
     protected $maps = [
-        'confirm'    => ['POST', '/order/{itemId}/confirm'],
+        'confirm' => ['POST', '/order/{itemId}/confirm'],
         'saveStatus' => ['PUT', '/order/{itemId}/status'],
-        'findById'   => ['GET', '/order/{itemId}'],
-        'fetch'      => ['GET', '/order?offset={offset}&limit={limit}&purchaseDate={purchaseDate}&store={store}&siteId={siteId}&status={status}'],
+        'findById' => ['GET', '/order/{itemId}'],
+        'fetch' => ['GET', '/order?offset={offset}&limit={limit}&purchaseDate={purchaseDate}&store={store}&siteId={siteId}&status={status}'],
     ];
 
     /**
      * @param int   $offset
      * @param int   $limit
      * @param array $parameters
+     * @param mixed $route
      *
      * @return \Gpupo\CommonSdk\Entity\CollectionInterface
      */
     public function fetch($offset = 1, $limit = 50, array $parameters = [], $route = 'fetch'): ?CollectionInterface
     {
         return parent::fetch($offset, $limit, array_merge([
-            'status'       => null,
+            'status' => null,
             'purchaseDate' => null,
-            'store'        => null,
-            'siteId'       => null,
+            'store' => null,
+            'siteId' => null,
         ], $parameters));
     }
 
     /**
      * Obtém a lista de pedidos recém aprovados e que esperam processamento.
+     *
+     * @param mixed $offset
+     * @param mixed $limit
      */
     public function fetchQueue($offset = 0, $limit = 50, array $parameters = [])
     {
@@ -55,8 +62,10 @@ class Manager extends ManagerAbstract
 
     public function saveStatus(Order $order)
     {
-        return $this->execute($this->factoryMap('saveStatus',
-            ['itemId' => $order->getId()]), $order->getStatus()->toJson());
+        return $this->execute($this->factoryMap(
+            'saveStatus',
+            ['itemId' => $order->getId()]
+        ), $order->getStatus()->toJson());
     }
 
     /**
@@ -73,7 +82,7 @@ class Manager extends ManagerAbstract
      *  {"code": "0", "message": "Success"}
      *  {"code": "1", "message": "Failure"}
      *
-     * @link https://api-sandbox.bonmarketplace.com.br/docs/confirmacaoPedido.shtml
+     * @see https://api-sandbox.bonmarketplace.com.br/docs/confirmacaoPedido.shtml
      *
      * @param int    $itemId
      * @param bool   $successfully

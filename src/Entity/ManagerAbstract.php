@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,15 +11,16 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\SubmarinoSdk\Entity;
 
+use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Entity\ManagerAbstract as CommonAbstract;
 use Gpupo\CommonSdk\Entity\ManagerInterface;
-use Gpupo\Common\Entity\CollectionInterface;
 
 abstract class ManagerAbstract extends CommonAbstract implements ManagerInterface
 {
@@ -26,7 +29,7 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
         $text = 'Chamada a Atualização de entity '.$this->entity;
 
         return $this->log('debug', $text, [
-            'entity'   => $entity,
+            'entity' => $entity,
             'existent' => $existent,
         ]);
     }
@@ -38,7 +41,7 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
         if ($data->getTotal() > 0) {
             $method = 'get'.$this->getEntityName().'s';
 
-            return $this->factoryEntityCollection($data->$method());
+            return $this->factoryEntityCollection($data->{$method}());
         }
     }
 

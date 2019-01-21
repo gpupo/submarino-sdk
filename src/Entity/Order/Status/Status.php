@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\SubmarinoSdk\Entity\Order\Status;
@@ -18,36 +21,36 @@ use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
 /**
- * @method Gpupo\SubmarinoSdk\Entity\Order\Status\Invoiced getInvoiced()
- * @method setInvoiced(Gpupo\SubmarinoSdk\Entity\Order\Status\Invoiced $invoiced)
- * @method Gpupo\SubmarinoSdk\Entity\Order\Status\Shipped getShipped()
- * @method setShipped(Gpupo\SubmarinoSdk\Entity\Order\Status\Shipped $shipped)
+ * @method Gpupo\SubmarinoSdk\Entity\Order\Status\Invoiced          getInvoiced()
+ * @method                                                          setInvoiced(Gpupo\SubmarinoSdk\Entity\Order\Status\Invoiced $invoiced)
+ * @method Gpupo\SubmarinoSdk\Entity\Order\Status\Shipped           getShipped()
+ * @method                                                          setShipped(Gpupo\SubmarinoSdk\Entity\Order\Status\Shipped $shipped)
  * @method Gpupo\SubmarinoSdk\Entity\Order\Status\ShipmentException getShipmentException()
- * @method setShipmentException(Gpupo\SubmarinoSdk\Entity\Order\Status\ShipmentException $shipmentException)
- * @method Gpupo\SubmarinoSdk\Entity\Order\Status\Delivered getDelivered()
- * @method setDelivered(Gpupo\SubmarinoSdk\Entity\Order\Status\Delivered $delivered)
- * @method Gpupo\SubmarinoSdk\Entity\Order\Status\Unavailable getUnavailable()
- * @method setUnavailable(Gpupo\SubmarinoSdk\Entity\Order\Status\Unavailable $unavailable)
- * @method string getStatus()
- * @method setStatus(string $status)
+ * @method                                                          setShipmentException(Gpupo\SubmarinoSdk\Entity\Order\Status\ShipmentException $shipmentException)
+ * @method Gpupo\SubmarinoSdk\Entity\Order\Status\Delivered         getDelivered()
+ * @method                                                          setDelivered(Gpupo\SubmarinoSdk\Entity\Order\Status\Delivered $delivered)
+ * @method Gpupo\SubmarinoSdk\Entity\Order\Status\Unavailable       getUnavailable()
+ * @method                                                          setUnavailable(Gpupo\SubmarinoSdk\Entity\Order\Status\Unavailable $unavailable)
+ * @method string                                                   getStatus()
+ * @method                                                          setStatus(string $status)
  */
 class Status extends EntityAbstract implements EntityInterface
 {
-    public function getSchema()
-    {
-        return  [
-            'invoiced'          => 'object',
-            'shipped'           => 'object',
-            'shipmentException' => 'object',
-            'delivered'         => 'object',
-            'unavailable'       => 'object',
-            'status'            => 'string',
-        ];
-    }
-
     public function __toString()
     {
         return $this->getStatus();
+    }
+
+    public function getSchema()
+    {
+        return  [
+            'invoiced' => 'object',
+            'shipped' => 'object',
+            'shipmentException' => 'object',
+            'delivered' => 'object',
+            'unavailable' => 'object',
+            'status' => 'string',
+        ];
     }
 
     public function setStatus($status)
@@ -55,15 +58,19 @@ class Status extends EntityAbstract implements EntityInterface
         switch ($status) {
             case 'INVOICED':
                 $this->getInvoiced()->setRequired();
+
                 break;
             case 'SHIPPED':
                 $this->getShipped()->setRequired();
+
                 break;
             case 'DELIVERED':
                 $this->getDelivered()->setRequired();
+
                 break;
             case 'UNAVAILABLE':
                 $this->getUnavailable()->setRequired();
+
                 break;
         }
 

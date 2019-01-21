@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\SubmarinoSdk\Entity\Product\Sku;
@@ -22,10 +25,10 @@ class Manager extends ManagerAbstract
     protected $entity = 'Sku';
 
     protected $maps = [
-        'findById'   => ['GET', '/sku/{itemId}'],
-        'fetch'      => ['GET', '/sku?offset={offset}&limit={limit}'],
-        'savePrice'  => ['PUT', '/sku/{itemId}/price'],
-        'saveStock'  => ['PUT', '/sku/{itemId}/stock'],
+        'findById' => ['GET', '/sku/{itemId}'],
+        'fetch' => ['GET', '/sku?offset={offset}&limit={limit}'],
+        'savePrice' => ['PUT', '/sku/{itemId}/price'],
+        'saveStock' => ['PUT', '/sku/{itemId}/stock'],
         'saveStatus' => ['PUT', '/sku/{itemId}/status'],
     ];
 

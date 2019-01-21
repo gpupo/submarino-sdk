@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\SubmarinoSdk\Entity\Product;
@@ -30,11 +33,11 @@ class Sku extends CollectionAbstract
         }
 
         foreach ($elements as $data) {
-            if (array_key_exists('ean', $data) && !is_array($data['ean'])) {
+            if (array_key_exists('ean', $data) && !\is_array($data['ean'])) {
                 $data['ean'] = [$data['ean']];
             }
 
-            if (array_key_exists('urlImage', $data) && !is_array($data['urlImage'])) {
+            if (array_key_exists('urlImage', $data) && !\is_array($data['urlImage'])) {
                 $data['urlImage'] = [$data['urlImage']];
             }
 
@@ -57,6 +60,6 @@ class Sku extends CollectionAbstract
 
     public function hasId($id)
     {
-        return in_array($id, $this->index, true);
+        return \in_array($id, $this->index, true);
     }
 }

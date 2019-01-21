@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\SubmarinoSdk\Entity\Product;
@@ -18,18 +21,18 @@ use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
 /**
- * @method string getId()
- * @method setId(string $id)
- * @method string getName()
- * @method setName(string $name)
- * @method Gpupo\SubmarinoSdk\Entity\Product\Sku getSku()
- * @method setSku(Gpupo\SubmarinoSdk\Entity\Product\Sku $sku)
+ * @method string                                         getId()
+ * @method                                                setId(string $id)
+ * @method string                                         getName()
+ * @method                                                setName(string $name)
+ * @method Gpupo\SubmarinoSdk\Entity\Product\Sku          getSku()
+ * @method                                                setSku(Gpupo\SubmarinoSdk\Entity\Product\Sku $sku)
  * @method Gpupo\SubmarinoSdk\Entity\Product\Manufacturer getManufacturer()
- * @method setManufacturer(Gpupo\SubmarinoSdk\Entity\Product\Manufacturer $manufacturer)
- * @method string getDeliveryType()
- * @method setDeliveryType(string $deliveryType)
- * @method array getNbm()
- * @method setNbm(array $nbm)
+ * @method                                                setManufacturer(Gpupo\SubmarinoSdk\Entity\Product\Manufacturer $manufacturer)
+ * @method string                                         getDeliveryType()
+ * @method                                                setDeliveryType(string $deliveryType)
+ * @method array                                          getNbm()
+ * @method                                                setNbm(array $nbm)
  */
 class Product extends EntityAbstract implements EntityInterface
 {
@@ -38,12 +41,12 @@ class Product extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'id'           => 'string',
-            'name'         => 'string',
-            'sku'          => 'object',
+            'id' => 'string',
+            'name' => 'string',
+            'sku' => 'object',
             'manufacturer' => 'object',
             'deliveryType' => 'string',
-            'nbm'          => 'array',
+            'nbm' => 'array',
         ];
     }
 

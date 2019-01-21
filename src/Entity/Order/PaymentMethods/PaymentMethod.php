@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods;
@@ -18,12 +21,12 @@ use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
 /**
- * @method int getSequential()
- * @method setSequential(integer $sequential)
+ * @method int    getSequential()
+ * @method        setSequential(integer $sequential)
  * @method string getId()
- * @method setId(integer $quantity)
- * @method float getValue()
- * @method setValue(float $value)
+ * @method        setId(integer $quantity)
+ * @method float  getValue()
+ * @method        setValue(float $value)
  */
 class PaymentMethod extends EntityAbstract implements EntityInterface
 {
@@ -31,8 +34,8 @@ class PaymentMethod extends EntityAbstract implements EntityInterface
     {
         return  [
             'sequential' => 'integer',
-            'id'         => 'string',
-            'value'      => 'number',
+            'id' => 'string',
+            'value' => 'number',
         ];
     }
 }

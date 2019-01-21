@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\SubmarinoSdk\Entity\Order;
@@ -19,25 +22,25 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 
 /**
  * @method string getShippingEstimateId()
- * @method setShippingEstimateId(string $shippingEstimateId)
+ * @method        setShippingEstimateId(string $shippingEstimateId)
  * @method string getShippingMethodId()
- * @method setShippingMethodId(string $shippingMethodId)
+ * @method        setShippingMethodId(string $shippingMethodId)
  * @method string getShippingMethodName()
- * @method setShippingMethodName(string $shippingMethodName)
+ * @method        setShippingMethodName(string $shippingMethodName)
  * @method string getCalculationType()
- * @method setCalculationType(string $calculationType)
+ * @method        setCalculationType(string $calculationType)
  * @method string getShippingMethodDisplayName()
- * @method setShippingMethodDisplayName(string $shippingMethodDisplayName)
+ * @method        setShippingMethodDisplayName(string $shippingMethodDisplayName)
  */
 class Shipping extends EntityAbstract implements EntityInterface
 {
     public function getSchema()
     {
         return [
-            'shippingEstimateId'        => 'string',
-            'shippingMethodId'          => 'string',
-            'shippingMethodName'        => 'string',
-            'calculationType'           => 'string',
+            'shippingEstimateId' => 'string',
+            'shippingMethodId' => 'string',
+            'shippingMethodName' => 'string',
+            'calculationType' => 'string',
             'shippingMethodDisplayName' => 'string',
         ];
     }
