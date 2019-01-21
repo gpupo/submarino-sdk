@@ -8,7 +8,7 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-         bootstrap="vendor/autoload.php"
+         bootstrap="config/bootstrap.php"
  >
     <testsuites>
         <testsuite name="Main Test Suite">
@@ -22,13 +22,8 @@
         </whitelist>
     </filter>
 
-    <!-- Customize your parameters ! -->
     <php>
         <const name="API_TOKEN" value=""/>
         <const name="VERBOSE" value="false"/>
     </php>
-    <logging>
-      <log type="coverage-clover" target="build/logs/clover.xml"/>
-      <log type="testdox-text" target="build/logs/testdox.txt"/>
-    </logging>
 </phpunit>
