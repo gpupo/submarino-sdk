@@ -20,14 +20,6 @@ namespace Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
-/**
- * @method int    getSequential()
- * @method        setSequential(integer $sequential)
- * @method string getId()
- * @method        setId(integer $quantity)
- * @method float  getValue()
- * @method        setValue(float $value)
- */
 class PaymentMethod extends EntityAbstract implements EntityInterface
 {
     public function getSchema()

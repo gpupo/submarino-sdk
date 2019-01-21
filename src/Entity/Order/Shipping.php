@@ -20,18 +20,6 @@ namespace Gpupo\SubmarinoSdk\Entity\Order;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
-/**
- * @method string getShippingEstimateId()
- * @method        setShippingEstimateId(string $shippingEstimateId)
- * @method string getShippingMethodId()
- * @method        setShippingMethodId(string $shippingMethodId)
- * @method string getShippingMethodName()
- * @method        setShippingMethodName(string $shippingMethodName)
- * @method string getCalculationType()
- * @method        setCalculationType(string $calculationType)
- * @method string getShippingMethodDisplayName()
- * @method        setShippingMethodDisplayName(string $shippingMethodDisplayName)
- */
 class Shipping extends EntityAbstract implements EntityInterface
 {
     public function getSchema()

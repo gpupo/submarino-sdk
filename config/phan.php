@@ -5,14 +5,19 @@ declare(strict_types=1);
 /*
  * This file is part of gpupo/submarino-sdk
  * Created by Gilmar Pupo <contact@gpupo.com>
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * For the information of copyright and license you should read the file
+ * LICENSE which is distributed with this source code.
+ * Para a informação dos direitos autorais e de licença você deve ler o arquivo
+ * LICENSE que é distribuído com este código-fonte.
+ * Para obtener la información de los derechos de autor y la licencia debe leer
+ * el archivo LICENSE que se distribuye con el código fuente.
  * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 use Phan\Issue;
 
-/**
+/*
  * This configuration will be read and overlaid on top of the
  * default configuration. Command line arguments will be applied
  * after this file is read.
@@ -35,7 +40,6 @@ use Phan\Issue;
  * '-d' flag.
  */
 return [
-
     // Supported values: '7.0', '7.1', '7.2', '7.3', null.
     // If this is set to null,
     // then Phan assumes the PHP version which is closest to the minor version
@@ -288,6 +292,7 @@ return [
     'directory_list' => [
         'src',
         'vendor/gpupo/common-sdk/src',
+        'vendor/gpupo/common/src',
         'vendor/gpupo/common-sdk/tests',
         'vendor/phan/phan/src/Phan',
         'vendor/phpunit/phpunit/src',
