@@ -15,7 +15,7 @@ declare(strict_types=1);
  *
  */
 
-namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
+namespace Gpupo\SubmarinoSdk\Tests\Entity\Order;
 
 use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\CommonSdk\Entity\EntityInterface;
@@ -207,7 +207,7 @@ class OrderTest extends OrderTestCaseAbstract
      */
     public function testOTotalRealContémProdutosSomadoAFreteMenosODesconto(Order $order)
     {
-        $total = bcadd(24.9, 7.94, 2);
+        $total = bcadd('24.9', '7.94', 2);
         $this->assertNotSame($order->getTotalAmount(), $order->getTotalReal());
         $this->assertSame($total, $order->getTotalReal(), 'Produto mais frete');
     }
@@ -225,7 +225,7 @@ class OrderTest extends OrderTestCaseAbstract
      */
     public function testOTotalRealContémTotalMenosJuros(Order $order)
     {
-        $this->assertSame(bcsub(33.58, 0.74, 2), $order->getTotalReal(), 'Valor total menos o juros');
+        $this->assertSame(bcsub('33.58', '0.74', 2), $order->getTotalReal(), 'Valor total menos o juros');
     }
 
     /**

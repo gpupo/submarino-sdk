@@ -15,10 +15,10 @@ declare(strict_types=1);
  *
  */
 
-namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
+namespace Gpupo\SubmarinoSdk\Tests\Entity\Order;
 
 use Gpupo\SubmarinoSdk\Entity\Order\Manager;
-use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
+use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
 
 abstract class OrderTestCaseAbstract extends TestCaseAbstract
 {

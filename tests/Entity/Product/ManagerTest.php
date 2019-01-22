@@ -15,9 +15,9 @@ declare(strict_types=1);
  *
  */
 
-namespace Gpupo\Tests\SubmarinoSdk\Entity\Product;
+namespace Gpupo\SubmarinoSdk\Tests\Entity\Product;
 
-use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
+use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
 
 /**
  * @coversNothing

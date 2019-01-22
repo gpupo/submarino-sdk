@@ -15,7 +15,7 @@ declare(strict_types=1);
  *
  */
 
-namespace Gpupo\Tests\SubmarinoSdk\Entity\Order;
+namespace Gpupo\SubmarinoSdk\Tests\Entity\Order;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Tests\Traits\EntityTrait;

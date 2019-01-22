@@ -15,9 +15,9 @@ declare(strict_types=1);
  *
  */
 
-namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\Payer;
+namespace Gpupo\SubmarinoSdk\Tests\Entity\Order\Payer;
 
-use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
+use Gpupo\SubmarinoSdk\Tests\Entity\Order\OrderTestCaseAbstract;
 
 /**
  * @coversNothing

@@ -15,11 +15,11 @@ declare(strict_types=1);
  *
  */
 
-namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\Status;
+namespace Gpupo\SubmarinoSdk\Tests\Entity\Order\Status;
 
 use Gpupo\SubmarinoSdk\Entity\Order\Order;
 use Gpupo\SubmarinoSdk\Entity\Order\Status\Status;
-use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
+use Gpupo\SubmarinoSdk\Tests\Entity\Order\OrderTestCaseAbstract;
 
 /**
  * @coversNothing

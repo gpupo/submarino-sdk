@@ -15,7 +15,7 @@ declare(strict_types=1);
  *
  */
 
-namespace Gpupo\Tests\SubmarinoSdk;
+namespace Gpupo\SubmarinoSdk\Tests;
 
 use Gpupo\CommonSdk\Tests\FactoryTestAbstract;
 use Gpupo\SubmarinoSdk\Factory;

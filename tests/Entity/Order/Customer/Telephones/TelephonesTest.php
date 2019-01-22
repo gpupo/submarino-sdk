@@ -15,9 +15,9 @@ declare(strict_types=1);
  *
  */
 
-namespace Gpupo\Tests\SubmarinoSdk\Entity\Order\Customer\Telephones;
+namespace Gpupo\SubmarinoSdk\Tests\Entity\Order\Customer\Telephones;
 
-use Gpupo\Tests\SubmarinoSdk\Entity\Order\OrderTestCaseAbstract;
+use Gpupo\SubmarinoSdk\Tests\Entity\Order\OrderTestCaseAbstract;
 
 /**
  * @coversNothing

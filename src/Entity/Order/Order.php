@@ -54,6 +54,6 @@ class Order extends EntityAbstract implements EntityInterface
 
     public function getTotalReal()
     {
-        return bcsub($this->getTotalAmount(), $this->getTotalInterest(), 2);
+        return bcsub((string) $this->getTotalAmount(), (string) $this->getTotalInterest(), 2);
     }
 }

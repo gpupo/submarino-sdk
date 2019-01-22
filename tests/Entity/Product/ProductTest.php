@@ -15,11 +15,11 @@ declare(strict_types=1);
  *
  */
 
-namespace Gpupo\Tests\SubmarinoSdk\Entity\Product;
+namespace Gpupo\SubmarinoSdk\Tests\Entity\Product;
 
 use Gpupo\SubmarinoSdk\Entity\Product\Product;
 use Gpupo\SubmarinoSdk\Factory;
-use Gpupo\Tests\SubmarinoSdk\TestCaseAbstract;
+use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
 
 /**
  * @coversNothing
