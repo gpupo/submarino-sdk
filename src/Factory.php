@@ -34,6 +34,9 @@ class Factory extends FactoryAbstract
     public function getSchema($namespace = null)
     {
         return [
+            'generic' => [
+                'manager' => sprintf('%sGenericManager', $namespace),
+            ],
             'product' => [
                 'class' => $namespace.'Product\Product',
                 'manager' => $namespace.'Product\Manager',

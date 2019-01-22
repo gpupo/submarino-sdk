@@ -20,13 +20,13 @@ namespace Gpupo\SubmarinoSdk\Tests\Entity\Order;
 use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Tests\Traits\EntityTrait;
-use Gpupo\SubmarinoSdk\Entity\Order\Order;
 use Gpupo\SubmarinoSdk\Entity\Order\Customer\Customer;
-use Gpupo\SubmarinoSdk\Entity\Order\Products\Products;
-use Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Product;
+use Gpupo\SubmarinoSdk\Entity\Order\Order;
 use Gpupo\SubmarinoSdk\Entity\Order\Payer\Payer;
-use Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethods;
 use Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethod;
+use Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethods;
+use Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Product;
+use Gpupo\SubmarinoSdk\Entity\Order\Products\Products;
 use Gpupo\SubmarinoSdk\Entity\Order\Shipping;
 use Gpupo\SubmarinoSdk\Entity\Order\Status\Status;
 

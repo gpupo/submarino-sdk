@@ -20,6 +20,7 @@ namespace Gpupo\SubmarinoSdk\Tests\Entity\Order\Customer;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Tests\Traits\EntityTrait;
 use Gpupo\SubmarinoSdk\Tests\Entity\Order\OrderTestCaseAbstract;
+use Gpupo\SubmarinoSdk\Entity\Order\Customer\Customer;
 
 /**
  * @coversNothing
@@ -28,7 +29,7 @@ class CustomerTest extends OrderTestCaseAbstract
 {
     use EntityTrait;
 
-    const QUALIFIED = '\Gpupo\SubmarinoSdk\Entity\Order\Customer\Customer';
+    const QUALIFIED = Customer::class;
 
     public static function setUpBeforeClass()
     {
