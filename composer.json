@@ -36,6 +36,7 @@
             "touch Resources/logs/tests.log"
         ]
     },
+    "bin": ["bin/submarino-sdk"],
     "config": {
         "preferred-install": "dist"
     },

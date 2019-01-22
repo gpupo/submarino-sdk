@@ -19,8 +19,8 @@ namespace Gpupo\SubmarinoSdk\Tests\Entity\Order\Customer;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Tests\Traits\EntityTrait;
-use Gpupo\SubmarinoSdk\Tests\Entity\Order\OrderTestCaseAbstract;
 use Gpupo\SubmarinoSdk\Entity\Order\Customer\Customer;
+use Gpupo\SubmarinoSdk\Tests\Entity\Order\OrderTestCaseAbstract;
 
 /**
  * @coversNothing

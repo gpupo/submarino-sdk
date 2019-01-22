@@ -17,9 +17,6 @@ declare(strict_types=1);
 
 namespace Gpupo\SubmarinoSdk\Tests;
 
-use Gpupo\Common\Entity\Collection;
-use Gpupo\SubmarinoSdk\Entity\Product\Factory;
-
 /**
  * @coversNothing
  */
