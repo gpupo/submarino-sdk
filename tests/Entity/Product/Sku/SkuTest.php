@@ -44,9 +44,9 @@ class SkuTest extends TestCaseAbstract
         ];
 
         foreach ($opcionais as $opcional) {
-            $this->assertArrayNotHasKey($opcional, $sku->toArray(), $sku);
+            $this->assertArrayNotHasKey($opcional, $sku->toArray(), (string) $sku);
             $sku->set($opcional, 1);
-            $this->assertArrayHasKey($opcional, $sku->toArray(), $sku);
+            $this->assertArrayHasKey($opcional, $sku->toArray(), (string) $sku);
             $this->assertSame(1, $sku->get($opcional));
         }
     }
