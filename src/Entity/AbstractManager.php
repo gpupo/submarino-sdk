@@ -19,10 +19,10 @@ namespace Gpupo\SubmarinoSdk\Entity;
 
 use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\CommonSdk\Entity\ManagerAbstract as CommonAbstract;
+use Gpupo\CommonSdk\Entity\ManagerAbstract;
 use Gpupo\CommonSdk\Entity\ManagerInterface;
 
-abstract class ManagerAbstract extends CommonAbstract implements ManagerInterface
+abstract class AbstractManager extends ManagerAbstract implements ManagerInterface
 {
     public function update(EntityInterface $entity, EntityInterface $existent)
     {

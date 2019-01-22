@@ -18,9 +18,9 @@ declare(strict_types=1);
 namespace Gpupo\SubmarinoSdk\Entity\Product\Sku;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\SubmarinoSdk\Entity\ManagerAbstract;
+use Gpupo\SubmarinoSdk\Entity\AbstractManager;
 
-class Manager extends ManagerAbstract
+class Manager extends AbstractManager
 {
     protected $entity = 'Sku';
 

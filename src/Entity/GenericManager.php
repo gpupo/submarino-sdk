@@ -19,7 +19,7 @@ namespace Gpupo\SubmarinoSdk\Entity;
 
 use Gpupo\CommonSdk\Map;
 
-class GenericManager extends ManagerAbstract
+class GenericManager extends AbstractManager
 {
     public function factorySimpleMap(array $route, array $parameters = null)
     {

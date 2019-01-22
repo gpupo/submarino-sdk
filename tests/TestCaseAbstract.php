@@ -17,10 +17,10 @@ declare(strict_types=1);
 
 namespace Gpupo\SubmarinoSdk\Tests;
 
-use Gpupo\CommonSdk\Tests\TestCaseAbstract as CommonSdkTestCaseAbstract;
+use Gpupo\CommonSdk\Tests\TestCaseAbstract as Core;
 use Gpupo\SubmarinoSdk\Factory;
 
-abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
+abstract class TestCaseAbstract extends Core
 {
     private $factory;
 

@@ -18,9 +18,9 @@ declare(strict_types=1);
 namespace Gpupo\SubmarinoSdk\Entity\Order;
 
 use Gpupo\Common\Entity\CollectionInterface;
-use Gpupo\SubmarinoSdk\Entity\ManagerAbstract;
+use Gpupo\SubmarinoSdk\Entity\AbstractManager;
 
-class Manager extends ManagerAbstract
+class Manager extends AbstractManager
 {
     protected $entity = 'Order';
 

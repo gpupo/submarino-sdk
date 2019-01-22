@@ -18,10 +18,10 @@ declare(strict_types=1);
 namespace Gpupo\SubmarinoSdk\Entity\Product;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\SubmarinoSdk\Entity\ManagerAbstract;
+use Gpupo\SubmarinoSdk\Entity\AbstractManager;
 use Gpupo\SubmarinoSdk\Entity\Product\Sku\Manager as SkuManager;
 
-class Manager extends ManagerAbstract
+class Manager extends AbstractManager
 {
     protected $entity = 'Product';
 
