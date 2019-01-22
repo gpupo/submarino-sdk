@@ -42,6 +42,8 @@ final class ChecklistCommand extends AbstractCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $data = $this->getProjectData();
+        $output->writeln('Current config:');
+        $this->writeInfo($output, $data);
 
         if (!array_key_exists('access_token', $data)) {
             throw new \Exception('Access Token required!');

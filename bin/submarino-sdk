@@ -16,4 +16,4 @@ require dirname(__DIR__).'/config/bootstrap.php';
 use Gpupo\SubmarinoSdk\Console\Application;
 
 $app = new Application("submarino-sdk");
-$app->init();
+$app->init(__NAMESPACE__, dirname(__DIR__));
