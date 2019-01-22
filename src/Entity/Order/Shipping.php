@@ -22,7 +22,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Shipping extends EntityAbstract implements EntityInterface
 {
-    public function getSchema()
+    public function getSchema(): array
     {
         return [
             'shippingEstimateId' => 'string',

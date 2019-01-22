@@ -27,7 +27,7 @@ class Status extends EntityAbstract implements EntityInterface
         return $this->getStatus();
     }
 
-    public function getSchema()
+    public function getSchema(): array
     {
         return  [
             'invoiced' => 'object',

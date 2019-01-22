@@ -22,7 +22,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Telephones extends EntityAbstract implements EntityInterface
 {
-    public function getSchema()
+    public function getSchema(): array
     {
         return  [
             'main' => 'object',

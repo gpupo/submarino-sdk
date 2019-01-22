@@ -19,7 +19,7 @@ namespace Gpupo\SubmarinoSdk\Entity\Order\Status;
 
 class Invoiced extends \Gpupo\SubmarinoSdk\Entity\Order\Invoiced
 {
-    public function getSchema()
+    public function getSchema(): array
     {
         return array_merge(
             parent::getSchema(),

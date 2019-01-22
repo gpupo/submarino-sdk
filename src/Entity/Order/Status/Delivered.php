@@ -22,7 +22,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Delivered extends EntityAbstract implements EntityInterface
 {
-    public function getSchema()
+    public function getSchema(): array
     {
         return  [
             'deliveredCustomerDate' => 'string',

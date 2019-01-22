@@ -19,7 +19,7 @@ namespace Gpupo\SubmarinoSdk\Entity\Order\Customer;
 
 class Customer extends CustomerAbstract
 {
-    public function getSchema()
+    public function getSchema(): array
     {
         return $this->factorySchema(['deliveryAddress']);
     }

@@ -21,7 +21,7 @@ use Gpupo\SubmarinoSdk\Entity\Order\Customer\CustomerAbstract;
 
 class Payer extends CustomerAbstract
 {
-    public function getSchema()
+    public function getSchema(): array
     {
         return $this->factorySchema(['billingAddress']);
     }

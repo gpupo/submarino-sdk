@@ -27,7 +27,7 @@ class Sku extends EntityAbstract implements EntityInterface
         $this->setOptionalSchema(['height', 'width', 'length']);
     }
 
-    public function getSchema()
+    public function getSchema(): array
     {
         return [
             'id' => 'string',

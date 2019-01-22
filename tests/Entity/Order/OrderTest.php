@@ -21,6 +21,14 @@ use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Tests\Traits\EntityTrait;
 use Gpupo\SubmarinoSdk\Entity\Order\Order;
+use Gpupo\SubmarinoSdk\Entity\Order\Customer\Customer;
+use Gpupo\SubmarinoSdk\Entity\Order\Products\Products;
+use Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Product;
+use Gpupo\SubmarinoSdk\Entity\Order\Payer\Payer;
+use Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethods;
+use Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethod;
+use Gpupo\SubmarinoSdk\Entity\Order\Shipping;
+use Gpupo\SubmarinoSdk\Entity\Order\Status\Status;
 
 /**
  * @coversNothing
@@ -29,7 +37,7 @@ class OrderTest extends OrderTestCaseAbstract
 {
     use EntityTrait;
 
-    const QUALIFIED = 'Gpupo\SubmarinoSdk\Entity\Order\Order';
+    const QUALIFIED = Order::class;
 
     public static function setUpBeforeClass()
     {
@@ -67,7 +75,7 @@ class OrderTest extends OrderTestCaseAbstract
         $list = $this->getList();
 
         foreach ($list as $item) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Order', $item);
+            $this->assertInstanceOf(Order::class, $item);
         }
 
         return $list;
@@ -79,7 +87,7 @@ class OrderTest extends OrderTestCaseAbstract
     public function testCadaPedidoPossuiObjetoCliente(CollectionInterface $list)
     {
         foreach ($list as $item) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Customer\Customer', $item->getCustomer());
+            $this->assertInstanceOf(Customer::class, $item->getCustomer());
         }
     }
 
@@ -89,7 +97,7 @@ class OrderTest extends OrderTestCaseAbstract
     public function testCadaPedidoPossuiObjetoComDadosDeCobrança(CollectionInterface $list)
     {
         foreach ($list as $item) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Payer\Payer', $item->getPayer());
+            $this->assertInstanceOf(Payer::class, $item->getPayer());
         }
     }
 
@@ -101,10 +109,10 @@ class OrderTest extends OrderTestCaseAbstract
         foreach ($list as $item) {
             $collection = $item->getProducts();
 
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Products\Products', $collection);
+            $this->assertInstanceOf(Products::class, $collection);
 
             foreach ($collection as $product) {
-                $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Products\Product\Product', $product);
+                $this->assertInstanceOf(Product::class, $product);
             }
         }
     }
@@ -117,10 +125,10 @@ class OrderTest extends OrderTestCaseAbstract
         foreach ($list as $item) {
             $collection = $item->getPaymentMethods();
 
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethods', $collection);
+            $this->assertInstanceOf(PaymentMethods::class, $collection);
 
             foreach ($collection as $product) {
-                $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\PaymentMethods\PaymentMethod', $product);
+                $this->assertInstanceOf(PaymentMethod::class, $product);
             }
         }
     }
@@ -131,7 +139,7 @@ class OrderTest extends OrderTestCaseAbstract
     public function testCadaPedidoPossuiObjetoComDadosDeEntrega(CollectionInterface $list)
     {
         foreach ($list as $item) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Shipping', $item->getShipping());
+            $this->assertInstanceOf(Shipping::class, $item->getShipping());
         }
     }
 
@@ -141,7 +149,7 @@ class OrderTest extends OrderTestCaseAbstract
     public function testCadaPedidoPossuiObjetoStatus(Order $order)
     {
         $status = $order->getStatus();
-        $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Status\Status', $status);
+        $this->assertInstanceOf(Status::class, $status);
         $this->assertArrayHasKey('status', $order->toStatus());
     }
 
@@ -331,7 +339,7 @@ class OrderTest extends OrderTestCaseAbstract
      * @testdox Possui método ``getPurchaseTimestamp()`` para acessar PurchaseTimestamp
      * @dataProvider dataProviderObject
      *
-     * @param null|mixed $expected
+     * @param null|mixed $expected'Gpupo\SubmarinoSdk\Entity\Order\Order'
      */
     public function testGetterPurchaseTimestamp(EntityInterface $object, $expected = null)
     {
