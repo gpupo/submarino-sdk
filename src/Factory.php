@@ -28,10 +28,10 @@ class Factory extends FactoryAbstract
 
     public function setClient(array $clientOptions = [])
     {
-        $this->client = new Client($clientOptions, $this->logger);
+        $this->client = new Client($clientOptions, $this->getLogger());
     }
 
-    protected function getSchema($namespace = null)
+    public function getSchema($namespace = null)
     {
         return [
             'product' => [
