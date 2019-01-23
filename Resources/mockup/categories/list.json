@@ -1,0 +1,10 @@
+[
+    {
+        "code": "bar",
+        "name": "Bar"
+    },
+    {
+        "code": "foo",
+        "name": "FOO"
+    }
+]
