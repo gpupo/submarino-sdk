@@ -25,8 +25,6 @@ use Gpupo\SubmarinoSdk\Factory;
  */
 class FactoryTest extends FactoryTestAbstract
 {
-    public $namespace = '\Gpupo\SubmarinoSdk\\';
-
     public function getFactory()
     {
         return Factory::getInstance();
@@ -49,18 +47,16 @@ class FactoryTest extends FactoryTestAbstract
     public function dataProviderObjetos()
     {
         return [
-            [$this->namespace.'Entity\Product\Product', 'product', null],
-            [$this->namespace.'Entity\Product\Sku\Sku', 'sku', null],
-            [$this->namespace.'Entity\Order\Order', 'order', null],
+            ['\Gpupo\CommonSchema\ArrayCollection\Trading\Product\Product', 'product', null],
+            ['\Gpupo\CommonSchema\ArrayCollection\Trading\Order\Order', 'order', null],
         ];
     }
 
     public function dataProviderManager()
     {
         return [
-            [$this->namespace.'Entity\Product\Manager', 'product'],
-            [$this->namespace.'Entity\Product\Sku\Manager', 'sku'],
-            [$this->namespace.'Entity\Order\Manager', 'order'],
+            ['\Gpupo\SubmarinoSdk\Entity\Product\Manager', 'product'],
+            ['\Gpupo\SubmarinoSdk\Entity\Order\Manager', 'order'],
         ];
     }
 }

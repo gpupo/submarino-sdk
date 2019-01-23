@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Gpupo\SubmarinoSdk;
 
+use Gpupo\CommonSchema\ArrayCollection\Trading\Order\Order;
+use Gpupo\CommonSchema\ArrayCollection\Trading\Product\Product;
 use Gpupo\CommonSdk\FactoryAbstract;
 
 class Factory extends FactoryAbstract
@@ -31,24 +33,19 @@ class Factory extends FactoryAbstract
         $this->client = new Client($clientOptions, $this->getLogger());
     }
 
-    public function getSchema($namespace = null)
+    public function getSchema(): array
     {
         return [
             'generic' => [
-                'manager' => sprintf('%sGenericManager', $namespace),
+                'manager' => Entity\GenericManager::class,
             ],
             'product' => [
-                'class' => $namespace.'Product\Product',
-                'manager' => $namespace.'Product\Manager',
-            ],
-            'sku' => [
-                'class' => $namespace.'Product\Factory',
-                'method' => 'factorySku',
-                'manager' => $namespace.'Product\Sku\Manager',
+                'class' => Product::class,
+                'manager' => Entity\Product\Manager::class,
             ],
             'order' => [
-                'class' => $namespace.'Order\Order',
-                'manager' => $namespace.'Order\Manager',
+                'class' => Order::class,
+                'manager' => Entity\Order\Manager::class,
             ],
         ];
     }

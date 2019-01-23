@@ -17,12 +17,12 @@ declare(strict_types=1);
 
 namespace Gpupo\SubmarinoSdk\Tests\Entity\Order;
 
-use Gpupo\SubmarinoSdk\Entity\Order\Order;
+use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
 
 /**
  * @coversNothing
  */
-class ManagerTest extends OrderTestCaseAbstract
+class ManagerTest extends TestCaseAbstract
 {
     public function testObtemListaPedidos()
     {

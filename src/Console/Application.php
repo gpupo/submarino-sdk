@@ -25,37 +25,6 @@ use Psr\SimpleCache\CacheInterface;
 
 final class Application extends AbstractApplication
 {
-    protected $commonParameters = [
-        [
-            'key' => 'client_id',
-        ],
-        [
-            'key' => 'secret_key',
-        ],
-        [
-            'key' => 'access_token',
-        ],
-        [
-            'key' => 'env',
-            'options' => ['sandbox', 'api'],
-            'default' => 'sandbox',
-            'name' => 'Version',
-        ],
-        [
-            'key' => 'sslVersion',
-            'options' => ['SecureTransport', 'TLS'],
-            'default' => 'SecureTransport',
-            'name' => 'SSL Version',
-        ],
-        [
-            'key' => 'registerPath',
-            'default' => false,
-        ],
-        [
-            'key' => 'app_url',
-        ],
-    ];
-
     public function factorySdk(array $options, LoggerInterface $logger = null, CacheInterface $cache = null): FactoryInterface
     {
         return new Factory($options, $logger, $cache);

@@ -39,11 +39,6 @@ abstract class TestCaseAbstract extends Core
         return $this->getResourceJson('fixture/Product/Products.json');
     }
 
-    public function dataProviderSkus()
-    {
-        return $this->getResourceJson('fixture/Product/Skus.json');
-    }
-
     public function dataProviderOrders()
     {
         return $this->getResourceJson('fixture/Order/list.json');
@@ -51,11 +46,7 @@ abstract class TestCaseAbstract extends Core
 
     protected function getOptions()
     {
-        return [
-            'token' => $this->getConstant('API_TOKEN'),
-            'verbose' => $this->getConstant('VERBOSE'),
-            'registerPath' => $this->getConstant('REGISTER_PATH'),
-        ];
+        return getenv();
     }
 
     protected function getFactory()
