@@ -22,29 +22,14 @@ use Gpupo\CommonSdk\Client\ClientInterface;
 
 class Client extends ClientAbstract implements ClientInterface
 {
-    /**
-     * @internal
-     */
-    public function getDefaultOptions()
+    protected $endpoint_domain = 'api.skyhub.com.br';
+
+    protected function renderAuthorization(): array
     {
         return [
-            'token' => false,
-            'base_url' => 'https://api-{VERSION}.bonmarketplace.com.br',
-            'version' => 'sandbox',
-            'verbose' => false,
-            'sslVersion' => 'SecureTransport',
-            'cacheTTL' => 3600,
+            'X-User-Email' => $this->getOptions()->get('user_email'),
+            'X-Api-Key' => $this->getOptions()->get('api_key'),
+            'X-Accountmanager-Key' => $this->getOptions()->get('accountmanager_key'),
         ];
-    }
-
-    protected function renderAuthorization()
-    {
-        $token = $this->getOptions()->get('token');
-
-        if (empty($token)) {
-            throw new \InvalidArgumentException('Token nao informado');
-        }
-
-        return 'Authorization: Basic '.base64_encode($token.':');
     }
 }

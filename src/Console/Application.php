@@ -18,14 +18,11 @@ declare(strict_types=1);
 namespace Gpupo\SubmarinoSdk\Console;
 
 use Gpupo\CommonSdk\Console\AbstractApplication;
+use Gpupo\CommonSdk\FactoryInterface;
 use Gpupo\SubmarinoSdk\Factory;
+use Psr\Log\LoggerInterface;
 use Psr\SimpleCache\CacheInterface;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * @codeCoverageIgnore
- */
 final class Application extends AbstractApplication
 {
     protected $commonParameters = [
@@ -59,20 +56,8 @@ final class Application extends AbstractApplication
         ],
     ];
 
-    public function doRun(InputInterface $input, OutputInterface $output)
+    public function factorySdk(array $options, LoggerInterface $logger = null, CacheInterface $cache = null): FactoryInterface
     {
-        $output->writeln('<bg=green;options=bold>gpupo/submarino-sdk</>');
-        $output->writeln('<options=bold>Atenção! Esta aplicação é apenas uma '.'ferramenta de apoio ao desenvolvedor e não deve ser usada no ambiente de produção!'.'</>');
-
-        try {
-            return parent::doRun($input, $output);
-        } catch (\Exception $exception) {
-            $output->writeln($exception->getmessage());
-        }
-    }
-
-    public function factorySdk(array $options, $loggerChannel = 'bin', $verbose = false, CacheInterface $cache = null)
-    {
-        return  new Factory($options, $this->factoryLogger($loggerChannel, $verbose), $cache);
+        return new Factory($options, $logger, $cache);
     }
 }

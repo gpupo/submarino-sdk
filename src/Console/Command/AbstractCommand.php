@@ -17,13 +17,8 @@ declare(strict_types=1);
 
 namespace Gpupo\SubmarinoSdk\Console\Command;
 
-use Gpupo\CommonSdk\Entity\CollectionContainerInterface;
-use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\SubmarinoSdk\Factory;
-use Gpupo\Common\Console\Command\AbstractCommand as Core;
+use Gpupo\CommonSdk\Console\Command\AbstractCommand as Core;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * @codeCoverageIgnore
@@ -31,29 +26,6 @@ use Symfony\Component\Yaml\Yaml;
 abstract class AbstractCommand extends Core
 {
     const prefix = 'markethub:submarino:';
-
-    protected $factory;
-
-    public function __construct(Factory $factory = null)
-    {
-        $this->factory = $factory;
-
-        parent::__construct();
-    }
-
-    public function getProjectDataFilename(): string
-    {
-        return $this->getFactory()->getOptions()->get('extra_file') ?: 'var/parameters.yaml';
-    }
-
-    public function getFactory(): Factory
-    {
-        if (!$this->factory instanceof Factory) {
-            throw new \InvalidArgumentException('Factory must be defined!');
-        }
-
-        return $this->factory;
-    }
 
     protected function addOptionsForList()
     {
