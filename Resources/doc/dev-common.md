@@ -1,4 +1,0 @@
-
----
-
-## Propriedades dos objetos
