@@ -1,0 +1,156 @@
+{
+    "products": [
+        {
+            "sku": "bar",
+            "name": "bar",
+            "description": "bar",
+            "status": "enabled",
+            "removed": false,
+            "qty": 0,
+            "price": 0,
+            "promotional_price": 0,
+            "cost": 0,
+            "weight": 0,
+            "height": 0,
+            "width": 0,
+            "length": 0,
+            "brand": "bar",
+            "ean": "bar",
+            "nbm": "bar",
+            "categories": [
+                {
+                    "code": "bar",
+                    "name": "Bar"
+                }
+            ],
+            "images": [
+                "bar",
+                "bar",
+                "bar"
+            ],
+            "specifications": [
+                {
+                    "key": "store_stock_cross_docking",
+                    "value": null
+                },
+                {
+                    "key": "store_stock_qty",
+                    "value": null
+                },
+                {
+                    "key": "store_stock_store_code",
+                    "value": null
+                }
+            ],
+            "variations": [
+                {
+                    "sku": "bar",
+                    "qty": 0,
+                    "ean": "bar",
+                    "images": [
+                        "bar",
+                        "bar",
+                        "bar"
+                    ],
+                    "specifications": [
+                        {
+                            "key": "store_stock_cross_docking",
+                            "value": null
+                        },
+                        {
+                            "key": "store_stock_qty",
+                            "value": null
+                        },
+                        {
+                            "key": "store_stock_store_code",
+                            "value": null
+                        }
+                    ]
+                }
+            ],
+            "variation_attributes": [
+                "bar",
+                "bar",
+                "bar"
+            ],
+            "associations": []
+        },
+        {
+            "sku": "foo",
+            "name": "foo",
+            "description": "foo",
+            "status": "enabled",
+            "removed": false,
+            "qty": 0,
+            "price": 0,
+            "promotional_price": 0,
+            "cost": 0,
+            "weight": 0,
+            "height": 0,
+            "width": 0,
+            "length": 0,
+            "brand": "foo",
+            "ean": "foo",
+            "nbm": "foo",
+            "categories": [
+                {
+                    "code": "foo",
+                    "name": "FOO"
+                }
+            ],
+            "images": [
+                "foo",
+                "foo",
+                "foo"
+            ],
+            "specifications": [
+                {
+                    "key": "store_stock_cross_docking",
+                    "value": null
+                },
+                {
+                    "key": "store_stock_qty",
+                    "value": null
+                },
+                {
+                    "key": "store_stock_store_code",
+                    "value": null
+                }
+            ],
+            "variations": [
+                {
+                    "sku": "foo",
+                    "qty": 0,
+                    "ean": "foo",
+                    "images": [
+                        "foo",
+                        "foo",
+                        "foo"
+                    ],
+                    "specifications": [
+                        {
+                            "key": "store_stock_cross_docking",
+                            "value": null
+                        },
+                        {
+                            "key": "store_stock_qty",
+                            "value": null
+                        },
+                        {
+                            "key": "store_stock_store_code",
+                            "value": null
+                        }
+                    ]
+                }
+            ],
+            "variation_attributes": [
+                "foo",
+                "foo",
+                "foo"
+            ],
+            "associations": []
+        }
+    ],
+    "total": 2,
+    "next": "http://api.skyhub.com.br/products?cursor="
+}
