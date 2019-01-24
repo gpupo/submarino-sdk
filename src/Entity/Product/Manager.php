@@ -19,7 +19,6 @@ namespace Gpupo\SubmarinoSdk\Entity\Product;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\SubmarinoSdk\Entity\AbstractManager;
-use Gpupo\SubmarinoSdk\Entity\Product\Sku\Manager as SkuManager;
 
 class Manager extends AbstractManager
 {
@@ -27,33 +26,12 @@ class Manager extends AbstractManager
 
     protected $maps = [
         'save' => ['POST', '/product'],
-        'addSku' => ['POST', '/product/{itemId}/sku'],
         'findById' => ['GET', '/product/{itemId}'],
-        'fetch' => ['GET', '/product?offset={offset}&limit={limit}'],
+        'update' => ['PUT', '/product/{itemId}'],
+        'fetch' => ['GET', '/product?page={page}&per_page={limit}'],
     ];
 
     public function update(EntityInterface $entity, EntityInterface $existent)
     {
-        foreach ($entity->getSku() as $sku) {
-            if (!$existent->has($sku)) {
-                $this->addSku($entity, $sku);
-            } else {
-                $this->updateSku($sku);
-            }
-        }
-
-        return true;
-    }
-
-    public function updateSku(Sku\Sku $sku)
-    {
-        $manager = new SkuManager($this->getClient());
-
-        return $manager->update($sku, $sku->getPrevious());
-    }
-
-    public function addSku(EntityInterface $product, Sku\Sku $sku)
-    {
-        return $this->execute($this->factoryMap('addSku', ['itemId' => $product->getId()]), $sku->toJson());
     }
 }

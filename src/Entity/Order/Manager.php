@@ -25,10 +25,9 @@ class Manager extends AbstractManager
     protected $entity = 'Order';
 
     protected $maps = [
-        'confirm' => ['POST', '/order/{itemId}/confirm'],
-        'saveStatus' => ['PUT', '/order/{itemId}/status'],
-        'findById' => ['GET', '/order/{itemId}'],
-        'fetch' => ['GET', '/order?offset={offset}&limit={limit}&purchaseDate={purchaseDate}&store={store}&siteId={siteId}&status={status}'],
+        'saveStatus' => ['PUT', '/orders/{itemId}/status'],
+        'findById' => ['GET', '/orders/{itemId}'],
+        'fetch' => ['GET', '/orders?page={page}&per_page={limit}offset={offset}&limit={limit}&filters[sale_systems][]={siteId}&filters[statuses][]={status}'],
     ];
 
     /**
@@ -71,7 +70,7 @@ class Manager extends AbstractManager
     /**
      * Confirmação de recebimento de pedido.
      *
-     * Esta função faz uma chamada para o endpoint POST /order/{itemId}/confirm
+     * Esta função faz uma chamada para o endpoint POST /orders/{itemId}/confirm
      *
      * Campos e parâmetros:
      *  - code: Indica se o parceiro aprova (0) ou não (1) o pedido
