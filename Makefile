@@ -82,8 +82,9 @@ gh-pages-build:
 	echo "---" >> var/cache/index.md;
 	cat README.md  >> var/cache/index.md;
 	git checkout gh-pages || (git checkout --orphan gh-pages && git ls-files -z | xargs -0 git rm --cached);
-	cp -f vendor/gpupo/common/Resources/website/default.html _layouts/
-	cp -f vendor/gpupo/common/Resources/website/_config.yml .;
+	mkdir -p _layouts;
+	cp -f vendor/gpupo/common/Resources/gh-pages-template/default.html _layouts/
+	cp -f vendor/gpupo/common/Resources/gh-pages-template/_config.yml .;
 	cp var/cache/index.md  .;
 	git add -f index.md _config.yml _layouts/default.html;
 	git commit -m "Website recreated by gpupo/common";
