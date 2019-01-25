@@ -29,6 +29,9 @@ class ManagerTest extends TestCaseAbstract
         $response = $this->factoryResponseFromFixture('mockup/products/list.json');
         $list = $this->getManager($response)->fetch();
         $this->assertInstanceOf(CollectionInterface::class, $list);
+
+        dump($list);
+        
         foreach ($list as $product) {
             $this->assertInstanceOf(Product::class, $product);
         }

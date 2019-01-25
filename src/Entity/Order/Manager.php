@@ -19,94 +19,32 @@ namespace Gpupo\SubmarinoSdk\Entity\Order;
 
 use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\SubmarinoSdk\Entity\AbstractManager;
+use Gpupo\CommonSchema\ArrayCollection\Trading\Product\Product;
+use Gpupo\CommonSdk\Entity\Metadata\MetadataContainer;
 
 class Manager extends AbstractManager
 {
-    protected $entity = 'Order';
+    
 
     protected $maps = [
         'saveStatus' => ['PUT', '/orders/{itemId}/status'],
         'findById' => ['GET', '/orders/{itemId}'],
-        'fetch' => ['GET', '/orders?page={page}&per_page={limit}offset={offset}&limit={limit}&filters[sale_systems][]={siteId}&filters[statuses][]={status}'],
+        'fetch' => ['GET', '/orders?page={page}&per_page={limit}&limit={limit}&filters[sale_systems][]={siteId}&filters[statuses][]={status}'],
     ];
 
-    /**
-     * @param int   $offset
-     * @param int   $limit
-     * @param array $parameters
-     * @param mixed $route
-     *
-     * @return \Gpupo\CommonSdk\Entity\CollectionInterface
-     */
-    public function fetch($offset = 1, $limit = 50, array $parameters = [], $route = 'fetch'): ?CollectionInterface
+    public function fetch(int $offset = 0, int $limit = 50, array $parameters = [], string $route = 'fetch'): ?CollectionInterface
     {
+        $page = $offset + 1;
         return parent::fetch($offset, $limit, array_merge([
-            'status' => null,
-            'purchaseDate' => null,
-            'store' => null,
-            'siteId' => null,
+            'page' => $page,
         ], $parameters));
     }
 
     /**
      * Obtém a lista de pedidos recém aprovados e que esperam processamento.
-     *
-     * @param mixed $offset
-     * @param mixed $limit
      */
-    public function fetchQueue($offset = 0, $limit = 50, array $parameters = [])
+    public function fetchQueue(int $offset = 0, int $limit = 50, array $parameters = []): ?CollectionInterface
     {
         return $this->fetch($offset, $limit, array_merge(['status' => 'APPROVED'], $parameters));
-    }
-
-    public function saveStatus(Order $order)
-    {
-        return $this->execute($this->factoryMap(
-            'saveStatus',
-            ['itemId' => $order->getId()]
-        ), $order->getStatus()->toJson());
-    }
-
-    /**
-     * Confirmação de recebimento de pedido.
-     *
-     * Esta função faz uma chamada para o endpoint POST /orders/{itemId}/confirm
-     *
-     * Campos e parâmetros:
-     *  - code: Indica se o parceiro aprova (0) ou não (1) o pedido
-     *  - message: mensagem explicando o status da resposta.
-     *
-     * Exemplo:
-     *
-     *  {"code": "0", "message": "Success"}
-     *  {"code": "1", "message": "Failure"}
-     *
-     * @see https://api-sandbox.bonmarketplace.com.br/docs/confirmacaoPedido.shtml
-     *
-     * @param int    $itemId
-     * @param bool   $successfully
-     * @param string $message
-     *
-     * @return bool
-     */
-    public function confirm($itemId, $successfully, $message)
-    {
-        try {
-            $this->execute(
-                $this->factoryMap(
-                    'confirm',
-                    ['itemId' => $itemId]
-                ),
-                sprintf(
-                    '{"code": "%d", "message": "%s"}',
-                    $successfully ? 0 : 1,
-                    $message
-                )
-            );
-
-            return true;
-        } catch (\Exception $exception) {
-            return false;
-        }
     }
 }
