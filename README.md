@@ -26,6 +26,8 @@ A documentação mais importante está nos testes unitários. Se você não cons
 
 ## Direitos autorais e de licença
 
+This project is licensed under the terms of the MIT license.
+
 Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/blob/master/LICENSE)
 
 Para a informação dos direitos autorais e de licença você deve ler o arquivo

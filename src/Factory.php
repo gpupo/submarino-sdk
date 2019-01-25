@@ -23,6 +23,21 @@ use Gpupo\CommonSdk\FactoryAbstract;
 
 class Factory extends FactoryAbstract
 {
+    public function getDefaultOptions()
+    {
+        return [
+            'user_email' => 'please@fill.me',
+            'api_key' => 'please@fill.me',
+            'accountmanager_key' => 'please@fill.me',
+            'common_schema_namespace' => '\\App',
+            'app_url' => 'http://localhost',
+            'verbose' => true,
+            'cacheTTL' => 3600,
+            'offset' => 5,
+            'limit' => 20,
+        ];
+    }
+
     public function getNamespace()
     {
         return '\Gpupo\SubmarinoSdk\Entity\\';

@@ -89,4 +89,4 @@ gh-pages-build:
 	git add -f index.md _config.yml _layouts/default.html;
 	git commit -m "Website recreated by gpupo/common";
 	git push -f origin gh-pages:gh-pages;
-	git checkout master;
+	git checkout -f master;
