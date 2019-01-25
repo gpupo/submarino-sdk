@@ -18,17 +18,18 @@ declare(strict_types=1);
 namespace Gpupo\SubmarinoSdk\Tests\Entity\Order;
 
 use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
+use Gpupo\CommonSchema\ArrayCollection\Trading\Order\Order;
+use Gpupo\CommonSchema\ArrayCollection\Trading\Product\Product;
+use Gpupo\Common\Entity\CollectionInterface;
 
-/**
- * @coversNothing
- */
+
 class ManagerTest extends TestCaseAbstract
 {
     public function testObtemListaPedidos()
     {
         $list = $this->getList();
         $this->assertInstanceOf(
-            '\Gpupo\Common\Entity\CollectionInterface',
+            CollectionInterface::class,
             $list
         );
 
@@ -37,17 +38,17 @@ class ManagerTest extends TestCaseAbstract
 
     public function testObtémAListaDePedidosRecémAprovadosEQueEsperamProcessamento()
     {
-        $response = $this->factoryResponseFromFixture('fixture/Order/list.json');
+        $response = $this->factoryResponseFromFixture('mockup/orders/list.json');
         $manager = $this->factoryManager()->setDryRun($response);
         $list = $manager->fetchQueue();
-        $this->assertInstanceOf('\Gpupo\Common\Entity\CollectionInterface', $list);
+        $this->assertInstanceOf(CollectionInterface::class, $list);
     }
 
     public function testRecuperaInformacoesDeUmPedidoEspecifico()
     {
-        $response = $this->factoryResponseFromFixture('fixture/Order/detail.json');
+        $response = $this->factoryResponseFromFixture('mockup/orders/detail.json');
         $order = $this->factoryManager()->setDryRun($response)->findById(589);
-        $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Order\Order', $order);
+        $this->assertInstanceOf(Order::class, $order);
         $this->assertSame(589, $order->getId());
         $this->assertSame('03-589-01', $order->getSiteId());
         $this->assertSame('SUBMARINO', $order->getStore());

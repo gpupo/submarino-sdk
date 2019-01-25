@@ -18,27 +18,26 @@ declare(strict_types=1);
 namespace Gpupo\SubmarinoSdk\Tests\Entity\Product;
 
 use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
+use Gpupo\CommonSchema\ArrayCollection\Trading\Order\Order;
+use Gpupo\CommonSchema\ArrayCollection\Trading\Product\Product;
+use Gpupo\Common\Entity\CollectionInterface;
 
-/**
- * @coversNothing
- */
 class ManagerTest extends TestCaseAbstract
 {
-    public function testObtemListaDeProdutosCadastrados()
+    public function testGetProducts()
     {
-        $response = $this->factoryResponseFromFixture('fixture/Product/list.json');
+        $response = $this->factoryResponseFromFixture('mockup/products/list.json');
         $list = $this->getManager($response)->fetch();
-        $this->assertInstanceOf('\Gpupo\Common\Entity\CollectionInterface', $list);
-
+        $this->assertInstanceOf(CollectionInterface::class, $list);
         foreach ($list as $product) {
-            $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Product', $product);
+            $this->assertInstanceOf(Product::class, $product);
         }
     }
 
     public function testRecuperaInformacoesDeUmProdutoEspecifico()
     {
         $product = $this->factoryDetail();
-        $this->assertInstanceOf('\Gpupo\SubmarinoSdk\Entity\Product\Product', $product);
+        $this->assertInstanceOf(Product::class, $product);
         $this->assertSame((int) $product->getId(), 9474);
     }
 
@@ -63,7 +62,7 @@ class ManagerTest extends TestCaseAbstract
 
     protected function factoryDetail()
     {
-        $response = $this->factoryResponseFromFixture('fixture/Product/detail.json');
+        $response = $this->factoryResponseFromFixture('mockup/products/detail.json');
 
         return $this->getManager($response)->findById(9474);
     }
