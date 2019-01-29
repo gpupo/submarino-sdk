@@ -49,6 +49,8 @@ class ManagerTest extends TestCaseAbstract
         $product = $this->factoryDetail();
         $manager = $this->getManager();
         $this->assertTrue($manager->save($product));
+
+        return $this->markIncomplete('Requer implementação do metodo update()');
         $product->setPrevious(clone $product);
         $this->assertFalse($manager->update($product));
     }

@@ -43,7 +43,7 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
         ], $parameters));
     }
 
-    public function update(EntityInterface $entity, EntityInterface $existent)
+    public function update(EntityInterface $entity, EntityInterface $existent = null)
     {
     }
 

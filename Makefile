@@ -57,9 +57,17 @@ stan:
 	${COMPOSER_BIN}/phpstan analyse tests | tee Resources/statistics/stan-tests.txt;
 
 ## Apply Php CS fixer and PHPCBF fix rules
-cs:
+cs: php-cs-fixer
+cs: phpcbf
+
+## Apply Php CS fixer rules
+php-cs-fixer:
 	 ${COMPOSER_BIN}/php-cs-fixer fix --verbose
-	 ${COMPOSER_BIN}/phpcbf
+
+## Apply PHPCBF fix rules
+phpcbf:
+	 ${COMPOSER_BIN}/phpcbf -i;
+	 ${COMPOSER_BIN}/phpcbf -v
 
 ## Run PHP Mess Detector on the test code
 phpmd:

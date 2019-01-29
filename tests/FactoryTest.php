@@ -46,6 +46,13 @@ class FactoryTest extends FactoryTestAbstract
         );
     }
 
+    public function testSetApplicationApiClient()
+    {
+        $factory = $this->getFactory();
+
+        $this->assertSame($factory->getOptions()->get('user_email'), $factory->getClient()->getOptions()->get('user_email'), 'Primal values');
+    }
+
     public function dataProviderObjetos()
     {
         return [

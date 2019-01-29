@@ -23,8 +23,6 @@ use Gpupo\SubmarinoSdk\Entity\AbstractManager;
 
 class Manager extends AbstractManager
 {
-    const JURISDICTION = 'product';
-
     protected $entity = Product::class;
 
     protected $maps = [
