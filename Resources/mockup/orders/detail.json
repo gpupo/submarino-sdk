@@ -1,0 +1,104 @@
+{
+    "updated_at": "2019-01-29T11:00:08-02:00",
+    "total_ordered": 0,
+    "tags": [],
+    "sync_status": "NOT_SYNCED",
+    "status": {
+        "type": "NEW",
+        "label": "Pagamento Pendente (new) (SkyHub)",
+        "code": "book_product"
+    },
+    "shipping_method": "Correios PAC",
+    "shipping_cost": 0,
+    "shipping_carrier": "",
+    "shipping_address": {
+        "street": "Rua Sacadura Cabral",
+        "secondary_phone": "21 3722-3902",
+        "region": "RJ",
+        "reference": null,
+        "postcode": "20081262",
+        "phone": "21 3722-3902",
+        "number": "130",
+        "neighborhood": "Centro",
+        "full_name": "Bruno santos",
+        "detail": "foo",
+        "country": "BR",
+        "complement": null,
+        "city": "Rio de Janeiro"
+    },
+    "shipped_date": "",
+    "shipments": [],
+    "placed_at": "2019-01-29T11:00:08-02:00",
+    "payments": [
+        {
+            "value": 0,
+            "transaction_date": null,
+            "status": null,
+            "sefaz": {
+                "type_integration": null,
+                "payment_indicator": null,
+                "name_payment": null,
+                "name_card_issuer": null,
+                "id_payment": null,
+                "id_card_issuer": null
+            },
+            "parcels": 1,
+            "method": "skyhub_payment",
+            "description": "Skyhub",
+            "card_issuer": null,
+            "autorization_id": null
+        }
+    ],
+    "items": [
+        {
+            "special_price": 0,
+            "shipping_cost": null,
+            "qty": 1,
+            "product_id": "foo",
+            "original_price": 55.22,
+            "name": "foo",
+            "id": "foo"
+        }
+    ],
+    "invoices": [],
+    "interest": 0,
+    "import_info": {
+        "ss_name": "Teste",
+        "remote_id": null,
+        "remote_code": "1548766808293"
+    },
+    "estimated_delivery_shift": null,
+    "estimated_delivery": "2018-02-10T22:00:00-02:00",
+    "discount": 0,
+    "delivery_contract_type": "",
+    "customer": {
+        "vat_number": "78732371683",
+        "phones": [
+            "21 3722-3902",
+            "21 3722-3902"
+        ],
+        "name": "Bruno santos",
+        "gender": "male",
+        "email": "exemplo@skyhub.com.br",
+        "date_of_birth": "1998-01-25"
+    },
+    "code": "Teste-1548766808293",
+    "channel": "Teste",
+    "calculation_type": null,
+    "billing_address": {
+        "street": "Rua Fidencio Ramos",
+        "secondary_phone": "21 3722-3902",
+        "region": "RJ",
+        "reference": null,
+        "postcode": "04551101",
+        "phone": "21 3722-3902",
+        "number": "302",
+        "neighborhood": "Centro",
+        "full_name": "Bruno santos",
+        "detail": "foo",
+        "country": "BR",
+        "complement": null,
+        "city": "Rio de Janeiro"
+    },
+    "approved_date": ""
+}
