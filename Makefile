@@ -4,6 +4,7 @@
 DC=docker-compose
 RUN=$(DC) run --rm php-fpm
 COMPOSER_BIN=~/.composer/vendor/bin
+VENDOR_BIN=./vendor/bin
 ## Colors
 COLOR_RESET   = \033[0m
 COLOR_INFO  = \033[32m
@@ -28,6 +29,7 @@ help:
 #Go to the bash container of the application
 bash:
 	@$(RUN) bash
+	printf "${COLOR_COMMENT}Container removed:${COLOR_RESET}\n"
 
 ## Setup environment
 setup:
@@ -51,10 +53,14 @@ loc:
 	${COMPOSER_BIN}/phploc --count-tests src/ tests/ | grep -v Warning | tee Resources/statistics/lines-of-codes.txt
 
 ## PHP Static Analysis Tool
-stan:
+phpstan:
 	printf "${COLOR_COMMENT}Running PHP Static Analysis Tool${COLOR_RESET}\n"
-	${COMPOSER_BIN}/phpstan analyse src | tee Resources/statistics/stan-src.txt;
-	${COMPOSER_BIN}/phpstan analyse tests | tee Resources/statistics/stan-tests.txt;
+	${COMPOSER_BIN}/phpstan analyse -c config/phpstan.neon -l 4 src
+
+## Apply CS fixers and QA watchers
+qa: cs
+qa: phpstan
+qa: phan
 
 ## Apply Php CS fixer and PHPCBF fix rules
 cs: php-cs-fixer
@@ -82,6 +88,10 @@ clean:
 ## Run Phan checkup
 phan:
 	${COMPOSER_BIN}/phan --config-file config/phan.php
+
+## Run phpunit testcases
+phpunit:
+	${VENDOR_BIN}/phpunit --testdox
 
 ## Update make file in projects
 selfupdate:
