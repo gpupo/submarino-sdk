@@ -17,99 +17,51 @@ declare(strict_types=1);
 
 namespace Gpupo\SubmarinoSdk\Tests\Entity\Order;
 
-use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
-use Gpupo\CommonSchema\ArrayCollection\Trading\Order\Order;
-use Gpupo\CommonSchema\ArrayCollection\Trading\Product\Product;
 use Gpupo\Common\Entity\CollectionInterface;
+use Gpupo\CommonSchema\ORM\Entity\Trading\Order\Order;
+use Gpupo\CommonSdk\Entity\Metadata\MetadataContainer;
+use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
 
-
+/**
+ * @coversNothing
+ */
 class ManagerTest extends TestCaseAbstract
 {
     public function testObtemListaPedidos()
     {
-        $list = $this->getList();
-        $this->assertInstanceOf(
-            CollectionInterface::class,
-            $list
-        );
+        $response = $this->factoryResponseFromFixture('mockup/orders/list.json');
+        $list = $this->getManager($response)->fetch();
+        $this->assertInstanceOf(CollectionInterface::class, $list);
+        $this->assertInstanceOf(MetadataContainer::class, $list);
+        foreach ($list as $order) {
+            $this->assertInstanceOf(Order::class, $order);
+        }
 
         return $list;
     }
 
     public function testObtémAListaDePedidosRecémAprovadosEQueEsperamProcessamento()
     {
-        $response = $this->factoryResponseFromFixture('mockup/orders/list.json');
-        $manager = $this->factoryManager()->setDryRun($response);
-        $list = $manager->fetchQueue();
+        $response = $this->factoryResponseFromFixture('mockup/orders/queue.json');
+        $list = $this->getManager($response)->fetchQueue();
         $this->assertInstanceOf(CollectionInterface::class, $list);
+        $this->assertInstanceOf(MetadataContainer::class, $list);
+        foreach ($list as $order) {
+            $this->assertInstanceOf(Order::class, $order);
+        }
+
+        return $list;
     }
 
     public function testRecuperaInformacoesDeUmPedidoEspecifico()
     {
         $response = $this->factoryResponseFromFixture('mockup/orders/detail.json');
-        $order = $this->factoryManager()->setDryRun($response)->findById(589);
+        $order = $this->getManager($response)->findById(589);
         $this->assertInstanceOf(Order::class, $order);
-        $this->assertSame(589, $order->getId());
-        $this->assertSame('03-589-01', $order->getSiteId());
-        $this->assertSame('SUBMARINO', $order->getStore());
-        $this->assertSame('APROVED', $order->getStatus()->getStatus());
-
-        return $order;
     }
 
-    /**
-     * @depends testRecuperaInformacoesDeUmPedidoEspecifico
-     */
-    public function testAtualizaStatusDeUmPedido(Order $order)
+    protected function getManager($response = null)
     {
-        $flux = [
-            'APROVED' => 'PROCESSING',
-        ];
-
-        $manager = $this->factoryManager()->setDryRun();
-        $currentStatus = $order->getStatus()->__toString();
-        $newStatus = $flux[$currentStatus];
-        $order->getStatus()->setStatus($newStatus);
-        $this->assertTrue($manager->saveStatus($order));
-
-        return $order;
-    }
-
-    /**
-     * @depends testAtualizaStatusDeUmPedido
-     */
-    public function testAtualizaDadosDeEnvioDeUmPedido(Order $order)
-    {
-        $flux = [
-            'PROCESSING' => 'SHIPPED',
-        ];
-
-        $manager = $this->factoryManager()->setDryRun();
-        $currentStatus = $order->getStatus()->__toString();
-        $newStatus = $flux[$currentStatus];
-        $order->getStatus()->setStatus($newStatus)->getShipped()
-            ->setEstimatedDelivery('2014-12-01 10:00:00')
-            ->setDeliveredCarrierDate(date('Y-m-d H:i:s'));
-
-        $this->assertTrue($manager->saveStatus($order));
-
-        return $order;
-    }
-
-    /**
-     * @depends testAtualizaDadosDeEnvioDeUmPedido
-     */
-    public function testAtualizaDadosDeEntregaDeUmPedido(Order $order)
-    {
-        $flux = [
-            'SHIPPED' => 'DELIVERED',
-        ];
-
-        $manager = $this->factoryManager()->setDryRun();
-        $currentStatus = $order->getStatus()->__toString();
-        $newStatus = $flux[$currentStatus];
-        $order->getStatus()->setStatus($newStatus)
-            ->getDelivered()->setDeliveredCustomerDate(date('Y-m-d H:i:s'));
-        $this->assertTrue($manager->saveStatus($order));
+        return $this->getFactory()->factoryManager('order')->setDryRun($response);
     }
 }

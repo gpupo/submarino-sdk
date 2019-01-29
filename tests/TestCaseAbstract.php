@@ -36,12 +36,12 @@ abstract class TestCaseAbstract extends Core
 
     public function dataProviderProducts()
     {
-        return $this->getResourceJson('fixture/Product/Products.json');
+        return $this->getResourceJson('mockup/products/list.json');
     }
 
     public function dataProviderOrders()
     {
-        return $this->getResourceJson('fixture/Order/list.json');
+        return $this->getResourceJson('mockup/orders/list.json');
     }
 
     protected function getOptions()

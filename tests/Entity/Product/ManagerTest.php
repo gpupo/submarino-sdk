@@ -17,11 +17,14 @@ declare(strict_types=1);
 
 namespace Gpupo\SubmarinoSdk\Tests\Entity\Product;
 
-use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
-use Gpupo\CommonSchema\ArrayCollection\Trading\Order\Order;
-use Gpupo\CommonSchema\ArrayCollection\Trading\Product\Product;
 use Gpupo\Common\Entity\CollectionInterface;
+use Gpupo\CommonSchema\ORM\Entity\Catalog\Product\Product;
+use Gpupo\CommonSdk\Entity\Metadata\MetadataContainer;
+use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
 
+/**
+ * @coversNothing
+ */
 class ManagerTest extends TestCaseAbstract
 {
     public function testGetProducts()
@@ -29,9 +32,7 @@ class ManagerTest extends TestCaseAbstract
         $response = $this->factoryResponseFromFixture('mockup/products/list.json');
         $list = $this->getManager($response)->fetch();
         $this->assertInstanceOf(CollectionInterface::class, $list);
-
-        dump($list);
-        
+        $this->assertInstanceOf(MetadataContainer::class, $list);
         foreach ($list as $product) {
             $this->assertInstanceOf(Product::class, $product);
         }
@@ -41,21 +42,15 @@ class ManagerTest extends TestCaseAbstract
     {
         $product = $this->factoryDetail();
         $this->assertInstanceOf(Product::class, $product);
-        $this->assertSame((int) $product->getId(), 9474);
     }
 
     public function testGerenciaUpdate()
     {
         $product = $this->factoryDetail();
         $manager = $this->getManager();
-
         $this->assertTrue($manager->save($product));
-
-        $sku = $product->getSku()->current();
-        $previous = clone $sku;
-        $sku->setPrevious($previous);
-
-        $this->assertTrue($manager->updateSku($sku));
+        $product->setPrevious(clone $product);
+        $this->assertFalse($manager->update($product));
     }
 
     protected function getManager($response = null)

@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Gpupo\SubmarinoSdk;
 
-use Gpupo\CommonSchema\ArrayCollection\Trading\Order\Order;
-use Gpupo\CommonSchema\ArrayCollection\Trading\Product\Product;
+use Gpupo\CommonSchema\ORM\Entity\Catalog\Product\Product;
+use Gpupo\CommonSchema\ORM\Entity\Trading\Order\Order;
 use Gpupo\CommonSdk\FactoryAbstract;
 
 class Factory extends FactoryAbstract
@@ -29,7 +29,7 @@ class Factory extends FactoryAbstract
             'user_email' => 'please@fill.me',
             'api_key' => 'please@fill.me',
             'accountmanager_key' => 'please@fill.me',
-            'common_schema_namespace' => '\\App',
+            'common_schema_namespace' => '\\Gpupo\\CommonSchema\\ORM',
             'app_url' => 'http://localhost',
             'verbose' => true,
             'cacheTTL' => 3600,
@@ -40,7 +40,7 @@ class Factory extends FactoryAbstract
 
     public function getNamespace()
     {
-        return '\Gpupo\SubmarinoSdk\Entity\\';
+        return __NAMESPACE__.'\Entity\\';
     }
 
     public function setClient(array $clientOptions = [])

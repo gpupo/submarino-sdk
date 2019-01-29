@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Gpupo\SubmarinoSdk\Tests;
 
+use Gpupo\CommonSchema\ORM\Entity\Catalog\Product\Product;
+use Gpupo\CommonSchema\ORM\Entity\Trading\Order\Order;
 use Gpupo\CommonSdk\Tests\FactoryTestAbstract;
 use Gpupo\SubmarinoSdk\Factory;
 
@@ -47,8 +49,8 @@ class FactoryTest extends FactoryTestAbstract
     public function dataProviderObjetos()
     {
         return [
-            ['\Gpupo\CommonSchema\ArrayCollection\Trading\Product\Product', 'product', null],
-            ['\Gpupo\CommonSchema\ArrayCollection\Trading\Order\Order', 'order', null],
+            [Product::class, 'product', null],
+            [Order::class, 'order', null],
         ];
     }
 
