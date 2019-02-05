@@ -37,7 +37,7 @@ class ClientTest extends TestCaseAbstract
     public function testAcessoAListaDePedidos()
     {
         $response = $this->factoryResponseFromFixture('mockup/orders/list.json');
-        $this->assertInternalType('array', $response->getData()->getOrders());
-        $this->assertInternalType('int', $response->getData()->getTotal());
+        $this->assertIsArray($response->getData()->getOrders());
+        $this->assertIsInt($response->getData()->getTotal());
     }
 }
