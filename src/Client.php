@@ -22,7 +22,7 @@ use Gpupo\CommonSdk\Client\ClientInterface;
 
 class Client extends ClientAbstract implements ClientInterface
 {
-    protected $endpoint_domain = 'api.skyhub.com.br';
+    const ENDPOINT = 'api.skyhub.com.br';
 
     protected function renderAuthorization(): array
     {
