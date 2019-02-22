@@ -11,9 +11,8 @@
     "keywords": ["submarino","americanas", "B2W", "shoptime", "sdk", "api"],
     "license": "MIT",
     "require": {
-        "php": ">=7.3",
         "ext-bcmath" : "*",
-        "gpupo/common-sdk": "^4.9.2|dev-master"
+        "gpupo/common-sdk": "^4.10|dev-master"
     },
     "require-dev": {
       "phpunit/phpunit": "^8.0",
@@ -30,9 +29,6 @@
         }
     },
     "scripts": {
-        "pre-install-cmd": [
-            "touch Resources/logs/tests.log"
-        ]
     },
     "bin": ["bin/submarino-sdk"],
     "config": {
