@@ -62,6 +62,6 @@ Adicione o pacote [submarino-sdk](https://packagist.org/packages/gpupo/submarino
 ## Links
 
 
-* [Documentação oficial](https://skyhub.gelato.io/docs/versions/1.0)
+* [Documentação oficial](https://desenvolvedores.skyhub.com.br)
 * [Submarino-sdk Composer Package](https://packagist.org/packages/gpupo/submarino-sdk) no packagist.org
 * [Marketplace-bundle Composer Package](https://opensource.gpupo.com/MarkethubBundle/) - Integração deste pacote com Symfony 4
