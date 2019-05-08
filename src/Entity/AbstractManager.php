@@ -51,7 +51,7 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
     {
         $collection = new MetadataContainer();
         $collection->getMetadata()
-            ->setTotalRows($data['total']);
+            ->setTotalRows($data['total'] ?? \count($data));
         // $method = sprintf('get%ss', ucfirst($this::JURISDICTION));
         foreach ($data as $array) {
             $collection->add($this->factoryEntity($array));

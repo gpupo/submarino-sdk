@@ -19,6 +19,7 @@ namespace Gpupo\SubmarinoSdk\Entity\Product;
 
 use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\CommonSchema\ArrayCollection\Catalog\Product\Product;
+use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\SubmarinoSdk\Entity\AbstractManager;
 
 class Manager extends AbstractManager
@@ -26,11 +27,39 @@ class Manager extends AbstractManager
     protected $entity = Product::class;
 
     protected $maps = [
-        'save' => ['POST', '/product'],
-        'findById' => ['GET', '/product/{itemId}'],
-        'update' => ['PUT', '/product/{itemId}'],
+        'save' => ['POST', '/products'],
+        'findById' => ['GET', '/products/{itemId}'],
+        'update' => ['PUT', '/products/{itemId}'],
         'fetch' => ['GET', '/product?page={page}&per_page={limit}'],
     ];
+
+    public function save(EntityInterface $entity, $route = 'save')
+    {
+        $existent = $entity->getPrevious();
+
+        if ($existent) {
+            return $this->update($entity, $existent);
+        }
+
+        $body = ['product' => json_decode($entity->toJson($route), true)];
+
+        return $this->execute($this->factoryMap($route), json_encode($body));
+    }
+
+    public function update(EntityInterface $entity, EntityInterface $existent = null, $params = null)
+    {
+        $update = [];
+
+        foreach (['qty', 'price', 'promotional_price'] as $field) {
+            if (isset($entity[$field])) {
+                $update[$field] = $entity[$field];
+            }
+        }
+
+        $body = ['product' => $update];
+
+        return $this->execute($this->factoryMap('update', $params), json_encode($body));
+    }
 
     protected function factoryEntity($data): CollectionInterface
     {

@@ -31,10 +31,10 @@ class ManagerTest extends TestCaseAbstract
     {
         $response = $this->factoryResponseFromFixture('mockup/orders/list.json');
         $list = $this->getManager($response)->fetch();
-        $this->assertInstanceOf(CollectionInterface::class, $list);
-        $this->assertInstanceOf(MetadataContainer::class, $list);
-        foreach ($list as $order) {
-            $this->assertInstanceOf(Order::class, $order);
+        $this->assertInstanceOf(CollectionInterface::class, $list, 'Assert 1');
+        $this->assertInstanceOf(MetadataContainer::class, $list, 'Assert 2');
+        foreach ($list as $orderList) {
+            $this->assertInstanceOf(CollectionInterface::class, $orderList, 'Assert Order');
         }
 
         return $list;
@@ -47,7 +47,7 @@ class ManagerTest extends TestCaseAbstract
         $this->assertInstanceOf(CollectionInterface::class, $list);
         $this->assertInstanceOf(MetadataContainer::class, $list);
         foreach ($list as $order) {
-            $this->assertInstanceOf(Order::class, $order);
+            $this->assertInstanceOf(Order::class, $order, 'Assert Order');
         }
 
         return $list;
@@ -57,7 +57,7 @@ class ManagerTest extends TestCaseAbstract
     {
         $response = $this->factoryResponseFromFixture('mockup/orders/detail.json');
         $order = $this->getManager($response)->findById(589);
-        $this->assertInstanceOf(Order::class, $order);
+        $this->assertInstanceOf(CollectionInterface::class, $order, 'Assert Order');
     }
 
     protected function getManager($response = null)

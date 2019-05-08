@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Gpupo\SubmarinoSdk\Entity\Order;
 
 use Gpupo\Common\Entity\CollectionInterface;
-use Gpupo\CommonSchema\ORM\Entity\Trading\Order\Order;
 use Gpupo\SubmarinoSdk\Entity\AbstractManager;
 
 class Manager extends AbstractManager
@@ -30,7 +29,8 @@ class Manager extends AbstractManager
     protected $maps = [
         'saveStatus' => ['PUT', '/orders/{itemId}/status'],
         'findById' => ['GET', '/orders/{itemId}'],
-        'fetch' => ['GET', '/orders?page={page}&per_page={limit}&limit={limit}&filters[sale_systems][]={siteId}&filters[statuses][]={status}'],
+        'fetch' => ['GET', '/queues/orders'],
+        'delete' => ['DELETE', '/queues/orders/{itemId}'],
     ];
 
     /**
@@ -39,5 +39,20 @@ class Manager extends AbstractManager
     public function fetchQueue(int $offset = 0, int $limit = 50, array $parameters = []): ?CollectionInterface
     {
         return $this->fetch($offset, $limit, array_merge(['status' => 'APPROVED'], $parameters));
+    }
+
+    public function delete($itemId)
+    {
+        return $this->execute($this->factoryMap('delete', ['itemId' => $itemId]));
+    }
+
+    protected function fetchPrepare($data)
+    {
+        return parent::fetchPrepare([$data]);
+    }
+
+    protected function factoryEntity($data): CollectionInterface
+    {
+        return $data;
     }
 }
