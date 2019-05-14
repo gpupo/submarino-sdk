@@ -19,8 +19,10 @@ namespace Gpupo\SubmarinoSdk\Entity\Product;
 
 use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\CommonSchema\ArrayCollection\Catalog\Product\Product;
+use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\SubmarinoSdk\Entity\AbstractManager;
+use Gpupo\SubmarinoSdk\Translator\AdTranslator;
 
 class Manager extends AbstractManager
 {
@@ -41,24 +43,35 @@ class Manager extends AbstractManager
             return $this->update($entity, $existent);
         }
 
-        $body = ['product' => json_decode($entity->toJson($route), true)];
+        $product = $this->translateFrom($entity);
+
+        $body = ['product' => json_decode($product->toJson($route), true)];
 
         return $this->execute($this->factoryMap($route), json_encode($body));
     }
 
     public function update(EntityInterface $entity, EntityInterface $existent = null, $params = null)
     {
-        $update = [];
+        $product = $this->translateFrom($entity);
 
+        $update = [];
         foreach (['qty', 'price', 'promotional_price'] as $field) {
-            if (isset($entity[$field])) {
-                $update[$field] = $entity[$field];
+            if (isset($product[$field])) {
+                $update[$field] = $product[$field];
             }
         }
 
         $body = ['product' => $update];
 
         return $this->execute($this->factoryMap('update', $params), json_encode($body));
+    }
+
+    public function translateFrom(EntityInterface $entity)
+    {
+        $translator = new AdTranslator();
+        $translator->setForeign(new TranslatorDataCollection($entity->toArray()));
+
+        return $translator->import();
     }
 
     protected function factoryEntity($data): CollectionInterface
