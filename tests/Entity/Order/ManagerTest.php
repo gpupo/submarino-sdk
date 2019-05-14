@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Gpupo\SubmarinoSdk\Tests\Entity\Order;
 
 use Gpupo\Common\Entity\CollectionInterface;
-use Gpupo\CommonSchema\ORM\Entity\Trading\Order\Order;
+use Gpupo\CommonSchema\ArrayCollection\Trading\Trading;
 use Gpupo\CommonSdk\Entity\Metadata\MetadataContainer;
 use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
 
@@ -43,14 +43,18 @@ class ManagerTest extends TestCaseAbstract
     public function testObtémAListaDePedidosRecémAprovadosEQueEsperamProcessamento()
     {
         $response = $this->factoryResponseFromFixture('mockup/orders/queue.json');
-        $list = $this->getManager($response)->fetchQueue();
-        $this->assertInstanceOf(CollectionInterface::class, $list);
-        $this->assertInstanceOf(MetadataContainer::class, $list);
-        foreach ($list as $order) {
-            $this->assertInstanceOf(Order::class, $order, 'Assert Order');
-        }
+        $trading = $this->getManager($response)->fetchQueue();
 
-        return $list;
+        $this->assertInstanceOf(CollectionInterface::class, $trading);
+        $this->assertInstanceOf(Trading::class, $trading);
+        $this->assertSame('skyhub', $trading->getOrder()->getOrderType());
+        $this->assertSame('Bruno', $trading->getOrder()->getCustomer()->getFirstName());
+        $this->assertSame('21 3722-3902', $trading->getOrder()->getCustomer()->getPhone()->getNumber());
+        $this->assertSame('78732371683', $trading->getOrder()->getCustomer()->getDocument()->getDocNumber());
+        $this->assertSame(1548766808293, $trading->getOrder()->getShipping()->first()->getShippingNumber());
+        $this->assertSame('Teste-1548766808293', $trading->getOrder()->getOrderNumber());
+
+        return $trading;
     }
 
     public function testRecuperaInformacoesDeUmPedidoEspecifico()
