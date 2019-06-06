@@ -9,3 +9,4 @@ Resources/logs/*
 *.cache
 phpunit.xml
 /.env.local
+Resources/statistics
