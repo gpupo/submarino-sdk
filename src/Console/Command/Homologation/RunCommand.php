@@ -29,7 +29,7 @@ final class RunCommand extends AbstractCommand
     const POST = 'post';
     const PUT = 'put';
     const DELETE = 'delete';
-    const SKU_NUMBER_SIZE = 4;
+    const SKU_NUMBER_SIZE = 8;
     const REMOTE_IMAGE_FIXTURE = 'https://opensource.gpupo.com/submarino-sdk/assets/111c8527.JPG';
 
     private $skus = [];
@@ -212,7 +212,7 @@ final class RunCommand extends AbstractCommand
         return $product;
     }
 
-    protected function getNewProductVariation($sku, $color = 'Amarelo', $size = 'Pequeno', $price = 99.46, $crossDocking = null)
+    protected function getNewProductVariation($sku, $color = 'Amarelo', $size = 'Pequeno', $promotionalPrice = 99.46, $crossDocking = null)
     {
         $productVariation = [];
         $productVariation['sku'] = "${sku}";
@@ -231,8 +231,8 @@ final class RunCommand extends AbstractCommand
                 'value' => "{$size}",
             ],
             [
-                'key' => 'price',
-                'value' => "{$price}",
+                'key' => 'promotional_price',
+                'value' => "{$promotionalPrice}",
             ],
             [
                 'key' => 'crossDocking',
@@ -359,7 +359,7 @@ final class RunCommand extends AbstractCommand
         $product = $this->getNewProduct($skuParent);
         $product['variations'][] = $this->getNewProductVariation($skuA, 'Amarelo', 'Pequeno', 49.99);
         $product['variations'][] = $this->getNewProductVariation($skuB, 'Verde', 'Grande', 69.99);
-        $product['variation_attributes'] = ['Cor', 'Tamanho', 'price'];
+        $product['variation_attributes'] = ['Cor', 'Tamanho', 'promotional_price'];
 
         $response = $this->request(self::POST, '/products', json_encode(['product' => $product]));
 
@@ -487,7 +487,7 @@ final class RunCommand extends AbstractCommand
         $product = $this->getNewProduct($sku);
         $priceOld = $product['price'];
         $responseA = $this->request(self::POST, '/products', json_encode(['product' => $product]));
-        $responseB = $this->request(self::PUT, "/products/${sku}", json_encode(['product' => ['price' => $priceNew]]));
+        $responseB = $this->request(self::PUT, "/products/${sku}", json_encode(['product' => ['promotional_price' => $priceNew]]));
 
         return [
             'description' => 'Atualizar preço de produto (enviar valores antes da atualização e após a atualização)',
