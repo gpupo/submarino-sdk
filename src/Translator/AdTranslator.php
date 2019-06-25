@@ -45,7 +45,10 @@ class AdTranslator extends AbstractTranslator
         //$product->set('nbm', 'xxxxxxx');
         $product->set('images', $common->get('images'));
         $product->set('specifications', [
-            'part number' => $common->get('mpn'),
+            [
+                'key' => 'mpn',
+                'value' => $common->get('mpn'),
+            ],
         ]);
         $product->set('categories', $common->get('categories'));
 
