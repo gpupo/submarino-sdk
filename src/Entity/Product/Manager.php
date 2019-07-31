@@ -31,6 +31,7 @@ class Manager extends AbstractManager
     protected $maps = [
         'save' => ['POST', '/products'],
         'findById' => ['GET', '/products/{itemId}'],
+        'urls' => ['GET', '/urls/products/{itemId}'],
         'update' => ['PUT', '/products/{itemId}'],
         'fetch' => ['GET', '/product?page={page}&per_page={limit}'],
     ];
@@ -83,5 +84,10 @@ class Manager extends AbstractManager
         // $movement = $this->factoryORM($ac, 'Entity\Banking\Movement\Movement');
 
         return $product;
+    }
+
+    public function urls($itemId)
+    {
+        return $this->execute($this->factoryMap('urls', ['itemId' => $itemId]));
     }
 }
