@@ -33,7 +33,8 @@ class OrderTranslator extends AbstractTranslator
         $shipping->set('total_payments_amount', $item['total_ordered']);
         $shipping->set('shipping_number', (int) $item['import_info']['remote_code']);
         //$shipping->setTotalPaymentsFeeAmount();
-        $shipping->set('total_payments_net_amount', $item['total_ordered']);
+        $shipping->set('total_payments_fee_amount', $item['shipping_cost']);
+        $shipping->set('total_payments_net_amount', $item['total_ordered'] - $item['shipping_cost']);
 
         $paymentCollection = new Trading\Order\Shipping\Payment\Collection();
         foreach ($item['payments'] as $pay) {
@@ -49,9 +50,9 @@ class OrderTranslator extends AbstractTranslator
             $payment->set('operation_type', $pay['description']);
             //$payment->setOverpaidAmount();
             $payment->set('payment_method_id', $pay['card_issuer']);
-            $payment->set('payment_number', $pay['sefaz']['id_payment']);
+            $payment->set('payment_number', (int)$pay['sefaz']['id_payment']);
             $payment->set('payment_type', $pay['sefaz']['payment_indicator']);
-            $payment->set('shipping_cost', $item['shipping_cost']);
+            $payment->set('shipping_cost', 0);
             $payment->set('status', $pay['status']);
             $payment->set('date_approved', $pay['transaction_date']);
             $payment->set('date_created', $pay['transaction_date']);
