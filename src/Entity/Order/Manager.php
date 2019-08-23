@@ -38,6 +38,7 @@ class Manager extends AbstractManager
         'invoice' => ['POST', '/orders/{itemId}/invoice'],
         'shipments' => ['POST', '/orders/{itemId}/shipments'],
         'delivery' => ['POST', '/orders/{itemId}/delivery'],
+        'shipmentLabels' => ['GET', '/orders/{itemId}/shipment_labels'],
     ];
 
     /**
@@ -112,6 +113,11 @@ class Manager extends AbstractManager
         ];
 
         return $this->execute($this->factoryMap('delivery', ['itemId' => $itemId]), json_encode($body));
+    }
+
+    public function getShipmentLabels($itemId)
+    {
+        return $this->execute($this->factoryMap('shipmentLabels', ['itemId' => $itemId]));
     }
 
     protected function fetchPrepare($data)
