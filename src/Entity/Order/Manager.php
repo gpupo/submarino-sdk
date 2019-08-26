@@ -161,14 +161,14 @@ class Manager extends AbstractManager
         return $this->fetchPlp($plp->getId());
     }
 
-    public function downloadPlp(Plp $plp, $tempDirectory = '/tmp'): string
+    public function downloadPlp(Plp $plp, $tmpDirectory = '/tmp'): string
     {
-        $filename = sprintf('%s/submarino_sdk_plp-%s.pdf', $tempDirectory, $plp->getId());
+        $filename = sprintf('%s/submarino_sdk_plp-%s.pdf', $tmpDirectory, $plp->getId());
         $map = $this->factoryMap('requestPlp', ['plpId' => $plp->getId()]);
         $request = $this->factoryRequestByMap($map);
         $headers = $request->getHeaders();
         $headers['Accept'] = "application/pdf";
-        $request->set('headers', $headers);
+        $request->set('header', $headers);
 
         return $this->downloadFileByRequest($request, $filename);
     }
