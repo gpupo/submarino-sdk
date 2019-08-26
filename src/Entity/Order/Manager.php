@@ -22,7 +22,9 @@ use Gpupo\CommonSchema\ArrayCollection\Trading\Order\Shipping\Product\Collection
 use Gpupo\CommonSchema\ArrayCollection\Trading\Order\Shipping\Transport\Transport;
 use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\SubmarinoSdk\Entity\AbstractManager;
+use Gpupo\SubmarinoSdk\Entity\Order\Transport\Plp;
 use Gpupo\SubmarinoSdk\Translator\OrderTranslator;
+use Psr\Http\Message\ResponseInterface;
 
 class Manager extends AbstractManager
 {
@@ -38,7 +40,8 @@ class Manager extends AbstractManager
         'invoice' => ['POST', '/orders/{itemId}/invoice'],
         'shipments' => ['POST', '/orders/{itemId}/shipments'],
         'delivery' => ['POST', '/orders/{itemId}/delivery'],
-        'shipmentLabels' => ['GET', '/orders/{itemId}/shipment_labels'],
+        'factoryPlp' => ['POST', '/shipments/b2w/'],
+        'requestPlp' => ['GET', '/shipments/b2w/view?plp_id={plpId}'],
     ];
 
     /**
@@ -115,9 +118,59 @@ class Manager extends AbstractManager
         return $this->execute($this->factoryMap('delivery', ['itemId' => $itemId]), json_encode($body));
     }
 
-    public function getShipmentLabels($itemId)
+    public function fetchPlp($plpId)
     {
-        return $this->execute($this->factoryMap('shipmentLabels', ['itemId' => $itemId]));
+        $response = $this->execute($this->factoryMap('requestPlp', ['plpId' => $plpId]));
+
+        $data = $response->getData()->get('plp');
+        $data['documents'] = $response->getData()->get('docsExternos');
+        $plp = new Plp($data);
+
+        return $plp;
+    }
+
+    public function factoryPlp($itemId, $fill = false):? Plp
+    {
+        $body = [
+            'order_remote_codes' => [
+                $itemId,
+            ],
+        ];
+
+        $response = $this->execute($this->factoryMap('factoryPlp',[], json_encode($body)));
+        $data = $response->getData();
+
+        if (200 === $response->getHttpStatusCode()) {
+            $re = '/Plp (\d+) agrupada com sucesso./m';
+            preg_match($re, $data->get('message'), $matches);
+
+            $plp =  new Plp([
+                'id' => (int) $matches[1],
+            ]);
+        }
+
+        if (true === $fill) {
+            return $this->fillPlp($plp);
+        }
+
+        return $plp;
+    }
+
+    public function fillPlp(Plp $plp): Plp
+    {
+        return $this->fetchPlp($plp->getId());
+    }
+
+    public function downloadPlp(Plp $plp, $tempDirectory = '/tmp'): string
+    {
+        $filename = sprintf('%s/submarino_sdk_plp-%s.pdf', $tempDirectory, $plp->getId());
+        $map = $this->factoryMap('requestPlp', ['plpId' => $plp->getId()]);
+        $request = $this->factoryRequestByMap($map);
+        $headers = $request->getHeaders();
+        $headers['Accept'] = "application/pdf";
+        $request->set('headers', $headers);
+
+        return $this->downloadFileByRequest($request, $filename);
     }
 
     protected function fetchPrepare($data)

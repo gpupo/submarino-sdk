@@ -1,0 +1,72 @@
+{
+  "plp": {
+    "id": 98945320,
+    "codExterno": "240520881",
+    "dtEnvio": "23/08/2020 14:43:18",
+    "tpAgrupamento": "PLP",
+    "resumoServicos": [
+      {
+        "codServico": "08162",
+        "nomeServico": "SEDEX CONTRATO AGENCIA",
+        "quantidadeAwbs": 1
+      }
+    ]
+  },
+  "docsExternos": [
+    {
+      "codCliente": 95820345720,
+      "docExterno": "350755608801",
+      "dtPrometida": "120819",
+      "tpEntrega": "Normal",
+      "pesoTotal": 0.5,
+      "marca": "SUBA",
+      "qtVolumes": 1,
+      "numeroContratoTransp": "9912401500",
+      "nomeEmbarcador": "CD Itapevi",
+      "telefoneEmbarcador": 33034077,
+      "emailEmbarcador": "",
+      "tpServico": "EXPRESSA",
+      "numNotaFiscal": "",
+      "serieNotaFiscal": "",
+      "megaRota": "",
+      "rota": "",
+      "telefoneContato": "(81)988294298",
+      "vlEntrega": 113.06,
+      "cartaoPostagem": "0072929821",
+      "servicoAdicional": "00019000",
+      "destinatario": {
+        "nome": "Josh Silva",
+        "enderecoLogradouro": "Foo Bar",
+        "enderecoNumero": "3119",
+        "enderecoComplemento": "Stein Lorem",
+        "enderecoBairro": "Boor",
+        "enderecoCidade": "Zeta Baa",
+        "enderecoUf": "SP",
+        "enderecoCep": "886662111"
+      },
+      "remetente": {
+        "nome": "SELLER FOO BAR",
+        "enderecoLogradouro": "Lorem Lore",
+        "enderecoNumero": "6220",
+        "enderecoComplemento": "",
+        "enderecoBairro": "Foo",
+        "enderecoCidade": "Zeta Baa",
+        "enderecoUf": "SP",
+        "enderecoCep": "886662111"
+      },
+      "awbs": [
+        {
+          "codigoAwb": "OH598342788BR",
+          "posicaoVolume": 1,
+          "itens": [
+            {
+              "descricao": "Lore Lore Lore Lore 500ml",
+              "quantidade": 1,
+              "peso": 0.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

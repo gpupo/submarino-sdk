@@ -21,6 +21,7 @@ use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\CommonSchema\ArrayCollection\Trading\Trading;
 use Gpupo\CommonSdk\Entity\Metadata\MetadataContainer;
 use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
+use Gpupo\SubmarinoSdk\Entity\Order\Transport\Plp;
 
 /**
  * @coversNothing
@@ -67,5 +68,36 @@ class ManagerTest extends TestCaseAbstract
     protected function getManager($response = null)
     {
         return $this->getFactory()->factoryManager('order')->setDryRun($response);
+    }
+
+
+    public function testGeraUmaListaDeEnvio()
+    {
+        $response = $this->factoryResponseFromFixture('mockup/orders/plp/factory.json');
+        $plp = $this->getManager($response)->factoryPlp('350755608801');
+        $this->assertInstanceOf(Plp::class, $plp);
+        $this->assertSame(98945320, $plp->getId());
+
+        $newResponse = $this->factoryResponseFromFixture('mockup/orders/plp/list.json');
+        $filled = $this->getManager($newResponse)->fillPlp($plp);
+
+        $this->assertInstanceOf(Plp::class, $filled);
+        $this->assertSame('OH598342788BR', current(current($filled->getTrackingCodes())));
+    }
+
+    public function testFetchPlp()
+    {
+        $response = $this->factoryResponseFromFixture('mockup/orders/plp/list.json');
+        $plp = $this->getManager($response)->fetchPlp(98945320);
+        $this->assertInstanceOf(Plp::class, $plp);
+        $this->assertSame('OH598342788BR', current(current($plp->getTrackingCodes())));
+    }
+
+    public function testDownloadPlp()
+    {
+        $response = $this->factoryResponseFromArray([]);
+        $plp = new Plp(['id' => 98945320]);
+        $pdfPath = $this->getManager($response)->downloadPlp($plp);
+        $this->assertSame('/tmp/submarino_sdk_plp-98945320.pdf', $pdfPath);
     }
 }

@@ -65,3 +65,17 @@ Adicione o pacote [submarino-sdk](https://packagist.org/packages/gpupo/submarino
 * [Documentação oficial](https://desenvolvedores.skyhub.com.br)
 * [Submarino-sdk Composer Package](https://packagist.org/packages/gpupo/submarino-sdk) no packagist.org
 * [Marketplace-bundle Composer Package](https://opensource.gpupo.com/MarkethubBundle/) - Integração deste pacote com Symfony 4
+
+
+## Uso
+
+Acesso criação e acesso a lista de envio
+
+```PHP
+//....
+
+$plp = $orderManager->factoryPlp('350755608801', $fill = true);
+//Received Gpupo\SubmarinoSdk\Entity\Order\Transport\Plp;
+$pdfPath = $orderManager->downloadPlp($plp);
+
+```
