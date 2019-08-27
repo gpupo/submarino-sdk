@@ -74,10 +74,11 @@ class ManagerTest extends TestCaseAbstract
     public function testGeraUmaListaDeEnvio()
     {
         $response = $this->factoryResponseFromFixture('mockup/orders/plp/factory.json');
-        $plp = $this->getManager($response)->factoryPlp('350755608801');
+        $manager = $this->getManager($response);
+        $plp = $manager->factoryPlp('350755608801');
         $this->assertInstanceOf(Plp::class, $plp);
         $this->assertSame(98945320, $plp->getId());
-
+        $this->assertSame('{"order_remote_codes":["350755608801"]}', $manager->getLastRequest()->getBody());
         $newResponse = $this->factoryResponseFromFixture('mockup/orders/plp/list.json');
         $filled = $this->getManager($newResponse)->fillPlp($plp);
 

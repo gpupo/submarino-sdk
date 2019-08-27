@@ -137,7 +137,7 @@ class Manager extends AbstractManager
             ],
         ];
 
-        $response = $this->execute($this->factoryMap('factoryPlp',[], json_encode($body)));
+        $response = $this->execute($this->factoryMap('factoryPlp',[]), json_encode($body));
         $data = $response->getData();
 
         if (200 === $response->getHttpStatusCode()) {
