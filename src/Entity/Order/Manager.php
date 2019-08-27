@@ -133,18 +133,18 @@ class Manager extends AbstractManager
     {
         $body = [
             'order_remote_codes' => [
-                $itemId,
+                (string) $itemId,
             ],
         ];
 
         $response = $this->execute($this->factoryMap('factoryPlp',[]), json_encode($body));
         $data = $response->getData();
 
-        if (200 === $response->getHttpStatusCode()) {
+        if (200 <= $response->getHttpStatusCode() && 300 > $response->getHttpStatusCode()) {
             $re = '/Plp (\d+) agrupada com sucesso./m';
             preg_match($re, $data->get('message'), $matches);
 
-            $plp =  new Plp([
+            $plp = new Plp([
                 'id' => (int) $matches[1],
             ]);
         }
