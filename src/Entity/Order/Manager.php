@@ -33,7 +33,6 @@ class Manager extends AbstractManager
     protected $entity = Order::class;
 
     protected $maps = [
-        'saveStatus' => ['PUT', '/orders/{itemId}/status'],
         'findById' => ['GET', '/orders/{itemId}'],
         'fetch' => ['GET', '/queues/orders'],
         'delete' => ['DELETE', '/queues/orders/{itemId}'],
@@ -68,19 +67,22 @@ class Manager extends AbstractManager
         return $this->execute($this->factoryMap('delete', ['itemId' => $itemId]));
     }
 
-    public function notifyInvoiced($itemId, $invoiceKey)
+    public function notifyInvoiced($itemId, $invoiceKey, $moveStatus = true)
     {
         $body = [
-            'status' => 'order_invoiced',
             'invoice' => [
                 'key' => $invoiceKey,
             ],
         ];
 
+        if ($moveStatus) {
+            $body['status'] = 'order_invoiced';
+        }
+
         return $this->execute($this->factoryMap('invoice', ['itemId' => $itemId]), json_encode($body));
     }
 
-    public function notifyShipped(string $itemId, string $shippingCode, ProductCollection $productCollection, Transport $transport)
+    public function notifyShipped(string $itemId, string $shippingCode, ProductCollection $productCollection, Transport $transport, $moveStatus = true)
     {
         $items = [];
         foreach ($productCollection as $product) {
@@ -98,7 +100,6 @@ class Manager extends AbstractManager
         ];
 
         $body = [
-            'status' => 'order_shipped',
             'shipment' => [
                 'code' => $shippingCode,
                 'items' => $items,
@@ -106,14 +107,20 @@ class Manager extends AbstractManager
             ],
         ];
 
+        if ($moveStatus) {
+            $body['status'] = 'order_shipped';
+        }
+
         return $this->execute($this->factoryMap('shipments', ['itemId' => $itemId]), json_encode($body));
     }
 
-    public function notifyDelivered($itemId)
+    public function notifyDelivered($itemId, $moveStatus = true)
     {
-        $body = [
-            'status' => 'complete',
-        ];
+        $body = [];
+
+        if ($moveStatus) {
+            $body['status'] = 'complete';
+        }
 
         return $this->execute($this->factoryMap('delivery', ['itemId' => $itemId]), json_encode($body));
     }
