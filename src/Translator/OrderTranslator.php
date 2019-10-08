@@ -50,7 +50,7 @@ class OrderTranslator extends AbstractTranslator
             $payment->set('operation_type', $pay['description']);
             //$payment->setOverpaidAmount();
             $payment->set('payment_method_id', $pay['card_issuer']);
-            $payment->set('payment_number', (int)$pay['sefaz']['id_payment']);
+            $payment->set('payment_number', (int)$item['import_info']['remote_code']);
             $payment->set('payment_type', $pay['sefaz']['payment_indicator']);
             $payment->set('shipping_cost', 0);
             $payment->set('status', $pay['status']);
@@ -154,7 +154,7 @@ class OrderTranslator extends AbstractTranslator
                 return 'invoiced';
             case 'SHIPPED':
                 return 'shipped';
-            case 'DELIVERY':
+            case 'DELIVERED':
                 return 'delivered';
             case 'CANCELED':
                 return 'canceled';
