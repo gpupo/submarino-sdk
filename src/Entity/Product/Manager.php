@@ -60,6 +60,11 @@ class Manager extends AbstractManager
             'qty',
             'price',
             'promotional_price',
+            'images',
+            'weight',
+            'height',
+            'width',
+            'length',
         ] as $field) {
             if (isset($product[$field])) {
                 $update[$field] = $product[$field];
