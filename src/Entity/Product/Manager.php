@@ -56,7 +56,11 @@ class Manager extends AbstractManager
         $product = $this->translateFrom($entity);
 
         $update = [];
-        foreach (['qty', 'price', 'promotional_price'] as $field) {
+        foreach ([
+            'qty',
+            'price',
+            'promotional_price',
+        ] as $field) {
             if (isset($product[$field])) {
                 $update[$field] = $product[$field];
             }
