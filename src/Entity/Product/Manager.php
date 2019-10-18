@@ -33,7 +33,7 @@ class Manager extends AbstractManager
         'findById' => ['GET', '/products/{itemId}'],
         'urls' => ['GET', '/urls/products/{itemId}'],
         'update' => ['PUT', '/products/{itemId}'],
-        'fetch' => ['GET', '/product?page={page}&per_page={limit}'],
+        'fetch' => ['GET', '/products?page={page}&per_page={limit}'],
     ];
 
     public function save(EntityInterface $entity, $route = 'save')
