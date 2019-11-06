@@ -29,7 +29,7 @@ final class RunCommand extends AbstractCommand
     const POST = 'post';
     const PUT = 'put';
     const DELETE = 'delete';
-    const SKU_NUMBER_SIZE = 8;
+    const SKU_NUMBER_SIZE = 5;
     const REMOTE_IMAGE_FIXTURE = 'https://opensource.gpupo.com/submarino-sdk/assets/111c8527.JPG';
 
     private $skus = [];
@@ -100,13 +100,20 @@ final class RunCommand extends AbstractCommand
                 'createOrderWithSimpleProductAndQuantityGranThan1',
                 'createOrderWithProductVariation',
                 'createOrderWithProductVariationAndQuantityGranThan1',
-                'updateOrderStatusForApproved',
+                'updateOrderStatusForInvoiced',
                 'updateOrderStatusForShippedWithTrackingNumberAndInvoice',
                 'updateOrderStatusForDeliveredWithTrackingNumberAndInvoice',
                 'updateOrderStatusForCanceled',
                 'updateOrderStatusForDeliveryException',
                 'fetchOrderQueue',
             ],
+            'plp' => [
+                'agruparPlpEntregasCorreios',
+                'recuperarPlpCorreios',
+                'agruparPlpEntregasDirect',
+                'recuperarPlpDirect',
+                'confirmarColetaPlpDirect',
+            ]
         ];
     }
 
@@ -294,6 +301,104 @@ final class RunCommand extends AbstractCommand
         ];
 
         return $order;
+    }
+
+    protected function agruparPlpEntregasCorreios()
+    {
+        $response = $this->request(self::GET, '/shipments/b2w/to_group?offset=1');
+        $array = json_decode($response->getResponseRaw(), true);
+
+        foreach ($array['orders'] as $order) {
+            if ($order['shipping'] == 'CORREIOS') {
+                try {
+                    $response = $this->request(self::POST, '/shipments/b2w/', json_encode(['order_remote_codes' => [$order['code']]]));
+
+                    return [
+                        'description' => 'Agrupar PLP B2W Entregas Correios',
+                        'status' => 201 === $response->getHttpStatusCode(),
+                        'detail' => $response->getResponseRaw(),
+                    ];
+                } catch (\Exception $e) {
+                    dump($e->getMessage());
+                }
+            }
+        }
+    }
+
+    protected function recuperarPlpCorreios()
+    {
+        $response = $this->request(self::GET, '/shipments/b2w');
+        $array = json_decode($response->getResponseRaw(), true);
+
+        foreach ($array['plp'] as $plp) {
+            if ($plp['type'] == 'CORREIOS') {
+                $response = $this->request(self::GET, '/shipments/b2w/view?plp_id='.$plp['id']);
+                $array = json_decode($response->getResponseRaw(), true);
+
+                return [
+                    'description' => 'Recuperar PLP Correios',
+                    'status' => 200 === $response->getHttpStatusCode(),
+                    'detail' => $array['plp']['id'],
+                ];
+            }
+        }
+    }
+
+    protected function agruparPlpEntregasDirect()
+    {
+        $response = $this->request(self::GET, '/shipments/b2w/to_group?offset=3');
+        $array = json_decode($response->getResponseRaw(), true);
+
+        foreach ($array['orders'] as $order) {
+            if ($order['shipping'] == 'DIRECT') {
+                try {
+                    $response = $this->request(self::POST, '/shipments/b2w/', json_encode(['order_remote_codes' => [$order['code']]]));
+
+                    return [
+                        'description' => 'Agrupar PLP B2W Entregas Direct',
+                        'status' => 201 === $response->getHttpStatusCode(),
+                        'detail' => $response->getResponseRaw(),
+                    ];
+                } catch (\Exception $e) {
+                    dump($e->getMessage());
+                }
+            }
+        }
+    }
+
+    protected function recuperarPlpDirect()
+    {
+        $response = $this->request(self::GET, '/shipments/b2w');
+        $array = json_decode($response->getResponseRaw(), true);
+
+        foreach ($array['plp'] as $plp) {
+            if ($plp['type'] == 'DIRECT') {
+                $response = $this->request(self::GET, '/shipments/b2w/view?plp_id='.$plp['id']);
+                $array = json_decode($response->getResponseRaw(), true);
+
+                return [
+                    'description' => 'Recuperar PLP Direct',
+                    'status' => 200 === $response->getHttpStatusCode(),
+                    'detail' => $array['plp']['id'],
+                ];
+            }
+        }
+    }
+
+    protected function confirmarColetaPlpDirect()
+    {
+        $response = $this->request(self::GET, '/shipments/b2w/collectables?requested=false');
+        $array = json_decode($response->getResponseRaw(), true);
+
+        foreach ($array['orders'] as $order) {
+            $response = $this->request(self::POST, '/shipments/b2w/confirm_collection', json_encode(['order_codes' => [$order['code']]]));
+
+            return [
+                'description' => 'Confirmar Coleta PLP Direct',
+                'status' => 201 === $response->getHttpStatusCode(),
+                'detail' => sprintf('ORDER: %s', $order['code']),
+            ];
+        }
     }
 
     protected function createSimpleProduct()
@@ -644,7 +749,7 @@ final class RunCommand extends AbstractCommand
         ];
     }
 
-    protected function updateOrderStatusForApproved()
+    protected function updateOrderStatusForInvoiced()
     {
         $sku = $this->getNextSku();
         $product = $this->getNewProduct($sku);
@@ -657,6 +762,9 @@ final class RunCommand extends AbstractCommand
 
         $lastOrder = $this->fetchOrder();
         $responseC = $this->request(self::POST, "/orders/{$lastOrder}/approval", json_encode(['status' => 'payment_received']));
+
+        $invoice = ['key' => '41193879763884333781553313005110611273247541'];
+        $responseC = $this->request(self::POST, "/orders/{$lastOrder}/invoice", json_encode(['status' => 'order_invoiced', 'invoice' => $invoice]));
 
         $lastOrder = $this->fetchOrder();
 
