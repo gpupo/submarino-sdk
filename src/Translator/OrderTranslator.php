@@ -124,6 +124,7 @@ class OrderTranslator extends AbstractTranslator
         $order->set('currency_id', 'BRL');
         $order->set('order_type', 'skyhub');
         $order->set('order_number', $item['code']);
+        $order->set('origin_number', $item['import_info']['remote_id']);
         $order->set('date_created', $item['placed_at']);
         $order->set('date_last_modified', $item['updated_at']);
 
