@@ -11,6 +11,7 @@
     "keywords": ["submarino","americanas", "B2W", "shoptime", "sdk", "api"],
     "license": "MIT",
     "require": {
+        "php": ">=7.4",
         "ext-bcmath" : "*",
         "gpupo/common-sdk": "^4.14|dev-master"
     },
