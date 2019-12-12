@@ -13,7 +13,7 @@ Somente a versão 4.0 ou superior é compatívivel com a API SkyHub.
 
 ## Requisitos para uso
 
-* PHP >= *7.3*
+* PHP *>=7.4*
 * [curl extension](http://php.net/manual/en/intro.curl.php)
 * [Composer Dependency Manager](http://getcomposer.org)
 
@@ -68,3 +68,17 @@ Adicione o pacote [submarino-sdk](https://packagist.org/packages/gpupo/submarino
 * [Documentação oficial](https://desenvolvedores.skyhub.com.br)
 * [Submarino-sdk Composer Package](https://packagist.org/packages/gpupo/submarino-sdk) no packagist.org
 * [Marketplace-bundle Composer Package](https://opensource.gpupo.com/MarkethubBundle/) - Integração deste pacote com Symfony 4
+
+
+## Uso
+
+Acesso criação e acesso a lista de envio
+
+```PHP
+//....
+
+$plp = $orderManager->factoryPlp('350755608801', $fill = true);
+//Received Gpupo\SubmarinoSdk\Entity\Order\Transport\Plp;
+$pdfPath = $orderManager->downloadPlp($plp);
+
+```
