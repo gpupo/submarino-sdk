@@ -9,7 +9,10 @@ VENDOR_BIN=./vendor/bin
 COLOR_RESET   = \033[0m
 COLOR_INFO  = \033[32m
 COLOR_COMMENT = \033[33m
+COLOR_ERROR = \033[31m
 SHELL := /bin/bash
+MAKEFILE_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+CURRENT_DIR := $(shell pwd)
 
 ## List Targets and Descriptions
 help:
@@ -26,7 +29,19 @@ help:
 	} \
 	{ lastLine = $$0 }' $(MAKEFILE_LIST)
 
-#Go to the bash container of the application
+header:
+	if [ ! -f /.dockerenv ]; then \
+		printf "\n\n!!! ${COLOR_ERROR}This target is only available for execution inside a container!${COLOR_RESET}\n\n\n"; \
+		$(MAKE) help; \
+		exit 1; \
+	fi;
+
+## List variables
+debug:
+	printf "Make dir: $(MAKEFILE_DIR)\n"
+	printf "Current dir: $(CURRENT_DIR)\n"
+
+## Go to the bash container of the application
 bash:
 	@$(RUN) bash
 	printf "${COLOR_COMMENT}Container removed.${COLOR_RESET}\n"
@@ -58,7 +73,7 @@ phpstan:
 	${COMPOSER_BIN}/phpstan analyse -c config/phpstan.neon -l 4 src
 
 ## Apply CS fixers and QA watchers
-qa: cs phploc phpstan phpmd phan
+qa: cs phploc phpstan phpmd phan psalm
 
 ## Apply Php CS fixer and PHPCBF fix rules
 cs: php-cs-fixer phpcbf
@@ -66,6 +81,11 @@ cs: php-cs-fixer phpcbf
 ## Apply Php CS fixer rules
 php-cs-fixer:
 	 ${COMPOSER_BIN}/php-cs-fixer fix --verbose
+
+## Psalm - a static analysis
+psalm:
+	 ${VENDOR_BIN}/psalm --show-info=false
+
 
 ## Apply PHPCBF fix rules
 phpcbf:
@@ -79,7 +99,7 @@ phpmd:
 ## Clean temporary files
 clean:
 	printf "${COLOR_COMMENT}Remove temporary files${COLOR_RESET}\n"
-	rm -rfv ./vendor/* ./var/* ./*.lock ./*.cache
+	rm -rfv ./vendor/* ./var/* ./*.lock ./*.cache ./.phan
 	git checkout ./var/cache/.gitignore ./var/data/.gitignore
 
 ## Run Phan checkup
@@ -94,19 +114,13 @@ phpunit:
 selfupdate:
 	cp -f vendor/gpupo/common/Makefile Makefile
 
-## Build and publish a github gh-pages branch
+## Build a github gh-page
 gh-page:
-	mkdir -p var/cache;
-	echo "---" > var/cache/index.md;
-	echo "layout: default" >> var/cache/index.md;
-	echo "---" >> var/cache/index.md;
-	cat README.md  >> var/cache/index.md;
-	git checkout gh-pages || (git checkout --orphan gh-pages && git ls-files -z | xargs -0 git rm --cached);
-	mkdir -p _layouts;
-	cp -f vendor/gpupo/common/Resources/gh-pages-template/default.html _layouts/
-	cp -f vendor/gpupo/common/Resources/gh-pages-template/_config.yml .;
-	cp var/cache/index.md  .;
-	git add -f index.md _config.yml _layouts/default.html;
-	git commit -m "Website recreated by gpupo/common";
-	git push -f origin gh-pages:gh-pages;
-	git checkout -f master;
+	mkdir -p docs;
+	echo "---" > docs/index.md;
+	echo "layout: default" >> docs/index.md;
+	echo "---" >> docs/index.md;
+	cat README.md  >> docs/index.md;
+	mkdir -p docs/_layouts;
+	cp -f $(MAKEFILE_DIR)/vendor/gpupo/common/Resources/gh-pages-template/default.html docs/_layouts/
+	cp -f $(MAKEFILE_DIR)/vendor/gpupo/common/Resources/gh-pages-template/_config.yml docs/;
