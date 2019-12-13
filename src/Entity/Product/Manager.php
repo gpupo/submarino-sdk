@@ -86,13 +86,13 @@ class Manager extends AbstractManager
 
     protected function factoryEntity($data): CollectionInterface
     {
-        $product = new Product($data);
-        $product = $this->factoryORM($product, 'Entity\Catalog\Product\Product');
+        // $product = new Product($data);
+        // $product = $this->factoryORM($product, 'Entity\Catalog\Product\Product');
         // $translated = $this->translateMovementDataToCommon($array);
         // $ac = new AC($translated);
         // $movement = $this->factoryORM($ac, 'Entity\Banking\Movement\Movement');
 
-        return $product;
+        return $data;
     }
 
     public function urls($itemId)
