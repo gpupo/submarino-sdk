@@ -20,7 +20,7 @@ namespace Gpupo\SubmarinoSdk\Translator;
 use Gpupo\CommonSchema\AbstractTranslator;
 use Gpupo\SubmarinoSdk\Entity\Product\Product;
 
-class AdTranslator extends AbstractTranslator
+class ProductTranslator extends AbstractTranslator
 {
     public function import()
     {
