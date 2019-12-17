@@ -161,7 +161,7 @@ class OrderTranslator extends AbstractTranslator
                 return 'canceled';
         }
 
-        throw new \Exception('Order state not supported', 1);
+        return $string;
     }
 
     public function export()
