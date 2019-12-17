@@ -27,11 +27,13 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
 {
     public function findById($itemId): ?CollectionInterface
     {
-        $item = parent::findById($itemId);
+        $data = parent::findById($itemId);
 
-        if ($item) {
-            return $this->factoryEntity($item);
+        if (empty($data) || 404 === $data->get('status')) {
+            return null;
         }
+
+        return $this->factoryEntity($data->toArray());
     }
 
     public function fetch(int $offset = 0, int $limit = 50, array $parameters = [], string $route = 'fetch'): ?CollectionInterface
