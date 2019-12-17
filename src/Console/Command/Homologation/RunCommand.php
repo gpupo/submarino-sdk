@@ -113,7 +113,7 @@ final class RunCommand extends AbstractCommand
                 'agruparPlpEntregasDirect',
                 'recuperarPlpDirect',
                 'confirmarColetaPlpDirect',
-            ]
+            ],
         ];
     }
 
@@ -309,7 +309,7 @@ final class RunCommand extends AbstractCommand
         $array = json_decode($response->getResponseRaw(), true);
 
         foreach ($array['orders'] as $order) {
-            if ($order['shipping'] == 'CORREIOS') {
+            if ('CORREIOS' === $order['shipping']) {
                 try {
                     $response = $this->request(self::POST, '/shipments/b2w/', json_encode(['order_remote_codes' => [$order['code']]]));
 
@@ -331,7 +331,7 @@ final class RunCommand extends AbstractCommand
         $array = json_decode($response->getResponseRaw(), true);
 
         foreach ($array['plp'] as $plp) {
-            if ($plp['type'] == 'CORREIOS') {
+            if ('CORREIOS' === $plp['type']) {
                 $response = $this->request(self::GET, '/shipments/b2w/view?plp_id='.$plp['id']);
                 $array = json_decode($response->getResponseRaw(), true);
 
@@ -350,7 +350,7 @@ final class RunCommand extends AbstractCommand
         $array = json_decode($response->getResponseRaw(), true);
 
         foreach ($array['orders'] as $order) {
-            if ($order['shipping'] == 'DIRECT') {
+            if ('DIRECT' === $order['shipping']) {
                 try {
                     $response = $this->request(self::POST, '/shipments/b2w/', json_encode(['order_remote_codes' => [$order['code']]]));
 
@@ -372,7 +372,7 @@ final class RunCommand extends AbstractCommand
         $array = json_decode($response->getResponseRaw(), true);
 
         foreach ($array['plp'] as $plp) {
-            if ($plp['type'] == 'DIRECT') {
+            if ('DIRECT' === $plp['type']) {
                 $response = $this->request(self::GET, '/shipments/b2w/view?plp_id='.$plp['id']);
                 $array = json_decode($response->getResponseRaw(), true);
 

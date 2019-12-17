@@ -28,41 +28,40 @@ class Document extends EntityAbstract implements EntityInterface
     public function getSchema(): array
     {
         return [
-            "codCliente" => 'string',
-            "docExterno" => 'string',
-            "dtPrometida" => 'string',
-            "tpEntrega" => 'string',
-            "pesoTotal" => 'string',
-            "marca" => 'string',
-            "qtVolumes" => 'string',
-            "numeroContratoTransp" => 'string',
-            "nomeEmbarcador" => 'string',
-            "telefoneEmbarcador" => 'string',
-            "emailEmbarcador" => 'string',
-            "tpServico" => 'string',
-            "numNotaFiscal" => 'string',
-            "serieNotaFiscal" => 'string',
-            "megaRota" => 'string',
-            "rota" => 'string',
-            "telefoneContato" => 'string',
-            "vlEntrega" => 'string',
-            "cartaoPostagem" => 'string',
-            "servicoAdicional" => 'string',
-            "destinatario" => 'array',
-            "remetente" => 'array',
-            "awbs" => 'object',
+            'codCliente' => 'string',
+            'docExterno' => 'string',
+            'dtPrometida' => 'string',
+            'tpEntrega' => 'string',
+            'pesoTotal' => 'string',
+            'marca' => 'string',
+            'qtVolumes' => 'string',
+            'numeroContratoTransp' => 'string',
+            'nomeEmbarcador' => 'string',
+            'telefoneEmbarcador' => 'string',
+            'emailEmbarcador' => 'string',
+            'tpServico' => 'string',
+            'numNotaFiscal' => 'string',
+            'serieNotaFiscal' => 'string',
+            'megaRota' => 'string',
+            'rota' => 'string',
+            'telefoneContato' => 'string',
+            'vlEntrega' => 'string',
+            'cartaoPostagem' => 'string',
+            'servicoAdicional' => 'string',
+            'destinatario' => 'array',
+            'remetente' => 'array',
+            'awbs' => 'object',
         ];
     }
 
     public function getTrackingCodes()
     {
-        $data =  [];
+        $data = [];
 
-        foreach($this->getAwbs() as $awb) {
+        foreach ($this->getAwbs() as $awb) {
             $data[] = $awb->getCodigoAwb();
         }
 
         return $data;
     }
-
 }

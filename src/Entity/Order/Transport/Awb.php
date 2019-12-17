@@ -28,9 +28,9 @@ class Awb extends EntityAbstract implements EntityInterface
     public function getSchema(): array
     {
         return [
-            "codigoAwb" => 'string',
-            "posicaoVolume" => 'integer',
-            "itens" => 'array',
+            'codigoAwb' => 'string',
+            'posicaoVolume' => 'integer',
+            'itens' => 'array',
         ];
     }
 }
