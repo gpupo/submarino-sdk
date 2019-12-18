@@ -20,8 +20,8 @@ namespace  Gpupo\SubmarinoSdk\Tests\Entity\Product;
 use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSchema\TranslatorException;
 use Gpupo\SubmarinoSdk\Entity\Product\Product;
-use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
 use Gpupo\SubmarinoSdk\Product\ProductTranslator as Translator;
+use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
 
 /**
  * @coversDefaultClass \Gpupo\SubmarinoSdk\Entity\Product\Translator

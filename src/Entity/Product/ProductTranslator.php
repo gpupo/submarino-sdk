@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Gpupo\SubmarinoSdk\Entity\Product;
 
 use Gpupo\CommonSchema\AbstractTranslator;
-use Gpupo\SubmarinoSdk\Entity\Product\Product;
 use Gpupo\CommonSchema\ArrayCollection\Catalog\Product as CS;
 
 class ProductTranslator extends AbstractTranslator
