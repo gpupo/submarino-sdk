@@ -22,7 +22,6 @@ use Gpupo\CommonSchema\ArrayCollection\Catalog\Product\Product;
 use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\SubmarinoSdk\Entity\AbstractManager;
-use Gpupo\SubmarinoSdk\Translator\ProductTranslator;
 
 class Manager extends AbstractManager
 {

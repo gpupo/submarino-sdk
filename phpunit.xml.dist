@@ -17,6 +17,9 @@
         <testsuite name="Product">
             <directory>tests/Entity/Product</directory>
         </testsuite>
+        <testsuite name="Order">
+            <directory>tests/Entity/Order</directory>
+        </testsuite>
     </testsuites>
 
     <filter>

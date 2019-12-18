@@ -21,7 +21,7 @@ use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSchema\TranslatorException;
 use Gpupo\SubmarinoSdk\Entity\Product\Product;
 use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
-use Gpupo\SubmarinoSdk\Translator\ProductTranslator as Translator;
+use Gpupo\SubmarinoSdk\Product\ProductTranslator as Translator;
 
 /**
  * @coversDefaultClass \Gpupo\SubmarinoSdk\Entity\Product\Translator
