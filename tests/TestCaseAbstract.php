@@ -34,9 +34,23 @@ abstract class TestCaseAbstract extends Core
         return $this->getFactory()->getClient();
     }
 
+    public function providerProducts()
+    {
+        $manager = $this->getFactory()->factoryManager('product');
+        $manager->setDryRun($this->factoryResponseFromFixture('mockup/products/list.json'));
+
+        return $manager->fetch();
+    }
+
     public function dataProviderProducts()
     {
-        return $this->getResourceJson('mockup/products/list.json');
+        $list = [];
+
+        foreach ($this->providerProducts() as $product) {
+            $list[] = [$product];
+        }
+
+        return $list;
     }
 
     public function dataProviderOrders()

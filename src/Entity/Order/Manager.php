@@ -23,8 +23,6 @@ use Gpupo\CommonSchema\ArrayCollection\Trading\Order\Shipping\Transport\Transpor
 use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\SubmarinoSdk\Entity\AbstractManager;
 use Gpupo\SubmarinoSdk\Entity\Order\Transport\Plp;
-use Gpupo\SubmarinoSdk\Translator\OrderTranslator;
-use Psr\Http\Message\ResponseInterface;
 
 class Manager extends AbstractManager
 {
@@ -42,6 +40,15 @@ class Manager extends AbstractManager
         'factoryPlp' => ['POST', '/shipments/b2w/'],
         'requestPlp' => ['GET', '/shipments/b2w/view?plp_id={plpId}'],
     ];
+    //
+    // public function findById($itemId): ?CollectionInterface
+    // {
+    //     $item = parent::findById($itemId);
+    //
+    //     if ($item) {
+    //         return $this->factoryEntity($item);
+    //     }
+    // }
 
     /**
      * Obtém a lista de pedidos recém aprovados e que esperam processamento.
@@ -136,7 +143,7 @@ class Manager extends AbstractManager
         return $plp;
     }
 
-    public function factoryPlp($itemId, $fill = false):? Plp
+    public function factoryPlp($itemId, $fill = false): ?Plp
     {
         $body = [
             'order_remote_codes' => [
@@ -144,7 +151,7 @@ class Manager extends AbstractManager
             ],
         ];
 
-        $response = $this->execute($this->factoryMap('factoryPlp',[]), json_encode($body));
+        $response = $this->execute($this->factoryMap('factoryPlp', []), json_encode($body));
         $data = $response->getData();
 
         if (200 <= $response->getHttpStatusCode() && 300 > $response->getHttpStatusCode()) {
@@ -174,7 +181,7 @@ class Manager extends AbstractManager
         $map = $this->factoryMap('requestPlp', ['plpId' => $plp->getId()]);
         $request = $this->factoryRequestByMap($map);
         $headers = $request->getHeaders();
-        $headers['Accept'] = "application/pdf";
+        $headers['Accept'] = 'application/pdf';
         $request->set('header', $headers);
 
         return $this->downloadFileByRequest($request, $filename);
@@ -185,8 +192,8 @@ class Manager extends AbstractManager
         return parent::fetchPrepare([$data]);
     }
 
-    protected function factoryEntity($data): CollectionInterface
-    {
-        return $data;
-    }
+    // protected function factoryEntity($data): CollectionInterface
+    // {
+    //     return $data;
+    // }
 }

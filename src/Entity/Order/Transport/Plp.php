@@ -38,9 +38,9 @@ class Plp extends EntityAbstract implements EntityInterface
 
     public function getTrackingCodes()
     {
-        $data =  [];
+        $data = [];
 
-        foreach($this->getDocuments() as $document) {
+        foreach ($this->getDocuments() as $document) {
             $data[$document->getDocExterno()] = $document->getTrackingCodes();
         }
 

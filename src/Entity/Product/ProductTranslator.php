@@ -15,14 +15,14 @@ declare(strict_types=1);
  *
  */
 
-namespace Gpupo\SubmarinoSdk\Translator;
+namespace Gpupo\SubmarinoSdk\Entity\Product;
 
 use Gpupo\CommonSchema\AbstractTranslator;
-use Gpupo\SubmarinoSdk\Entity\Product\Product;
+use Gpupo\CommonSchema\ArrayCollection\Catalog\Product as CS;
 
-class AdTranslator extends AbstractTranslator
+class ProductTranslator extends AbstractTranslator
 {
-    public function import()
+    public function import(): Product
     {
         $common = $this->getForeign();
 
@@ -55,7 +55,7 @@ class AdTranslator extends AbstractTranslator
         return $product;
     }
 
-    public function export()
+    public function export(): CS
     {
     }
 }

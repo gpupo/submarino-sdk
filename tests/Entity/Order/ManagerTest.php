@@ -20,15 +20,18 @@ namespace Gpupo\SubmarinoSdk\Tests\Entity\Order;
 use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\CommonSchema\ArrayCollection\Trading\Trading;
 use Gpupo\CommonSdk\Entity\Metadata\MetadataContainer;
-use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
 use Gpupo\SubmarinoSdk\Entity\Order\Transport\Plp;
+use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
 
 /**
  * @coversNothing
  */
 class ManagerTest extends TestCaseAbstract
 {
-    public function testObtemListaPedidos()
+    /**
+     * @testdox Acessa lista de pedidos
+     */
+    public function testFetch(): CollectionInterface
     {
         $response = $this->factoryResponseFromFixture('mockup/orders/list.json');
         $list = $this->getManager($response)->fetch();
@@ -41,19 +44,24 @@ class ManagerTest extends TestCaseAbstract
         return $list;
     }
 
-    public function testObtémAListaDePedidosRecémAprovadosEQueEsperamProcessamento()
+    /**
+     * @testdox Acessa lista de pedidos recentemente aprovados
+     */
+    public function testFetchQueue(): Trading
     {
         $response = $this->factoryResponseFromFixture('mockup/orders/queue.json');
         $trading = $this->getManager($response)->fetchQueue();
 
         $this->assertInstanceOf(CollectionInterface::class, $trading);
         $this->assertInstanceOf(Trading::class, $trading);
-        $this->assertSame('skyhub', $trading->getOrder()->getOrderType());
-        $this->assertSame('Bruno', $trading->getOrder()->getCustomer()->getFirstName());
-        $this->assertSame('21 3722-3902', $trading->getOrder()->getCustomer()->getPhone()->getNumber());
-        $this->assertSame('78732371683', $trading->getOrder()->getCustomer()->getDocument()->getDocNumber());
-        $this->assertSame(1548766808293, $trading->getOrder()->getShipping()->first()->getShippingNumber());
-        $this->assertSame('Teste-1548766808293', $trading->getOrder()->getOrderNumber());
+
+        $order = $trading->getOrder();
+        $this->assertSame('skyhub', $order->getOrderType());
+        $this->assertSame('Bruno', $order->getCustomer()->getFirstName());
+        $this->assertSame('21 3722-3902', $order->getCustomer()->getPhone()->getNumber());
+        $this->assertSame('78732371683', $order->getCustomer()->getDocument()->getDocNumber());
+        $this->assertSame(1548766808293, $order->getShipping()->first()->getShippingNumber());
+        $this->assertSame('Teste-1548766808293', $order->getOrderNumber());
 
         return $trading;
     }
@@ -64,12 +72,6 @@ class ManagerTest extends TestCaseAbstract
         $order = $this->getManager($response)->findById(589);
         $this->assertInstanceOf(CollectionInterface::class, $order, 'Assert Order');
     }
-
-    protected function getManager($response = null)
-    {
-        return $this->getFactory()->factoryManager('order')->setDryRun($response);
-    }
-
 
     public function testGeraUmaListaDeEnvio()
     {
@@ -100,5 +102,10 @@ class ManagerTest extends TestCaseAbstract
         $plp = new Plp(['id' => 98945320]);
         $pdfPath = $this->getManager($response)->downloadPlp($plp);
         $this->assertSame('/tmp/submarino_sdk_plp-98945320.pdf', $pdfPath);
+    }
+
+    protected function getManager($response = null)
+    {
+        return $this->getFactory()->factoryManager('order')->setDryRun($response);
     }
 }

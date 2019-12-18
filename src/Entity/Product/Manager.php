@@ -22,7 +22,6 @@ use Gpupo\CommonSchema\ArrayCollection\Catalog\Product\Product;
 use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\SubmarinoSdk\Entity\AbstractManager;
-use Gpupo\SubmarinoSdk\Translator\AdTranslator;
 
 class Manager extends AbstractManager
 {
@@ -78,22 +77,30 @@ class Manager extends AbstractManager
 
     public function translateFrom(EntityInterface $entity)
     {
-        $translator = new AdTranslator();
+        $translator = new ProductTranslator();
         $translator->setForeign(new TranslatorDataCollection($entity->toArray()));
 
         return $translator->import();
     }
 
-    protected function factoryEntity($data): CollectionInterface
+    public function translateTo(EntityInterface $entity)
     {
-        // $product = new Product($data);
-        // $product = $this->factoryORM($product, 'Entity\Catalog\Product\Product');
-        // $translated = $this->translateMovementDataToCommon($array);
-        // $ac = new AC($translated);
-        // $movement = $this->factoryORM($ac, 'Entity\Banking\Movement\Movement');
+        $translator = new ProductTranslator();
+        $translator->setNative($entity);
 
-        return $data;
+        return $translator->export();
     }
+
+    // protected function factoryEntity($data): CollectionInterface
+    // {
+    //     $product = new Product($data);
+    //     $product = $this->factoryORM($product, 'Entity\Catalog\Product\Product');
+    //     // $translated = $this->translateMovementDataToCommon($array);
+    //     // $ac = new AC($translated);
+    //     // $movement = $this->factoryORM($ac, 'Entity\Banking\Movement\Movement');
+    //
+    //     return $product;
+    // }
 
     public function urls($itemId)
     {
