@@ -18,7 +18,8 @@ declare(strict_types=1);
 namespace Gpupo\SubmarinoSdk\Entity\Product;
 
 use Gpupo\CommonSchema\AbstractTranslator;
-use Gpupo\CommonSchema\ArrayCollection\Catalog\Product\Product as CS;
+use Gpupo\CommonSchema\TranslatorDataCollection;
+use Gpupo\CommonSchema\TranslatorException;
 use Gpupo\CommonSchema\TranslatorInterface;
 use Gpupo\CommonSdk\Traits\LoadTrait;
 
@@ -26,44 +27,29 @@ class Translator extends AbstractTranslator implements TranslatorInterface
 {
     use LoadTrait;
 
+    /**
+     * {@inheritdoc}
+     */
     public function import(): Product
     {
-        $common = $this->getForeign();
+        if (!$this->getForeign() instanceof TranslatorDataCollection) {
+            throw new TranslatorException('Foreign missed!');
+        }
+        $map = $this->loadMap('foreign');
 
-        $product = new Product();
-        $product->set('sku', $common->get('seller_product_id'));
-        $product->set('name', $common->get('name'));
-        $product->set('description', $common->get('description'));
-        $product->set('status', 'enabled');
-        // $product->set('removed', 'xxxxxx');
-        $product->set('qty', $common->get('quantity'));
-        $product->set('price', $common->get('price'));
-        $product->set('promotional_price', $common->get('promotional_price'));
-        $product->set('cost', $common->get('cost'));
-        $product->set('weight', $common->get('weight'));
-        $product->set('height', $common->get('height'));
-        $product->set('width', $common->get('width'));
-        $product->set('length', $common->get('length'));
-        $product->set('brand', $common->get('brand'));
-        $product->set('ean', $common->get('gtin'));
-        //$product->set('nbm', 'xxxxxxx');
-        $product->set('images', $common->get('images'));
-        $product->set('specifications', [
-            [
-                'key' => 'mpn',
-                'value' => $common->get('mpn'),
-            ],
-        ]);
-        $product->set('categories', $common->get('categories'));
-
-        return $product;
+        return new Product($map);
     }
 
-    public function export(): CS
+    /**
+     * {@inheritdoc}
+     */
+    public function export(): TranslatorDataCollection
     {
-        $cs = new CS();
+        if (!$this->getNative() instanceof Product) {
+            throw new TranslatorException('Product missed!');
+        }
 
-        return $cs;
+        return $this->factoryOutputCollection($this->loadMap('native'));
     }
 
     private function loadMap($name): array
