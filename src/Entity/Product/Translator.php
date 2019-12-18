@@ -18,10 +18,14 @@ declare(strict_types=1);
 namespace Gpupo\SubmarinoSdk\Entity\Product;
 
 use Gpupo\CommonSchema\AbstractTranslator;
-use Gpupo\CommonSchema\ArrayCollection\Catalog\Product as CS;
+use Gpupo\CommonSchema\ArrayCollection\Catalog\Product\Product as CS;
+use Gpupo\CommonSchema\TranslatorInterface;
+use Gpupo\CommonSdk\Traits\LoadTrait;
 
-class ProductTranslator extends AbstractTranslator
+class Translator extends AbstractTranslator implements TranslatorInterface
 {
+    use LoadTrait;
+
     public function import(): Product
     {
         $common = $this->getForeign();
@@ -57,5 +61,17 @@ class ProductTranslator extends AbstractTranslator
 
     public function export(): CS
     {
+        $cs = new CS();
+
+        return $cs;
+    }
+
+    private function loadMap($name): array
+    {
+        $file = __DIR__.'/map/translate.'.$name.'.map.php';
+        $method = 'get'.ucfirst($name);
+        $pars = [$name => $this->{$method}()];
+
+        return $this->loadArrayFromFile($file, $pars);
     }
 }

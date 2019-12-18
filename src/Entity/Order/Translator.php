@@ -21,9 +21,13 @@ use Gpupo\CommonSchema\AbstractTranslator;
 use Gpupo\CommonSchema\ArrayCollection\People;
 use Gpupo\CommonSchema\ArrayCollection\Trading;
 use Gpupo\CommonSchema\ArrayCollection\Trading\Order\Shipping as TOS;
+use Gpupo\CommonSchema\TranslatorInterface;
+use Gpupo\CommonSdk\Traits\LoadTrait;
 
-class OrderTranslator extends AbstractTranslator
+class Translator extends AbstractTranslator implements TranslatorInterface
 {
+    use LoadTrait;
+
     public function export(): Trading\Order\Order
     {
         $item = $this->getForeign()->toArray();
@@ -167,5 +171,8 @@ class OrderTranslator extends AbstractTranslator
 
     public function import(): Order
     {
+        $object = new Order();
+
+        return $object;
     }
 }
