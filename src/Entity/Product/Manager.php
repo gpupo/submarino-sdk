@@ -77,7 +77,7 @@ class Manager extends AbstractManager
 
     public function translateFrom(EntityInterface $entity)
     {
-        $translator = new ProductTranslator();
+        $translator = new Translator();
         $translator->setForeign(new TranslatorDataCollection($entity->toArray()));
 
         return $translator->import();
@@ -85,7 +85,7 @@ class Manager extends AbstractManager
 
     public function translateTo(EntityInterface $entity)
     {
-        $translator = new ProductTranslator();
+        $translator = new Translator();
         $translator->setNative($entity);
 
         return $translator->export();

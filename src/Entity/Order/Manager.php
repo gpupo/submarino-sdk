@@ -61,7 +61,7 @@ class Manager extends AbstractManager
             return null;
         }
 
-        $translator = new OrderTranslator();
+        $translator = new Translator();
         $translator->setForeign(new TranslatorDataCollection($result->first()->toArray()));
         $trading = $translator->import();
         // $trading = $this->factoryORM($trading, 'Entity\Trading\Trading');
