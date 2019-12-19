@@ -36,6 +36,10 @@ class TranslatorTest extends TestCaseAbstract
         $list = [];
 
         foreach ($this->providerProducts() as $product) {
+            if(!is_a($product, Product::class)) {
+                throw new \InvalidArgumentException(sprintf('$product must be a submarino-sdk entity! [%s] received', get_class($product)));
+            }
+
             $translator = new Translator(['native' => $product]);
 
             $list[] = [$translator];
