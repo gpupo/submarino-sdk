@@ -18,136 +18,14 @@ declare(strict_types=1);
 namespace Gpupo\SubmarinoSdk\Entity\Order;
 
 use Gpupo\CommonSchema\AbstractTranslator;
-use Gpupo\CommonSchema\ArrayCollection\People;
-use Gpupo\CommonSchema\ArrayCollection\Trading;
-use Gpupo\CommonSchema\ArrayCollection\Trading\Order\Shipping as TOS;
+use Gpupo\CommonSchema\TranslatorDataCollection;
+use Gpupo\CommonSchema\TranslatorException;
 use Gpupo\CommonSchema\TranslatorInterface;
 use Gpupo\CommonSdk\Traits\LoadTrait;
 
 class Translator extends AbstractTranslator implements TranslatorInterface
 {
     use LoadTrait;
-
-    public function export(): Trading\Order\Order
-    {
-        $item = $this->getForeign()->toArray();
-
-        $shipping = new TOS\Shipping();
-        $shipping->set('currency_id', 'BRL');
-        $shipping->set('date_created', $item['placed_at']);
-        $shipping->set('total_payments_amount', $item['total_ordered']);
-        $shipping->set('shipping_number', (int) $item['import_info']['remote_code']);
-        //$shipping->setTotalPaymentsFeeAmount();
-        $shipping->set('total_payments_fee_amount', $item['shipping_cost']);
-        $shipping->set('total_payments_net_amount', $item['total_ordered'] - $item['shipping_cost']);
-
-        $paymentCollection = new TOS\Payment\Collection();
-        foreach ($item['expands']['payments'] as $pay) {
-            $payment = new TOS\Payment\Payment();
-            //$payment->setAuthorizationUri();
-            $payment->set('authorization_code', $pay['autorization_id']);
-            //$payment->setCardId();
-            $payment->set('collector', $item['channel']);
-            $payment->set('currency_id', 'BRL');
-            //$payment->setInstallmentAmount();
-            $payment->set('installments', $pay['parcels']);
-            //$payment->setMarketplaceFee();
-            $payment->set('operation_type', $pay['description']);
-            //$payment->setOverpaidAmount();
-            $payment->set('payment_method_id', $pay['card_issuer']);
-            $payment->set('payment_number', (int) $item['import_info']['remote_code']);
-            $payment->set('payment_type', $pay['sefaz']['payment_indicator']);
-            $payment->set('shipping_cost', 0);
-            $payment->set('status', $pay['status']);
-            $payment->set('date_approved', $pay['transaction_date']);
-            $payment->set('date_created', $pay['transaction_date']);
-            $payment->set('date_last_modified', $pay['transaction_date']);
-            //$payment->setStatusCode();
-            //$payment->setStatusDetail();
-            $payment->set('total_paid_amount', $pay['value']);
-            $payment->set('transaction_amount', $pay['value']);
-            $payment->set('transaction_net_amount', $pay['value']);
-            //$payment->setShipping($shipping);
-
-            $paymentCollection->add($payment);
-        }
-        $shipping->set('payment', $paymentCollection);
-
-        $quantity = 0;
-        foreach ($item['expands']['items'] as $i) {
-            $quantity += $i['qty'];
-        }
-
-        $shipping->set('total_quantity', $quantity);
-        $shipping->set('status', $this->validateState($item['status']['type']));
-        // $shipping->setSeller($this->getSeller());
-
-        $productCollection = new TOS\Product\Collection();
-        foreach ($item['expands']['items'] as $i) {
-            $product = new TOS\Product\Product();
-            //$product->setGtin();
-            $product->set('quantity', $i['qty']);
-            //$product->setSaleFee();
-            $product->set('seller_product_id', $i['id']);
-            $product->set('title', $i['name']);
-            $product->set('unit_price', $i['special_price']);
-            $productCollection->add($product);
-        }
-        $shipping->set('product', $productCollection);
-
-        $customer = new Trading\Order\Customer\Customer();
-        $customer->set('email', $item['expands']['customer']['email']);
-        list($fname, $lname) = preg_split('/ /', $item['expands']['customer']['name'], 2);
-        $customer->set('first_name', $fname);
-        $customer->set('last_name', $lname);
-
-        $document = new People\Document();
-        $document->set('doc_number', $item['expands']['customer']['vat_number']);
-        $document->set('doc_type', 'CPF');
-        $customer->set('document', $document);
-
-        if (!empty($item['expands']['customer']['phones'])) {
-            $phone = new People\Phone();
-            $phone->set('number', $item['expands']['customer']['phones'][0]);
-            $customer->set('phone', $phone);
-        }
-
-        $address = $item['shipping_address'];
-        $delivery = new Trading\Order\Customer\AddressDelivery();
-        $delivery->set('city', $address['city']);
-        $delivery->set('comments', $address['complement']);
-        $delivery->set('neighborhood', $address['neighborhood']);
-        $delivery->set('number', $address['number']);
-        $delivery->set('postalCode', $address['postcode']);
-        $delivery->set('reference', $address['reference']);
-        $delivery->set('state', $address['region']);
-        $delivery->set('street', $address['street']);
-        //$delivery->setStatus();
-        $customer->set('address_delivery', $delivery);
-
-        $order = new Trading\Order\Order();
-        $order->set('currency_id', 'BRL');
-        $order->set('order_type', 'skyhub');
-        $order->set('order_number', $item['code']);
-        $order->set('origin_number', $item['import_info']['remote_id']);
-        $order->set('date_created', $item['placed_at']);
-        $order->set('date_last_modified', $item['updated_at']);
-
-        $shippingCollection = new TOS\Collection();
-        $shippingCollection->add($shipping);
-        $order->set('shipping', $shippingCollection);
-
-        //$shipping->setOrder($order);
-        $order->set('customer', $customer);
-        //$customer->setOrder($order);
-
-        $trading = new Trading\Trading();
-        $trading->set('order', $order);
-        //$order->setTrading($trading);
-        $trading->set('expands', $item);
-
-        return $trading;
-    }
 
     public function validateState($string)
     {
@@ -169,10 +47,43 @@ class Translator extends AbstractTranslator implements TranslatorInterface
         return $string;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function import(): Order
     {
-        $object = new Order();
+        if (!$this->getForeign() instanceof TranslatorDataCollection) {
+            throw new TranslatorException('Foreign missed!');
+        }
+        $map = $this->loadMap('foreign');
 
-        return $object;
+        return new Order($map);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function export(): TranslatorDataCollection
+    {
+        $native = $this->getNative();
+
+        if (!is_object($native)) {
+            throw new TranslatorException('$native must be a Object!');
+        }
+        if (!$native instanceof Order) {
+            dump(get_class($native));
+            throw new TranslatorException(sprintf('$native must be %s. [%s] received', Product::class, get_class($native)));
+        }
+
+        return $this->factoryOutputCollection($this->loadMap('native'));
+    }
+
+    private function loadMap($name): array
+    {
+        $file = __DIR__.'/map/translate.'.$name.'.map.php';
+        $method = 'get'.ucfirst($name);
+        $pars = [$name => $this->{$method}()];
+
+        return $this->loadArrayFromFile($file, $pars);
     }
 }

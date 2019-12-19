@@ -45,8 +45,14 @@ class Translator extends AbstractTranslator implements TranslatorInterface
      */
     public function export(): TranslatorDataCollection
     {
-        if (!$this->getNative() instanceof Product) {
-            throw new TranslatorException('Product missed!');
+        $native = $this->getNative();
+
+        if (!is_object($native)) {
+            throw new TranslatorException('$native must be a Object!');
+        }
+        if (!$native instanceof Product) {
+            dump(get_class($native));
+            throw new TranslatorException(sprintf('$native must be %s. [%s] received', Product::class, get_class($native)));
         }
 
         return $this->factoryOutputCollection($this->loadMap('native'));

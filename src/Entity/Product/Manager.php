@@ -25,6 +25,8 @@ use Gpupo\SubmarinoSdk\Entity\AbstractManager;
 
 class Manager extends AbstractManager
 {
+    const JSON_DATA_KEY = 'products';
+
     protected $entity = Product::class;
 
     protected $maps = [
