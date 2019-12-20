@@ -7,6 +7,6 @@ php:
 before_script:
   - composer self-update
   - composer install --prefer-dist
-script: vendor/bin/phpunit
+script: composer run-script test
 notifications:
   email: false
