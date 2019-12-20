@@ -25,6 +25,8 @@ use Gpupo\CommonSdk\Entity\Metadata\MetadataContainer;
 
 abstract class AbstractManager extends ManagerAbstract implements ManagerInterface
 {
+    const JSON_DATA_KEY = 'ubdefined';
+
     public function findById($itemId): ?CollectionInterface
     {
         $data = parent::findById($itemId);
@@ -49,16 +51,29 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
     {
     }
 
-    protected function fetchPrepare($data)
+    /**
+     * {@inheritdoc}
+     */
+    protected function fetchPrepare($data): MetadataContainer
     {
         $collection = new MetadataContainer();
-        $collection->getMetadata()
-            ->setTotalRows($data['total'] ?? \count($data));
-        // $method = sprintf('get%ss', ucfirst($this::JURISDICTION));
-        foreach ($data as $array) {
-            $collection->add($this->factoryEntity($array));
-        }
+        $collection->getMetadata()->setTotalRows($data->count());
+
+        dump('=======zzz',$data);
+
+        $collection->add($this->factoryEntity($data));
 
         return $collection;
     }
+
+    protected function factoryEntity($data): CollectionInterface
+    {
+        $this->getLogger()->debug(sprintf('%s::factoryEntity',$this->getEntityName()),$data->toArray());
+        $entity = $this->factoryNeighborObject($this->getEntityName(), $data);
+
+        dump('=======',$data, $entity);
+
+        return $entity;
+    }
+
 }

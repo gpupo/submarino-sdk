@@ -29,6 +29,7 @@
         }
     },
     "scripts": {
+        "test": "phpunit"
     },
     "bin": ["bin/submarino-sdk"],
     "config": {

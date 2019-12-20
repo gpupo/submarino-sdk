@@ -20,7 +20,7 @@ namespace  Gpupo\SubmarinoSdk\Tests\Entity\Product;
 use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSchema\TranslatorException;
 use Gpupo\SubmarinoSdk\Entity\Product\Product;
-use Gpupo\SubmarinoSdk\Product\ProductTranslator as Translator;
+use Gpupo\SubmarinoSdk\Entity\Product\Translator;
 use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
 
 /**
@@ -36,6 +36,10 @@ class TranslatorTest extends TestCaseAbstract
         $list = [];
 
         foreach ($this->providerProducts() as $product) {
+            if(!is_a($product, Product::class)) {
+                throw new \InvalidArgumentException(sprintf('$product must be a submarino-sdk entity! [%s] received', get_class($product)));
+            }
+
             $translator = new Translator(['native' => $product]);
 
             $list[] = [$translator];

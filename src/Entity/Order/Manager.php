@@ -28,6 +28,8 @@ class Manager extends AbstractManager
 {
     const JURISDICTION = 'order';
 
+    const JSON_DATA_KEY = 'orders';
+
     protected $entity = Order::class;
 
     protected $maps = [
@@ -61,12 +63,7 @@ class Manager extends AbstractManager
             return null;
         }
 
-        $translator = new OrderTranslator();
-        $translator->setForeign(new TranslatorDataCollection($result->first()->toArray()));
-        $trading = $translator->import();
-        // $trading = $this->factoryORM($trading, 'Entity\Trading\Trading');
-
-        return $trading;
+        return $this->factoryEntity($result->first());
     }
 
     public function delete($itemId)
@@ -186,11 +183,11 @@ class Manager extends AbstractManager
 
         return $this->downloadFileByRequest($request, $filename);
     }
-
-    protected function fetchPrepare($data)
-    {
-        return parent::fetchPrepare([$data]);
-    }
+    //
+    // protected function fetchPrepare($data)
+    // {
+    //     return parent::fetchPrepare([$data]);
+    // }
 
     // protected function factoryEntity($data): CollectionInterface
     // {
