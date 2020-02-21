@@ -105,6 +105,7 @@ class Manager extends AbstractManager
 
         $body = [
             'shipment' => [
+                'delivered_carrier_date' => $transport->get('date_ship'),
                 'code' => $shippingCode,
                 'items' => $items,
                 'track' => $track,
