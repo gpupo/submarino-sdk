@@ -56,22 +56,19 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
      */
     protected function fetchPrepare($data): MetadataContainer
     {
+        
         $collection = new MetadataContainer();
         $collection->getMetadata()->setTotalRows($data->count());
 
-        dump('=======zzz',$data);
-
-        $collection->add($this->factoryEntity($data));
+        $collection->add($this->factoryEntity($data->toArray()));
 
         return $collection;
     }
 
     protected function factoryEntity($data): CollectionInterface
     {
-        $this->getLogger()->debug(sprintf('%s::factoryEntity',$this->getEntityName()),$data->toArray());
+        $this->getLogger()->debug(sprintf('%s::factoryEntity',$this->getEntityName()),$data);
         $entity = $this->factoryNeighborObject($this->getEntityName(), $data);
-
-        dump('=======',$data, $entity);
 
         return $entity;
     }

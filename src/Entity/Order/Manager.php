@@ -55,15 +55,18 @@ class Manager extends AbstractManager
     /**
      * Obtém a lista de pedidos recém aprovados e que esperam processamento.
      */
-    public function fetchQueue(int $offset = 0, int $limit = 50, array $parameters = []): ?CollectionInterface
+    public function fetchQueue(int $offset = 0, int $limit = 50, array $parameters = []): ?TranslatorDataCollection
     {
         $result = $this->fetch($offset, $limit, array_merge(['status' => 'APPROVED'], $parameters));
 
         if ($result->first()->isEmpty()) {
             return null;
         }
+        
+        $translator = new Translator(['native' => $result->first()]);
+        $trading = $translator->export();
 
-        return $this->factoryEntity($result->first());
+        return $trading;
     }
 
     public function delete($itemId)

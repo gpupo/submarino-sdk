@@ -33,9 +33,17 @@ class Order extends EntityAbstract implements EntityInterface
             'shipping_method' => 'string',
             'shipping_cost' => 'number',
             'total_ordered' => 'number',
+            'shipping_cost' => 'number',
             'shipping_address' => 'array',
             'billing_address' => 'array',
             'customer' => 'array',
+            'items' => 'array',
+            'status' => 'array',
+            'placed_at' => 'string',
+            'updated_at' => 'string',
+            'import_info' => 'array',
+            'payments' => 'array',
+            'shipments' => 'array',
         ];
     }
 }

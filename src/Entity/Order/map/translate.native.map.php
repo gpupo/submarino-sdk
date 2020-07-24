@@ -21,7 +21,7 @@ declare(strict_types=1);
  use Gpupo\CommonSchema\TranslatorException;
 
 
-dump($native);
+// dump('NATIVE', $native);
 
 foreach([
     'channel',
@@ -32,87 +32,25 @@ foreach([
     }
 }
 
-
-$quantity = 0;
-$items = $native['order_items'];
-$acceptedOffer = [];
-foreach ($items as $item) {
-    if (is_array($item)) {
-        $quantity += $item['quantity'];
-        $acceptedOffer[] = [
-            'itemOffered' => [
-                'sku' => $item['item']['id'],
-            ],
-            'quantity' => $item['quantity'],
-            'price' => $item['unit_price'],
-        ];
-    }
-}
-
-$dateTime = new DateTime($native['date_created']);
-
-$translateStatus = function ($status) {
-    $string = strtoupper($status);
-    $list = include __DIR__.'/status.map.php';
-    $find = array_search($string, $list, true);
-
-    return empty($find) ? $string : $find;
-};
-
-return [
-    'merchant' => [
-        'name' => 'B2W',
-        'marketplace' => 'B2W',
-        'originNumber' => '',
-    ],
-    'orderNumber' => $native->getId(),
-    'acceptedOffer' => $acceptedOffer,
-    'orderStatus' => $translateStatus($native->getStatus()),
-    'orderDate' => $dateTime->format('Y-m-d H:i:s'),
-    'customer' => [
-        'document' => $native['buyer']['billing_info']['doc_number'],
-        'name' => $native['buyer']['first_name'].' '.$native['buyer']['last_name'],
-        'telephone' => '('.$native['buyer']['phone']['area_code'].') '.$native['buyer']['phone']['number'],
-        'email' => $native['buyer']['email'],
-    ],
-    'billingAddress' => [
-        'streetAddress' => $native->getShipping()['receiver_address']['street_name'],
-        'addressComplement' => $native->getShipping()['receiver_address']['comment'],
-        'addressReference' => '',
-        'addressNumber' => $native->getShipping()['receiver_address']['street_number'],
-        'addressLocality' => $native->getShipping()['receiver_address']['city']['name'],
-        'addressRegion' => str_replace('BR-', '', $native->getShipping()['receiver_address']['state']['id']),
-        'addressNeighborhood' => '',
-        'postalCode' => $native->getShipping()['receiver_address']['zip_code'],
-    ],
-    'currency' => 'BRL',
-    'price' => $native['total_amount'],
-    'discount' => 0,
-    'quantity' => $quantity,
-    'freight' => '',
-    'freightType' => (182 === (int) $native->getShipping()['shipping_option']['shipping_method_id']) ? 'EXPRESS' : 'NORMAL',
-    'total' => $native['total_amount'],
-];
-
 //////////////////////////
 $shipping = new TOS\Shipping();
 $shipping->set('currency_id', 'BRL');
-$shipping->set('date_created', $item['placed_at']);
-$shipping->set('total_payments_amount', $item['total_ordered']);
-$shipping->set('shipping_number', (int) $item['import_info']['remote_code']);
-$shipping->set('total_payments_fee_amount', $item['shipping_cost']);
-$shipping->set('total_payments_net_amount', $item['total_ordered'] - $item['shipping_cost']);
+$shipping->set('date_created', $native['placed_at']);
+$shipping->set('total_payments_amount', $native['total_ordered']);
+$shipping->set('shipping_number', (int) $native['import_info']['remote_code']);
+$shipping->set('total_payments_fee_amount', $native['shipping_cost']);
+$shipping->set('total_payments_net_amount', $native['total_ordered'] - $native['shipping_cost']);
 
 $paymentCollection = new TOS\Payment\Collection();
-foreach ($item['expands']['payments'] as $pay) {
+foreach ($native['payments'] as $pay) {
     $payment = new TOS\Payment\Payment();
     $payment->set('authorization_code', $pay['autorization_id']);
-    $payment->set('collector', $item['channel']);
+    $payment->set('collector', $native['channel']);
     $payment->set('currency_id', 'BRL');
     $payment->set('installments', $pay['parcels']);
     $payment->set('operation_type', $pay['description']);
     $payment->set('payment_method_id', $pay['card_issuer']);
-    $payment->set('payment_number', (int) $item['import_info']['remote_code']);
+    $payment->set('payment_number', (int) $native['import_info']['remote_code']);
     $payment->set('payment_type', $pay['sefaz']['payment_indicator']);
     $payment->set('shipping_cost', 0);
     $payment->set('status', $pay['status']);
@@ -128,15 +66,15 @@ foreach ($item['expands']['payments'] as $pay) {
 $shipping->set('payment', $paymentCollection);
 
 $quantity = 0;
-foreach ($item['expands']['items'] as $i) {
+foreach ($native['items'] as $i) {
     $quantity += $i['qty'];
 }
 
 $shipping->set('total_quantity', $quantity);
-$shipping->set('status', $this->validateState($item['status']['type']));
+$shipping->set('status', $this->validateState($native['status']['type']));
 
 $productCollection = new TOS\Product\Collection();
-foreach ($item['expands']['items'] as $i) {
+foreach ($native['items'] as $i) {
     $product = new TOS\Product\Product();
     $product->set('quantity', $i['qty']);
     $product->set('seller_product_id', $i['id']);
@@ -147,23 +85,23 @@ foreach ($item['expands']['items'] as $i) {
 $shipping->set('product', $productCollection);
 
 $customer = new Trading\Order\Customer\Customer();
-$customer->set('email', $item['expands']['customer']['email']);
-list($fname, $lname) = preg_split('/ /', $item['expands']['customer']['name'], 2);
+$customer->set('email', $native['customer']['email']);
+list($fname, $lname) = preg_split('/ /', $native['customer']['name'], 2);
 $customer->set('first_name', $fname);
 $customer->set('last_name', $lname);
 
 $document = new People\Document();
-$document->set('doc_number', $item['expands']['customer']['vat_number']);
+$document->set('doc_number', $native['customer']['vat_number']);
 $document->set('doc_type', 'CPF');
 $customer->set('document', $document);
 
-if (!empty($item['expands']['customer']['phones'])) {
+if (!empty($native['customer']['phones'])) {
     $phone = new People\Phone();
-    $phone->set('number', $item['expands']['customer']['phones'][0]);
+    $phone->set('number', $native['customer']['phones'][0]);
     $customer->set('phone', $phone);
 }
 
-$address = $item['shipping_address'];
+$address = $native['shipping_address'];
 $delivery = new Trading\Order\Customer\AddressDelivery();
 $delivery->set('city', $address['city']);
 $delivery->set('comments', $address['complement']);
@@ -178,10 +116,10 @@ $customer->set('address_delivery', $delivery);
 $order = new Trading\Order\Order();
 $order->set('currency_id', 'BRL');
 $order->set('order_type', 'skyhub');
-$order->set('order_number', $item['code']);
-$order->set('origin_number', $item['import_info']['remote_id']);
-$order->set('date_created', $item['placed_at']);
-$order->set('date_last_modified', $item['updated_at']);
+$order->set('order_number', $native['code']);
+$order->set('origin_number', $native['import_info']['remote_id']);
+$order->set('date_created', $native['placed_at']);
+$order->set('date_last_modified', $native['updated_at']);
 
 $shippingCollection = new TOS\Collection();
 $shippingCollection->add($shipping);
@@ -194,6 +132,6 @@ $order->set('customer', $customer);
 $trading = new Trading\Trading();
 $trading->set('order', $order);
 //$order->setTrading($trading);
-$trading->set('expands', $item);
+$trading->set('expands', $native);
 
-return $trading;
+return $trading->toArray();

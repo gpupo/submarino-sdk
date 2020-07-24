@@ -24,6 +24,7 @@ use Gpupo\SubmarinoSdk\Entity\Order\Transport\Plp;
 use Gpupo\SubmarinoSdk\Tests\TestCaseAbstract;
 use Gpupo\SubmarinoSdk\Entity\Order\Order;
 use Gpupo\SubmarinoSdk\Entity\Order\Translator;
+use Gpupo\CommonSchema\TranslatorDataCollection;
 
 /**
  * @coversNothing
@@ -49,27 +50,24 @@ class ManagerTest extends TestCaseAbstract
     /**
      * @testdox Acessa lista de pedidos recentemente aprovados
      */
-    public function testFetchQueue(): Trading
+    public function testFetchQueue()
     {
         $response = $this->factoryResponseFromFixture('mockup/orders/queue.json');
         $orderNative = $this->getManager($response)->fetchQueue();
 
-        $this->assertInstanceOf(CollectionInterface::class, $orderNative);
-        $this->assertInstanceOf(Order::class, $orderNative);
+        $this->assertInstanceOf(TranslatorDataCollection::class, $orderNative);
+        $this->assertArrayHasKey('order', $orderNative);
 
-        $translator = new Translator(['native' => $orderNative]);
-        $trading = $translator->export();
+        // $this->assertInstanceOf(Trading::class, $trading);
+        // $order = $trading->getOrder();
+        // $this->assertSame('skyhub', $order->getOrderType());
+        // $this->assertSame('Bruno', $order->getCustomer()->getFirstName());
+        // $this->assertSame('21 3722-3902', $order->getCustomer()->getPhone()->getNumber());
+        // $this->assertSame('78732371683', $order->getCustomer()->getDocument()->getDocNumber());
+        // $this->assertSame(1548766808293, $order->getShipping()->first()->getShippingNumber());
+        // $this->assertSame('Teste-1548766808293', $order->getOrderNumber());
 
-        $this->assertInstanceOf(Trading::class, $trading);
-        $order = $trading->getOrder();
-        $this->assertSame('skyhub', $order->getOrderType());
-        $this->assertSame('Bruno', $order->getCustomer()->getFirstName());
-        $this->assertSame('21 3722-3902', $order->getCustomer()->getPhone()->getNumber());
-        $this->assertSame('78732371683', $order->getCustomer()->getDocument()->getDocNumber());
-        $this->assertSame(1548766808293, $order->getShipping()->first()->getShippingNumber());
-        $this->assertSame('Teste-1548766808293', $order->getOrderNumber());
-
-        return $trading;
+        // return $trading;
     }
 
     public function testRecuperaInformacoesDeUmPedidoEspecifico()
