@@ -59,7 +59,7 @@ class Manager extends AbstractManager
     {
         $result = $this->fetch($offset, $limit, array_merge(['status' => 'APPROVED'], $parameters));
 
-        if ($result->first()->isEmpty()) {
+        if ($result->first()->isEmpty() || !$result->first()->get('channel')) {
             return null;
         }
         
