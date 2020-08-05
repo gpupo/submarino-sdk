@@ -15,36 +15,30 @@ declare(strict_types=1);
  *
  */
 
-$array = [];
-
- // $product = new Product();
- // $product->set('sku', $foreign->get('seller_product_id'));
- // $product->set('name', $foreign->get('name'));
- // $product->set('description', $foreign->get('description'));
- // $product->set('qty', $foreign->get('quantity'));
- // $product->set('price', $foreign->get('price'));
- // $product->set('promotional_price', $foreign->get('promotional_price'));
- // $product->set('cost', $foreign->get('cost'));
- // $product->set('weight', $foreign->get('weight'));
- // $product->set('height', $foreign->get('height'));
- // $product->set('width', $foreign->get('width'));
- // $product->set('length', $foreign->get('length'));
- // $product->set('brand', $foreign->get('brand'));
- // $product->set('ean', $foreign->get('gtin'));
- // $product->set('images', $foreign->get('images'));
- //
- //
- //
- //
- // $product->set('status', 'enabled');
- // $product->set('specifications', [
- //     [
- //         'key' => 'mpn',
- //         'value' => $foreign->get('mpn'),
- //     ],
- // ]);
- // $product->set('categories', $foreign->get('categories'));
-
-
+$array = [
+    'sku' => $foreign->get('seller_product_id'),
+    'name' => $foreign->get('name'),
+    'description' => $foreign->get('description'),
+    'qty' => $foreign->get('quantity'),
+    'price' => $foreign->get('price'),
+    'promotional_price' => $foreign->get('promotional_price'),
+    'cost' => $foreign->get('cost'),
+    'weight' => $foreign->get('weight'),
+    'height' => $foreign->get('height'),
+    'width' => $foreign->get('width'),
+    'length' => $foreign->get('length'),
+    'brand' => $foreign->get('brand'),
+    'ean' => $foreign->get('gtin'),
+    'images' => $foreign->get('images'),
+    'status' => 'enabled',
+    'categories' => $foreign->get('categories'),
+];
+ 
+$array['specifications'] = [
+    [
+        'key' => 'mpn',
+        'value' => $foreign->get('mpn'),
+    ],
+];
 
 return $array;
