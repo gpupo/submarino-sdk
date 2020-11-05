@@ -13,7 +13,7 @@
     "require": {
         "php": ">=7.4 || ^8.0",
         "ext-bcmath" : "*",
-        "gpupo/common-sdk": "^6.0 || dev-master"
+        "gpupo/common-sdk": "^6.0"
     },
     "require-dev": {
         "gpupo/common-dev": "*"
