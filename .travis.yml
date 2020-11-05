@@ -9,7 +9,7 @@ jobs:
   allow_failures:
   - php: nightly
 before_script:
-  - composer self-update
+  - composer self-update --2
   - composer install --prefer-dist
 script: composer run-script test
 notifications:
