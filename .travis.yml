@@ -5,6 +5,9 @@ os:
 php:
   - 7.4
   - nightly
+jobs:
+  allow_failures:
+  - php: nightly
 before_script:
   - composer self-update
   - composer install --prefer-dist
