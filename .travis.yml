@@ -4,6 +4,7 @@ os:
   - linux
 php:
   - 7.4
+  - nightly
 before_script:
   - composer self-update
   - composer install --prefer-dist
