@@ -11,12 +11,12 @@
     "keywords": ["submarino","americanas", "B2W", "shoptime", "sdk", "api", "skyhub"],
     "license": "MIT",
     "require": {
-        "php": ">=7.4",
+        "php": ">=7.4 || ^8.0",
         "ext-bcmath" : "*",
-        "gpupo/common-sdk": "^5.0|dev-master"
+        "gpupo/common-sdk": "^6.0"
     },
     "require-dev": {
-        "gpupo/common-dev": "^5.0"
+        "gpupo/common-dev": "*"
     },
     "autoload": {
         "psr-4": {
