@@ -10,7 +10,7 @@ Somente a versão 4.0 ou superior é compatívivel com a API SkyHub.
 
 ## Requisitos para uso
 
-* PHP *>=7.4*
+* PHP *>=8.0*
 * [curl extension](http://php.net/manual/en/intro.curl.php)
 * [Composer Dependency Manager](http://getcomposer.org)
 
