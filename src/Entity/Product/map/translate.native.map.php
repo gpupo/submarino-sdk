@@ -16,7 +16,8 @@ declare(strict_types=1);
  */
 
 $skusList = [];
-dump($native); return []; 
+// dump($native); 
+return []; 
 if ($native) {
 
     foreach ($native as $sku) {
