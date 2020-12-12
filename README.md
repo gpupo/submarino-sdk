@@ -57,7 +57,7 @@ Proibido:
 
 Adicione o pacote [submarino-sdk](https://packagist.org/packages/gpupo/submarino-sdk) ao seu projeto utilizando [composer](http://getcomposer.org):
 
-    composer require gpupo/submarino-sdk:^4.0
+    composer require gpupo/submarino-sdk
 
 ## Links
 
