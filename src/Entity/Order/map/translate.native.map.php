@@ -3,16 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of gpupo/submarino-sdk
- * Created by Gilmar Pupo <contact@gpupo.com>
- * For the information of copyright and license you should read the file
- * LICENSE which is distributed with this source code.
- * Para a informação dos direitos autorais e de licença você deve ler o arquivo
- * LICENSE que é distribuído com este código-fonte.
- * Para obtener la información de los derechos de autor y la licencia debe leer
- * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://opensource.gpupo.com/>.
- *
+ * This file is part of gpupo/submarino-sdk created by Gilmar Pupo <contact@gpupo.com>
+ * For the information of copyright and license you should read the file LICENSE which is
+ * distributed with this source code. For more information, see <https://opensource.gpupo.com/>
  */
 
  use Gpupo\CommonSchema\ArrayCollection\People;
@@ -20,15 +13,14 @@ declare(strict_types=1);
  use Gpupo\CommonSchema\ArrayCollection\Trading\Order\Shipping as TOS;
  use Gpupo\CommonSchema\TranslatorException;
 
+ // dump('NATIVE', $native);
 
-// dump('NATIVE', $native);
-
-foreach([
+foreach ([
     'channel',
 ] as $k) {
     $v = $native->get($k);
     if (empty($v)) {
-        throw new TranslatorException(sprintf("Conversion failed. order::%s cannot be empty", $k));
+        throw new TranslatorException(sprintf('Conversion failed. order::%s cannot be empty', $k));
     }
 }
 

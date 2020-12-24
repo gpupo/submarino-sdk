@@ -3,16 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of gpupo/submarino-sdk
- * Created by Gilmar Pupo <contact@gpupo.com>
- * For the information of copyright and license you should read the file
- * LICENSE which is distributed with this source code.
- * Para a informação dos direitos autorais e de licença você deve ler o arquivo
- * LICENSE que é distribuído com este código-fonte.
- * Para obtener la información de los derechos de autor y la licencia debe leer
- * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://opensource.gpupo.com/>.
- *
+ * This file is part of gpupo/submarino-sdk created by Gilmar Pupo <contact@gpupo.com>
+ * For the information of copyright and license you should read the file LICENSE which is
+ * distributed with this source code. For more information, see <https://opensource.gpupo.com/>
  */
 
 namespace Gpupo\SubmarinoSdk\Entity\Order;
@@ -67,12 +60,13 @@ class Translator extends AbstractTranslator implements TranslatorInterface
     {
         $native = $this->getNative();
 
-        if (!is_object($native)) {
+        if (!\is_object($native)) {
             throw new TranslatorException('$native must be a Object!');
         }
         if (!$native instanceof Order) {
-            dump(get_class($native));
-            throw new TranslatorException(sprintf('$native must be %s. [%s] received', Product::class, get_class($native)));
+            dump(\get_class($native));
+
+            throw new TranslatorException(sprintf('$native must be %s. [%s] received', Product::class, \get_class($native)));
         }
 
         return $this->factoryOutputCollection($this->loadMap('native'));
