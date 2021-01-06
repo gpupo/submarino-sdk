@@ -26,8 +26,8 @@ use Gpupo\CommonSdk\Entity\Metadata\MetadataContainer;
 abstract class AbstractManager extends ManagerAbstract implements ManagerInterface
 {
     const JSON_DATA_KEY = 'ubdefined';
-
-    public function findById($itemId): ?CollectionInterface
+    
+    public function fetchRemoteDataById($itemId): ?CollectionInterface
     {
         $data = parent::findById($itemId);
 
@@ -35,7 +35,14 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
             return null;
         }
 
-        return $this->factoryEntity($data->toArray());
+        return $data;
+    }
+
+    public function findById($itemId): ?CollectionInterface
+    {
+        $data = $this->fetchRemoteDataById($itemId);
+
+        return empty($data) ? null : $this->factoryEntity($data->toArray());
     }
 
     public function fetch(int $offset = 0, int $limit = 50, array $parameters = [], string $route = 'fetch'): ?CollectionInterface
