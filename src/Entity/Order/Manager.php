@@ -34,6 +34,7 @@ class Manager extends AbstractManager
         'delivery' => ['POST', '/orders/{itemId}/delivery'],
         'factoryPlp' => ['POST', '/shipments/b2w/'],
         'requestPlp' => ['GET', '/shipments/b2w/view?plp_id={plpId}'],
+        'fetchWithFilters' => ['GET', '/orders?{filtersHttpBuildedQuery}'],
     ];
     //
     // public function findById($itemId): ?CollectionInterface
@@ -60,6 +61,34 @@ class Manager extends AbstractManager
         $trading = $translator->export();
 
         return $trading;
+    }
+
+    /**
+     * Obtém a lista de pedidos a partir das regras dos filtros.
+     */
+    public function fetchWithFilters(int $offset = 0, int $limit = 50, array $filterList = []): ?TranslatorDataCollection
+    {
+        $parameters = [
+            'filtersHttpBuildedQuery' => http_build_query([
+                'filters' => $filterList,
+            ]),
+        ];
+
+        $rawResult = $this->rawFetch($offset, $limit, $parameters, 'fetchWithFilters');
+
+        if (1 > (int)$rawResult->get('total')) {
+            return null;
+        }
+        
+        $collection = new TranslatorDataCollection();
+
+        foreach($rawResult['orders'] as $rawOrder) {
+            $order = new Order($rawOrder);
+            $translator = new Translator(['native' => $order]);
+            $collection->add($translator->export());
+        }
+        
+        return $collection;
     }
 
     public function delete($itemId)
