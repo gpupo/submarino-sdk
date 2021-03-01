@@ -44,7 +44,7 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
 
         return parent::fetch($offset, $limit, array_merge([
             'page' => $page,
-        ], $parameters));
+        ], $parameters), $route);
     }
 
     public function update(EntityInterface $entity, EntityInterface $existent = null)
