@@ -1,0 +1,277 @@
+{
+    "total": 2,
+    "orders": [
+        {
+            "shipping_carrier": "Pac",
+            "imported_at": "2020-02-23T21:51:59-03:00",
+            "shipped_date": "",
+            "code": "Lojas Americanas-281002585701",
+            "seller_shipping_cost": null,
+            "estimated_delivery_shift": null,
+            "customer": {
+                "vat_number": "936263oir1`",
+                "phones": [
+                    "99 999999999"
+                ],
+                "name": "Hendrix Gibson Fender",
+                "gender": "",
+                "email": "936263oir1@email.com.br",
+                "date_of_birth": "1973-06-21"
+            },
+            "linked_order": null,
+            "delivery_contract_type": "B2WENPAC",
+            "status": {
+                "type": "APPROVED",
+                "label": "Aprovado (SkyHub)",
+                "code": "payment_received"
+            },
+            "shipments": [
+                {
+                    "tracks": [
+                        {
+                            "url": null,
+                            "method": "Pac",
+                            "code": "QZ700354736BR",
+                            "carrier": "CORREIOS"
+                        }
+                    ],
+                    "items": [
+                        {
+                            "sku": "89223",
+                            "qty": 3
+                        }
+                    ],
+                    "delivered_carrier_date": null,
+                    "code": "Lojas Americanas-281002585701"
+                }
+            ],
+            "sync_status": "NOT_SYNCED",
+            "invoices": [],
+            "shipping_method_id": "1614127854107",
+            "expedition_limit_date": "2020-02-24T00:00:00-03:00",
+            "payments": [
+                {
+                    "value": 185.13,
+                    "transaction_date": "2020-02-23T21:52:00-03:00",
+                    "status": null,
+                    "sefaz": {
+                        "type_integration": "1",
+                        "payment_indicator": "1",
+                        "name_payment": "Cartão de Crédito",
+                        "name_card_issuer": "Visa",
+                        "id_payment": "3",
+                        "id_card_issuer": "01"
+                    },
+                    "parcels": 3,
+                    "method": "CREDIT_CARD",
+                    "description": "No valor de: 185.13",
+                    "card_issuer": "10000000154",
+                    "autorization_id": "043952"
+                }
+            ],
+            "target_order": null,
+            "updated_at": "2020-02-23T21:57:55-03:00",
+            "shipping_cost": 9.9,
+            "channel": "Lojas Americanas",
+            "shipping_method": "Pac",
+            "approved_date": "2020-02-24T00:59:08",
+            "interest": 0.0,
+            "import_info": {
+                "ss_name": "Lojas Americanas",
+                "remote_id": "02-819325857",
+                "remote_code": "281002585701"
+            },
+            "calculation_type": "b2wentregacorreios",
+            "tags": [],
+            "exported_at": null,
+            "shipping_address": {
+                "street": "Caminho 2",
+                "secondary_phone": "99 999999999",
+                "region": "BA",
+                "reference": "Referencia muito boa",
+                "postcode": "41490284",
+                "phone": "99 999999999",
+                "number": "14",
+                "neighborhood": "Mussurunga I",
+                "full_name": "Fool Baar Guimarães",
+                "detail": "Foo Bar 2 Cs 14 - Referencia muito boa",
+                "country": "BR",
+                "complement": "Foo Bar 2 Cs 14",
+                "city": "Salvador"
+            },
+            "discount": 0.0,
+            "billing_address": {
+                "street": "Rua Henrique Dias",
+                "secondary_phone": "99 999999999",
+                "region": "BA",
+                "reference": "casa",
+                "postcode": "88228833",
+                "phone": "99 999999999",
+                "number": "183",
+                "neighborhood": "Congolho Velha",
+                "full_name": "Hendrix Gibson Fender",
+                "detail": "casa - casa",
+                "country": "BR",
+                "complement": "casa",
+                "city": "Congolho"
+            },
+            "items": [
+                {
+                    "special_price": 58.41,
+                    "shipping_cost": 9.9,
+                    "sale_fee": null,
+                    "remote_store_id": null,
+                    "qty": 3,
+                    "product_id": "89223",
+                    "original_price": 58.41,
+                    "name": "Calota Aro 15 Original RENAULT LOGAN 2015 a 2018",
+                    "listing_type_id": null,
+                    "id": "89223",
+                    "gift_wrap": null,
+                    "detail": null
+                }
+            ],
+            "shipping_estimate_id": "",
+            "estimated_delivery": "2020-03-05T00:00:00-03:00",
+            "placed_at": "2020-02-23T21:50:54-03:00",
+            "delivered_date": null,
+            "total_ordered": 185.13
+        },
+        {
+            "shipping_carrier": "",
+            "imported_at": "2020-10-24T18:01:33-03:00",
+            "shipped_date": "2020-10-27T19:03:41",
+            "code": "Submarino-352062900111",
+            "seller_shipping_cost": null,
+            "estimated_delivery_shift": null,
+            "customer": {
+                "vat_number": "7728811",
+                "phones": [
+                    "11 958666666"
+                ],
+                "name": "Presto Barba alves da silva",
+                "gender": "",
+                "email": "7728811@email.com.br",
+                "date_of_birth": "1948-01-22"
+            },
+            "linked_order": null,
+            "delivery_contract_type": "GERAL",
+            "status": {
+                "type": "DELIVERED",
+                "label": "Completo (entregue) (SkyHub)",
+                "code": "complete"
+            },
+            "shipments": [
+                {
+                    "tracks": [
+                        {
+                            "url": null,
+                            "method": null,
+                            "code": "000983058",
+                            "carrier": "SPREADSHEET"
+                        }
+                    ],
+                    "items": [
+                        {
+                            "sku": "239139",
+                            "qty": 1
+                        }
+                    ],
+                    "delivered_carrier_date": null,
+                    "code": "Submarino-352062900111"
+                }
+            ],
+            "sync_status": "NOT_SYNCED",
+            "invoices": [],
+            "shipping_method_id": null,
+            "expedition_limit_date": "2020-10-27T00:00:00-03:00",
+            "payments": [
+                {
+                    "value": 600.68,
+                    "transaction_date": "2020-10-24T18:23:00-03:00",
+                    "status": null,
+                    "sefaz": {
+                        "type_integration": null,
+                        "payment_indicator": null,
+                        "name_payment": null,
+                        "name_card_issuer": null,
+                        "id_payment": null,
+                        "id_card_issuer": null
+                    },
+                    "parcels": 6,
+                    "method": "CREDIT_CARD",
+                    "description": "No valor de: 600.68",
+                    "card_issuer": "10000000154",
+                    "autorization_id": "592974"
+                }
+            ],
+            "target_order": null,
+            "updated_at": "2020-10-27T16:17:08-03:00",
+            "shipping_cost": 16.58,
+            "channel": "Submarino",
+            "shipping_method": null,
+            "approved_date": "2020-10-24T21:25:33",
+            "interest": 0.0,
+            "import_info": {
+                "ss_name": "Submarino",
+                "remote_id": "03-520629007",
+                "remote_code": "352062900111"
+            },
+            "calculation_type": "spreadsheet",
+            "tags": [],
+            "exported_at": null,
+            "shipping_address": {
+                "street": "Rua Maranhão",
+                "secondary_phone": null,
+                "region": "SP",
+                "reference": "Colégio Viczo",
+                "postcode": "889910002",
+                "phone": "11 958666666",
+                "number": "111",
+                "neighborhood": "Jardim Bju/Centro",
+                "full_name": "Presto Barba alves da silva",
+                "detail": "Casa ZERO - Colégio Viczo",
+                "country": "BR",
+                "complement": "Casa ZERO",
+                "city": "Itupeva"
+            },
+            "discount": 0.0,
+            "billing_address": {
+                "street": "Rua Maranhão",
+                "secondary_phone": null,
+                "region": "SP",
+                "reference": "Colégio Viczo",
+                "postcode": "889910002",
+                "phone": "11 958666666",
+                "number": "111",
+                "neighborhood": "Jardim Bju/Centro",
+                "full_name": "Presto Barba alves da silva",
+                "detail": "Casa ZERO - Colégio Viczo",
+                "country": "BR",
+                "complement": "Casa ZERO",
+                "city": "Itupeva"
+            },
+            "items": [
+                {
+                    "special_price": 584.1,
+                    "shipping_cost": 16.58,
+                    "sale_fee": null,
+                    "remote_store_id": null,
+                    "qty": 1,
+                    "product_id": "239139",
+                    "original_price": 584.1,
+                    "name": "Vidro Parabrisa Dianteiro Original RENAULT DUSTER",
+                    "listing_type_id": null,
+                    "id": "239139",
+                    "gift_wrap": null,
+                    "detail": null
+                }
+            ],
+            "shipping_estimate_id": "",
+            "estimated_delivery": "2020-11-03T00:00:00-03:00",
+            "placed_at": "2020-10-24T17:59:28-03:00",
+            "delivered_date": "2020-10-27T16:17:08-03:00",
+            "total_ordered": 600.68
+        }
+    ]
+}

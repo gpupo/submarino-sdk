@@ -103,4 +103,18 @@ class ManagerTest extends TestCaseAbstract
     {
         return $this->getFactory()->factoryManager('order')->setDryRun($response);
     }
+
+    public function testFetchWithFilters()
+    {
+        $response = $this->factoryResponseFromFixture('mockup/orders/not_synced.json');
+        $filters = [
+            'sync_status[]' => 'NOT_SYNCED',
+        ];
+
+        $orderNative = $this->getManager($response)->fetchWithFilters(0, 50, $filters);
+        $this->assertInstanceOf(TranslatorDataCollection::class, $orderNative);
+        $firstOrder = $orderNative->first();
+        $this->assertArrayHasKey('order', $firstOrder);
+        $this->assertArrayHasKey('channel', $firstOrder);
+    }
 }
