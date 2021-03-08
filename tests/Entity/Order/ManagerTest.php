@@ -122,8 +122,10 @@ class ManagerTest extends TestCaseAbstract
 
         $orderNative = $this->getManager($response)->fetchWithFilters(0, 50, $filters);
         $this->assertInstanceOf(TranslatorDataCollection::class, $orderNative);
-        $firstOrder = $orderNative->first();
-        $this->assertArrayHasKey('order', $firstOrder);
-        $this->assertArrayHasKey('channel', $firstOrder);
+        $data = $orderNative->first();
+        $this->assertInstanceOf(TranslatorDataCollection::class, $data);
+        $firstOrder = $data->getNative();
+        $this->assertContains('shipments', $firstOrder->getKeys());
+        $this->assertContains('channel', $firstOrder->getKeys());
     }
 }

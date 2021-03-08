@@ -16,36 +16,38 @@ declare(strict_types=1);
  */
 
 $skusList = [];
-dump($native); return []; 
-if ($native) {
 
-    foreach ($native as $sku) {
-        $sellPrice = $sku->getPrice();
-        $skusList[] = [
-            'skuId' => $sku->getId(),
-            'gtin' => $sku->getEanIsbn(),
-            'name' => $sku->getName(),
-            'description' => $sku->getDescription(),
-            'color' => $sku->getColor(),
-            'size' => $sku->getSize(),
-            'gender' => $sku->getGender(),
-            'height' => $sku->getHeight(),
-            'width' => $sku->getWidth(),
-            'depth' => $sku->getDepth(),
-            'weight' => $sku->getWeight(),
-            'listPrice' => $sellPrice,
-            'sellPrice' => $sellPrice,
-            'stock' => $sku->getStock()->getAvailable(),
-            'status' => $sku->getStatus()->getActive(),
-        ];
-    }
-}
+return []; 
 
-return [
-    'productId' => $native->getId(),
-    'productType' => $native->getProductType(),
-    'department' => $native->getCategoryId(),
-    'category' => '',
-    'brand' => $native->getBrand(),
-    'skus' => $skusList,
-];
+// if ($native) {
+
+//     foreach ($native as $sku) {
+//         $sellPrice = $sku->getPrice();
+//         $skusList[] = [
+//             'skuId' => $sku->getId(),
+//             'gtin' => $sku->getEanIsbn(),
+//             'name' => $sku->getName(),
+//             'description' => $sku->getDescription(),
+//             'color' => $sku->getColor(),
+//             'size' => $sku->getSize(),
+//             'gender' => $sku->getGender(),
+//             'height' => $sku->getHeight(),
+//             'width' => $sku->getWidth(),
+//             'depth' => $sku->getDepth(),
+//             'weight' => $sku->getWeight(),
+//             'listPrice' => $sellPrice,
+//             'sellPrice' => $sellPrice,
+//             'stock' => $sku->getStock()->getAvailable(),
+//             'status' => $sku->getStatus()->getActive(),
+//         ];
+//     }
+// }
+
+// return [
+//     'productId' => $native->getId(),
+//     'productType' => $native->getProductType(),
+//     'department' => $native->getCategoryId(),
+//     'category' => '',
+//     'brand' => $native->getBrand(),
+//     'skus' => $skusList,
+// ];
