@@ -111,7 +111,7 @@ class Manager extends AbstractManager
         return $this->execute($this->factoryMap('invoice', ['itemId' => $itemId]), json_encode($body));
     }
 
-    public function notifyShipped(string $itemId, string $shippingCode, ProductCollection $productCollection, Transport $transport, $moveStatus = true)
+    public function notifyShipped(string $itemId, ProductCollection $productCollection, Transport $transport, $moveStatus = true)
     {
         $items = [];
         foreach ($productCollection as $product) {
@@ -131,7 +131,7 @@ class Manager extends AbstractManager
         $body = [
             'shipment' => [
                 'delivered_carrier_date' => $transport->get('date_ship'),
-                'code' => $shippingCode,
+                'code' => $itemId,
                 'items' => $items,
                 'track' => $track,
             ],
