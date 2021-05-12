@@ -118,7 +118,7 @@ class Manager extends AbstractManager
         return $this->execute($this->factoryMap('invoice', ['itemId' => $itemId]), json_encode($body));
     }
 
-    public function notifyShipped(string $itemId, ProductCollection $productCollection, Transport $transport, $moveStatus = true)
+    public function addShipment(string $itemId, ProductCollection $productCollection, Transport $transport, $moveStatus = false)
     {
         $items = [];
         foreach ($productCollection as $product) {
@@ -151,13 +151,16 @@ class Manager extends AbstractManager
         return $this->execute($this->factoryMap('shipments', ['itemId' => $itemId]), json_encode($body));
     }
 
-    public function notifyDelivered($itemId, $moveStatus = true)
+    public function notifyShipped(string $itemId)
     {
-        $body = [];
+        $body = ['status' => 'order_shipped'];
 
-        if ($moveStatus) {
-            $body['status'] = 'complete';
-        }
+        return $this->execute($this->factoryMap('shipments', ['itemId' => $itemId]), json_encode($body));
+    }
+
+    public function notifyDelivered(string $itemId)
+    {
+        $body = ['status' => 'complete'];
 
         return $this->execute($this->factoryMap('delivery', ['itemId' => $itemId]), json_encode($body));
     }
