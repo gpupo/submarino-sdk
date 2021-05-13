@@ -137,7 +137,7 @@ class Manager extends AbstractManager
 
         $body = [
             'shipment' => [
-                'delivered_carrier_date' => $transport->get('date_ship') ? $transport->get('date_ship')->format('c') : null,
+                'delivered_carrier_date' => $transport->get('date_ship'),
                 'code' => $itemId,
                 'items' => $items,
                 'track' => $track,
