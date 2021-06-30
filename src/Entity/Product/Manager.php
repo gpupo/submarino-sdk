@@ -77,6 +77,13 @@ class Manager extends AbstractManager
         return $this->execute($this->factoryMap('update', $params), json_encode($body));
     }
 
+    public function close(int $itemId)
+    {
+        $body = ['product' => ['qty' => 0, 'status' => 'disabled']];
+
+        return $this->execute($this->factoryMap('update', ['itemId' => $itemId]), json_encode($body));
+    }
+
     public function translateFrom(EntityInterface $entity)
     {
         $translator = new Translator();
