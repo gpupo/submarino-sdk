@@ -40,10 +40,10 @@ foreach ($native['payments'] as $pay) {
     $payment->set('collector', $native['channel']);
     $payment->set('currency_id', 'BRL');
     $payment->set('installments', $pay['parcels']);
-    $payment->set('operation_type', $pay['description']);
+    $payment->set('operation_type', $pay['type']);
     $payment->set('payment_method_id', $pay['card_issuer']);
     $payment->set('payment_number', (int) $native['import_info']['remote_code']);
-    $payment->set('payment_type', $pay['sefaz']['payment_indicator']);
+    $payment->set('payment_type', $pay['method']);
     $payment->set('shipping_cost', 0);
     $payment->set('status', $pay['status']);
     $payment->set('date_approved', $pay['transaction_date']);
